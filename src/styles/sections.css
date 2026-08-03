@@ -305,20 +305,20 @@
 }
 
 /* --------------------------------------------------------------------------
-   5. About Section - Full Width Vertical Sliced Accordion
+   5. About Section - Full Width Vertical Sliced Accordion (Sharp & Grayscale)
    -------------------------------------------------------------------------- */
 .about-accordion-section {
   position: relative;
   overflow: hidden;
   background-color: var(--color-dark);
-  padding: 6rem 0 3rem;
+  padding: 5rem 0 0;
   width: 100%;
 }
 
 .sliced-accordion-container {
   display: flex;
-  gap: 8px;
-  min-height: 620px;
+  gap: 4px;
+  min-height: 650px;
   width: 100vw;
   position: relative;
   left: 50%;
@@ -326,7 +326,7 @@
   margin-left: -50vw;
   margin-right: -50vw;
   margin-top: 2.5rem;
-  padding: 0 1rem;
+  padding: 0;
   z-index: 2;
 }
 
@@ -334,11 +334,11 @@
   flex: 1;
   position: relative;
   overflow: hidden;
-  border-radius: var(--radius-md);
-  border: 1.5px solid rgba(212, 179, 84, 0.4);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
   cursor: pointer;
-  transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+  transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   background-color: var(--color-dark);
 }
 
@@ -346,8 +346,6 @@
 .sliced-stripe:hover,
 .sliced-stripe.active {
   flex: 4.5;
-  border-color: var(--color-gold);
-  box-shadow: 0 25px 50px rgba(204, 87, 14, 0.45), var(--neumorphism-glow);
 }
 
 .stripe-img {
@@ -358,13 +356,15 @@
   background-image: url('https://picsum.photos/seed/mikroptik-about-bg/1600/900');
   background-size: cover;
   background-position: center;
-  filter: brightness(0.55) contrast(1.15);
-  transition: filter 0.4s ease, transform 0.6s ease;
+  /* Hitam putih di mode non-hover */
+  filter: grayscale(100%) brightness(0.85) contrast(1.1);
+  transition: filter 0.5s ease, transform 0.6s ease;
 }
 
+/* Full Color / Berwarna di mode hover / active */
 .sliced-stripe:hover .stripe-img,
 .sliced-stripe.active .stripe-img {
-  filter: brightness(0.85) contrast(1.2);
+  filter: grayscale(0%) brightness(1) contrast(1);
   transform: scale(1.03);
 }
 
@@ -380,8 +380,8 @@
 .stripe-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(28, 22, 20, 0.95) 0%, rgba(28, 22, 20, 0.4) 65%, transparent 100%);
-  padding: 2rem 1.5rem;
+  background: linear-gradient(to top, rgba(28, 22, 20, 0.95) 0%, rgba(28, 22, 20, 0.3) 65%, transparent 100%);
+  padding: 2.5rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -391,16 +391,17 @@
 /* Collapsed indicator text/label */
 .stripe-collapsed-label {
   position: absolute;
-  bottom: 3.5rem;
+  bottom: 4rem;
   left: 50%;
   transform: translateX(-50%) rotate(-90deg);
   transform-origin: center center;
   white-space: nowrap;
   font-family: var(--font-heading);
-  font-size: 1.3rem;
-  color: var(--color-gold);
-  letter-spacing: 0.12em;
-  opacity: 1;
+  font-size: 1.4rem;
+  color: var(--color-white);
+  letter-spacing: 0.15em;
+  opacity: 0.9;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
   transition: opacity 0.3s ease;
   pointer-events: none;
 }

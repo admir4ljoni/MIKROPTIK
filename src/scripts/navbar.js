@@ -5,13 +5,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
   // Shrink on scroll
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 80) {
+  const handleNavScroll = () => {
+    if (window.scrollY > 30) {
       navbar?.classList.add('shrunk');
     } else {
       navbar?.classList.remove('shrunk');
     }
-  });
+  };
+
+  window.addEventListener('scroll', handleNavScroll);
+  handleNavScroll();
 
   // Hamburger menu toggle
   hamburgerBtn?.addEventListener('click', () => {

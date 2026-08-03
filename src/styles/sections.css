@@ -54,10 +54,10 @@
 .navbar-fixed {
   position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
-  width: 100vw;
-  transform: none;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 100%;
   z-index: 1000;
   background-color: rgba(28, 22, 20, 0.45);
   backdrop-filter: blur(12px);
@@ -69,15 +69,18 @@
   align-items: center;
   justify-content: space-between;
   box-shadow: none;
-  transition: all var(--transition-normal);
+  transition: max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              top 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              border-radius 0.4s ease,
+              background-color 0.4s ease,
+              box-shadow 0.4s ease;
+  will-change: max-width, top, padding;
 }
 
 .navbar-fixed.shrunk {
   top: 0.75rem;
-  left: 50%;
-  right: auto;
-  transform: translateX(-50%);
-  width: min(95%, 1280px);
+  max-width: min(94%, 1280px);
   border-radius: var(--radius-md);
   padding: 0.55rem 1.5rem;
   background-color: rgba(28, 22, 20, 0.85);

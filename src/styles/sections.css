@@ -667,31 +667,16 @@
 }
 
 /* --------------------------------------------------------------------------
-   8. Partnership / CTA Section Blend Gradient
+   8. Partnership / CTA Section Blend Gradient (Bottom-to-Top Red-to-Brown)
    -------------------------------------------------------------------------- */
 .cta-section {
   position: relative;
   background-color: var(--color-dark);
+  background: 
+    radial-gradient(ellipse 100% 70% at 50% 100%, rgba(130, 9, 7, 0.65) 0%, rgba(105, 20, 18, 0.3) 60%, transparent 100%),
+    linear-gradient(to top, rgba(130, 9, 7, 0.45) 0%, rgba(105, 20, 18, 0.2) 45%, var(--color-dark) 90%);
   overflow: hidden;
   padding: 7rem 1.5rem;
-}
-
-.cta-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 95% 85% at 50% 50%, rgba(130, 9, 7, 0.38) 0%, rgba(105, 20, 18, 0.18) 55%, transparent 95%);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.cta-section::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, var(--color-dark) 0%, rgba(28, 22, 20, 0.6) 20%, transparent 40%, transparent 60%, rgba(28, 22, 20, 0.6) 80%, var(--color-dark) 100%);
-  pointer-events: none;
-  z-index: 1;
 }
 
 .cta-section .container {

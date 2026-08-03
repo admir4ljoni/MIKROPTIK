@@ -305,101 +305,164 @@
 }
 
 /* --------------------------------------------------------------------------
-   5. About Section - Vertical Sliced Image Background
+   5. About Section - Interactive Expanding Vertical Sliced Accordion
    -------------------------------------------------------------------------- */
-.hero-sliced-section {
+.about-accordion-section {
   position: relative;
   overflow: hidden;
   background-color: var(--color-dark);
   padding: 6rem 1.5rem;
 }
 
-.sliced-bg-container {
-  position: absolute;
-  inset: 0;
+.sliced-accordion-container {
   display: flex;
   gap: 14px;
-  padding: 2rem 1.5rem;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.4;
+  min-height: 520px;
+  width: 100%;
+  margin-top: 2.5rem;
+  position: relative;
+  z-index: 2;
 }
 
 .sliced-stripe {
   flex: 1;
-  height: 100%;
   position: relative;
   overflow: hidden;
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(212, 179, 84, 0.35);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-  transition: transform var(--transition-normal), border-color var(--transition-normal);
+  border-radius: var(--radius-lg);
+  border: 1.5px solid rgba(212, 179, 84, 0.4);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+  background-color: var(--color-dark);
+}
+
+/* Expanded state on hover or active click */
+.sliced-stripe:hover,
+.sliced-stripe.active {
+  flex: 3.5;
+  border-color: var(--color-gold);
+  box-shadow: 0 20px 45px rgba(204, 87, 14, 0.4), var(--neumorphism-glow);
 }
 
 .stripe-img {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 100vw;
+  width: 1100px;
   background-image: url('https://picsum.photos/seed/mikroptik-about-bg/1400/900');
   background-size: cover;
   background-position: center;
-  filter: contrast(1.1) brightness(0.7);
+  filter: brightness(0.55) contrast(1.15);
+  transition: filter 0.4s ease, transform 0.6s ease;
 }
 
-/* Calculate exact left offsets so vertical stripes display parts of the same continuous image */
-.stripe-1 .stripe-img { left: 0vw; }
-.stripe-2 .stripe-img { left: -16vw; }
-.stripe-3 .stripe-img { left: -32vw; }
-.stripe-4 .stripe-img { left: -48vw; }
-.stripe-5 .stripe-img { left: -64vw; }
-.stripe-6 .stripe-img { left: -80vw; }
+.sliced-stripe:hover .stripe-img,
+.sliced-stripe.active .stripe-img {
+  filter: brightness(0.85) contrast(1.2);
+  transform: scale(1.03);
+}
 
-.about-content-overlay {
-  position: relative;
+/* Sliced background image position offsets per stripe */
+.stripe-1 .stripe-img { left: 0px; }
+.stripe-2 .stripe-img { left: -180px; }
+.stripe-3 .stripe-img { left: -360px; }
+.stripe-4 .stripe-img { left: -540px; }
+.stripe-5 .stripe-img { left: -720px; }
+.stripe-6 .stripe-img { left: -900px; }
+
+/* Overlay inside each stripe */
+.stripe-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(28, 22, 20, 0.95) 0%, rgba(28, 22, 20, 0.4) 65%, transparent 100%);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   z-index: 2;
 }
 
-.about-text-grid {
-  display: grid;
-  grid-template-columns: 1.8fr 1fr;
-  gap: var(--space-xl);
-  align-items: center;
-  margin-top: 2.5rem;
-  background: rgba(28, 22, 20, 0.82);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: clamp(1.5rem, 4vw, 3rem);
-  border-radius: var(--radius-xl);
-  border: 1.5px solid rgba(212, 179, 84, 0.35);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+/* Collapsed indicator text/label */
+.stripe-collapsed-label {
+  position: absolute;
+  bottom: 3.5rem;
+  left: 50%;
+  transform: translateX(-50%) rotate(-90deg);
+  transform-origin: center center;
+  white-space: nowrap;
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--color-gold);
+  letter-spacing: 0.12em;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
-.about-stats-column {
+.sliced-stripe:hover .stripe-collapsed-label,
+.sliced-stripe.active .stripe-collapsed-label {
+  opacity: 0;
+}
+
+/* Expanded content text inside stripe */
+.stripe-expanded-content {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: 0.6rem;
 }
 
-.about-stat-card {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-  padding: 1rem 1.25rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(212, 179, 84, 0.25);
-  border-radius: var(--radius-md);
-  transition: transform var(--transition-fast), border-color var(--transition-fast);
+.sliced-stripe:hover .stripe-expanded-content,
+.sliced-stripe.active .stripe-expanded-content {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.about-stat-card:hover {
-  transform: translateX(6px);
-  border-color: var(--color-gold);
+.stripe-badge {
+  align-self: flex-start;
+  padding: 0.3rem 0.85rem;
+  background: var(--color-gold);
+  color: var(--color-dark);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.08em;
+}
+
+.stripe-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--color-white);
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+}
+
+.stripe-description {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
 }
 
 @media (max-width: 900px) {
-  .about-text-grid {
-    grid-template-columns: 1fr;
+  .sliced-accordion-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .sliced-stripe {
+    min-height: 140px;
+    flex: none !important;
+  }
+
+  .stripe-collapsed-label {
+    display: none;
+  }
+
+  .stripe-expanded-content {
+    opacity: 1;
+    transform: none;
   }
 }
 

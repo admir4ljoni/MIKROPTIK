@@ -48,69 +48,121 @@ import { Code2, Users2, Clock3 } from '@lucide/astro';
        SECTION 3: ABOUT / TENTANG KAMI (SLICED BENTO MOSAIC GRID)
        ========================================================================= -->
   <!-- =========================================================================
-       SECTION 3: ABOUT / TENTANG KAMI (VERTICAL SLICED BACKGROUND)
+       SECTION 3: ABOUT / TENTANG KAMI (EXPANDING VERTICAL SLICED ACCORDION)
        ========================================================================= -->
-  <section id="about" class="section hero-sliced-section">
-    <!-- Background Persegi Panjang Vertikal (Sliced Image Background) -->
-    <div class="sliced-bg-container">
-      <div class="sliced-stripe stripe-1"><div class="stripe-img"></div></div>
-      <div class="sliced-stripe stripe-2"><div class="stripe-img"></div></div>
-      <div class="sliced-stripe stripe-3"><div class="stripe-img"></div></div>
-      <div class="sliced-stripe stripe-4"><div class="stripe-img"></div></div>
-      <div class="sliced-stripe stripe-5"><div class="stripe-img"></div></div>
-      <div class="sliced-stripe stripe-6"><div class="stripe-img"></div></div>
-    </div>
-
-    <!-- Teks & Konten Utama (Di depan Background Sliced Bars) -->
-    <div class="container about-content-overlay">
+  <section id="about" class="section about-accordion-section">
+    <div class="container">
       <SectionHeading 
         titleMain="TENTANG" 
         titleAccent="Kami" 
-        subtitle="Mengenal lebih dekat Himpunan Mahasiswa Pendidikan Teknik Informatika dan Komputer FKIP UNS"
+        subtitle="Geser kursor atau sentuh bilah di bawah untuk mengeksplorasi profil, pengurus, proker, dan prestasi MIKROPTIK"
       />
 
-      <div class="about-text-grid">
-        <div class="about-main-text">
-          <h3 class="text-gold" style="font-size: 2.2rem; margin-bottom: 1rem; letter-spacing: 0.05em;">
-            WADAH ASPIRASI & KARYA MAHASISWA
-          </h3>
-          <p style="margin-bottom: 1rem; font-size: 1.05rem; color: rgba(255,255,255,0.9); line-height: 1.7;">
-            MIKROPTIK (Himpunan Mahasiswa Pendidikan Teknik Informatika dan Komputer) merupakan organisasi eksekutif mahasiswa prodi di FKIP Universitas Sebelas Maret.
-          </p>
-          <p style="margin-bottom: 1.75rem; font-size: 1.05rem; color: rgba(255,255,255,0.9); line-height: 1.7;">
-            Pada periode 2025/2026, di bawah kepengurusan <strong style="color: var(--color-gold);">Kabinet Naya Vikrama</strong>, MIKROPTIK berkomitmen untuk beraksi dengan karya nyata dan bersatu dalam kemajuan akademik maupun non-akademik.
-          </p>
-          <a href="#visi-misi" class="btn btn-primary">Lihat Visi & Misi →</a>
+      <div class="sliced-accordion-container" id="about-accordion">
+        <!-- Stripe 1: Profil Himpunan -->
+        <div class="sliced-stripe stripe-1">
+          <div class="stripe-img"></div>
+          <div class="stripe-collapsed-label">01. PROFIL HIMPUNAN</div>
+          <div class="stripe-overlay">
+            <div class="stripe-expanded-content">
+              <span class="stripe-badge">PROFIL & SEJARAH</span>
+              <h3 class="stripe-title">WADAH ASPIRASI & KARYA MAHASISWA</h3>
+              <p class="stripe-description">
+                MIKROPTIK (Himpunan Mahasiswa Pendidikan Teknik Informatika dan Komputer) merupakan organisasi eksekutif mahasiswa prodi di FKIP Universitas Sebelas Maret yang berfokus pada pengembangan potensi akademik, keterampilan teknologi, dan karakter integritas mahasiswa.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div class="about-stats-column">
-          <div class="about-stat-card">
-            <span class="stat-number">45+</span>
-            <div>
-              <h4 class="text-gold" style="font-size: 1.1rem;">Pengurus Aktif</h4>
-              <p style="font-size: 0.85rem; color: #ccc;">Kabinet Naya Vikrama</p>
+        <!-- Stripe 2: Kepengurusan Kabinet -->
+        <div class="sliced-stripe stripe-2">
+          <div class="stripe-img"></div>
+          <div class="stripe-collapsed-label">02. KABINET VIKRAMA</div>
+          <div class="stripe-overlay">
+            <div class="stripe-expanded-content">
+              <span class="stripe-badge">KABINET 2025/2026</span>
+              <h3 class="stripe-title">NAYA VIKRAMA (45+ PENGURUS)</h3>
+              <p class="stripe-description">
+                Di bawah kepengurusan Kabinet Naya Vikrama, 45+ pengurus aktif berdedikasi tinggi mengusung semangat "Beraksi dengan Karya, Bersatu dalam Kemajuan" demi kejayaan himpunan dan prodi PTIK UNS.
+              </p>
             </div>
           </div>
+        </div>
 
-          <div class="about-stat-card">
-            <span class="stat-number">18+</span>
-            <div>
-              <h4 class="text-gold" style="font-size: 1.1rem;">Program Kerja</h4>
-              <p style="font-size: 0.85rem; color: #ccc;">Inisiatif Akademik & Sosial</p>
+        <!-- Stripe 3: Program Kerja -->
+        <div class="sliced-stripe stripe-3">
+          <div class="stripe-img"></div>
+          <div class="stripe-collapsed-label">03. PROGRAM KERJA</div>
+          <div class="stripe-overlay">
+            <div class="stripe-expanded-content">
+              <span class="stripe-badge">INISIATIF STRATEGIS</span>
+              <h3 class="stripe-title">18+ PROGRAM KERJA UNGGULAN</h3>
+              <p class="stripe-description">
+                Meliputi kegiatan penerimaan mahasiswa baru (Informatics Compass), kompetisi IT skala nasional (Technofest Competition), workshop pengkodean, serta berbagai program pembekalan karier teknologi.
+              </p>
             </div>
           </div>
+        </div>
 
-          <div class="about-stat-card">
-            <span class="stat-number">12+</span>
-            <div>
-              <h4 class="text-gold" style="font-size: 1.1rem;">Prestasi Nasional</h4>
-              <p style="font-size: 0.85rem; color: #ccc;">Kompetisi IT Tingkat Nasional</p>
+        <!-- Stripe 4: Advokasi & Aspirasi -->
+        <div class="sliced-stripe stripe-4">
+          <div class="stripe-img"></div>
+          <div class="stripe-collapsed-label">04. ADVOKASI & LAYANAN</div>
+          <div class="stripe-overlay">
+            <div class="stripe-expanded-content">
+              <span class="stripe-badge">ADVOKASI RESPONSIF</span>
+              <h3 class="stripe-title">JEMBATAN ASPIRASI MAHASISWA</h3>
+              <p class="stripe-description">
+                Menyediakan layanan advokasi akademik & fasilitas kampus yang responsif, terpercaya, serta menjadi jembatan solusi antara mahasiswa dengan jajaran pengelola prodi dan fakultas.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stripe 5: Prestasi & Kejuaraan -->
+        <div class="sliced-stripe stripe-5">
+          <div class="stripe-img"></div>
+          <div class="stripe-collapsed-label">05. PRESTASI JUARA</div>
+          <div class="stripe-overlay">
+            <div class="stripe-expanded-content">
+              <span class="stripe-badge">KEBANGGAAN KAMPUS</span>
+              <h3 class="stripe-title">12+ PRESTASI NASIONAL</h3>
+              <p class="stripe-description">
+                Capaian kejuaraan dan penghargaan bergengsi mahasiswa PTIK UNS dalam ajang nasional seperti Gemastik UI/UX, Hackathon, Competitive Programming, dan Call for Papers.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stripe 6: Pengabdian Masyarakat -->
+        <div class="sliced-stripe stripe-6">
+          <div class="stripe-img"></div>
+          <div class="stripe-collapsed-label">06. PENGABDIAN SOSIAL</div>
+          <div class="stripe-overlay">
+            <div class="stripe-expanded-content">
+              <span class="stripe-badge">PENGABDIAN MASYARAKAT</span>
+              <h3 class="stripe-title">PTIK GOES TO COMMUNITY</h3>
+              <p class="stripe-description">
+                Wujud nyata kepedulian sosial mahasiswa melalui program pelatihan literasi digital, pemberdayaan UMKM desa binaan, dan sosialisasi pemanfaatan teknologi informasi bagi masyarakat.
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const stripes = document.querySelectorAll('#about-accordion .sliced-stripe');
+      stripes.forEach(stripe => {
+        stripe.addEventListener('click', () => {
+          stripes.forEach(s => s.classList.remove('active'));
+          stripe.classList.add('active');
+        });
+      });
+    });
+  </script>
 
 
   <!-- =========================================================================

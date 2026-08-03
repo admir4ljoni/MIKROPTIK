@@ -705,14 +705,18 @@
 .footer-container {
   background-color: var(--color-dark);
   color: var(--color-white);
-  padding-top: var(--space-xl);
+  padding-top: var(--space-xs);
+}
+
+.footer-content-wrapper {
+  padding: 3rem 1.5rem 1.5rem;
 }
 
 .footer-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1.5fr;
   gap: var(--space-xl);
-  margin-bottom: var(--space-xl);
+  margin-bottom: 1.5rem;
 }
 
 .footer-logo-row {
@@ -746,11 +750,12 @@
 }
 
 .footer-bottom {
-  padding: var(--space-md);
+  padding: 1rem 1.5rem;
   text-align: center;
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.6);
-  background-color: rgba(0, 0, 0, 0.3);
+  color: rgba(255, 255, 255, 0.65);
+  border-top: 1px solid rgba(212, 179, 84, 0.15);
+  background-color: rgba(0, 0, 0, 0.35);
 }
 
 /* --------------------------------------------------------------------------

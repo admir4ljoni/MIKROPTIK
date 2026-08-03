@@ -667,21 +667,67 @@
 }
 
 /* --------------------------------------------------------------------------
-   8. Partnership / CTA Section Blend Gradient (Bottom-to-Top Red-to-Brown)
+   8. Partnership / CTA Section Blend Gradient (Enlarged & Impactful)
    -------------------------------------------------------------------------- */
 .cta-section {
   position: relative;
   background-color: var(--color-dark);
   background: 
-    radial-gradient(ellipse 100% 70% at 50% 100%, rgba(130, 9, 7, 0.65) 0%, rgba(105, 20, 18, 0.3) 60%, transparent 100%),
-    linear-gradient(to top, rgba(130, 9, 7, 0.45) 0%, rgba(105, 20, 18, 0.2) 45%, var(--color-dark) 90%);
+    radial-gradient(ellipse 110% 85% at 50% 100%, rgba(130, 9, 7, 0.75) 0%, rgba(105, 20, 18, 0.35) 55%, transparent 100%),
+    linear-gradient(to top, rgba(130, 9, 7, 0.5) 0%, rgba(105, 20, 18, 0.25) 50%, var(--color-dark) 92%);
   overflow: hidden;
-  padding: 7rem 1.5rem;
+  padding: 12rem 2rem 10rem;
 }
 
-.cta-section .container {
+.cta-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
   position: relative;
   z-index: 2;
+}
+
+.cta-subtitle {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  letter-spacing: 0.15em;
+  color: var(--color-gold);
+  text-shadow: 0 2px 12px rgba(212, 179, 84, 0.3);
+}
+
+.cta-title {
+  font-family: var(--font-heading);
+  font-size: clamp(3.5rem, 7.5vw, 6.2rem);
+  line-height: 1;
+  color: var(--color-white);
+  margin: 1rem 0 1.5rem;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+}
+
+.cta-description {
+  max-width: 860px;
+  margin: 0 auto 3rem;
+  font-family: var(--font-body);
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+}
+
+.cta-buttons-wrapper {
+  display: flex;
+  gap: 1.75rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-xl {
+  padding: 1.15rem 2.8rem;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  letter-spacing: 0.08em;
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
 
 /* --------------------------------------------------------------------------

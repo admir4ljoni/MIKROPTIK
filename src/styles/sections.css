@@ -190,7 +190,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at center, var(--color-red-dark) 0%, var(--color-dark) 88%);
+  background: 
+    radial-gradient(ellipse 80% 70% at 50% 45%, rgba(130, 9, 7, 0.55) 0%, rgba(105, 20, 18, 0.3) 50%, transparent 85%),
+    linear-gradient(to bottom, var(--color-dark) 0%, rgba(105, 20, 18, 0.25) 30%, rgba(130, 9, 7, 0.45) 50%, rgba(105, 20, 18, 0.2) 75%, var(--color-dark) 100%);
   overflow: hidden;
   padding: 6rem 1.5rem 4rem;
   text-align: center;
@@ -598,6 +600,17 @@
   border-radius: var(--radius-sm);
   margin-bottom: var(--space-xs);
   letter-spacing: 0.05em;
+}
+
+/* --------------------------------------------------------------------------
+   8. Partnership / CTA Section Blend Gradient
+   -------------------------------------------------------------------------- */
+.cta-section {
+  position: relative;
+  background: 
+    radial-gradient(ellipse 80% 75% at 50% 50%, rgba(130, 9, 7, 0.55) 0%, rgba(105, 20, 18, 0.3) 50%, transparent 80%),
+    linear-gradient(to bottom, var(--color-dark) 0%, rgba(130, 9, 7, 0.25) 30%, rgba(130, 9, 7, 0.45) 50%, rgba(130, 9, 7, 0.25) 70%, var(--color-dark) 100%);
+  padding: 6rem 1.5rem;
 }
 
 /* --------------------------------------------------------------------------

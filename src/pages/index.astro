@@ -47,79 +47,65 @@ import { Code2, Users2, Clock3 } from '@lucide/astro';
   <!-- =========================================================================
        SECTION 3: ABOUT / TENTANG KAMI (SLICED BENTO MOSAIC GRID)
        ========================================================================= -->
-  <section id="about" class="section bg-dark">
-    <div class="container">
+  <!-- =========================================================================
+       SECTION 3: ABOUT / TENTANG KAMI (VERTICAL SLICED BACKGROUND)
+       ========================================================================= -->
+  <section id="about" class="section hero-sliced-section">
+    <!-- Background Persegi Panjang Vertikal (Sliced Image Background) -->
+    <div class="sliced-bg-container">
+      <div class="sliced-stripe stripe-1"><div class="stripe-img"></div></div>
+      <div class="sliced-stripe stripe-2"><div class="stripe-img"></div></div>
+      <div class="sliced-stripe stripe-3"><div class="stripe-img"></div></div>
+      <div class="sliced-stripe stripe-4"><div class="stripe-img"></div></div>
+      <div class="sliced-stripe stripe-5"><div class="stripe-img"></div></div>
+      <div class="sliced-stripe stripe-6"><div class="stripe-img"></div></div>
+    </div>
+
+    <!-- Teks & Konten Utama (Di depan Background Sliced Bars) -->
+    <div class="container about-content-overlay">
       <SectionHeading 
         titleMain="TENTANG" 
         titleAccent="Kami" 
         subtitle="Mengenal lebih dekat Himpunan Mahasiswa Pendidikan Teknik Informatika dan Komputer FKIP UNS"
       />
 
-      <div class="about-mosaic-grid">
-        <!-- Card 1: Rectangle (2x1) - Deskripsi Utama -->
-        <div class="mosaic-card card-pos-1">
-          <div class="mosaic-card-bg"></div>
-          <div class="mosaic-card-content">
-            <span class="mosaic-card-badge">PROFIL HIMPUNAN</span>
-            <h3 class="mosaic-card-title">WADAH ASPIRASI & KARYA MAHASISWA</h3>
-            <p class="mosaic-card-desc">
-              MIKROPTIK (Himpunan Mahasiswa Pendidikan Teknik Informatika dan Komputer) merupakan organisasi eksekutif mahasiswa prodi di FKIP Universitas Sebelas Maret.
-            </p>
-          </div>
+      <div class="about-text-grid">
+        <div class="about-main-text">
+          <h3 class="text-gold" style="font-size: 2.2rem; margin-bottom: 1rem; letter-spacing: 0.05em;">
+            WADAH ASPIRASI & KARYA MAHASISWA
+          </h3>
+          <p style="margin-bottom: 1rem; font-size: 1.05rem; color: rgba(255,255,255,0.9); line-height: 1.7;">
+            MIKROPTIK (Himpunan Mahasiswa Pendidikan Teknik Informatika dan Komputer) merupakan organisasi eksekutif mahasiswa prodi di FKIP Universitas Sebelas Maret.
+          </p>
+          <p style="margin-bottom: 1.75rem; font-size: 1.05rem; color: rgba(255,255,255,0.9); line-height: 1.7;">
+            Pada periode 2025/2026, di bawah kepengurusan <strong style="color: var(--color-gold);">Kabinet Naya Vikrama</strong>, MIKROPTIK berkomitmen untuk beraksi dengan karya nyata dan bersatu dalam kemajuan akademik maupun non-akademik.
+          </p>
+          <a href="#visi-misi" class="btn btn-primary">Lihat Visi & Misi →</a>
         </div>
 
-        <!-- Card 2: Portrait (1x2) - Stat Pengurus -->
-        <div class="mosaic-card card-pos-2">
-          <div class="mosaic-card-bg"></div>
-          <div class="mosaic-card-content">
-            <span class="mosaic-card-badge">KABINET 2025/2026</span>
-            <div class="mosaic-stat-num">45+</div>
-            <h3 class="mosaic-card-title">PENGURUS AKTIF</h3>
-            <p class="mosaic-card-desc">
-              Di bawah kepengurusan Kabinet Naya Vikrama yang berdedikasi tinggi.
-            </p>
+        <div class="about-stats-column">
+          <div class="about-stat-card">
+            <span class="stat-number">45+</span>
+            <div>
+              <h4 class="text-gold" style="font-size: 1.1rem;">Pengurus Aktif</h4>
+              <p style="font-size: 0.85rem; color: #ccc;">Kabinet Naya Vikrama</p>
+            </div>
           </div>
-        </div>
 
-        <!-- Card 3: Square (1x1) - Stat Proker -->
-        <div class="mosaic-card card-pos-3">
-          <div class="mosaic-card-bg"></div>
-          <div class="mosaic-card-content">
-            <div class="mosaic-stat-num">18+</div>
-            <h3 class="mosaic-card-title">PROKER STRATEGIS</h3>
-            <p class="mosaic-card-desc">Inisiatif akademik & sosial.</p>
+          <div class="about-stat-card">
+            <span class="stat-number">18+</span>
+            <div>
+              <h4 class="text-gold" style="font-size: 1.1rem;">Program Kerja</h4>
+              <p style="font-size: 0.85rem; color: #ccc;">Inisiatif Akademik & Sosial</p>
+            </div>
           </div>
-        </div>
 
-        <!-- Card 4: Square (1x1) - Stat Prestasi -->
-        <div class="mosaic-card card-pos-4">
-          <div class="mosaic-card-bg"></div>
-          <div class="mosaic-card-content">
-            <div class="mosaic-stat-num">12+</div>
-            <h3 class="mosaic-card-title">PRESTASI JUARA</h3>
-            <p class="mosaic-card-desc">Kompetisi nasional IT.</p>
-          </div>
-        </div>
-
-        <!-- Card 5: Rectangle (2x1) - Slogan / Tagline -->
-        <div class="mosaic-card card-pos-5">
-          <div class="mosaic-card-bg"></div>
-          <div class="mosaic-card-content">
-            <span class="mosaic-card-badge">SEMANGAT VIKRAMA</span>
-            <h3 class="mosaic-card-title" style="font-family: var(--font-accent); font-size: 2.2rem; text-transform: none;">
-              "Beraksi dengan Karya, Bersatu dalam Kemajuan"
-            </h3>
-          </div>
-        </div>
-
-        <!-- Card 6: Square (1x1) - CTA Link -->
-        <div class="mosaic-card card-pos-6" style="border-color: var(--color-primary);">
-          <div class="mosaic-card-bg"></div>
-          <div class="mosaic-card-content" style="justify-content: center; align-items: center; text-align: center;">
-            <h3 class="mosaic-card-title" style="color: var(--color-white); font-size: 1.5rem;">JELAJAHI VISI & MISI</h3>
-            <a href="#visi-misi" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.95rem; margin-top: 0.5rem;">
-              Lihat Detail →
-            </a>
+          <div class="about-stat-card">
+            <span class="stat-number">12+</span>
+            <div>
+              <h4 class="text-gold" style="font-size: 1.1rem;">Prestasi Nasional</h4>
+              <p style="font-size: 0.85rem; color: #ccc;">Kompetisi IT Tingkat Nasional</p>
+            </div>
           </div>
         </div>
       </div>

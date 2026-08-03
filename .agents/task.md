@@ -30,25 +30,25 @@
 
 ## Phase 3: Layout & Core Components
 
-- [ ] Buat `src/layouts/BaseLayout.astro`
-  - [ ] HTML boilerplate, SEO meta tags
-  - [ ] Font preconnect
-  - [ ] Global CSS import
-  - [ ] Slot untuk konten
-- [ ] Buat `src/components/Navbar.astro`
-  - [ ] Neumorphism styling
-  - [ ] Logo Himpunan
-  - [ ] Menu links
-  - [ ] Mobile hamburger menu
-- [ ] Buat `src/components/Footer.astro`
-  - [ ] Multi-column layout
-  - [ ] Logo Himpunan dan Logo PTIK
-  - [ ] Marquee text
-  - [ ] Copyright
-- [ ] Buat `src/components/Preloader.astro`
-  - [ ] Fullscreen overlay
-  - [ ] Logo Kabinet animation
-  - [ ] Text reveal "NAYA VIKRAMA"
+- [x] Buat `src/layouts/BaseLayout.astro`
+  - [x] HTML boilerplate, SEO meta tags
+  - [x] Font preconnect
+  - [x] Global CSS import
+  - [x] Slot untuk konten
+- [x] Buat `src/components/Navbar.astro`
+  - [x] Neumorphism styling
+  - [x] Logo Himpunan
+  - [x] Menu links
+  - [x] Mobile hamburger menu
+- [x] Buat `src/components/Footer.astro`
+  - [x] Multi-column layout
+  - [x] Logo Himpunan dan Logo PTIK
+  - [x] Marquee text
+  - [x] Copyright
+- [x] Buat `src/components/Preloader.astro`
+  - [x] Fullscreen overlay
+  - [x] Logo Kabinet animation
+  - [x] Text reveal "NAYA VIKRAMA"
 
 ## Phase 4: Reusable Components
 

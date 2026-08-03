@@ -4,16 +4,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileMenu = document.getElementById('mobile-menu');
   const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
-  // Shrink on scroll
+  let lastScrollY = window.scrollY;
+
+  // Shrink & Hide/Reveal on scroll
   const handleNavScroll = () => {
-    if (window.scrollY > 30) {
+    const currentScrollY = window.scrollY;
+
+    // 1. Shrink into floating bar when scrolled past top (40px)
+    if (currentScrollY > 40) {
       navbar?.classList.add('shrunk');
     } else {
       navbar?.classList.remove('shrunk');
     }
+
+    // 2. Hide (slide up) when scrolling down past 250px, reveal when scrolling up or near top
+    if (currentScrollY > 250 && currentScrollY > lastScrollY) {
+      navbar?.classList.add('hidden');
+    } else {
+      navbar?.classList.remove('hidden');
+    }
+
+    lastScrollY = currentScrollY;
   };
 
-  window.addEventListener('scroll', handleNavScroll);
+  window.addEventListener('scroll', handleNavScroll, { passive: true });
   handleNavScroll();
 
   // Hamburger menu toggle

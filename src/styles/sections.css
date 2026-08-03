@@ -69,13 +69,15 @@
   align-items: center;
   justify-content: space-between;
   box-shadow: none;
-  transition: max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
               top 0.5s cubic-bezier(0.16, 1, 0.3, 1),
               padding 0.5s cubic-bezier(0.16, 1, 0.3, 1),
               border-radius 0.4s ease,
               background-color 0.4s ease,
-              box-shadow 0.4s ease;
-  will-change: max-width, top, padding;
+              box-shadow 0.4s ease,
+              opacity 0.4s ease;
+  will-change: transform, max-width, top, padding, opacity;
 }
 
 .navbar-fixed.shrunk {
@@ -85,6 +87,12 @@
   padding: 0.55rem 1.5rem;
   background-color: rgba(28, 22, 20, 0.85);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-fixed.hidden {
+  transform: translate(-50%, -140%) !important;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .navbar-logo {

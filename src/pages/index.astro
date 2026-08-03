@@ -1,27 +1,26 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import SectionHeading from '../components/SectionHeading.astro';
-import StatCounter from '../components/StatCounter.astro';
-import ProgramCard from '../components/ProgramCard.astro';
-import ScrollIndicator from '../components/ScrollIndicator.astro';
-import FilosofiCarousel from '../components/FilosofiCarousel.astro';
-import { Code2, Users2, Clock3 } from '@lucide/astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import StatCounter from "../components/StatCounter.astro";
+import ProgramCard from "../components/ProgramCard.astro";
+import ScrollIndicator from "../components/ScrollIndicator.astro";
+import FilosofiCarousel from "../components/FilosofiCarousel.astro";
+import { Code2, Users2, Clock3 } from "@lucide/astro";
 ---
 
 <BaseLayout title="MIKROPTIK | Kabinet Naya Vikrama - HMP PTIK FKIP UNS">
-  
   <!-- =========================================================================
        SECTION 2: HERO SECTION (100vh) - CENTERED & ARTISTIC
        ========================================================================= -->
   <section id="hero" class="hero-section">
     <div class="hero-bg-overlay"></div>
-    
+
     <!-- Logo Background (Di belakang Teks Utama) -->
     <div class="hero-bg-logo-wrapper">
-      <img 
-        src="/assets/logo-kabinet.png" 
-        alt="Logo Kabinet Naya Vikrama" 
-        class="hero-bg-logo" 
+      <img
+        src="/assets/logo-kabinet.png"
+        alt="Logo Kabinet Naya Vikrama"
+        class="hero-bg-logo"
       />
     </div>
 
@@ -30,7 +29,11 @@ import { Code2, Users2, Clock3 } from '@lucide/astro';
       <div class="hero-text-content">
         <h1 class="hero-title-main">
           HIMPUNAN <br />
-          <span class="text-accent-highlight" style="font-size: 0.7em; color: var(--color-gold); display: block;">Mahasiswa</span>
+          <span
+            class="text-accent-highlight"
+            style="font-size: 0.7em; color: var(--color-gold); display: block;"
+            >Mahasiswa</span
+          >
           PTIK UNS
         </h1>
         <p class="hero-subtitle">
@@ -43,7 +46,6 @@ import { Code2, Users2, Clock3 } from '@lucide/astro';
     <ScrollIndicator targetId="#about" />
   </section>
 
-
   <!-- =========================================================================
        SECTION 3: ABOUT / TENTANG KAMI (SLICED BENTO MOSAIC GRID)
        ========================================================================= -->
@@ -52,9 +54,9 @@ import { Code2, Users2, Clock3 } from '@lucide/astro';
        ========================================================================= -->
   <section id="about" class="section about-accordion-section">
     <div class="container">
-      <SectionHeading 
-        titleMain="TENTANG" 
-        titleAccent="Kami" 
+      <SectionHeading
+        titleMain="TENTANG"
+        titleAccent="Kami"
         subtitle="Geser kursor atau sentuh bilah di bawah untuk mengeksplorasi profil, pengurus, proker, dan prestasi MIKROPTIK"
       />
 
@@ -62,13 +64,17 @@ import { Code2, Users2, Clock3 } from '@lucide/astro';
         <!-- Stripe 1: Profil Himpunan -->
         <div class="sliced-stripe stripe-1">
           <div class="stripe-img"></div>
-          <div class="stripe-collapsed-label">01. PROFIL HIMPUNAN</div>
+          <div class="stripe-collapsed-label">SEKUM</div>
           <div class="stripe-overlay">
             <div class="stripe-expanded-content">
               <span class="stripe-badge">PROFIL & SEJARAH</span>
               <h3 class="stripe-title">WADAH ASPIRASI & KARYA MAHASISWA</h3>
               <p class="stripe-description">
-                MIKROPTIK (Himpunan Mahasiswa Pendidikan Teknik Informatika dan Komputer) merupakan organisasi eksekutif mahasiswa prodi di FKIP Universitas Sebelas Maret yang berfokus pada pengembangan potensi akademik, keterampilan teknologi, dan karakter integritas mahasiswa.
+                MIKROPTIK (Himpunan Mahasiswa Pendidikan Teknik Informatika dan
+                Komputer) merupakan organisasi eksekutif mahasiswa prodi di FKIP
+                Universitas Sebelas Maret yang berfokus pada pengembangan
+                potensi akademik, keterampilan teknologi, dan karakter
+                integritas mahasiswa.
               </p>
             </div>
           </div>
@@ -77,13 +83,16 @@ import { Code2, Users2, Clock3 } from '@lucide/astro';
         <!-- Stripe 2: Kepengurusan Kabinet -->
         <div class="sliced-stripe stripe-2">
           <div class="stripe-img"></div>
-          <div class="stripe-collapsed-label">02. KABINET VIKRAMA</div>
+          <div class="stripe-collapsed-label">BENDUM</div>
           <div class="stripe-overlay">
             <div class="stripe-expanded-content">
               <span class="stripe-badge">KABINET 2025/2026</span>
               <h3 class="stripe-title">NAYA VIKRAMA (45+ PENGURUS)</h3>
               <p class="stripe-description">
-                Di bawah kepengurusan Kabinet Naya Vikrama, 45+ pengurus aktif berdedikasi tinggi mengusung semangat "Beraksi dengan Karya, Bersatu dalam Kemajuan" demi kejayaan himpunan dan prodi PTIK UNS.
+                Di bawah kepengurusan Kabinet Naya Vikrama, 45+ pengurus aktif
+                berdedikasi tinggi mengusung semangat "Beraksi dengan Karya,
+                Bersatu dalam Kemajuan" demi kejayaan himpunan dan prodi PTIK
+                UNS.
               </p>
             </div>
           </div>
@@ -92,13 +101,16 @@ import { Code2, Users2, Clock3 } from '@lucide/astro';
         <!-- Stripe 3: Program Kerja -->
         <div class="sliced-stripe stripe-3">
           <div class="stripe-img"></div>
-          <div class="stripe-collapsed-label">03. PROGRAM KERJA</div>
+          <div class="stripe-collapsed-label">PSDM</div>
           <div class="stripe-overlay">
             <div class="stripe-expanded-content">
               <span class="stripe-badge">INISIATIF STRATEGIS</span>
               <h3 class="stripe-title">18+ PROGRAM KERJA UNGGULAN</h3>
               <p class="stripe-description">
-                Meliputi kegiatan penerimaan mahasiswa baru (Informatics Compass), kompetisi IT skala nasional (Technofest Competition), workshop pengkodean, serta berbagai program pembekalan karier teknologi.
+                Meliputi kegiatan penerimaan mahasiswa baru (Informatics
+                Compass), kompetisi IT skala nasional (Technofest Competition),
+                workshop pengkodean, serta berbagai program pembekalan karier
+                teknologi.
               </p>
             </div>
           </div>
@@ -107,13 +119,15 @@ import { Code2, Users2, Clock3 } from '@lucide/astro';
         <!-- Stripe 4: Advokasi & Aspirasi -->
         <div class="sliced-stripe stripe-4">
           <div class="stripe-img"></div>
-          <div class="stripe-collapsed-label">04. ADVOKASI & LAYANAN</div>
+          <div class="stripe-collapsed-label">HUMAS</div>
           <div class="stripe-overlay">
             <div class="stripe-expanded-content">
               <span class="stripe-badge">ADVOKASI RESPONSIF</span>
               <h3 class="stripe-title">JEMBATAN ASPIRASI MAHASISWA</h3>
               <p class="stripe-description">
-                Menyediakan layanan advokasi akademik & fasilitas kampus yang responsif, terpercaya, serta menjadi jembatan solusi antara mahasiswa dengan jajaran pengelola prodi dan fakultas.
+                Menyediakan layanan advokasi akademik & fasilitas kampus yang
+                responsif, terpercaya, serta menjadi jembatan solusi antara
+                mahasiswa dengan jajaran pengelola prodi dan fakultas.
               </p>
             </div>
           </div>
@@ -122,13 +136,15 @@ import { Code2, Users2, Clock3 } from '@lucide/astro';
         <!-- Stripe 5: Prestasi & Kejuaraan -->
         <div class="sliced-stripe stripe-5">
           <div class="stripe-img"></div>
-          <div class="stripe-collapsed-label">05. PRESTASI JUARA</div>
+          <div class="stripe-collapsed-label">MEDINFO</div>
           <div class="stripe-overlay">
             <div class="stripe-expanded-content">
               <span class="stripe-badge">KEBANGGAAN KAMPUS</span>
               <h3 class="stripe-title">12+ PRESTASI NASIONAL</h3>
               <p class="stripe-description">
-                Capaian kejuaraan dan penghargaan bergengsi mahasiswa PTIK UNS dalam ajang nasional seperti Gemastik UI/UX, Hackathon, Competitive Programming, dan Call for Papers.
+                Capaian kejuaraan dan penghargaan bergengsi mahasiswa PTIK UNS
+                dalam ajang nasional seperti Gemastik UI/UX, Hackathon,
+                Competitive Programming, dan Call for Papers.
               </p>
             </div>
           </div>
@@ -137,13 +153,15 @@ import { Code2, Users2, Clock3 } from '@lucide/astro';
         <!-- Stripe 6: Pengabdian Masyarakat -->
         <div class="sliced-stripe stripe-6">
           <div class="stripe-img"></div>
-          <div class="stripe-collapsed-label">06. PENGABDIAN SOSIAL</div>
+          <div class="stripe-collapsed-label">MIKAT</div>
           <div class="stripe-overlay">
             <div class="stripe-expanded-content">
               <span class="stripe-badge">PENGABDIAN MASYARAKAT</span>
               <h3 class="stripe-title">PTIK GOES TO COMMUNITY</h3>
               <p class="stripe-description">
-                Wujud nyata kepedulian sosial mahasiswa melalui program pelatihan literasi digital, pemberdayaan UMKM desa binaan, dan sosialisasi pemanfaatan teknologi informasi bagi masyarakat.
+                Wujud nyata kepedulian sosial mahasiswa melalui program
+                pelatihan literasi digital, pemberdayaan UMKM desa binaan, dan
+                sosialisasi pemanfaatan teknologi informasi bagi masyarakat.
               </p>
             </div>
           </div>
@@ -153,26 +171,27 @@ import { Code2, Users2, Clock3 } from '@lucide/astro';
   </section>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const stripes = document.querySelectorAll('#about-accordion .sliced-stripe');
-      stripes.forEach(stripe => {
-        stripe.addEventListener('click', () => {
-          stripes.forEach(s => s.classList.remove('active'));
-          stripe.classList.add('active');
+    document.addEventListener("DOMContentLoaded", () => {
+      const stripes = document.querySelectorAll(
+        "#about-accordion .sliced-stripe",
+      );
+      stripes.forEach((stripe) => {
+        stripe.addEventListener("click", () => {
+          stripes.forEach((s) => s.classList.remove("active"));
+          stripe.classList.add("active");
         });
       });
     });
   </script>
-
 
   <!-- =========================================================================
        SECTION 4: FILOSOFI LOGO KABINET (CAROUSEL)
        ========================================================================= -->
   <section id="filosofi" class="section bg-dark">
     <div class="container">
-      <SectionHeading 
-        titleMain="FILOSOFI LOGO" 
-        titleAccent="Naya Vikrama" 
+      <SectionHeading
+        titleMain="FILOSOFI LOGO"
+        titleAccent="Naya Vikrama"
         subtitle="Geser carousel di bawah untuk mengeksplorasi makna setiap elemen lambang Kabinet Naya Vikrama"
       />
 
@@ -180,82 +199,109 @@ import { Code2, Users2, Clock3 } from '@lucide/astro';
     </div>
   </section>
 
-
   <!-- =========================================================================
        SECTION 5: VISI & MISI
        ========================================================================= -->
-  <section id="visi-misi" class="section bg-dark" style="border-top: 1px solid rgba(212, 179, 84, 0.2);">
+  <section
+    id="visi-misi"
+    class="section bg-dark"
+    style="border-top: 1px solid rgba(212, 179, 84, 0.2);"
+  >
     <div class="container">
-      <SectionHeading 
-        titleMain="VISI & MISI" 
-        titleAccent="Organisasi" 
+      <SectionHeading
+        titleMain="VISI & MISI"
+        titleAccent="Organisasi"
         subtitle="Arah gerak dan fondasi kepengurusan MIKROPTIK Kabinet Naya Vikrama"
       />
 
       <div class="visi-box">
-        <span class="text-gold font-heading" style="font-size: 1.4rem; letter-spacing: 0.1em;">VISI UTAMA</span>
-        <h3 class="text-white" style="font-size: 1.8rem; margin: 0.5rem 0 1rem;">
-          "Mewujudkan MIKROPTIK sebagai Himpunan yang Kolaboratif, Inovatif, dan Berintegritas Tinggi dalam Mengabdi untuk Civitas Academica dan Masyarakat."
+        <span
+          class="text-gold font-heading"
+          style="font-size: 1.4rem; letter-spacing: 0.1em;">VISI UTAMA</span
+        >
+        <h3
+          class="text-white"
+          style="font-size: 1.8rem; margin: 0.5rem 0 1rem;"
+        >
+          "Mewujudkan MIKROPTIK sebagai Himpunan yang Kolaboratif, Inovatif, dan
+          Berintegritas Tinggi dalam Mengabdi untuk Civitas Academica dan
+          Masyarakat."
         </h3>
       </div>
 
       <div class="misi-grid">
         <div class="misi-card">
-          <h4 class="text-gold" style="font-size: 1.3rem; margin-bottom: 0.5rem;">01. KEMAHASISWAAN</h4>
+          <h4
+            class="text-gold"
+            style="font-size: 1.3rem; margin-bottom: 0.5rem;"
+          >
+            01. KEMAHASISWAAN
+          </h4>
           <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">
-            Meningkatkan kualitas akademik dan bakat non-akademik mahasiswa PTIK melalui pelatihan terstruktur dan kompetisi.
+            Meningkatkan kualitas akademik dan bakat non-akademik mahasiswa PTIK
+            melalui pelatihan terstruktur dan kompetisi.
           </p>
         </div>
 
         <div class="misi-card">
-          <h4 class="text-primary" style="font-size: 1.3rem; margin-bottom: 0.5rem;">02. ADVOKASI & KESEJAHTERAAN</h4>
+          <h4
+            class="text-primary"
+            style="font-size: 1.3rem; margin-bottom: 0.5rem;"
+          >
+            02. ADVOKASI & KESEJAHTERAAN
+          </h4>
           <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">
-            Menjadi jembatan aspirasi yang responsif dan solutif antara mahasiswa dengan jajaran pengelola prodi dan fakultas.
+            Menjadi jembatan aspirasi yang responsif dan solutif antara
+            mahasiswa dengan jajaran pengelola prodi dan fakultas.
           </p>
         </div>
 
         <div class="misi-card">
-          <h4 class="text-gold" style="font-size: 1.3rem; margin-bottom: 0.5rem;">03. RELASI & PENGABDIAN</h4>
+          <h4
+            class="text-gold"
+            style="font-size: 1.3rem; margin-bottom: 0.5rem;"
+          >
+            03. RELASI & PENGABDIAN
+          </h4>
           <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">
-            Membangun jejaring kolaborasi dengan alumni, industri IT, serta pengabdian masyarakat berbasis teknologi.
+            Membangun jejaring kolaborasi dengan alumni, industri IT, serta
+            pengabdian masyarakat berbasis teknologi.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-
   <!-- =========================================================================
        SECTION 6: PROGRAM KERJA / REKAM JEJAK
        ========================================================================= -->
-  <section id="proker" class="section bg-cream">
+  <section id="proker" class="section bg-dark" style="border-top: 1px solid rgba(212, 179, 84, 0.2);">
     <div class="container">
-      <SectionHeading 
-        titleMain="PROGRAM" 
-        titleAccent="Kerja Unggulan" 
+      <SectionHeading
+        titleMain="PROGRAM"
+        titleAccent="Kerja Unggulan"
         subtitle="Inisiatif strategis yang dilaksanakan oleh Kabinet Naya Vikrama"
-        light={true}
       />
 
       <div class="proker-grid">
-        <ProgramCard 
-          title="INFORMATICS COMPASS 2025" 
+        <ProgramCard
+          title="INFORMATICS COMPASS 2025"
           category="Internalization & Welcoming"
           description="Rangkaian pembekalan dan pengenalan dunia perkuliahan prodi PTIK bagi mahasiswa baru."
           image="https://picsum.photos/seed/proker1/600/400"
           date="Agustus 2025"
         />
 
-        <ProgramCard 
-          title="TECHNOFEST COMPETITION" 
+        <ProgramCard
+          title="TECHNOFEST COMPETITION"
           category="Akademik & Teknologi"
           description="Kompetisi nasional pengembangan web, UI/UX, dan competitive programming bagi pelajar & mahasiswa."
           image="https://picsum.photos/seed/proker2/600/400"
           date="Oktober 2025"
         />
 
-        <ProgramCard 
-          title="PTIK GOES TO COMMUNITY" 
+        <ProgramCard
+          title="PTIK GOES TO COMMUNITY"
           category="Pengabdian Masyarakat"
           description="Pelatihan literasi digital dan pembuatan website sederhana bagi UMKM desa binaan."
           image="https://picsum.photos/seed/proker3/600/400"
@@ -265,33 +311,44 @@ import { Code2, Users2, Clock3 } from '@lucide/astro';
     </div>
   </section>
 
-
   <!-- =========================================================================
        SECTION 7: PRESTASI & MAHASISWA BERPRESTASI
        ========================================================================= -->
   <section id="prestasi" class="section bg-dark">
     <div class="container">
-      <SectionHeading 
-        titleMain="PRESTASI" 
-        titleAccent="Mahasiswa PTIK" 
+      <SectionHeading
+        titleMain="PRESTASI"
+        titleAccent="Mahasiswa PTIK"
         subtitle="Bangga atas pencapaian dan kebanggaan civitas akademika PTIK UNS di kancah nasional"
       />
 
       <div class="misi-grid">
         <div class="misi-card" style="text-align: center;">
-          <img src="https://picsum.photos/seed/mahasiswa1/300/300" alt="Mahasiswa Berprestasi" style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 1rem; object-fit: cover; border: 3px solid var(--color-gold);" />
+          <img
+            src="https://picsum.photos/seed/mahasiswa1/300/300"
+            alt="Mahasiswa Berprestasi"
+            style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 1rem; object-fit: cover; border: 3px solid var(--color-gold);"
+          />
           <h4 class="text-gold">Juara 1 Gemastik UI/UX 2025</h4>
           <p style="font-size: 0.85rem; color: #ccc;">Tim PTIK UNS Devs</p>
         </div>
 
         <div class="misi-card" style="text-align: center;">
-          <img src="https://picsum.photos/seed/mahasiswa2/300/300" alt="Mahasiswa Berprestasi" style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 1rem; object-fit: cover; border: 3px solid var(--color-primary);" />
+          <img
+            src="https://picsum.photos/seed/mahasiswa2/300/300"
+            alt="Mahasiswa Berprestasi"
+            style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 1rem; object-fit: cover; border: 3px solid var(--color-primary);"
+          />
           <h4 class="text-primary">Best Paper National Conf</h4>
           <p style="font-size: 0.85rem; color: #ccc;">Ahmad & Tim Riset Data</p>
         </div>
 
         <div class="misi-card" style="text-align: center;">
-          <img src="https://picsum.photos/seed/mahasiswa3/300/300" alt="Mahasiswa Berprestasi" style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 1rem; object-fit: cover; border: 3px solid var(--color-gold);" />
+          <img
+            src="https://picsum.photos/seed/mahasiswa3/300/300"
+            alt="Mahasiswa Berprestasi"
+            style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 1rem; object-fit: cover; border: 3px solid var(--color-gold);"
+          />
           <h4 class="text-gold">Gold Medal Hackathon 2025</h4>
           <p style="font-size: 0.85rem; color: #ccc;">Siti & Tim Web Dev</p>
         </div>
@@ -299,66 +356,112 @@ import { Code2, Users2, Clock3 } from '@lucide/astro';
     </div>
   </section>
 
-
   <!-- =========================================================================
        SECTION 8: TIPS & INSIGHT (MAHASISWA BARU - WITH LUCIDE ICONS)
        ========================================================================= -->
-  <section id="tips" class="section bg-cream">
+  <section id="tips" class="section bg-dark" style="border-top: 1px solid rgba(212, 179, 84, 0.2);">
     <div class="container">
-      <SectionHeading 
-        titleMain="TIPS & INSIGHT" 
-        titleAccent="Mahasiswa Baru" 
+      <SectionHeading
+        titleMain="TIPS & INSIGHT"
+        titleAccent="Mahasiswa Baru"
         subtitle="Panduan praktis agar adaptasi perkuliahan di PTIK UNS berjalan lancar dan berprestasi"
-        light={true}
       />
 
       <div class="misi-grid">
-        <div class="program-card" style="padding: 1.75rem; background: var(--color-white);">
-          <div style="color: var(--color-red-deep); margin-bottom: 0.75rem;">
+        <div
+          class="misi-card"
+          style="padding: 1.75rem;"
+        >
+          <div style="color: var(--color-gold); margin-bottom: 0.75rem;">
             <Code2 size={36} />
           </div>
-          <h4 class="text-red-deep" style="font-size: 1.3rem; margin-bottom: 0.5rem;">FOKUS SKILL CODING & LOGIKA</h4>
-          <p style="font-size: 0.9rem; color: #555;">Mulailah dari dasar algoritma dan pelajari bahasa pemrograman seperti Python, C++, atau JavaScript secara konsisten.</p>
+          <h4
+            class="text-gold"
+            style="font-size: 1.3rem; margin-bottom: 0.5rem;"
+          >
+            FOKUS SKILL CODING & LOGIKA
+          </h4>
+          <p style="font-size: 0.9rem; color: rgba(255,255,255,0.85);">
+            Mulailah dari dasar algoritma dan pelajari bahasa pemrograman
+            seperti Python, C++, atau JavaScript secara konsisten.
+          </p>
         </div>
 
-        <div class="program-card" style="padding: 1.75rem; background: var(--color-white);">
-          <div style="color: var(--color-red-deep); margin-bottom: 0.75rem;">
+        <div
+          class="misi-card"
+          style="padding: 1.75rem;"
+        >
+          <div style="color: var(--color-gold); margin-bottom: 0.75rem;">
             <Users2 size={36} />
           </div>
-          <h4 class="text-red-deep" style="font-size: 1.3rem; margin-bottom: 0.5rem;">AKTIF BERORGANISASI</h4>
-          <p style="font-size: 0.9rem; color: #555;">Gabung dengan MIKROPTIK untuk membangun soft skill, kemampuan kepemimpinan, dan jejaring teman sejawat.</p>
+          <h4
+            class="text-gold"
+            style="font-size: 1.3rem; margin-bottom: 0.5rem;"
+          >
+            AKTIF BERORGANISASI
+          </h4>
+          <p style="font-size: 0.9rem; color: rgba(255,255,255,0.85);">
+            Gabung dengan MIKROPTIK untuk membangun soft skill, kemampuan
+            kepemimpinan, dan jejaring teman sejawat.
+          </p>
         </div>
 
-        <div class="program-card" style="padding: 1.75rem; background: var(--color-white);">
-          <div style="color: var(--color-red-deep); margin-bottom: 0.75rem;">
+        <div
+          class="misi-card"
+          style="padding: 1.75rem;"
+        >
+          <div style="color: var(--color-gold); margin-bottom: 0.75rem;">
             <Clock3 size={36} />
           </div>
-          <h4 class="text-red-deep" style="font-size: 1.3rem; margin-bottom: 0.5rem;">MANAJEMEN WAKTU EFISIEN</h4>
-          <p style="font-size: 0.9rem; color: #555;">Seimbangkan antara tugas perkuliahan, proyek coding mandiri, kegiatan organisasi, dan waktu istirahat.</p>
+          <h4
+            class="text-gold"
+            style="font-size: 1.3rem; margin-bottom: 0.5rem;"
+          >
+            MANAJEMEN WAKTU EFISIEN
+          </h4>
+          <p style="font-size: 0.9rem; color: rgba(255,255,255,0.85);">
+            Seimbangkan antara tugas perkuliahan, proyek coding mandiri,
+            kegiatan organisasi, dan waktu istirahat.
+          </p>
         </div>
       </div>
     </div>
   </section>
-
 
   <!-- =========================================================================
        SECTION 9: PARTNERSHIP / CTA
        ========================================================================= -->
-  <section id="cta" class="section bg-dark" style="background: radial-gradient(circle at center, var(--color-red-deep) 0%, var(--color-dark) 90%);">
+  <section
+    id="cta"
+    class="section bg-dark"
+    style="background: radial-gradient(circle at center, var(--color-red-deep) 0%, var(--color-dark) 90%);"
+  >
     <div class="container" style="text-align: center;">
-      <span class="text-gold font-heading" style="font-size: 1.5rem; letter-spacing: 0.1em;">KOLABORASI & SPONSORSHIP</span>
+      <span
+        class="text-gold font-heading"
+        style="font-size: 1.5rem; letter-spacing: 0.1em;"
+        >KOLABORASI & SPONSORSHIP</span
+      >
       <h2 style="font-size: clamp(2.5rem, 5vw, 4.5rem); margin: 0.5rem 0 1rem;">
         INDEPENDEN, KOLABORATIF, & BERDAMPINGAN
       </h2>
-      <p style="max-width: 700px; margin: 0 auto 2rem; color: rgba(255,255,255,0.85); font-size: 1.1rem;">
-        Ingin bermitra dengan MIKROPTIK dalam kegiatan perkuliahan, seminar teknologi, maupun media partner sponsorship? Hubungi tim kami sekarang!
+      <p
+        style="max-width: 700px; margin: 0 auto 2rem; color: rgba(255,255,255,0.85); font-size: 1.1rem;"
+      >
+        Ingin bermitra dengan MIKROPTIK dalam kegiatan perkuliahan, seminar
+        teknologi, maupun media partner sponsorship? Hubungi tim kami sekarang!
       </p>
 
-      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-        <a href="https://wa.me/6287749444943" target="_blank" class="btn btn-primary">Hubungi Tim Partnership</a>
+      <div
+        style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;"
+      >
+        <a
+          href="https://wa.me/6287749444943"
+          target="_blank"
+          class="btn btn-primary">Hubungi Tim Partnership</a
+        >
         <a href="#proker" class="btn btn-secondary">Proposal Kegiatan</a>
       </div>
     </div>
   </section>
-
 </BaseLayout>

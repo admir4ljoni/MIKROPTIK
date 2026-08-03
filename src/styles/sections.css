@@ -562,18 +562,20 @@
 }
 
 .program-card {
-  background: var(--color-white);
+  background: rgba(28, 22, 20, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
   transition: all var(--transition-normal);
-  border: 1px solid rgba(224, 183, 144, 0.4);
+  border: 1.5px solid rgba(212, 179, 84, 0.3);
 }
 
 .program-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(204, 87, 14, 0.2);
-  border-color: var(--color-primary);
+  box-shadow: 0 20px 40px rgba(204, 87, 14, 0.35);
+  border-color: var(--color-gold);
 }
 
 .program-card-img {
@@ -588,13 +590,14 @@
 
 .program-card-badge {
   display: inline-block;
-  padding: 0.2rem 0.6rem;
-  background-color: var(--color-cream);
-  color: var(--color-red-deep);
+  padding: 0.25rem 0.7rem;
+  background-color: var(--color-gold);
+  color: var(--color-dark);
   font-family: var(--font-heading);
   font-size: 0.85rem;
   border-radius: var(--radius-sm);
   margin-bottom: var(--space-xs);
+  letter-spacing: 0.05em;
 }
 
 /* --------------------------------------------------------------------------

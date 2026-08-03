@@ -11,15 +11,20 @@ import { Code2, Users2, Clock3 } from '@lucide/astro';
 <BaseLayout title="MIKROPTIK | Kabinet Naya Vikrama - HMP PTIK FKIP UNS">
   
   <!-- =========================================================================
-       SECTION 2: HERO SECTION (100vh)
+       SECTION 2: HERO SECTION (100vh) - CENTERED & ARTISTIC
        ========================================================================= -->
   <section id="hero" class="hero-section">
     <div class="hero-bg-overlay"></div>
-    <div class="container hero-grid">
+    <div class="hero-centered-container">
+      <div class="hero-center-logo-wrapper">
+        <img 
+          src="/assets/logo-kabinet.png" 
+          alt="Logo Kabinet Naya Vikrama" 
+          class="hero-center-logo" 
+        />
+      </div>
+
       <div class="hero-text-content">
-        <span class="program-card-badge" style="background-color: var(--color-gold); color: var(--color-dark); margin-bottom: 1rem;">
-          KABINET NAYA VIKRAMA 2025/2026
-        </span>
         <h1 class="hero-title-main">
           HIMPUNAN <br />
           <span class="text-accent-highlight" style="font-size: 0.7em; color: var(--color-gold); display: block;">Mahasiswa</span>
@@ -29,18 +34,6 @@ import { Code2, Users2, Clock3 } from '@lucide/astro';
           Pendidikan Teknik Informatika dan Komputer <br />
           Fakultas Keguruan dan Ilmu Pendidikan, Universitas Sebelas Maret
         </p>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-          <a href="#about" class="btn btn-primary">Jelajahi MIKROPTIK</a>
-          <a href="#proker" class="btn btn-secondary">Program Kerja</a>
-        </div>
-      </div>
-
-      <div class="hero-logo-container">
-        <img 
-          src="/assets/logo-kabinet.png" 
-          alt="Logo Kabinet Naya Vikrama" 
-          class="hero-floating-logo" 
-        />
       </div>
     </div>
 

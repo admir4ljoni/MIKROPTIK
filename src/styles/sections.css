@@ -182,7 +182,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   3. Hero Section (100vh)
+   3. Hero Section (100vh) - Centered & Artistic
    -------------------------------------------------------------------------- */
 .hero-section {
   min-height: 100vh;
@@ -190,9 +190,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at center, var(--color-red-dark) 0%, var(--color-dark) 85%);
+  background: radial-gradient(circle at center, var(--color-red-dark) 0%, var(--color-dark) 88%);
   overflow: hidden;
-  padding-top: 5rem;
+  padding: 6rem 1.5rem 4rem;
+  text-align: center;
 }
 
 .hero-bg-overlay {
@@ -206,39 +207,50 @@
   pointer-events: none;
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: var(--space-xl);
+.hero-centered-container {
+  position: relative;
   z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.hero-center-logo-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.hero-center-logo {
+  width: clamp(240px, 35vw, 420px);
+  height: auto;
+  object-fit: contain;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 45px rgba(212, 179, 84, 0.4));
+  animation: bounce 5s infinite ease-in-out;
 }
 
 .hero-title-main {
-  font-size: clamp(3rem, 7vw, 6rem);
+  font-size: clamp(3.2rem, 7.5vw, 6.8rem);
   color: var(--color-white);
   line-height: 0.95;
-  margin-bottom: var(--space-sm);
+  margin-bottom: 0.5rem;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
 .hero-subtitle {
   font-family: var(--font-body);
-  font-size: 1.25rem;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
   color: var(--color-secondary);
-  margin-bottom: var(--space-lg);
-}
-
-.hero-logo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.hero-floating-logo {
-  width: min(350px, 80%);
-  filter: drop-shadow(0 0 35px rgba(212, 179, 84, 0.3));
-  animation: bounce 4s infinite ease-in-out;
+  max-width: 750px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
 .hero-scroll-indicator {

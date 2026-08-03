@@ -10,23 +10,23 @@
 
 ## Phase 2: Design System & Global Styles
 
-- [ ] Buat `src/styles/global.css`
-  - [ ] CSS custom properties (color palette, typography, spacing)
-  - [ ] Reset dan base styles
-  - [ ] Font imports
-  - [ ] Responsive breakpoints
-  - [ ] Utility classes
-  - [ ] Animation keyframes (marquee, bounce, fade)
-  - [ ] Custom scrollbar
-- [ ] Buat `src/styles/sections.css`
-  - [ ] Hero section styles
-  - [ ] About section styles
-  - [ ] Filosofi logo section styles
-  - [ ] Visi misi section styles
-  - [ ] Program kerja section styles
-  - [ ] Prestasi section styles
-  - [ ] Tips section styles
-  - [ ] CTA section styles
+- [x] Buat `src/styles/global.css`
+  - [x] CSS custom properties (color palette, typography, spacing)
+  - [x] Reset dan base styles
+  - [x] Font imports
+  - [x] Responsive breakpoints
+  - [x] Utility classes
+  - [x] Animation keyframes (marquee, bounce, fade)
+  - [x] Custom scrollbar
+- [x] Buat `src/styles/sections.css`
+  - [x] Hero section styles
+  - [x] About section styles
+  - [x] Filosofi logo section styles
+  - [x] Visi misi section styles
+  - [x] Program kerja section styles
+  - [x] Prestasi section styles
+  - [x] Tips section styles
+  - [x] CTA section styles
 
 ## Phase 3: Layout & Core Components
 

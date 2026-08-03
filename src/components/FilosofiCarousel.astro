@@ -1,0 +1,303 @@
+---
+import { ChevronLeft, ChevronRight, Flame, Zap, Cpu, ShieldCheck, Palette } from '@lucide/astro';
+
+const slides = [
+  {
+    id: 1,
+    icon: Flame,
+    tag: "SIMBOL UTAMA",
+    title: "1. Obor Keberanian (Naya)",
+    description: "Melambangkan semangat pantang menyerah dan petunjuk arah ilmu pengetahuan bagi seluruh mahasiswa PTIK UNS dalam menghadapi dinamika perkembangan zaman.",
+    highlightText: "Semangat Pembawa Terang & Ilmu Pengetahuan"
+  },
+  {
+    id: 2,
+    icon: Zap,
+    tag: "SIMBOL GERAK",
+    title: "2. Sayap Kemajuan (Vikrama)",
+    description: "Simbol keberanian untuk membumbung tinggi meraih prestasi berlandaskan kebersamaan, integritas, dan inovasi yang tak terbatas.",
+    highlightText: "Langkah Progresif Menuju Kejayaan"
+  },
+  {
+    id: 3,
+    icon: Cpu,
+    tag: "IDENTITAS PRODI",
+    title: "3. Elemen Sirkuit Digital",
+    description: "Merepresentasikan fokus utama prodi Pendidikan Teknik Informatika dan Komputer yang adaptif, terampil, dan siap memimpin transformasi teknologi masa depan.",
+    highlightText: "Teknologi, Informatika & Komputer"
+  },
+  {
+    id: 4,
+    icon: ShieldCheck,
+    tag: "FONDASI ORGANISASI",
+    title: "4. Perisai Integritas",
+    description: "Menggambarkan benteng pertahanan moral, keadilan, dan jaminan pengayoman aspirasi yang kokoh untuk seluruh civitas akademika.",
+    highlightText: "Pengayom & Penjaga Aspirasi Mahasiswa"
+  },
+  {
+    id: 5,
+    icon: Palette,
+    tag: "WARNA BRAND",
+    title: "5. Gradasi Merah & Emas",
+    description: "Warna merah melambangkan keberanian untuk beraksi dengan karya nyata, sedangkan aksen emas memancarkan kemuliaan dan cita-cita prestasi setinggi mungkin.",
+    highlightText: "Keberanian Beraksi, Keagungan Karya"
+  }
+];
+---
+
+<div class="filosofi-carousel-wrapper" id="filosofi-carousel">
+  <div class="carousel-track-container">
+    <div class="carousel-track" id="carousel-track">
+      {slides.map((slide, index) => (
+        <div class={`carousel-slide ${index === 0 ? 'active' : ''}`} data-index={index}>
+          <div class="slide-grid">
+            <!-- Left Side: Logo Highlight Container -->
+            <div class="slide-visual">
+              <div class="logo-highlight-box">
+                <span class="slide-badge">{slide.tag}</span>
+                <img src="/assets/logo-kabinet.png" alt={slide.title} class="carousel-logo-img" />
+                <div class="logo-glow-ring"></div>
+              </div>
+            </div>
+
+            <!-- Right Side: Narrative Details -->
+            <div class="slide-content">
+              <div class="slide-icon-wrapper">
+                <slide.icon class="slide-icon" size={32} />
+              </div>
+              <h3 class="slide-title">{slide.title}</h3>
+              <p class="slide-highlight">{slide.highlightText}</p>
+              <p class="slide-description">{slide.description}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Carousel Controls -->
+  <div class="carousel-controls">
+    <button class="carousel-nav-btn prev" id="carousel-prev" aria-label="Slide sebelumnya">
+      <ChevronLeft size={24} />
+    </button>
+    
+    <div class="carousel-indicators" id="carousel-indicators">
+      {slides.map((_, index) => (
+        <button 
+          class={`carousel-dot ${index === 0 ? 'active' : ''}`} 
+          data-index={index}
+          aria-label={`Ke slide ${index + 1}`}
+        ></button>
+      ))}
+    </div>
+
+    <button class="carousel-nav-btn next" id="carousel-next" aria-label="Slide selanjutnya">
+      <ChevronRight size={24} />
+    </button>
+  </div>
+</div>
+
+<style>
+  .filosofi-carousel-wrapper {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .carousel-track-container {
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(212, 179, 84, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    opacity: 0.4;
+    transition: opacity 0.5s ease;
+    padding: var(--space-xl);
+  }
+
+  .carousel-slide.active {
+    opacity: 1;
+  }
+
+  .slide-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+
+  .slide-visual {
+    display: flex;
+    justify-content: center;
+  }
+
+  .logo-highlight-box {
+    position: relative;
+    padding: var(--space-lg);
+    background: radial-gradient(circle, rgba(204, 87, 14, 0.15) 0%, rgba(28, 22, 20, 0.6) 70%);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(212, 179, 84, 0.4);
+    text-align: center;
+  }
+
+  .slide-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-gold);
+    color: var(--color-dark);
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    padding: 0.2rem 0.8rem;
+    border-radius: var(--radius-full);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .carousel-logo-img {
+    max-width: 220px;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(212, 179, 84, 0.4));
+  }
+
+  .slide-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .slide-icon-wrapper {
+    color: var(--color-gold);
+    margin-bottom: var(--space-xs);
+  }
+
+  .slide-title {
+    font-size: 2.2rem;
+    color: var(--color-white);
+  }
+
+  .slide-highlight {
+    font-family: var(--font-accent);
+    font-size: 1.5rem;
+    color: var(--color-gold);
+  }
+
+  .slide-description {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+  }
+
+  .carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+
+  .carousel-nav-btn {
+    background: rgba(212, 179, 84, 0.1);
+    border: 1px solid var(--color-gold);
+    color: var(--color-gold);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+  }
+
+  .carousel-nav-btn:hover {
+    background: var(--color-gold);
+    color: var(--color-dark);
+    transform: scale(1.08);
+  }
+
+  .carousel-indicators {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(212, 179, 84, 0.4);
+    transition: all var(--transition-fast);
+  }
+
+  .carousel-dot.active {
+    background: var(--color-gold);
+    width: 28px;
+    border-radius: var(--radius-full);
+  }
+
+  @media (max-width: 768px) {
+    .slide-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('carousel-track');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+
+    if (!track || slides.length === 0) return;
+
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+
+    function updateCarousel(index: number) {
+      currentIndex = (index + totalSlides) % totalSlides;
+      
+      if (track) {
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      }
+
+      slides.forEach((slide, idx) => {
+        if (idx === currentIndex) {
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+
+      dots.forEach((dot, idx) => {
+        if (idx === currentIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    prevBtn?.addEventListener('click', () => updateCarousel(currentIndex - 1));
+    nextBtn?.addEventListener('click', () => updateCarousel(currentIndex + 1));
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        const index = parseInt(target.getAttribute('data-index') || '0', 10);
+        updateCarousel(index);
+      });
+    });
+  });
+</script>

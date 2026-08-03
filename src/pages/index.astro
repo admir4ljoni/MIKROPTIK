@@ -4,6 +4,8 @@ import SectionHeading from '../components/SectionHeading.astro';
 import StatCounter from '../components/StatCounter.astro';
 import ProgramCard from '../components/ProgramCard.astro';
 import ScrollIndicator from '../components/ScrollIndicator.astro';
+import FilosofiCarousel from '../components/FilosofiCarousel.astro';
+import { Code2, Users2, Clock3 } from '@lucide/astro';
 ---
 
 <BaseLayout title="MIKROPTIK | Kabinet Naya Vikrama - HMP PTIK FKIP UNS">
@@ -67,7 +69,7 @@ import ScrollIndicator from '../components/ScrollIndicator.astro';
             MIKROPTIK (Himpunan Mahasiswa Pendidikan Teknik Informatika dan Komputer) merupakan organisasi kemahasiswaan tingkat prodi di FKIP Universitas Sebelas Maret.
           </p>
           <p style="margin-bottom: 1.5rem; color: #444;">
-            Pada periode 2025/2026, di bawah kepengurusan **Kabinet Naya Vikrama**, MIKROPTIK berkomitmen untuk beraksi dengan karya dan bersatu dalam kemajuan akademik maupun non-akademik.
+            Pada periode 2025/2026, di bawah kepengurusan <strong style="color: var(--color-red-deep);">Kabinet Naya Vikrama</strong>, MIKROPTIK berkomitmen untuk beraksi dengan karya dan bersatu dalam kemajuan akademik maupun non-akademik.
           </p>
           <a href="#visi-misi" class="btn btn-primary">Lihat Visi & Misi</a>
         </div>
@@ -86,45 +88,17 @@ import ScrollIndicator from '../components/ScrollIndicator.astro';
 
 
   <!-- =========================================================================
-       SECTION 4: FILOSOFI LOGO KABINET
+       SECTION 4: FILOSOFI LOGO KABINET (CAROUSEL)
        ========================================================================= -->
   <section id="filosofi" class="section bg-dark">
     <div class="container">
       <SectionHeading 
         titleMain="FILOSOFI LOGO" 
         titleAccent="Naya Vikrama" 
-        subtitle="Makna mendalam di balik lambang dan simbolisme Kabinet Naya Vikrama 2025/2026"
+        subtitle="Geser carousel di bawah untuk mengeksplorasi makna setiap elemen lambang Kabinet Naya Vikrama"
       />
 
-      <div class="filosofi-container">
-        <div class="filosofi-logo-wrapper">
-          <img src="/assets/logo-kabinet.png" alt="Logo Kabinet Naya Vikrama" class="filosofi-logo-img" />
-          <p class="text-gold font-accent" style="font-size: 1.8rem; margin-top: 1rem;">"Beraksi dengan Karya, Bersatu dalam Kemajuan"</p>
-        </div>
-
-        <div class="filosofi-card-list">
-          <div class="filosofi-item-card">
-            <h4 class="text-gold" style="font-size: 1.3rem; margin-bottom: 0.3rem;">1. OBOR KEBERANIAN (NAYA)</h4>
-            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">
-              Melambangkan semangat pantang menyerah dan tuntunan ilmu pengetahuan bagi seluruh mahasiswa PTIK UNS.
-            </p>
-          </div>
-
-          <div class="filosofi-item-card">
-            <h4 class="text-primary" style="font-size: 1.3rem; margin-bottom: 0.3rem;">2. SAYAP KEMAJUAN (VIKRAMA)</h4>
-            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">
-              Simbol keberanian untuk terbang tinggi meraih prestasi berlandaskan kebersamaan dan integritas.
-            </p>
-          </div>
-
-          <div class="filosofi-item-card">
-            <h4 class="text-gold" style="font-size: 1.3rem; margin-bottom: 0.3rem;">3. SIMBOL SIRKUIT DIGITAL</h4>
-            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">
-              Merepresentasikan identitas prodi Teknik Informatika dan Komputer yang selalu adaptif terhadap teknologi terkini.
-            </p>
-          </div>
-        </div>
-      </div>
+      <FilosofiCarousel />
     </div>
   </section>
 
@@ -249,7 +223,7 @@ import ScrollIndicator from '../components/ScrollIndicator.astro';
 
 
   <!-- =========================================================================
-       SECTION 8: TIPS & INSIGHT (MAHASISWA BARU)
+       SECTION 8: TIPS & INSIGHT (MAHASISWA BARU - WITH LUCIDE ICONS)
        ========================================================================= -->
   <section id="tips" class="section bg-cream">
     <div class="container">
@@ -261,19 +235,28 @@ import ScrollIndicator from '../components/ScrollIndicator.astro';
       />
 
       <div class="misi-grid">
-        <div class="program-card" style="padding: 1.5rem; background: var(--color-white);">
-          <h4 class="text-red-deep" style="font-size: 1.4rem; margin-bottom: 0.5rem;">💻 FOKUS SKILL CODING & LOGIKA</h4>
-          <p style="font-size: 0.9rem; color: #555;">Mulailah dari dasar algoritma dan pelajari bahasa pemrograman seperti Python, C++, atau JavaScript.</p>
+        <div class="program-card" style="padding: 1.75rem; background: var(--color-white);">
+          <div style="color: var(--color-red-deep); margin-bottom: 0.75rem;">
+            <Code2 size={36} />
+          </div>
+          <h4 class="text-red-deep" style="font-size: 1.3rem; margin-bottom: 0.5rem;">FOKUS SKILL CODING & LOGIKA</h4>
+          <p style="font-size: 0.9rem; color: #555;">Mulailah dari dasar algoritma dan pelajari bahasa pemrograman seperti Python, C++, atau JavaScript secara konsisten.</p>
         </div>
 
-        <div class="program-card" style="padding: 1.5rem; background: var(--color-white);">
-          <h4 class="text-red-deep" style="font-size: 1.4rem; margin-bottom: 0.5rem;">🤝 AKTIF BERORGANISASI</h4>
-          <p style="font-size: 0.9rem; color: #555;">Gabung dengan MIKROPTIK untuk membangun soft skill, kepemimpinan, dan koneksi teman sejawat.</p>
+        <div class="program-card" style="padding: 1.75rem; background: var(--color-white);">
+          <div style="color: var(--color-red-deep); margin-bottom: 0.75rem;">
+            <Users2 size={36} />
+          </div>
+          <h4 class="text-red-deep" style="font-size: 1.3rem; margin-bottom: 0.5rem;">AKTIF BERORGANISASI</h4>
+          <p style="font-size: 0.9rem; color: #555;">Gabung dengan MIKROPTIK untuk membangun soft skill, kemampuan kepemimpinan, dan jejaring teman sejawat.</p>
         </div>
 
-        <div class="program-card" style="padding: 1.5rem; background: var(--color-white);">
-          <h4 class="text-red-deep" style="font-size: 1.4rem; margin-bottom: 0.5rem;">📚 MANAJEMEN WAKTU EFISIEN</h4>
-          <p style="font-size: 0.9rem; color: #555;">Seimbangkan antara tugas perkuliahan, proyek coding, organisasi, dan istirahat yang cukup.</p>
+        <div class="program-card" style="padding: 1.75rem; background: var(--color-white);">
+          <div style="color: var(--color-red-deep); margin-bottom: 0.75rem;">
+            <Clock3 size={36} />
+          </div>
+          <h4 class="text-red-deep" style="font-size: 1.3rem; margin-bottom: 0.5rem;">MANAJEMEN WAKTU EFISIEN</h4>
+          <p style="font-size: 0.9rem; color: #555;">Seimbangkan antara tugas perkuliahan, proyek coding mandiri, kegiatan organisasi, dan waktu istirahat.</p>
         </div>
       </div>
     </div>

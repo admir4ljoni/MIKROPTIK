@@ -59,17 +59,17 @@
 
 ## Phase 5: Landing Page Sections
 
-- [ ] Buat `src/pages/index.astro`
-  - [ ] Section 1: Preloader (integrate component)
-  - [ ] Section 2: Hero (100vh, parallax-ready)
-  - [ ] Section 3: About / Tentang Kami
-  - [ ] Section 4: Filosofi Logo Kabinet
-  - [ ] Section 5: Visi & Misi
-  - [ ] Section 6: Program Kerja / Rekam Jejak
-  - [ ] Section 7: Prestasi & Mahasiswa Berprestasi
-  - [ ] Section 8: Tips & Insight (Mahasiswa Baru)
-  - [ ] Section 9: Partnership / CTA
-  - [ ] Section 10: Footer (integrate component)
+- [x] Buat `src/pages/index.astro`
+  - [x] Section 1: Preloader (integrate component)
+  - [x] Section 2: Hero (100vh, parallax-ready)
+  - [x] Section 3: About / Tentang Kami
+  - [x] Section 4: Filosofi Logo Kabinet
+  - [x] Section 5: Visi & Misi
+  - [x] Section 6: Program Kerja / Rekam Jejak
+  - [x] Section 7: Prestasi & Mahasiswa Berprestasi
+  - [x] Section 8: Tips & Insight (Mahasiswa Baru)
+  - [x] Section 9: Partnership / CTA
+  - [x] Section 10: Footer (integrate component)
 
 ## Phase 6: Client-side JavaScript & Animations
 

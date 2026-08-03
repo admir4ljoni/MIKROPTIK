@@ -388,22 +388,24 @@
   z-index: 2;
 }
 
-/* Collapsed indicator text/label */
+/* Collapsed indicator text/label (Centered Vertical Japanese Style in Gold) */
 .stripe-collapsed-label {
   position: absolute;
-  bottom: 4rem;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%) rotate(-90deg);
-  transform-origin: center center;
+  transform: translate(-50%, -50%);
+  writing-mode: vertical-rl;
+  text-orientation: upright;
   white-space: nowrap;
   font-family: var(--font-heading);
-  font-size: 1.4rem;
-  color: var(--color-white);
-  letter-spacing: 0.15em;
-  opacity: 0.9;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
-  transition: opacity 0.3s ease;
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  color: var(--color-gold);
+  letter-spacing: 0.2em;
+  opacity: 0.95;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95), 0 0 12px rgba(212, 179, 84, 0.4);
+  transition: opacity 0.35s ease;
   pointer-events: none;
+  z-index: 3;
 }
 
 .sliced-stripe:hover .stripe-collapsed-label,

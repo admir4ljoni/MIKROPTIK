@@ -1,0 +1,16 @@
+---
+interface Props {
+  number: number | string;
+  label: string;
+  suffix?: string;
+}
+
+const { number, label, suffix = "+" } = Astro.props;
+---
+
+<div class="stat-counter-item gsap-counter-item">
+  <div class="stat-number">
+    <span class="js-counter-val" data-target={number}>0</span>{suffix}
+  </div>
+  <div class="stat-label">{label}</div>
+</div>

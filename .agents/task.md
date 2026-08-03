@@ -52,10 +52,10 @@
 
 ## Phase 4: Reusable Components
 
-- [ ] Buat `src/components/ScrollIndicator.astro`
-- [ ] Buat `src/components/SectionHeading.astro`
-- [ ] Buat `src/components/StatCounter.astro`
-- [ ] Buat `src/components/ProgramCard.astro`
+- [x] Buat `src/components/ScrollIndicator.astro`
+- [x] Buat `src/components/SectionHeading.astro`
+- [x] Buat `src/components/StatCounter.astro`
+- [x] Buat `src/components/ProgramCard.astro`
 
 ## Phase 5: Landing Page Sections
 

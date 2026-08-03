@@ -1,0 +1,29 @@
+---
+interface Props {
+  title: string;
+  category: string;
+  description: string;
+  image?: string;
+  date?: string;
+}
+
+const {
+  title,
+  category,
+  description,
+  image = "https://picsum.photos/seed/proker/600/400",
+  date = "2025/2026"
+} = Astro.props;
+---
+
+<article class="program-card gsap-card-item">
+  <img src={image} alt={title} class="program-card-img" loading="lazy" />
+  <div class="program-card-body">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+      <span class="program-card-badge">{category}</span>
+      <span style="font-size: 0.8rem; color: #777;">{date}</span>
+    </div>
+    <h3 style="font-size: 1.5rem; color: var(--color-dark); margin-bottom: 0.5rem;">{title}</h3>
+    <p style="font-size: 0.9rem; color: #555; line-height: 1.5;">{description}</p>
+  </div>
+</article>

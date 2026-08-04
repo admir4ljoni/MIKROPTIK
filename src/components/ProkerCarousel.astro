@@ -1,5 +1,5 @@
 ---
-import { ChevronLeft, ChevronRight, Calendar, ArrowUpRight } from '@lucide/astro';
+import { Calendar } from '@lucide/astro';
 
 const prokerItems = [
   {
@@ -56,8 +56,8 @@ const prokerItems = [
 <div class="proker-carousel-wrapper" id="proker-carousel">
   <div class="proker-carousel-container" id="proker-container">
     <div class="proker-track" id="proker-track">
-      {prokerItems.map((item) => (
-        <article class="proker-card-full">
+      {prokerItems.map((item, index) => (
+        <article class={`proker-card-full ${index === 0 ? 'active' : ''}`} data-index={index}>
           <!-- Background Image Full Card -->
           <img src={item.image} alt={item.title} class="proker-card-bg-img" loading="lazy" />
           
@@ -80,27 +80,6 @@ const prokerItems = [
       ))}
     </div>
   </div>
-
-  <!-- Carousel Controls -->
-  <div class="proker-controls">
-    <button class="proker-nav-btn prev" id="proker-prev" aria-label="Program kerja sebelumnya">
-      <ChevronLeft size={26} />
-    </button>
-
-    <div class="proker-dots" id="proker-dots">
-      {prokerItems.map((_, index) => (
-        <button
-          class={`proker-dot ${index === 0 ? 'active' : ''}`}
-          data-index={index}
-          aria-label={`Ke slide ${index + 1}`}
-        ></button>
-      ))}
-    </div>
-
-    <button class="proker-nav-btn next" id="proker-next" aria-label="Program kerja selanjutnya">
-      <ChevronRight size={26} />
-    </button>
-  </div>
 </div>
 
 <style>
@@ -116,7 +95,7 @@ const prokerItems = [
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    padding: 1rem 0.25rem 2rem;
+    padding: 2.5rem 0;
   }
 
   .proker-carousel-container::-webkit-scrollbar {
@@ -125,28 +104,45 @@ const prokerItems = [
 
   .proker-track {
     display: flex;
+    align-items: center;
     gap: 1.75rem;
+    padding-left: calc(50% - clamp(150px, 18vw, 230px));
+    padding-right: calc(50% - clamp(150px, 18vw, 230px));
     width: max-content;
   }
 
-  /* Full Image Card dengan Style Tegas & Ukuran Besar */
+  /* Card Base - Sisi Kiri & Kanan (Tinggi Lebih Rendah, Scaled Down & Dimmed) */
   .proker-card-full {
     position: relative;
-    width: clamp(320px, 38vw, 480px);
-    height: 520px;
+    width: clamp(300px, 36vw, 460px);
+    height: 420px;
     border-radius: var(--radius-sm); /* Style tegas: corner radius kecil 4px */
     overflow: hidden;
-    scroll-snap-align: start;
-    border: 1.5px solid rgba(212, 179, 84, 0.35);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    scroll-snap-align: center;
+    border: 1.5px solid rgba(212, 179, 84, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    opacity: 0.55;
+    filter: grayscale(25%);
+    transform: scale(0.92);
+    transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.4s ease,
+                filter 0.4s ease,
+                border-color 0.4s ease,
+                box-shadow 0.4s ease;
     flex-shrink: 0;
+    cursor: pointer;
   }
 
-  .proker-card-full:hover {
-    transform: translateY(-8px);
+  /* Kartu Tengah Active (Lebih Tinggi, Full Brightness & Highlight Emas) */
+  .proker-card-full.active {
+    height: 530px;
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: scale(1);
     border-color: var(--color-gold);
-    box-shadow: 0 25px 50px rgba(130, 9, 7, 0.45);
+    box-shadow: 0 25px 60px rgba(130, 9, 7, 0.55);
+    z-index: 10;
   }
 
   .proker-card-bg-img {
@@ -159,8 +155,8 @@ const prokerItems = [
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .proker-card-full:hover .proker-card-bg-img {
-    transform: scale(1.06);
+  .proker-card-full.active:hover .proker-card-bg-img {
+    transform: scale(1.05);
   }
 
   /* Bottom Shadow Overlay Gradient */
@@ -170,11 +166,11 @@ const prokerItems = [
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 1.5rem;
+    padding: 1.75rem;
     background: linear-gradient(
       to top,
       rgba(28, 22, 20, 0.98) 0%,
-      rgba(28, 22, 20, 0.82) 45%,
+      rgba(28, 22, 20, 0.85) 45%,
       rgba(28, 22, 20, 0.25) 75%,
       transparent 100%
     );
@@ -235,59 +231,14 @@ const prokerItems = [
     text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
   }
 
-  /* Carousel Controls */
-  .proker-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-md);
-    margin-top: 1.5rem;
-  }
-
-  .proker-nav-btn {
-    background: rgba(28, 22, 20, 0.8);
-    border: 1.5px solid var(--color-gold);
-    color: var(--color-gold);
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius-sm); /* Controls juga tegas */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all var(--transition-fast);
-    cursor: pointer;
-  }
-
-  .proker-nav-btn:hover {
-    background: var(--color-gold);
-    color: var(--color-dark);
-    transform: scale(1.05);
-  }
-
-  .proker-dots {
-    display: flex;
-    gap: 0.6rem;
-  }
-
-  .proker-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: var(--radius-sm);
-    background: rgba(255, 255, 255, 0.25);
-    border: 1px solid rgba(212, 179, 84, 0.4);
-    transition: all var(--transition-fast);
-    cursor: pointer;
-  }
-
-  .proker-dot.active {
-    background: var(--color-gold);
-    width: 32px;
-  }
-
   @media (max-width: 768px) {
     .proker-card-full {
-      width: 85vw;
-      height: 460px;
+      width: 82vw;
+      height: 400px;
+    }
+
+    .proker-card-full.active {
+      height: 480px;
     }
   }
 </style>
@@ -295,49 +246,51 @@ const prokerItems = [
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('proker-container');
-    const prevBtn = document.getElementById('proker-prev');
-    const nextBtn = document.getElementById('proker-next');
-    const dots = document.querySelectorAll('.proker-dot');
     const cards = document.querySelectorAll('.proker-card-full');
 
     if (!container || cards.length === 0) return;
 
-    function getCardWidth() {
-      const card = cards[0] as HTMLElement;
-      return card ? card.offsetWidth + 28 : 380; // card width + gap
-    }
-
-    function updateActiveDot() {
+    function updateCenterCard() {
       if (!container) return;
-      const scrollLeft = container.scrollLeft;
-      const cardWidth = getCardWidth();
-      const activeIndex = Math.round(scrollLeft / cardWidth);
+      const containerRect = container.getBoundingClientRect();
+      const containerCenter = containerRect.left + containerRect.width / 2;
 
-      dots.forEach((dot, index) => {
-        if (index === activeIndex) {
-          dot.classList.add('active');
+      let closestCard: HTMLElement | null = null;
+      let minDistance = Infinity;
+
+      cards.forEach((cardNode) => {
+        const card = cardNode as HTMLElement;
+        const cardRect = card.getBoundingClientRect();
+        const cardCenter = cardRect.left + cardRect.width / 2;
+        const distance = Math.abs(containerCenter - cardCenter);
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestCard = card;
+        }
+      });
+
+      cards.forEach((cardNode) => {
+        if (cardNode === closestCard) {
+          cardNode.classList.add('active');
         } else {
-          dot.classList.remove('active');
+          cardNode.classList.remove('active');
         }
       });
     }
 
-    prevBtn?.addEventListener('click', () => {
-      container.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
-    });
-
-    nextBtn?.addEventListener('click', () => {
-      container.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
-    });
-
-    dots.forEach((dot) => {
-      dot.addEventListener('click', (e) => {
-        const target = e.target as HTMLElement;
-        const index = parseInt(target.getAttribute('data-index') || '0', 10);
-        container.scrollTo({ left: index * getCardWidth(), behavior: 'smooth' });
+    // Allow user to click any side card to scroll into center focus
+    cards.forEach((cardNode) => {
+      cardNode.addEventListener('click', () => {
+        const card = cardNode as HTMLElement;
+        card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
       });
     });
 
-    container.addEventListener('scroll', updateActiveDot, { passive: true });
+    container.addEventListener('scroll', updateCenterCard, { passive: true });
+    window.addEventListener('resize', updateCenterCard, { passive: true });
+
+    // Initial trigger
+    updateCenterCard();
   });
 </script>

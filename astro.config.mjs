@@ -4,4 +4,6 @@ import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
+  // Atur base path secara otomatis jika berada di lingkungan GitHub Actions (GitHub Pages subpath /MIKROPTIK/)
+  base: process.env.GITHUB_ACTIONS ? `/${process.env.GITHUB_REPOSITORY?.split('/')[1] || 'MIKROPTIK'}/` : '/',
 });

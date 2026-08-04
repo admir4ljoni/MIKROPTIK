@@ -38,15 +38,21 @@ const prokerItems = [
   }
 ];
 
-// Duplikasi items 3x untuk seamless infinite loop
-const displayItems = [...prokerItems, ...prokerItems, ...prokerItems];
+// Duplikasi items 5x untuk seamless 100vw ultra-wide infinite loop
+const displayItems = [
+  ...prokerItems,
+  ...prokerItems,
+  ...prokerItems,
+  ...prokerItems,
+  ...prokerItems
+];
 ---
 
 <div class="proker-carousel-wrapper" id="proker-carousel">
   <div class="proker-carousel-container" id="proker-container">
     <div class="proker-track" id="proker-track">
       {displayItems.map((item, index) => (
-        <article class={`proker-card-full ${index === 6 ? 'active' : ''}`} data-index={index}>
+        <article class={`proker-card-full ${index === 12 ? 'active' : ''}`} data-index={index}>
           <!-- Background Image Full Card -->
           <img src={item.image} alt={item.title} class="proker-card-bg-img" loading="lazy" />
           
@@ -66,8 +72,12 @@ const displayItems = [...prokerItems, ...prokerItems, ...prokerItems];
 <style>
   .proker-carousel-wrapper {
     position: relative;
-    width: 100%;
-    margin: 0 auto;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    overflow: hidden;
   }
 
   .proker-carousel-container {
@@ -78,6 +88,7 @@ const displayItems = [...prokerItems, ...prokerItems, ...prokerItems];
     height: 680px;
     display: flex;
     align-items: center;
+    width: 100%;
   }
 
   .proker-carousel-container::-webkit-scrollbar {
@@ -88,8 +99,8 @@ const displayItems = [...prokerItems, ...prokerItems, ...prokerItems];
     display: flex;
     align-items: center;
     gap: 1.75rem;
-    padding-left: calc(50% - clamp(150px, 16vw, 220px));
-    padding-right: calc(50% - clamp(150px, 16vw, 220px));
+    padding-left: calc(50vw - clamp(160px, 16vw, 220px));
+    padding-right: calc(50vw - clamp(160px, 16vw, 220px));
     width: max-content;
     height: 640px;
   }
@@ -214,9 +225,9 @@ const displayItems = [...prokerItems, ...prokerItems, ...prokerItems];
 
     calculateWidths();
 
-    // Inisialisasi posisi scroll di tengah set ke-2
+    // Inisialisasi posisi scroll di tengah (set ke-3)
     if (singleSetWidth > 0) {
-      container.scrollLeft = singleSetWidth;
+      container.scrollLeft = singleSetWidth * 2;
     }
 
     function updateCenterCard() {
@@ -252,12 +263,12 @@ const displayItems = [...prokerItems, ...prokerItems, ...prokerItems];
 
       let resetDelta = 0;
 
-      // Jika scroll melewati pertengahan set ke-3 (scroll ke kanan jauh)
-      if (container.scrollLeft >= singleSetWidth * 2) {
+      // Jika scroll melewatai batas kanan (set ke-4)
+      if (container.scrollLeft >= singleSetWidth * 3.5) {
         resetDelta = -singleSetWidth;
       }
-      // Jika scroll melewati awal set ke-2 (scroll ke kiri jauh)
-      else if (container.scrollLeft <= singleSetWidth * 0.2) {
+      // Jika scroll melewatai batas kiri (set ke-2)
+      else if (container.scrollLeft <= singleSetWidth * 0.5) {
         resetDelta = singleSetWidth;
       }
 
@@ -299,8 +310,8 @@ const displayItems = [...prokerItems, ...prokerItems, ...prokerItems];
     // Initial positioning check
     setTimeout(() => {
       calculateWidths();
-      if (singleSetWidth > 0 && container.scrollLeft === 0) {
-        container.scrollLeft = singleSetWidth;
+      if (singleSetWidth > 0 && (container.scrollLeft === 0 || container.scrollLeft < singleSetWidth)) {
+        container.scrollLeft = singleSetWidth * 2;
       }
       updateCenterCard();
     }, 50);

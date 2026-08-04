@@ -129,6 +129,10 @@ const displayItems = [...prokerItems, ...prokerItems, ...prokerItems];
     z-index: 10;
   }
 
+  .proker-card-full.no-anim {
+    transition: none !important;
+  }
+
   .proker-card-bg-img {
     position: absolute;
     inset: 0;
@@ -246,13 +250,30 @@ const displayItems = [...prokerItems, ...prokerItems, ...prokerItems];
     function checkInfiniteLoop() {
       if (!container || singleSetWidth === 0) return;
 
-      // Jika scroll melewatai pertengahan set ke-3 (scroll ke kanan jauh)
+      let resetDelta = 0;
+
+      // Jika scroll melewati pertengahan set ke-3 (scroll ke kanan jauh)
       if (container.scrollLeft >= singleSetWidth * 2) {
-        container.scrollLeft -= singleSetWidth;
+        resetDelta = -singleSetWidth;
       }
-      // Jika scroll melewatai awal set ke-2 (scroll ke kiri jauh)
+      // Jika scroll melewati awal set ke-2 (scroll ke kiri jauh)
       else if (container.scrollLeft <= singleSetWidth * 0.2) {
-        container.scrollLeft += singleSetWidth;
+        resetDelta = singleSetWidth;
+      }
+
+      if (resetDelta !== 0) {
+        // Matikan animasi transisi sementara agar tidak memicu pop-up scaling meletup
+        cards.forEach((c) => c.classList.add('no-anim'));
+
+        container.scrollLeft += resetDelta;
+        updateCenterCard();
+
+        // Reactivate animasi transisi pada frame berikutnya
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            cards.forEach((c) => c.classList.remove('no-anim'));
+          });
+        });
       }
     }
 

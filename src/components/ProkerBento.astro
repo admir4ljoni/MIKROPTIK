@@ -9,7 +9,7 @@ const prokerItems = [
   },
   {
     id: 2,
-    title: "TECHNOFEST COMPETITION",
+    title: "TECHNOFEST COMPETITION 2025",
     image: "https://picsum.photos/seed/proker2/800/600",
     description: "Kompetisi teknologi tingkat nasional mencakup Web Development, UI/UX Design, dan Competitive Programming.",
     size: "medium"
@@ -30,17 +30,45 @@ const prokerItems = [
   },
   {
     id: 5,
+    title: "LKMM-TD NAYA VIKRAMA",
+    image: "https://picsum.photos/seed/proker6/800/600",
+    description: "Latihan Keterampilan Manajemen Mahasiswa Tingkat Dasar untuk membina jiwa kepemimpinan dan manajerial.",
+    size: "medium"
+  },
+  {
+    id: 6,
     title: "PTIK CAREER & ALUMNI EXPO",
     image: "https://picsum.photos/seed/proker5/1000/600",
     description: "Ajang jejaring alumni dan industri IT untuk memberikan wawasan karir serta peluang magang bagi mahasiswa aktif.",
     size: "wide" // Spans 2 cols
   },
   {
-    id: 6,
-    title: "LKMM-TD NAYA VIKRAMA",
-    image: "https://picsum.photos/seed/proker6/800/600",
-    description: "Latihan Keterampilan Manajemen Mahasiswa Tingkat Dasar untuk membina jiwa kepemimpinan dan manajerial.",
+    id: 7,
+    title: "HACKATHON PTIK INNOVATION",
+    image: "https://picsum.photos/seed/proker7/1000/600",
+    description: "Maraton pembuatan prototipe solusi digital 24 jam untuk memecahkan permasalahan nyata masyarakat.",
+    size: "wide" // Spans 2 cols
+  },
+  {
+    id: 8,
+    title: "SEMINAR NASIONAL TEKNOLOGI (SNTI)",
+    image: "https://picsum.photos/seed/proker8/800/600",
+    description: "Forum diskusi ilmiah dan wawasan tren teknologi terkini bersama pembicara kelas dunia.",
     size: "medium"
+  },
+  {
+    id: 9,
+    title: "MIKROPTIK SPORT & ART FEST",
+    image: "https://picsum.photos/seed/proker9/800/600",
+    description: "Pekan olahraga dan pentas seni untuk mempererat solidaritas antar angkatan civitas akademika PTIK.",
+    size: "medium"
+  },
+  {
+    id: 10,
+    title: "INFORMATICS PODCAST & MEDIA",
+    image: "https://picsum.photos/seed/proker10/1000/600",
+    description: "Konten edukatif multimedia dan podcast inspiratif mengulas kisah sukses alumni serta mahasiswa berprestasi.",
+    size: "wide" // Spans 2 cols
   }
 ];
 ---
@@ -66,10 +94,10 @@ const prokerItems = [
   .proker-bento-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
+    gap: 0.75rem; /* Gap rapat & presisi */
     width: 100%;
     max-width: 100%;
-    padding: 0 clamp(1.25rem, 3.5vw, 3.5rem);
+    padding: 0 clamp(0.75rem, 2.5vw, 2.5rem);
     margin-top: 2rem;
   }
 
@@ -86,28 +114,28 @@ const prokerItems = [
   }
 
   .bento-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
     box-shadow: 
-      0 0 30px rgba(212, 179, 84, 0.35),
-      0 0 60px rgba(130, 9, 7, 0.3);
+      0 0 30px rgba(212, 179, 84, 0.4),
+      0 0 60px rgba(130, 9, 7, 0.35);
     z-index: 5;
   }
 
-  /* Bento Grid Spans (Full Width 4-Column Layout) */
+  /* Bento Grid Spans (Ukuran Lebih Besar & Tinggi) */
   .bento-card-large {
     grid-column: span 2;
     grid-row: span 2;
-    min-height: 560px;
+    min-height: 620px;
   }
 
   .bento-card-wide {
-    grid-column: span 4;
-    min-height: 280px;
+    grid-column: span 2;
+    min-height: 300px;
   }
 
   .bento-card-medium {
     grid-column: span 1;
-    min-height: 270px;
+    min-height: 300px;
   }
 
   /* Background Image */
@@ -174,6 +202,7 @@ const prokerItems = [
   @media (max-width: 1100px) {
     .proker-bento-grid {
       grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
     }
 
     .bento-card-large {
@@ -184,26 +213,27 @@ const prokerItems = [
 
     .bento-card-wide {
       grid-column: span 2;
-      min-height: 260px;
+      min-height: 270px;
     }
 
     .bento-card-medium {
       grid-column: span 1;
-      min-height: 260px;
+      min-height: 270px;
     }
   }
 
   @media (max-width: 640px) {
     .proker-bento-grid {
       grid-template-columns: 1fr;
-      padding: 0 1.25rem;
+      padding: 0 0.75rem;
+      gap: 0.75rem;
     }
 
     .bento-card-large,
     .bento-card-wide,
     .bento-card-medium {
       grid-column: span 1;
-      min-height: 300px;
+      min-height: 320px;
     }
   }
 </style>

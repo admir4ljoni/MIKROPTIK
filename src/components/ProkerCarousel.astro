@@ -72,8 +72,6 @@ const displayItems = [...prokerItems, ...prokerItems, ...prokerItems];
 
   .proker-carousel-container {
     overflow-x: auto;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -ms-overflow-style: none;
     padding: 2rem 0;
@@ -103,7 +101,6 @@ const displayItems = [...prokerItems, ...prokerItems, ...prokerItems];
     height: 600px;
     border-radius: var(--radius-sm); /* Style tegas: corner radius kecil 4px */
     overflow: hidden;
-    scroll-snap-align: center;
     border: none;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
     opacity: 0.55;
@@ -146,7 +143,7 @@ const displayItems = [...prokerItems, ...prokerItems, ...prokerItems];
     transform: scale(1.05);
   }
 
-  /* Bottom Shadow Overlay Gradient (Tanpa Top Badges) */
+  /* Bottom Shadow Overlay Gradient */
   .proker-card-overlay {
     position: absolute;
     inset: 0;
@@ -203,6 +200,20 @@ const displayItems = [...prokerItems, ...prokerItems, ...prokerItems];
     if (!container || cards.length === 0) return;
 
     const itemCount = 6; // jumlah item original
+    let singleSetWidth = 0;
+
+    function calculateWidths() {
+      if (cards.length >= itemCount * 2) {
+        singleSetWidth = cards[itemCount].offsetLeft - cards[0].offsetLeft;
+      }
+    }
+
+    calculateWidths();
+
+    // Inisialisasi posisi scroll di tengah set ke-2
+    if (singleSetWidth > 0) {
+      container.scrollLeft = singleSetWidth;
+    }
 
     function updateCenterCard() {
       if (!container) return;
@@ -233,54 +244,44 @@ const displayItems = [...prokerItems, ...prokerItems, ...prokerItems];
     }
 
     function checkInfiniteLoop() {
-      if (!container || cards.length === 0) return;
+      if (!container || singleSetWidth === 0) return;
 
-      const firstCard = cards[0];
-      const secondCard = cards[1];
-      const gap = secondCard.getBoundingClientRect().left - firstCard.getBoundingClientRect().right;
-      const singleSetWidth = (firstCard.offsetWidth + gap) * itemCount;
-
-      const scrollLeft = container.scrollLeft;
-
-      // Jika scroll terlalu ke kiri (set 1)
-      if (scrollLeft < singleSetWidth * 0.4) {
-        container.style.scrollBehavior = 'auto';
-        container.scrollLeft += singleSetWidth;
-        container.style.scrollBehavior = 'smooth';
-      }
-      // Jika scroll terlalu ke kanan (set 3)
-      else if (scrollLeft > singleSetWidth * 1.6) {
-        container.style.scrollBehavior = 'auto';
+      // Jika scroll melewatai pertengahan set ke-3 (scroll ke kanan jauh)
+      if (container.scrollLeft >= singleSetWidth * 2) {
         container.scrollLeft -= singleSetWidth;
-        container.style.scrollBehavior = 'smooth';
+      }
+      // Jika scroll melewatai awal set ke-2 (scroll ke kiri jauh)
+      else if (container.scrollLeft <= singleSetWidth * 0.2) {
+        container.scrollLeft += singleSetWidth;
       }
     }
 
+    // Direct scroll handler tanpa debounce setTimeout agar seamless tanpa visual snapback
+    container.addEventListener('scroll', () => {
+      checkInfiniteLoop();
+      updateCenterCard();
+    }, { passive: true });
+
     cards.forEach((card) => {
       card.addEventListener('click', () => {
-        card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const targetScrollLeft = cardCenter - container.clientWidth / 2;
+        container.scrollTo({ left: targetScrollLeft, behavior: 'smooth' });
       });
     });
 
-    let loopTimeout: any = null;
-    container.addEventListener('scroll', () => {
+    window.addEventListener('resize', () => {
+      calculateWidths();
       updateCenterCard();
-
-      clearTimeout(loopTimeout);
-      loopTimeout = setTimeout(() => {
-        checkInfiniteLoop();
-      }, 100);
     }, { passive: true });
 
-    window.addEventListener('resize', updateCenterCard, { passive: true });
-
-    // Initial center to set 2 item 1
+    // Initial positioning check
     setTimeout(() => {
-      const middleInitialCard = cards[itemCount];
-      if (middleInitialCard) {
-        middleInitialCard.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'center' });
-        updateCenterCard();
+      calculateWidths();
+      if (singleSetWidth > 0 && container.scrollLeft === 0) {
+        container.scrollLeft = singleSetWidth;
       }
-    }, 80);
+      updateCenterCard();
+    }, 50);
   });
 </script>

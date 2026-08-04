@@ -5,77 +5,56 @@ const prokerItems = [
     title: "INFORMATICS COMPASS 2025",
     image: "https://picsum.photos/seed/proker1/1000/800",
     description: "Rangkaian pembekalan, pengenalan kurikulum, dan budaya akademik prodi PTIK UNS bagi mahasiswa baru agar siap berprestasi.",
-    size: "large" // Spans 2 cols, 2 rows
+    size: "hero" // Spans 2 cols, 2 rows
   },
   {
     id: 2,
-    title: "TECHNOFEST COMPETITION 2025",
+    title: "TECHNOFEST COMPETITION",
     image: "https://picsum.photos/seed/proker2/800/600",
     description: "Kompetisi teknologi tingkat nasional mencakup Web Development, UI/UX Design, dan Competitive Programming.",
-    size: "medium"
+    size: "medium" // Spans 1 col, 1 row
   },
   {
     id: 3,
     title: "PTIK GOES TO COMMUNITY",
-    image: "https://picsum.photos/seed/proker3/800/600",
+    image: "https://picsum.photos/seed/proker3/800/1000",
     description: "Pelatihan literasi digital, branding sosial media, dan pembuatan website bagi UMKM desa binaan.",
-    size: "medium"
+    size: "tall" // Spans 1 col, 2 rows
   },
   {
     id: 4,
     title: "WORKSHOP & STUDY CLUB TECH",
     image: "https://picsum.photos/seed/proker4/800/600",
-    description: "Sesi intensif pengasahan skill software engineering, cloud computing, dan AI bersama praktisi alumni.",
-    size: "medium"
+    description: "Sesi intensif pengasahan skill software engineering, cloud computing, dan AI bersama alumni.",
+    size: "compact" // Spans 1 col, 1 row
   },
   {
     id: 5,
-    title: "LKMM-TD NAYA VIKRAMA",
-    image: "https://picsum.photos/seed/proker6/800/600",
-    description: "Latihan Keterampilan Manajemen Mahasiswa Tingkat Dasar untuk membina jiwa kepemimpinan dan manajerial.",
-    size: "medium"
-  },
-  {
-    id: 6,
     title: "PTIK CAREER & ALUMNI EXPO",
     image: "https://picsum.photos/seed/proker5/1000/600",
     description: "Ajang jejaring alumni dan industri IT untuk memberikan wawasan karir serta peluang magang bagi mahasiswa aktif.",
-    size: "wide" // Spans 2 cols
+    size: "half-wide" // Spans 2 cols, 1 row
+  },
+  {
+    id: 6,
+    title: "LKMM-TD NAYA VIKRAMA",
+    image: "https://picsum.photos/seed/proker6/800/600",
+    description: "Latihan Keterampilan Manajemen Mahasiswa Tingkat Dasar untuk membina jiwa kepemimpinan.",
+    size: "medium" // Spans 1 col, 1 row
   },
   {
     id: 7,
     title: "HACKATHON PTIK INNOVATION",
-    image: "https://picsum.photos/seed/proker7/1000/600",
-    description: "Maraton pembuatan prototipe solusi digital 24 jam untuk memecahkan permasalahan nyata masyarakat.",
-    size: "wide" // Spans 2 cols
-  },
-  {
-    id: 8,
-    title: "SEMINAR NASIONAL TEKNOLOGI (SNTI)",
-    image: "https://picsum.photos/seed/proker8/800/600",
-    description: "Forum diskusi ilmiah dan wawasan tren teknologi terkini bersama pembicara kelas dunia.",
-    size: "medium"
-  },
-  {
-    id: 9,
-    title: "MIKROPTIK SPORT & ART FEST",
-    image: "https://picsum.photos/seed/proker9/800/600",
-    description: "Pekan olahraga dan pentas seni untuk mempererat solidaritas antar angkatan civitas akademika PTIK.",
-    size: "medium"
-  },
-  {
-    id: 10,
-    title: "INFORMATICS PODCAST & MEDIA",
-    image: "https://picsum.photos/seed/proker10/1000/600",
-    description: "Konten edukatif multimedia dan podcast inspiratif mengulas kisah sukses alumni serta mahasiswa berprestasi.",
-    size: "wide" // Spans 2 cols
+    image: "https://picsum.photos/seed/proker7/800/600",
+    description: "Maraton pembuatan prototipe solusi digital 24 jam untuk memecahkan permasalahan nyata.",
+    size: "medium" // Spans 1 col, 1 row
   }
 ];
 ---
 
 <div class="proker-bento-grid">
   {prokerItems.map((item) => (
-    <article class={`bento-card bento-card-${item.size}`}>
+    <article class={`bento-card bento-${item.size}`}>
       <!-- Background Image Full Card -->
       <img src={item.image} alt={item.title} class="bento-card-bg-img" loading="lazy" />
       
@@ -94,14 +73,15 @@ const prokerItems = [
   .proker-bento-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(230px, auto);
     gap: 0.75rem; /* Gap rapat & presisi */
     width: 100%;
     max-width: 100%;
     padding: 0 clamp(0.75rem, 2.5vw, 2.5rem);
-    margin-top: 2rem;
+    margin-top: 1.5rem;
   }
 
-  /* Bento Card Styles */
+  /* Bento Card Base Styles */
   .bento-card {
     position: relative;
     border-radius: var(--radius-sm); /* Style tegas: corner radius kecil 4px */
@@ -121,21 +101,35 @@ const prokerItems = [
     z-index: 5;
   }
 
-  /* Bento Grid Spans (Ukuran Lebih Besar & Tinggi) */
-  .bento-card-large {
+  /* Dynamic Multi-Height Asymmetric Bento Grid Spans */
+  .bento-hero {
     grid-column: span 2;
     grid-row: span 2;
-    min-height: 620px;
+    min-height: 500px;
   }
 
-  .bento-card-wide {
-    grid-column: span 2;
-    min-height: 300px;
-  }
-
-  .bento-card-medium {
+  .bento-tall {
     grid-column: span 1;
-    min-height: 300px;
+    grid-row: span 2;
+    min-height: 500px;
+  }
+
+  .bento-medium {
+    grid-column: span 1;
+    grid-row: span 1;
+    min-height: 240px;
+  }
+
+  .bento-compact {
+    grid-column: span 1;
+    grid-row: span 1;
+    min-height: 240px;
+  }
+
+  .bento-half-wide {
+    grid-column: span 2;
+    grid-row: span 1;
+    min-height: 240px;
   }
 
   /* Background Image */
@@ -160,7 +154,7 @@ const prokerItems = [
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: clamp(1.25rem, 2.5vw, 2.25rem);
+    padding: clamp(1.15rem, 2.2vw, 2rem);
     background: linear-gradient(
       to top,
       rgba(28, 22, 20, 0.98) 0%,
@@ -174,16 +168,16 @@ const prokerItems = [
   .bento-card-content {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.45rem;
   }
 
-  .bento-card-large .bento-card-title {
-    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+  .bento-hero .bento-card-title {
+    font-size: clamp(2rem, 3.2vw, 3rem);
   }
 
   .bento-card-title {
     font-family: var(--font-heading);
-    font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+    font-size: clamp(1.5rem, 2vw, 2.1rem);
     color: var(--color-gold);
     line-height: 1.1;
     letter-spacing: 0.05em;
@@ -192,9 +186,9 @@ const prokerItems = [
 
   .bento-card-desc {
     font-family: var(--font-body);
-    font-size: clamp(0.88rem, 1.1vw, 1.02rem);
+    font-size: clamp(0.85rem, 1vw, 0.98rem);
     color: rgba(255, 255, 255, 0.92);
-    line-height: 1.55;
+    line-height: 1.5;
     text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
   }
 
@@ -205,20 +199,27 @@ const prokerItems = [
       gap: 0.75rem;
     }
 
-    .bento-card-large {
+    .bento-hero {
       grid-column: span 2;
       grid-row: span 1;
-      min-height: 420px;
+      min-height: 380px;
     }
 
-    .bento-card-wide {
-      grid-column: span 2;
-      min-height: 270px;
-    }
-
-    .bento-card-medium {
+    .bento-tall {
       grid-column: span 1;
-      min-height: 270px;
+      grid-row: span 1;
+      min-height: 250px;
+    }
+
+    .bento-half-wide {
+      grid-column: span 2;
+      min-height: 250px;
+    }
+
+    .bento-medium,
+    .bento-compact {
+      grid-column: span 1;
+      min-height: 250px;
     }
   }
 
@@ -229,11 +230,14 @@ const prokerItems = [
       gap: 0.75rem;
     }
 
-    .bento-card-large,
-    .bento-card-wide,
-    .bento-card-medium {
+    .bento-hero,
+    .bento-tall,
+    .bento-half-wide,
+    .bento-medium,
+    .bento-compact {
       grid-column: span 1;
-      min-height: 320px;
+      grid-row: span 1;
+      min-height: 280px;
     }
   }
 </style>

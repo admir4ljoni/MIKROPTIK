@@ -5,6 +5,7 @@ import StatCounter from "../components/StatCounter.astro";
 import ProgramCard from "../components/ProgramCard.astro";
 import ScrollIndicator from "../components/ScrollIndicator.astro";
 import FilosofiCarousel from "../components/FilosofiCarousel.astro";
+import ProkerCarousel from "../components/ProkerCarousel.astro";
 ---
 
 <BaseLayout title="MIKROPTIK | Kabinet Naya Vikrama - HMP PTIK FKIP UNS">
@@ -279,28 +280,7 @@ import FilosofiCarousel from "../components/FilosofiCarousel.astro";
         subtitle="Inisiatif strategis yang dilaksanakan oleh Kabinet Naya Vikrama"
       />
 
-      <div class="proker-grid">
-        <ProgramCard
-          title="INFORMATICS COMPASS 2025"
-          description="Rangkaian pembekalan dan pengenalan dunia perkuliahan prodi PTIK bagi mahasiswa baru."
-          image="https://picsum.photos/seed/proker1/600/400"
-          date="Agustus 2025"
-        />
-
-        <ProgramCard
-          title="TECHNOFEST COMPETITION"
-          description="Kompetisi nasional pengembangan web, UI/UX, dan competitive programming bagi pelajar & mahasiswa."
-          image="https://picsum.photos/seed/proker2/600/400"
-          date="Oktober 2025"
-        />
-
-        <ProgramCard
-          title="PTIK GOES TO COMMUNITY"
-          description="Pelatihan literasi digital dan pembuatan website sederhana bagi UMKM desa binaan."
-          image="https://picsum.photos/seed/proker3/600/400"
-          date="November 2025"
-        />
-      </div>
+      <ProkerCarousel />
     </div>
   </section>
 

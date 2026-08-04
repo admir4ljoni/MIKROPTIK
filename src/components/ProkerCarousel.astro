@@ -95,8 +95,8 @@ const prokerItems = [
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    padding: 1.5rem 0;
-    height: 580px;
+    padding: 2rem 0;
+    height: 680px;
     display: flex;
     align-items: center;
   }
@@ -109,21 +109,21 @@ const prokerItems = [
     display: flex;
     align-items: center;
     gap: 1.75rem;
-    padding-left: calc(50% - clamp(150px, 18vw, 230px));
-    padding-right: calc(50% - clamp(150px, 18vw, 230px));
+    padding-left: calc(50% - clamp(150px, 16vw, 220px));
+    padding-right: calc(50% - clamp(150px, 16vw, 220px));
     width: max-content;
-    height: 540px;
+    height: 640px;
   }
 
-  /* Card Base - Constant Height (GPU Scale Transition) */
+  /* Card Base - Height-wise Tall Portrait (Border-Free) */
   .proker-card-full {
     position: relative;
-    width: clamp(300px, 36vw, 460px);
-    height: 510px;
+    width: clamp(320px, 32vw, 440px);
+    height: 600px;
     border-radius: var(--radius-sm); /* Style tegas: corner radius kecil 4px */
     overflow: hidden;
     scroll-snap-align: center;
-    border: 1.5px solid rgba(212, 179, 84, 0.2);
+    border: none;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
     opacity: 0.55;
     filter: grayscale(25%);
@@ -132,23 +132,22 @@ const prokerItems = [
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
                 box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
                 opacity 0.4s ease,
-                filter 0.4s ease,
-                border-color 0.4s ease;
+                filter 0.4s ease;
     flex-shrink: 0;
     cursor: pointer;
     will-change: transform, opacity, box-shadow;
   }
 
-  /* Kartu Tengah Active (Omnidirectional Smooth Glow 360° Memencar Ke Segala Arah) */
+  /* Kartu Tengah Active (Omnidirectional Smooth Glow 360° Border-Free) */
   .proker-card-full.active {
     opacity: 1;
     filter: grayscale(0%);
     transform: scale(1);
-    border-color: var(--color-gold);
+    border: none;
     box-shadow: 
-      0 0 25px rgba(212, 179, 84, 0.45),
-      0 0 50px rgba(204, 87, 14, 0.35),
-      0 0 90px rgba(130, 9, 7, 0.3);
+      0 0 30px rgba(212, 179, 84, 0.45),
+      0 0 60px rgba(204, 87, 14, 0.35),
+      0 0 100px rgba(130, 9, 7, 0.3);
     z-index: 10;
   }
 

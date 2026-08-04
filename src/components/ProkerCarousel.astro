@@ -99,8 +99,8 @@ const displayItems = [
     display: flex;
     align-items: center;
     gap: 1.75rem;
-    padding-left: calc(50vw - clamp(160px, 16vw, 220px));
-    padding-right: calc(50vw - clamp(160px, 16vw, 220px));
+    padding-left: calc(50vw - clamp(250px, 26vw, 360px));
+    padding-right: calc(50vw - clamp(250px, 26vw, 360px));
     width: max-content;
     height: 640px;
   }
@@ -108,7 +108,7 @@ const displayItems = [
   /* Card Base - Side Cards (Ramping, HANYA Menampilkan Judul) */
   .proker-card-full {
     position: relative;
-    width: clamp(260px, 24vw, 340px);
+    width: clamp(240px, 22vw, 320px);
     height: 600px;
     border-radius: var(--radius-sm); /* Style tegas: corner radius kecil 4px */
     overflow: hidden;
@@ -128,17 +128,17 @@ const displayItems = [
     will-change: width, transform, opacity, box-shadow;
   }
 
-  /* Kartu Tengah Active (Extend Melebar Horisontal, Menampilkan Deskripsi & 360° Glow) */
+  /* Kartu Tengah Active (Melebar Jauh Lebih Luas, Menampilkan Deskripsi & 360° Glow) */
   .proker-card-full.active {
-    width: clamp(400px, 42vw, 560px);
+    width: clamp(500px, 52vw, 720px);
     opacity: 1;
     filter: grayscale(0%);
     transform: scale(1);
     border: none;
     box-shadow: 
-      0 0 30px rgba(212, 179, 84, 0.45),
-      0 0 60px rgba(204, 87, 14, 0.35),
-      0 0 100px rgba(130, 9, 7, 0.3);
+      0 0 35px rgba(212, 179, 84, 0.45),
+      0 0 65px rgba(204, 87, 14, 0.35),
+      0 0 110px rgba(130, 9, 7, 0.35);
     z-index: 10;
   }
 
@@ -168,7 +168,7 @@ const displayItems = [
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 2.25rem 1.85rem;
+    padding: 2.5rem 2rem;
     background: linear-gradient(
       to top,
       rgba(28, 22, 20, 0.98) 0%,
@@ -194,26 +194,27 @@ const displayItems = [
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
   }
 
-  /* Deskripsi Teks - HANYA Tampil di Kartu Tengah Active */
+  /* Deskripsi Teks - Smooth Staggered Slide-Up Animation pada Kartu Tengah Active */
   .proker-card-desc {
     font-family: var(--font-body);
-    font-size: clamp(0.9rem, 1.1vw, 1.02rem);
-    color: rgba(255, 255, 255, 0.92);
-    line-height: 1.55;
-    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+    font-size: clamp(0.92rem, 1.15vw, 1.08rem);
+    color: rgba(255, 255, 255, 0.94);
+    line-height: 1.6;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
     opacity: 0;
     max-height: 0;
     overflow: hidden;
-    transform: translateY(12px);
-    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(20px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .proker-card-full.active .proker-card-desc {
     opacity: 1;
-    max-height: 160px;
+    max-height: 180px;
     transform: translateY(0);
+    transition-delay: 0.15s;
   }
 
   @media (max-width: 768px) {

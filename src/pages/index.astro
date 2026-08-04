@@ -5,7 +5,7 @@ import StatCounter from "../components/StatCounter.astro";
 import ProgramCard from "../components/ProgramCard.astro";
 import ScrollIndicator from "../components/ScrollIndicator.astro";
 import FilosofiCarousel from "../components/FilosofiCarousel.astro";
-import ProkerCarousel from "../components/ProkerCarousel.astro";
+import ProkerBento from "../components/ProkerBento.astro";
 ---
 
 <BaseLayout title="MIKROPTIK | Kabinet Naya Vikrama - HMP PTIK FKIP UNS">
@@ -272,16 +272,16 @@ import ProkerCarousel from "../components/ProkerCarousel.astro";
   <!-- =========================================================================
        SECTION 6: PROGRAM KERJA / REKAM JEJAK
        ========================================================================= -->
-  <section id="proker" class="section bg-dark" style="padding-left: 0; padding-right: 0; overflow: hidden;">
+  <section id="proker" class="section bg-dark">
     <div class="container">
       <SectionHeading
         titleMain="PROGRAM"
         titleAccent="Kerja Unggulan"
         subtitle="Inisiatif strategis yang dilaksanakan oleh Kabinet Naya Vikrama"
       />
-    </div>
 
-    <ProkerCarousel />
+      <ProkerBento />
+    </div>
   </section>
 
   <!-- =========================================================================

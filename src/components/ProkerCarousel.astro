@@ -38,21 +38,15 @@ const prokerItems = [
   }
 ];
 
-// Duplikasi items 5x untuk seamless 100vw ultra-wide infinite loop
-const displayItems = [
-  ...prokerItems,
-  ...prokerItems,
-  ...prokerItems,
-  ...prokerItems,
-  ...prokerItems
-];
+// Duplikasi items 3x untuk seamless infinite loop
+const displayItems = [...prokerItems, ...prokerItems, ...prokerItems];
 ---
 
 <div class="proker-carousel-wrapper" id="proker-carousel">
   <div class="proker-carousel-container" id="proker-container">
     <div class="proker-track" id="proker-track">
       {displayItems.map((item, index) => (
-        <article class={`proker-card-full ${index === 12 ? 'active' : ''}`} data-index={index}>
+        <article class={`proker-card-full ${index === 6 ? 'active' : ''}`} data-index={index}>
           <!-- Background Image Full Card -->
           <img src={item.image} alt={item.title} class="proker-card-bg-img" loading="lazy" />
           
@@ -72,12 +66,8 @@ const displayItems = [
 <style>
   .proker-carousel-wrapper {
     position: relative;
-    width: 100vw;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
   }
 
   .proker-carousel-container {
@@ -88,7 +78,6 @@ const displayItems = [
     height: 680px;
     display: flex;
     align-items: center;
-    width: 100%;
   }
 
   .proker-carousel-container::-webkit-scrollbar {
@@ -99,16 +88,16 @@ const displayItems = [
     display: flex;
     align-items: center;
     gap: 1.75rem;
-    padding-left: calc(50vw - clamp(250px, 26vw, 360px));
-    padding-right: calc(50vw - clamp(250px, 26vw, 360px));
+    padding-left: calc(50% - clamp(150px, 16vw, 220px));
+    padding-right: calc(50% - clamp(150px, 16vw, 220px));
     width: max-content;
     height: 640px;
   }
 
-  /* Card Base - Side Cards (Ramping, HANYA Menampilkan Judul) */
+  /* Card Base - Height-wise Tall Portrait (Border-Free) */
   .proker-card-full {
     position: relative;
-    width: clamp(240px, 22vw, 320px);
+    width: clamp(320px, 32vw, 440px);
     height: 600px;
     border-radius: var(--radius-sm); /* Style tegas: corner radius kecil 4px */
     overflow: hidden;
@@ -118,32 +107,29 @@ const displayItems = [
     filter: grayscale(25%);
     transform: scale(0.85);
     transform-origin: center center;
-    transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
                 box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
                 opacity 0.4s ease,
                 filter 0.4s ease;
     flex-shrink: 0;
     cursor: pointer;
-    will-change: width, transform, opacity, box-shadow;
+    will-change: transform, opacity, box-shadow;
   }
 
-  /* Kartu Tengah Active (Melebar Jauh Lebih Luas, Menampilkan Deskripsi & 360° Glow) */
+  /* Kartu Tengah Active (Omnidirectional Smooth Glow 360° Border-Free) */
   .proker-card-full.active {
-    width: clamp(500px, 52vw, 720px);
     opacity: 1;
     filter: grayscale(0%);
     transform: scale(1);
     border: none;
     box-shadow: 
-      0 0 35px rgba(212, 179, 84, 0.45),
-      0 0 65px rgba(204, 87, 14, 0.35),
-      0 0 110px rgba(130, 9, 7, 0.35);
+      0 0 30px rgba(212, 179, 84, 0.45),
+      0 0 60px rgba(204, 87, 14, 0.35),
+      0 0 100px rgba(130, 9, 7, 0.3);
     z-index: 10;
   }
 
-  .proker-card-full.no-anim,
-  .proker-card-full.no-anim .proker-card-desc {
+  .proker-card-full.no-anim {
     transition: none !important;
   }
 
@@ -168,7 +154,7 @@ const displayItems = [
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 2.5rem 2rem;
+    padding: 2.25rem 1.85rem;
     background: linear-gradient(
       to top,
       rgba(28, 22, 20, 0.98) 0%,
@@ -194,27 +180,12 @@ const displayItems = [
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
   }
 
-  /* Deskripsi Teks - Smooth Staggered Slide-Up Animation pada Kartu Tengah Active */
   .proker-card-desc {
     font-family: var(--font-body);
-    font-size: clamp(0.92rem, 1.15vw, 1.08rem);
-    color: rgba(255, 255, 255, 0.94);
-    line-height: 1.6;
-    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transform: translateY(20px);
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .proker-card-full.active .proker-card-desc {
-    opacity: 1;
-    max-height: 180px;
-    transform: translateY(0);
-    transition-delay: 0.15s;
+    font-size: clamp(0.9rem, 1.1vw, 1.02rem);
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.55;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
   }
 
   @media (max-width: 768px) {
@@ -243,9 +214,9 @@ const displayItems = [
 
     calculateWidths();
 
-    // Inisialisasi posisi scroll di tengah (set ke-3)
+    // Inisialisasi posisi scroll di tengah set ke-2
     if (singleSetWidth > 0) {
-      container.scrollLeft = singleSetWidth * 2;
+      container.scrollLeft = singleSetWidth;
     }
 
     function updateCenterCard() {
@@ -281,12 +252,12 @@ const displayItems = [
 
       let resetDelta = 0;
 
-      // Jika scroll melewatai batas kanan (set ke-4)
-      if (container.scrollLeft >= singleSetWidth * 3.5) {
+      // Jika scroll melewati pertengahan set ke-3 (scroll ke kanan jauh)
+      if (container.scrollLeft >= singleSetWidth * 2) {
         resetDelta = -singleSetWidth;
       }
-      // Jika scroll melewatai batas kiri (set ke-2)
-      else if (container.scrollLeft <= singleSetWidth * 0.5) {
+      // Jika scroll melewati awal set ke-2 (scroll ke kiri jauh)
+      else if (container.scrollLeft <= singleSetWidth * 0.2) {
         resetDelta = singleSetWidth;
       }
 
@@ -328,8 +299,8 @@ const displayItems = [
     // Initial positioning check
     setTimeout(() => {
       calculateWidths();
-      if (singleSetWidth > 0 && (container.scrollLeft === 0 || container.scrollLeft < singleSetWidth)) {
-        container.scrollLeft = singleSetWidth * 2;
+      if (singleSetWidth > 0 && container.scrollLeft === 0) {
+        container.scrollLeft = singleSetWidth;
       }
       updateCenterCard();
     }, 50);

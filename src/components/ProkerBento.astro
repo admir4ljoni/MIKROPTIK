@@ -1,0 +1,206 @@
+---
+const prokerItems = [
+  {
+    id: 1,
+    title: "INFORMATICS COMPASS 2025",
+    image: "https://picsum.photos/seed/proker1/1000/800",
+    description: "Rangkaian pembekalan, pengenalan kurikulum, dan budaya akademik prodi PTIK UNS bagi mahasiswa baru agar siap berprestasi.",
+    size: "large" // Spans 2 cols, 2 rows
+  },
+  {
+    id: 2,
+    title: "TECHNOFEST COMPETITION",
+    image: "https://picsum.photos/seed/proker2/800/600",
+    description: "Kompetisi teknologi tingkat nasional mencakup Web Development, UI/UX Design, dan Competitive Programming.",
+    size: "medium"
+  },
+  {
+    id: 3,
+    title: "PTIK GOES TO COMMUNITY",
+    image: "https://picsum.photos/seed/proker3/800/600",
+    description: "Pelatihan literasi digital, branding sosial media, dan pembuatan website bagi UMKM desa binaan.",
+    size: "medium"
+  },
+  {
+    id: 4,
+    title: "WORKSHOP & STUDY CLUB TECH",
+    image: "https://picsum.photos/seed/proker4/800/600",
+    description: "Sesi intensif pengasahan skill software engineering, cloud computing, dan AI bersama praktisi alumni.",
+    size: "medium"
+  },
+  {
+    id: 5,
+    title: "PTIK CAREER & ALUMNI EXPO",
+    image: "https://picsum.photos/seed/proker5/1000/600",
+    description: "Ajang jejaring alumni dan industri IT untuk memberikan wawasan karir serta peluang magang bagi mahasiswa aktif.",
+    size: "wide" // Spans 2 cols
+  },
+  {
+    id: 6,
+    title: "LKMM-TD NAYA VIKRAMA",
+    image: "https://picsum.photos/seed/proker6/800/600",
+    description: "Latihan Keterampilan Manajemen Mahasiswa Tingkat Dasar untuk membina jiwa kepemimpinan dan manajerial.",
+    size: "medium"
+  }
+];
+---
+
+<div class="proker-bento-grid">
+  {prokerItems.map((item) => (
+    <article class={`bento-card bento-card-${item.size}`}>
+      <!-- Background Image Full Card -->
+      <img src={item.image} alt={item.title} class="bento-card-bg-img" loading="lazy" />
+      
+      <!-- Dark Bottom Shadow Overlay Gradient -->
+      <div class="bento-card-overlay">
+        <div class="bento-card-content">
+          <h3 class="bento-card-title">{item.title}</h3>
+          <p class="bento-card-desc">{item.description}</p>
+        </div>
+      </div>
+    </article>
+  ))}
+</div>
+
+<style>
+  .proker-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+    margin-top: 1.5rem;
+  }
+
+  /* Bento Card Styles */
+  .bento-card {
+    position: relative;
+    border-radius: var(--radius-sm); /* Style tegas: corner radius kecil 4px */
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+  }
+
+  .bento-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 
+      0 0 30px rgba(212, 179, 84, 0.35),
+      0 0 60px rgba(130, 9, 7, 0.3);
+    z-index: 5;
+  }
+
+  /* Bento Grid Spans */
+  .bento-card-large {
+    grid-column: span 2;
+    grid-row: span 2;
+    min-height: 520px;
+  }
+
+  .bento-card-wide {
+    grid-column: span 2;
+    min-height: 260px;
+  }
+
+  .bento-card-medium {
+    grid-column: span 1;
+    min-height: 260px;
+  }
+
+  /* Background Image */
+  .bento-card-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .bento-card:hover .bento-card-bg-img {
+    transform: scale(1.05);
+  }
+
+  /* Dark Bottom Shadow Overlay Gradient */
+  .bento-card-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: clamp(1.25rem, 2.5vw, 2rem);
+    background: linear-gradient(
+      to top,
+      rgba(28, 22, 20, 0.98) 0%,
+      rgba(28, 22, 20, 0.85) 45%,
+      rgba(28, 22, 20, 0.25) 75%,
+      transparent 100%
+    );
+    z-index: 2;
+  }
+
+  .bento-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bento-card-large .bento-card-title {
+    font-size: clamp(2rem, 3.2vw, 3rem);
+  }
+
+  .bento-card-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+    color: var(--color-gold);
+    line-height: 1.1;
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+  }
+
+  .bento-card-desc {
+    font-family: var(--font-body);
+    font-size: clamp(0.88rem, 1.1vw, 1.02rem);
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.55;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 900px) {
+    .proker-bento-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bento-card-large {
+      grid-column: span 2;
+      grid-row: span 1;
+      min-height: 380px;
+    }
+
+    .bento-card-wide {
+      grid-column: span 2;
+      min-height: 240px;
+    }
+
+    .bento-card-medium {
+      grid-column: span 1;
+      min-height: 240px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .proker-bento-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .bento-card-large,
+    .bento-card-wide,
+    .bento-card-medium {
+      grid-column: span 1;
+      min-height: 300px;
+    }
+  }
+</style>

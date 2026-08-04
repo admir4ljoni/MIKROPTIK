@@ -124,28 +124,31 @@ const prokerItems = [
     overflow: hidden;
     scroll-snap-align: center;
     border: 1.5px solid rgba(212, 179, 84, 0.2);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
     opacity: 0.55;
     filter: grayscale(25%);
     transform: scale(0.85);
     transform-origin: center center;
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
                 opacity 0.4s ease,
                 filter 0.4s ease,
-                border-color 0.4s ease,
-                box-shadow 0.4s ease;
+                border-color 0.4s ease;
     flex-shrink: 0;
     cursor: pointer;
-    will-change: transform, opacity;
+    will-change: transform, opacity, box-shadow;
   }
 
-  /* Kartu Tengah Active (Scaled up via GPU Transform, no layout height change!) */
+  /* Kartu Tengah Active (Omnidirectional Smooth Glow 360° Memencar Ke Segala Arah) */
   .proker-card-full.active {
     opacity: 1;
     filter: grayscale(0%);
     transform: scale(1);
     border-color: var(--color-gold);
-    box-shadow: 0 25px 60px rgba(130, 9, 7, 0.55);
+    box-shadow: 
+      0 0 25px rgba(212, 179, 84, 0.45),
+      0 0 50px rgba(204, 87, 14, 0.35),
+      0 0 90px rgba(130, 9, 7, 0.3);
     z-index: 10;
   }
 

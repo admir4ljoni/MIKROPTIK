@@ -1,206 +1,109 @@
 ---
-const heroCard = {
-  id: 1,
-  title: "INFORMATICS COMPASS 2025",
-  image: "https://picsum.photos/seed/proker1/1200/600",
-  description: "Rangkaian pembekalan utama, pengenalan kurikulum, dan penguatan budaya akademik prodi PTIK UNS bagi mahasiswa baru agar berprestasi sejak awal perkuliahan.",
-  tag: "PROGRAM UNGGULAN UTAMA"
-};
-
-const masonryItems = [
+const bentoItems = [
+  {
+    id: 1,
+    title: "INFORMATICS COMPASS 2025",
+    subtitle: "Rangkaian Pembekalan & Adaptasi",
+    description: "Program pembekalan dan pengenalan dunia perkuliahan, budaya akademik, serta kurikulum prodi PTIK UNS bagi seluruh mahasiswa baru.",
+    image: "https://picsum.photos/seed/proker1/1000/700",
+    gridClass: "bento-item-large" // Span 2 cols, height 480px
+  },
   {
     id: 2,
-    title: "TECHNOFEST COMPETITION 2025",
-    image: "https://picsum.photos/seed/proker2/800/800",
-    description: "Kompetisi teknologi tingkat nasional mencakup Web Development, UI/UX Design, dan Competitive Programming.",
-    height: "tall"
+    title: "TECHNOFEST COMPETITION",
+    subtitle: "Ajang Kompetisi IT Nasional",
+    description: "Kompetisi nasional Web Development, UI/UX Design, dan Competitive Programming untuk mencetak inovator muda.",
+    image: "https://picsum.photos/seed/proker2/700/1000",
+    gridClass: "bento-item-tall" // Span 1 col, height 480px
   },
   {
     id: 3,
     title: "PTIK GOES TO COMMUNITY",
+    subtitle: "Pengabdian & Literasi Digital",
+    description: "Pelatihan literasi digital, branding sosial media, dan pembuatan website bagi UMKM desa binaan secara berkelanjutan.",
     image: "https://picsum.photos/seed/proker3/800/600",
-    description: "Pelatihan literasi digital, branding sosial media, dan pembuatan website bagi UMKM desa binaan.",
-    height: "medium"
+    gridClass: "bento-item-medium" // Span 1 col, height 300px
   },
   {
     id: 4,
     title: "WORKSHOP & STUDY CLUB TECH",
-    image: "https://picsum.photos/seed/proker4/800/500",
-    description: "Sesi intensif pengasahan skill software engineering, cloud computing, dan AI bersama alumni.",
-    height: "short"
+    subtitle: "Pengembangan Skill Software",
+    description: "Sesi harian & bulanan pengasahan skill coding, cloud, dan AI bersama praktisi alumni industri teknologi.",
+    image: "https://picsum.photos/seed/proker4/800/600",
+    gridClass: "bento-item-medium" // Span 1 col, height 300px
   },
   {
     id: 5,
-    title: "LKMM-TD NAYA VIKRAMA",
-    image: "https://picsum.photos/seed/proker6/800/850",
-    description: "Latihan Keterampilan Manajemen Mahasiswa Tingkat Dasar untuk membina jiwa kepemimpinan dan manajerial.",
-    height: "tall"
-  },
-  {
-    id: 6,
     title: "PTIK CAREER & ALUMNI EXPO",
-    image: "https://picsum.photos/seed/proker5/800/650",
-    description: "Ajang jejaring alumni dan industri IT untuk memberikan wawasan karir serta peluang magang.",
-    height: "medium"
-  },
-  {
-    id: 7,
-    title: "HACKATHON PTIK INNOVATION",
-    image: "https://picsum.photos/seed/proker7/800/750",
-    description: "Maraton pembuatan prototipe solusi digital 24 jam untuk memecahkan masalah nyata.",
-    height: "tall"
-  },
-  {
-    id: 8,
-    title: "SEMINAR NASIONAL TEKNOLOGI (SNTI)",
-    image: "https://picsum.photos/seed/proker8/800/550",
-    description: "Forum diskusi ilmiah dan wawasan tren teknologi terkini bersama pembicara ternama.",
-    height: "short"
-  },
-  {
-    id: 9,
-    title: "MIKROPTIK SPORT & ART FEST",
-    image: "https://picsum.photos/seed/proker9/800/700",
-    description: "Pekan olahraga dan pentas seni untuk mempererat keakraban antar civitas akademika.",
-    height: "medium"
-  },
-  {
-    id: 10,
-    title: "INFORMATICS PODCAST & MEDIA",
-    image: "https://picsum.photos/seed/proker10/800/620",
-    description: "Konten edukatif multimedia dan podcast inspiratif mengulas kisah sukses mahasiswa.",
-    height: "medium"
+    subtitle: "Jejaring Karir & Industri",
+    description: "Ajang temu alumni dan perusahaan mitra IT untuk membuka wawasan karir dan peluang magang mahasiswa.",
+    image: "https://picsum.photos/seed/proker5/800/600",
+    gridClass: "bento-item-medium" // Span 1 col, height 300px
   }
 ];
 ---
 
-<div class="proker-layout-wrapper">
-  <!-- 1. Full-Width Flagship Hero Card (Span Full Width 12 Columns) -->
-  <article class="proker-card-fullwidth">
-    <img src={heroCard.image} alt={heroCard.title} class="proker-card-bg-img" loading="lazy" />
-    <div class="proker-card-overlay">
-      <div class="proker-card-content">
-        <span class="hero-flagship-tag">{heroCard.tag}</span>
-        <h3 class="proker-card-title hero-title">{heroCard.title}</h3>
-        <p class="proker-card-desc hero-desc">{heroCard.description}</p>
-      </div>
-    </div>
-  </article>
+<div class="proker-bento-grid">
+  {bentoItems.map((item) => (
+    <article class={`bento-card ${item.gridClass}`}>
+      <!-- Background Full Image -->
+      <img src={item.image} alt={item.title} class="bento-bg-img" loading="lazy" />
 
-  <!-- 2. Asymmetrical Masonry Grid for Remaining Cards (4 Columns) -->
-  <div class="proker-masonry-grid">
-    {masonryItems.map((item) => (
-      <article class={`bento-card bento-card-${item.height}`}>
-        <img src={item.image} alt={item.title} class="bento-card-bg-img" loading="lazy" />
-        <div class="bento-card-overlay">
-          <div class="bento-card-content">
-            <h3 class="bento-card-title">{item.title}</h3>
-            <p class="bento-card-desc">{item.description}</p>
-          </div>
+      <!-- Bottom Shadow Overlay Gradient -->
+      <div class="bento-card-overlay">
+        <div class="bento-card-content">
+          <span class="bento-subtitle">{item.subtitle}</span>
+          <h3 class="bento-title">{item.title}</h3>
+          <p class="bento-desc">{item.description}</p>
         </div>
-      </article>
-    ))}
-  </div>
+      </div>
+    </article>
+  ))}
 </div>
 
 <style>
-  .proker-layout-wrapper {
+  .proker-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
     width: 100%;
-    max-width: 100%;
-    padding: 0 clamp(0.75rem, 2.5vw, 2.5rem);
-    margin-top: 1.5rem;
+    margin-top: 1rem;
   }
 
-  /* Full Width Hero Card */
-  .proker-card-fullwidth {
-    position: relative;
-    width: 100%;
-    min-height: 440px;
-    border-radius: var(--radius-sm); /* Style tegas: corner radius kecil 4px */
-    overflow: hidden;
-    border: none;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-    margin-bottom: 0.75rem;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    cursor: pointer;
-  }
-
-  .proker-card-fullwidth:hover {
-    transform: translateY(-4px);
-    box-shadow: 
-      0 0 30px rgba(212, 179, 84, 0.4),
-      0 0 60px rgba(130, 9, 7, 0.35);
-  }
-
-  .hero-flagship-tag {
-    display: inline-block;
-    background: var(--color-gold);
-    color: var(--color-dark);
-    font-family: var(--font-heading);
-    font-size: 0.9rem;
-    letter-spacing: 0.1em;
-    padding: 0.25rem 0.85rem;
-    border-radius: var(--radius-sm);
-    width: max-content;
-    margin-bottom: 0.5rem;
-  }
-
-  .hero-title {
-    font-size: clamp(2.4rem, 4vw, 3.6rem) !important;
-  }
-
-  .hero-desc {
-    max-width: 800px;
-    font-size: clamp(1rem, 1.2vw, 1.15rem) !important;
-  }
-
-  /* Masonry Multi-Column Grid Layout (4 Columns Desktop) */
-  .proker-masonry-grid {
-    column-count: 4;
-    column-gap: 0.75rem;
-    width: 100%;
-  }
-
-  /* Bento Card Base */
+  /* Base Bento Card Style - Style Tegas (Corner Radius Kecil, Border-Free) */
   .bento-card {
     position: relative;
-    width: 100%;
-    break-inside: avoid;
-    margin-bottom: 0.75rem;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-sm); /* Style tegas 4px */
     overflow: hidden;
     border: none;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
     cursor: pointer;
   }
 
   .bento-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 
-      0 0 30px rgba(212, 179, 84, 0.4),
-      0 0 60px rgba(130, 9, 7, 0.35);
-    z-index: 5;
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(130, 9, 7, 0.45);
   }
 
-  /* Variasi Tinggi Asimetris Masonry (Heights) */
-  .bento-card-tall {
-    height: 420px;
+  /* Variations by Grid Layout */
+  .bento-item-large {
+    grid-column: span 2;
+    height: 480px;
   }
 
-  .bento-card-medium {
-    height: 330px;
+  .bento-item-tall {
+    grid-column: span 1;
+    height: 480px;
   }
 
-  .bento-card-short {
-    height: 270px;
+  .bento-item-medium {
+    grid-column: span 1;
+    height: 320px;
   }
 
-  /* Background Image */
-  .proker-card-bg-img,
-  .bento-card-bg-img {
+  /* Image Background Zoom */
+  .bento-bg-img {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -210,24 +113,22 @@ const masonryItems = [
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .proker-card-fullwidth:hover .proker-card-bg-img,
-  .bento-card:hover .bento-card-bg-img {
-    transform: scale(1.05);
+  .bento-card:hover .bento-bg-img {
+    transform: scale(1.06);
   }
 
-  /* Dark Bottom Shadow Overlay Gradient */
-  .proker-card-overlay,
+  /* Bottom Shadow Overlay Gradient */
   .bento-card-overlay {
     position: absolute;
     inset: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: clamp(1.25rem, 2vw, 1.85rem);
+    padding: 2rem;
     background: linear-gradient(
       to top,
-      rgba(28, 22, 20, 0.98) 0%,
-      rgba(28, 22, 20, 0.85) 45%,
+      rgba(28, 22, 20, 0.97) 0%,
+      rgba(28, 22, 20, 0.82) 45%,
       rgba(28, 22, 20, 0.25) 75%,
       transparent 100%
     );
@@ -237,60 +138,51 @@ const masonryItems = [
   .bento-card-content {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.5rem;
   }
 
-  .bento-card-title {
+  .bento-subtitle {
     font-family: var(--font-heading);
-    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-size: clamp(0.85rem, 1.2vw, 1.1rem);
     color: var(--color-gold);
-    line-height: 1.1;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+
+  .bento-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+    color: var(--color-white);
+    line-height: 1.05;
     letter-spacing: 0.05em;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
   }
 
-  .bento-card-desc {
+  .bento-desc {
     font-family: var(--font-body);
-    font-size: clamp(0.85rem, 1vw, 0.96rem);
-    color: rgba(255, 255, 255, 0.92);
-    line-height: 1.5;
+    font-size: clamp(0.88rem, 1vw, 1rem);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.55;
     text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
-  /* Responsive Adjustments */
-  @media (max-width: 1200px) {
-    .proker-masonry-grid {
-      column-count: 3;
-    }
-  }
-
-  @media (max-width: 820px) {
-    .proker-masonry-grid {
-      column-count: 2;
+  /* Responsive Mobile Adjustments */
+  @media (max-width: 900px) {
+    .proker-bento-grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
     }
 
-    .proker-card-fullwidth {
-      min-height: 360px;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .proker-masonry-grid {
-      column-count: 1;
-    }
-
-    .proker-layout-wrapper {
-      padding: 0 0.75rem;
-    }
-
-    .proker-card-fullwidth {
-      min-height: 320px;
-    }
-
-    .bento-card-tall,
-    .bento-card-medium,
-    .bento-card-short {
-      height: 300px;
+    .bento-item-large,
+    .bento-item-tall,
+    .bento-item-medium {
+      grid-column: span 1;
+      height: 380px;
     }
   }
 </style>

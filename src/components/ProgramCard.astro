@@ -16,10 +16,23 @@ const {
 
 <article class="program-card gsap-card-item">
   <img src={image} alt={title} class="program-card-img" loading="lazy" />
-  <div class="program-card-overlay"></div>
   <div class="program-card-body">
-    <span class="program-card-date">{date}</span>
-    <h3 class="program-card-title">{title}</h3>
-    <p class="program-card-desc">{description}</p>
+    <div
+      style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;"
+    >
+      <span style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.6);"
+        >{date}</span
+      >
+    </div>
+    <h3
+      style="font-size: 1.5rem; color: var(--color-gold); margin-bottom: 0.5rem; letter-spacing: 0.04em;"
+    >
+      {title}
+    </h3>
+    <p
+      style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.85); line-height: 1.5;"
+    >
+      {description}
+    </p>
   </div>
 </article>

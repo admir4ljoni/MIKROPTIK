@@ -1,103 +1,343 @@
 ---
-import { ChevronLeft, ChevronRight } from "@lucide/astro";
-import ProgramCard from "./ProgramCard.astro";
+import { ChevronLeft, ChevronRight, Calendar, ArrowUpRight } from '@lucide/astro';
 
-const programs = [
+const prokerItems = [
   {
+    id: 1,
     title: "INFORMATICS COMPASS 2025",
-    description:
-      "Rangkaian pembekalan dan pengenalan dunia perkuliahan prodi PTIK bagi mahasiswa baru.",
-    image: "https://picsum.photos/seed/proker1/600/800",
     date: "Agustus 2025",
+    image: "https://picsum.photos/seed/proker1/800/1000",
+    description: "Rangkaian pembekalan, pengenalan kurikulum, dan budaya akademik prodi PTIK UNS bagi mahasiswa baru agar siap berprestasi.",
+    tag: "Welcoming & Adaptation"
   },
   {
+    id: 2,
     title: "TECHNOFEST COMPETITION",
-    description:
-      "Kompetisi nasional pengembangan web, UI/UX, dan competitive programming bagi pelajar & mahasiswa.",
-    image: "https://picsum.photos/seed/proker2/600/800",
     date: "Oktober 2025",
+    image: "https://picsum.photos/seed/proker2/800/1000",
+    description: "Kompetisi teknologi tingkat nasional mencakup Web Development, UI/UX Design, dan Competitive Programming untuk pelajar & mahasiswa.",
+    tag: "Kompetisi Nasional"
   },
   {
+    id: 3,
     title: "PTIK GOES TO COMMUNITY",
-    description:
-      "Pelatihan literasi digital dan pembuatan website sederhana bagi UMKM desa binaan.",
-    image: "https://picsum.photos/seed/proker3/600/800",
     date: "November 2025",
+    image: "https://picsum.photos/seed/proker3/800/1000",
+    description: "Program pengabdian masyarakat berupa pelatihan literasi digital, branding sosial media, dan pembuatan website bagi UMKM binaan.",
+    tag: "Pengabdian Masyarakat"
   },
   {
-    title: "SEMINAR NASIONAL TEKNOLOGI",
-    description:
-      "Forum diskusi ilmiah menghadirkan pakar IT & Edukasi Nasional membahas masa depan AI.",
-    image: "https://picsum.photos/seed/proker4/600/800",
+    id: 4,
+    title: "WORKSHOP & STUDY CLUB TECH",
+    date: "Setiap Bulan",
+    image: "https://picsum.photos/seed/proker4/800/1000",
+    description: "Sesi intensif pengasahan skill software engineering, cloud computing, dan AI bersama praktisi alumni industri teknologi.",
+    tag: "Akademik & Skill"
+  },
+  {
+    id: 5,
+    title: "PTIK CAREER & ALUMNI EXPO",
     date: "Desember 2025",
+    image: "https://picsum.photos/seed/proker5/800/1000",
+    description: "Ajang jejaring alumni dan industri IT untuk memberikan wawasan karir serta peluang magang bagi mahasiswa aktif.",
+    tag: "Karir & Jejaring"
   },
   {
-    title: "WORKSHOP & CODING BOOTCAMP",
-    description:
-      "Pelatihan intensif web development & cybersecurity untuk meningkatkan keahlian mahasiswa.",
-    image: "https://picsum.photos/seed/proker5/600/800",
-    date: "Maret 2026",
-  },
-  {
-    title: "PTIK ART & SPORT FESTIVAL",
-    description:
-      "Ajang kompetisi seni dan olahraga antar angkatan untuk melatih kebersamaan dan mental juara.",
-    image: "https://picsum.photos/seed/proker6/600/800",
-    date: "Mei 2026",
-  },
+    id: 6,
+    title: "LKMM-TD NAYA VIKRAMA",
+    date: "Mei 2025",
+    image: "https://picsum.photos/seed/proker6/800/1000",
+    description: "Latihan Keterampilan Manajemen Mahasiswa Tingkat Dasar untuk membina jiwa kepemimpinan, integritas, dan manajerial organisasi.",
+    tag: "Kaderisasi & LDK"
+  }
 ];
 ---
 
-<div class="proker-carousel-wrapper">
-  <!-- Nav Controls Above Carousel -->
-  <div class="proker-carousel-header-controls">
-    <button
-      class="proker-nav-btn"
-      id="proker-prev"
-      aria-label="Program Kerja Sebelumnya"
-    >
+<div class="proker-carousel-wrapper" id="proker-carousel">
+  <div class="proker-carousel-container" id="proker-container">
+    <div class="proker-track" id="proker-track">
+      {prokerItems.map((item) => (
+        <article class="proker-card-full">
+          <!-- Background Image Full Card -->
+          <img src={item.image} alt={item.title} class="proker-card-bg-img" loading="lazy" />
+          
+          <!-- Gradient Shadow Overlay at Bottom -->
+          <div class="proker-card-overlay">
+            <div class="proker-card-header-badge">
+              <span class="proker-badge-tag">{item.tag}</span>
+              <span class="proker-badge-date">
+                <Calendar size={14} style="display: inline-block; vertical-align: middle; margin-right: 4px;" />
+                {item.date}
+              </span>
+            </div>
+
+            <div class="proker-card-content">
+              <h3 class="proker-card-title">{item.title}</h3>
+              <p class="proker-card-desc">{item.description}</p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <!-- Carousel Controls -->
+  <div class="proker-controls">
+    <button class="proker-nav-btn prev" id="proker-prev" aria-label="Program kerja sebelumnya">
       <ChevronLeft size={26} />
     </button>
-    <button
-      class="proker-nav-btn"
-      id="proker-next"
-      aria-label="Program Kerja Selanjutnya"
-    >
+
+    <div class="proker-dots" id="proker-dots">
+      {prokerItems.map((_, index) => (
+        <button
+          class={`proker-dot ${index === 0 ? 'active' : ''}`}
+          data-index={index}
+          aria-label={`Ke slide ${index + 1}`}
+        ></button>
+      ))}
+    </div>
+
+    <button class="proker-nav-btn next" id="proker-next" aria-label="Program kerja selanjutnya">
       <ChevronRight size={26} />
     </button>
   </div>
-
-  <!-- Carousel Track -->
-  <div class="proker-carousel-track" id="proker-track">
-    {
-      programs.map((proker) => (
-        <ProgramCard
-          title={proker.title}
-          description={proker.description}
-          image={proker.image}
-          date={proker.date}
-        />
-      ))
-    }
-  </div>
 </div>
 
+<style>
+  .proker-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .proker-carousel-container {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 1rem 0.25rem 2rem;
+  }
+
+  .proker-carousel-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .proker-track {
+    display: flex;
+    gap: 1.75rem;
+    width: max-content;
+  }
+
+  /* Full Image Card dengan Style Tegas & Ukuran Besar */
+  .proker-card-full {
+    position: relative;
+    width: clamp(320px, 38vw, 480px);
+    height: 520px;
+    border-radius: var(--radius-sm); /* Style tegas: corner radius kecil 4px */
+    overflow: hidden;
+    scroll-snap-align: start;
+    border: 1.5px solid rgba(212, 179, 84, 0.35);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    flex-shrink: 0;
+  }
+
+  .proker-card-full:hover {
+    transform: translateY(-8px);
+    border-color: var(--color-gold);
+    box-shadow: 0 25px 50px rgba(130, 9, 7, 0.45);
+  }
+
+  .proker-card-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .proker-card-full:hover .proker-card-bg-img {
+    transform: scale(1.06);
+  }
+
+  /* Bottom Shadow Overlay Gradient */
+  .proker-card-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5rem;
+    background: linear-gradient(
+      to top,
+      rgba(28, 22, 20, 0.98) 0%,
+      rgba(28, 22, 20, 0.82) 45%,
+      rgba(28, 22, 20, 0.25) 75%,
+      transparent 100%
+    );
+    z-index: 2;
+  }
+
+  .proker-card-header-badge {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .proker-badge-tag {
+    background: rgba(130, 9, 7, 0.85);
+    backdrop-filter: blur(8px);
+    color: var(--color-gold);
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(212, 179, 84, 0.4);
+    text-transform: uppercase;
+  }
+
+  .proker-badge-date {
+    background: rgba(28, 22, 20, 0.75);
+    backdrop-filter: blur(8px);
+    color: rgba(255, 255, 255, 0.9);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .proker-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .proker-card-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+    color: var(--color-gold);
+    line-height: 1.1;
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+  }
+
+  .proker-card-desc {
+    font-family: var(--font-body);
+    font-size: clamp(0.9rem, 1.1vw, 1.02rem);
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.55;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Carousel Controls */
+  .proker-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-top: 1.5rem;
+  }
+
+  .proker-nav-btn {
+    background: rgba(28, 22, 20, 0.8);
+    border: 1.5px solid var(--color-gold);
+    color: var(--color-gold);
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm); /* Controls juga tegas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+  }
+
+  .proker-nav-btn:hover {
+    background: var(--color-gold);
+    color: var(--color-dark);
+    transform: scale(1.05);
+  }
+
+  .proker-dots {
+    display: flex;
+    gap: 0.6rem;
+  }
+
+  .proker-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(212, 179, 84, 0.4);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+  }
+
+  .proker-dot.active {
+    background: var(--color-gold);
+    width: 32px;
+  }
+
+  @media (max-width: 768px) {
+    .proker-card-full {
+      width: 85vw;
+      height: 460px;
+    }
+  }
+</style>
+
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const track = document.getElementById("proker-track");
-    const prevBtn = document.getElementById("proker-prev");
-    const nextBtn = document.getElementById("proker-next");
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('proker-container');
+    const prevBtn = document.getElementById('proker-prev');
+    const nextBtn = document.getElementById('proker-next');
+    const dots = document.querySelectorAll('.proker-dot');
+    const cards = document.querySelectorAll('.proker-card-full');
 
-    if (!track) return;
+    if (!container || cards.length === 0) return;
 
-    const scrollAmount = 400;
+    function getCardWidth() {
+      const card = cards[0] as HTMLElement;
+      return card ? card.offsetWidth + 28 : 380; // card width + gap
+    }
 
-    prevBtn?.addEventListener("click", () => {
-      track.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    function updateActiveDot() {
+      if (!container) return;
+      const scrollLeft = container.scrollLeft;
+      const cardWidth = getCardWidth();
+      const activeIndex = Math.round(scrollLeft / cardWidth);
+
+      dots.forEach((dot, index) => {
+        if (index === activeIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    prevBtn?.addEventListener('click', () => {
+      container.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
     });
 
-    nextBtn?.addEventListener("click", () => {
-      track.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    nextBtn?.addEventListener('click', () => {
+      container.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
     });
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        const index = parseInt(target.getAttribute('data-index') || '0', 10);
+        container.scrollTo({ left: index * getCardWidth(), behavior: 'smooth' });
+      });
+    });
+
+    container.addEventListener('scroll', updateActiveDot, { passive: true });
   });
 </script>

@@ -6,7 +6,7 @@ const bentoItems = [
     subtitle: "Rangkaian Pembekalan & Adaptasi",
     description: "Program pembekalan dan pengenalan dunia perkuliahan, budaya akademik, serta kurikulum prodi PTIK UNS bagi seluruh mahasiswa baru.",
     image: "https://picsum.photos/seed/proker1/1000/700",
-    gridClass: "bento-item-large" // Span 2 cols, height 480px
+    gridClass: "bento-col-2 bento-row-2"
   },
   {
     id: 2,
@@ -14,7 +14,7 @@ const bentoItems = [
     subtitle: "Ajang Kompetisi IT Nasional",
     description: "Kompetisi nasional Web Development, UI/UX Design, dan Competitive Programming untuk mencetak inovator muda.",
     image: "https://picsum.photos/seed/proker2/700/1000",
-    gridClass: "bento-item-tall" // Span 1 col, height 480px
+    gridClass: "bento-col-1 bento-row-2"
   },
   {
     id: 3,
@@ -22,7 +22,7 @@ const bentoItems = [
     subtitle: "Pengabdian & Literasi Digital",
     description: "Pelatihan literasi digital, branding sosial media, dan pembuatan website bagi UMKM desa binaan secara berkelanjutan.",
     image: "https://picsum.photos/seed/proker3/800/600",
-    gridClass: "bento-item-medium" // Span 1 col, height 300px
+    gridClass: "bento-col-1 bento-row-2"
   },
   {
     id: 4,
@@ -30,47 +30,85 @@ const bentoItems = [
     subtitle: "Pengembangan Skill Software",
     description: "Sesi harian & bulanan pengasahan skill coding, cloud, dan AI bersama praktisi alumni industri teknologi.",
     image: "https://picsum.photos/seed/proker4/800/600",
-    gridClass: "bento-item-medium" // Span 1 col, height 300px
+    gridClass: "bento-col-1 bento-row-1"
   },
   {
     id: 5,
     title: "PTIK CAREER & ALUMNI EXPO",
     subtitle: "Jejaring Karir & Industri",
-    description: "Ajang temu alumni dan perusahaan mitra IT untuk membuka wawasan karir dan peluang magang mahasiswa.",
+    description: "Ajang temu alumni dan perusahaan mitra IT untuk membuka wawasan karir serta peluang magang mahasiswa.",
     image: "https://picsum.photos/seed/proker5/800/600",
-    gridClass: "bento-item-medium" // Span 1 col, height 300px
+    gridClass: "bento-col-1 bento-row-1"
+  },
+  {
+    id: 6,
+    title: "LKMM-TD NAYA VIKRAMA",
+    subtitle: "Kaderisasi & Manajerial",
+    description: "Latihan Keterampilan Manajemen Mahasiswa Tingkat Dasar untuk mencetak calon pemimpin proaktif.",
+    image: "https://picsum.photos/seed/proker6/1000/600",
+    gridClass: "bento-col-2 bento-row-1"
+  },
+  {
+    id: 7,
+    title: "PTIK SPORT & ART FESTIVAL",
+    subtitle: "Ajang Minat & Bakat",
+    description: "Pekan olahraga, e-sports, dan seni untuk mempererat solidaritas antar angkatan civitas akademika PTIK.",
+    image: "https://picsum.photos/seed/proker7/1000/600",
+    gridClass: "bento-col-2 bento-row-1"
+  },
+  {
+    id: 8,
+    title: "COMPILATION MAGAZINE & RESEARCH",
+    subtitle: "Publikasi Riset & Jurnalistik",
+    description: "Wadah penerbitan karya tulis ilmiah, proyek software terbaik, dan buletin seputar perkembangan teknologi kampus.",
+    image: "https://picsum.photos/seed/proker8/1000/600",
+    gridClass: "bento-col-2 bento-row-1"
   }
 ];
 ---
 
-<div class="proker-bento-grid">
-  {bentoItems.map((item) => (
-    <article class={`bento-card ${item.gridClass}`}>
-      <!-- Background Full Image -->
-      <img src={item.image} alt={item.title} class="bento-bg-img" loading="lazy" />
+<div class="proker-bento-fullwidth-wrapper">
+  <div class="proker-bento-grid">
+    {bentoItems.map((item) => (
+      <article class={`bento-card ${item.gridClass}`}>
+        <!-- Background Full Image -->
+        <img src={item.image} alt={item.title} class="bento-bg-img" loading="lazy" />
 
-      <!-- Bottom Shadow Overlay Gradient -->
-      <div class="bento-card-overlay">
-        <div class="bento-card-content">
-          <span class="bento-subtitle">{item.subtitle}</span>
-          <h3 class="bento-title">{item.title}</h3>
-          <p class="bento-desc">{item.description}</p>
+        <!-- Bottom Shadow Overlay Gradient -->
+        <div class="bento-card-overlay">
+          <div class="bento-card-content">
+            <span class="bento-subtitle">{item.subtitle}</span>
+            <h3 class="bento-title">{item.title}</h3>
+            <p class="bento-desc">{item.description}</p>
+          </div>
         </div>
-      </div>
-    </article>
-  ))}
+      </article>
+    ))}
+  </div>
 </div>
 
 <style>
-  .proker-bento-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    width: 100%;
-    margin-top: 1rem;
+  /* 100% Full Viewport Width Edge-to-Edge Container */
+  .proker-bento-fullwidth-wrapper {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 0 1.25rem;
   }
 
-  /* Base Bento Card Style - Style Tegas (Corner Radius Kecil, Border-Free) */
+  .proker-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 260px;
+    gap: 1.25rem;
+    width: 100%;
+    margin: 1.5rem 0 0;
+  }
+
+  /* Base Bento Card Style - Style Tegas (Corner Radius Kecil 4px, Border-Free) */
   .bento-card {
     position: relative;
     border-radius: var(--radius-sm); /* Style tegas 4px */
@@ -86,20 +124,21 @@ const bentoItems = [
     box-shadow: 0 20px 45px rgba(130, 9, 7, 0.45);
   }
 
-  /* Variations by Grid Layout */
-  .bento-item-large {
+  /* Compact Mosaic Grid Spans */
+  .bento-col-1 {
+    grid-column: span 1;
+  }
+
+  .bento-col-2 {
     grid-column: span 2;
-    height: 480px;
   }
 
-  .bento-item-tall {
-    grid-column: span 1;
-    height: 480px;
+  .bento-row-1 {
+    grid-row: span 1;
   }
 
-  .bento-item-medium {
-    grid-column: span 1;
-    height: 320px;
+  .bento-row-2 {
+    grid-row: span 2;
   }
 
   /* Image Background Zoom */
@@ -124,7 +163,7 @@ const bentoItems = [
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 2rem;
+    padding: 1.75rem;
     background: linear-gradient(
       to top,
       rgba(28, 22, 20, 0.97) 0%,
@@ -138,12 +177,12 @@ const bentoItems = [
   .bento-card-content {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.45rem;
   }
 
   .bento-subtitle {
     font-family: var(--font-heading);
-    font-size: clamp(0.85rem, 1.2vw, 1.1rem);
+    font-size: clamp(0.85rem, 1.1vw, 1.05rem);
     color: var(--color-gold);
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -152,7 +191,7 @@ const bentoItems = [
 
   .bento-title {
     font-family: var(--font-heading);
-    font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+    font-size: clamp(1.6rem, 2.2vw, 2.3rem);
     color: var(--color-white);
     line-height: 1.05;
     letter-spacing: 0.05em;
@@ -161,9 +200,9 @@ const bentoItems = [
 
   .bento-desc {
     font-family: var(--font-body);
-    font-size: clamp(0.88rem, 1vw, 1rem);
+    font-size: clamp(0.85rem, 0.95vw, 0.98rem);
     color: rgba(255, 255, 255, 0.9);
-    line-height: 1.55;
+    line-height: 1.5;
     text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -172,17 +211,30 @@ const bentoItems = [
   }
 
   /* Responsive Mobile Adjustments */
-  @media (max-width: 900px) {
+  @media (max-width: 1100px) {
     .proker-bento-grid {
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 280px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .proker-bento-fullwidth-wrapper {
+      padding: 0 0.75rem;
     }
 
-    .bento-item-large,
-    .bento-item-tall,
-    .bento-item-medium {
+    .proker-bento-grid {
+      grid-template-columns: 1fr;
+      grid-auto-rows: 320px;
+      gap: 1rem;
+    }
+
+    .bento-col-1,
+    .bento-col-2,
+    .bento-row-1,
+    .bento-row-2 {
       grid-column: span 1;
-      height: 380px;
+      grid-row: span 1;
     }
   }
 </style>

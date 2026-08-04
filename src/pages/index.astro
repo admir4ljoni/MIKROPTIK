@@ -6,6 +6,7 @@ import ProgramCard from "../components/ProgramCard.astro";
 import ScrollIndicator from "../components/ScrollIndicator.astro";
 import FilosofiCarousel from "../components/FilosofiCarousel.astro";
 import ProkerBento from "../components/ProkerBento.astro";
+import PrestasiCarousel from "../components/PrestasiCarousel.astro";
 ---
 
 <BaseLayout title="MIKROPTIK | Kabinet Naya Vikrama - HMP PTIK FKIP UNS">
@@ -295,37 +296,7 @@ import ProkerBento from "../components/ProkerBento.astro";
         subtitle="Bangga atas pencapaian dan kebanggaan civitas akademika PTIK UNS di kancah nasional"
       />
 
-      <div class="misi-grid">
-        <div class="misi-card" style="text-align: center;">
-          <img
-            src="https://picsum.photos/seed/mahasiswa1/300/300"
-            alt="Mahasiswa Berprestasi"
-            style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 1rem; object-fit: cover; border: 3px solid var(--color-gold);"
-          />
-          <h4 class="text-gold">Juara 1 Gemastik UI/UX 2025</h4>
-          <p style="font-size: 0.85rem; color: #ccc;">Tim PTIK UNS Devs</p>
-        </div>
-
-        <div class="misi-card" style="text-align: center;">
-          <img
-            src="https://picsum.photos/seed/mahasiswa2/300/300"
-            alt="Mahasiswa Berprestasi"
-            style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 1rem; object-fit: cover; border: 3px solid var(--color-primary);"
-          />
-          <h4 class="text-primary">Best Paper National Conf</h4>
-          <p style="font-size: 0.85rem; color: #ccc;">Ahmad & Tim Riset Data</p>
-        </div>
-
-        <div class="misi-card" style="text-align: center;">
-          <img
-            src="https://picsum.photos/seed/mahasiswa3/300/300"
-            alt="Mahasiswa Berprestasi"
-            style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 1rem; object-fit: cover; border: 3px solid var(--color-gold);"
-          />
-          <h4 class="text-gold">Gold Medal Hackathon 2025</h4>
-          <p style="font-size: 0.85rem; color: #ccc;">Siti & Tim Web Dev</p>
-        </div>
-      </div>
+      <PrestasiCarousel />
     </div>
   </section>
 

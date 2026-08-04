@@ -1,0 +1,397 @@
+---
+const prestasiItems = [
+  {
+    id: 1,
+    title: "JUARA 1 GEMASTIK UI/UX 2025",
+    winner: "Tim PTIK UX Innovators",
+    event: "GEMASTIK XVIII Kemenristekdikti",
+    image: "https://picsum.photos/seed/prestasi1/800/1000",
+    description: "Meraih Medali Emas cabang Desain Pengalaman Pengguna (UI/UX) tingkat Nasional dengan platform inklusif."
+  },
+  {
+    id: 2,
+    title: "GOLD MEDAL HACKATHON TECHNO 2025",
+    winner: "Siti Rahma & Tim Web Dev",
+    event: "National AI & Web Hackathon",
+    image: "https://picsum.photos/seed/prestasi2/800/1000",
+    description: "Juara Utama kategori Inovasi Aplikasi Web Berbasis AI untuk transformasi pendidikan digital."
+  },
+  {
+    id: 3,
+    title: "BEST PAPER IT CONFERENCE 2025",
+    winner: "Ahmad Fauzi & Tim Riset Data",
+    event: "National Conference on Information Tech",
+    image: "https://picsum.photos/seed/prestasi3/800/1000",
+    description: "Penghargaan Makalah Terbaik publikasi riset Machine Learning dan Big Data Analytics."
+  },
+  {
+    id: 4,
+    title: "JUARA 1 COMPETITIVE PROGRAMMING",
+    winner: "Budi Santoso",
+    event: "Olimpiade Komputer Perguruan Tinggi",
+    image: "https://picsum.photos/seed/prestasi4/800/1000",
+    description: "Meraih Juara Pertama kategori Algoritma, Efisiensi Struktur Data, dan Pemrograman Kompetitif."
+  },
+  {
+    id: 5,
+    title: "JUARA 2 CYBER SECURITY CTF 2025",
+    winner: "Tim PTIK Cyber Defense",
+    event: "National CTF Security Challenge",
+    image: "https://picsum.photos/seed/prestasi5/800/1000",
+    description: "Peringkat 2 Kejuaraan Nasional Keamanan Siber, Penetrasi Jaringan, dan Cryptography."
+  },
+  {
+    id: 6,
+    title: "DELEGASI MAPRES UTAMA UNS",
+    winner: "Dian Permata",
+    event: "Pemilihan Mahasiswa Berprestasi 2025",
+    image: "https://picsum.photos/seed/prestasi6/800/1000",
+    description: "Perwakilan Mahasiswa Berprestasi Utama FKIP UNS pada ajang Pilmapres Tingkat Nasional."
+  }
+];
+
+// Duplikasi items 3x untuk seamless infinite loop
+const displayItems = [...prestasiItems, ...prestasiItems, ...prestasiItems];
+---
+
+<div class="prestasi-carousel-wrapper" id="prestasi-carousel">
+  <div class="prestasi-carousel-container" id="prestasi-container">
+    <div class="prestasi-track" id="prestasi-track">
+      {displayItems.map((item, index) => (
+        <article class={`prestasi-card-full ${index === 6 ? 'active' : ''}`} data-index={index}>
+          <!-- Background Image Full Card -->
+          <img src={item.image} alt={item.title} class="prestasi-card-bg-img" loading="lazy" />
+          
+          <!-- Gradient Shadow Overlay at Bottom -->
+          <div class="prestasi-card-overlay">
+            <div class="prestasi-card-content">
+              <span class="prestasi-card-event">{item.event}</span>
+              <h3 class="prestasi-card-title">{item.title}</h3>
+              <p class="prestasi-card-winner">{item.winner}</p>
+              <p class="prestasi-card-desc">{item.description}</p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <!-- Indikator Navigasi Bawah Carousel -->
+  <div class="prestasi-dots-wrapper">
+    <div class="prestasi-dots" id="prestasi-dots">
+      {prestasiItems.map((_, index) => (
+        <button
+          class={`prestasi-dot ${index === 0 ? 'active' : ''}`}
+          data-index={index}
+          aria-label={`Ke slide prestasi ${index + 1}`}
+        ></button>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .prestasi-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .prestasi-carousel-container {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 3rem 0 2rem;
+    height: 590px;
+    display: flex;
+    align-items: center;
+  }
+
+  .prestasi-carousel-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .prestasi-track {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding-left: calc(50% - clamp(150px, 16vw, 220px));
+    padding-right: calc(50% - clamp(150px, 16vw, 220px));
+    width: max-content;
+    height: 540px;
+  }
+
+  /* Card Sisi Kiri & Kanan - Posisi Lebih Rendah Vertikal (Shift Down & Scaled Down) */
+  .prestasi-card-full {
+    position: relative;
+    width: clamp(300px, 32vw, 440px);
+    height: 480px;
+    border-radius: var(--radius-sm); /* Style tegas 4px */
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    opacity: 0.55;
+    filter: grayscale(30%);
+    transform: translateY(22px) scale(0.84); /* Kartu samping lebih rendah vertikal */
+    transform-origin: center center;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.4s ease,
+                filter 0.4s ease;
+    flex-shrink: 0;
+    cursor: pointer;
+    will-change: transform, opacity, box-shadow;
+  }
+
+  /* Kartu Tengah Active - Podium Elevation (Naik Ke Atas, Ukuran Lebih Besar & Full Glow) */
+  .prestasi-card-full.active {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: translateY(-20px) scale(1); /* Naik ke atas membentuk podium elevated center */
+    border: none;
+    box-shadow: 
+      0 0 30px rgba(212, 179, 84, 0.45),
+      0 0 60px rgba(204, 87, 14, 0.35),
+      0 0 100px rgba(130, 9, 7, 0.3);
+    z-index: 10;
+  }
+
+  .prestasi-card-full.no-anim {
+    transition: none !important;
+  }
+
+  .prestasi-card-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .prestasi-card-full.active:hover .prestasi-card-bg-img {
+    transform: scale(1.05);
+  }
+
+  /* Bottom Shadow Overlay Gradient */
+  .prestasi-card-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2.25rem 1.75rem;
+    background: linear-gradient(
+      to top,
+      rgba(28, 22, 20, 0.98) 0%,
+      rgba(28, 22, 20, 0.85) 45%,
+      rgba(28, 22, 20, 0.25) 75%,
+      transparent 100%
+    );
+    z-index: 2;
+  }
+
+  .prestasi-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .prestasi-card-event {
+    font-family: var(--font-heading);
+    font-size: clamp(0.85rem, 1.1vw, 1.05rem);
+    color: var(--color-gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+
+  .prestasi-card-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.7rem, 2.3vw, 2.3rem);
+    color: var(--color-white);
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+  }
+
+  .prestasi-card-winner {
+    font-family: var(--font-heading);
+    font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+    color: var(--color-gold);
+    letter-spacing: 0.05em;
+  }
+
+  .prestasi-card-desc {
+    font-family: var(--font-body);
+    font-size: clamp(0.85rem, 1vw, 0.98rem);
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.5;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Indikator Dots Bawah */
+  .prestasi-dots-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .prestasi-dots {
+    display: flex;
+    gap: 0.6rem;
+  }
+
+  .prestasi-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(212, 179, 84, 0.4);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+  }
+
+  .prestasi-dot.active {
+    background: var(--color-gold);
+    width: 32px;
+  }
+
+  @media (max-width: 768px) {
+    .prestasi-card-full {
+      width: 82vw;
+      height: 440px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('prestasi-container');
+    const cards = Array.from(document.querySelectorAll('.prestasi-card-full')) as HTMLElement[];
+    const dots = document.querySelectorAll('.prestasi-dot');
+
+    if (!container || cards.length === 0) return;
+
+    const itemCount = 6; // jumlah item original
+    let singleSetWidth = 0;
+
+    function calculateWidths() {
+      if (cards.length >= itemCount * 2) {
+        singleSetWidth = cards[itemCount].offsetLeft - cards[0].offsetLeft;
+      }
+    }
+
+    calculateWidths();
+
+    // Inisialisasi posisi scroll di tengah set ke-2
+    if (singleSetWidth > 0) {
+      container.scrollLeft = singleSetWidth;
+    }
+
+    function updateCenterCard() {
+      if (!container) return;
+      const containerRect = container.getBoundingClientRect();
+      const containerCenter = containerRect.left + containerRect.width / 2;
+
+      let closestCard: HTMLElement | null = null;
+      let minDistance = Infinity;
+
+      cards.forEach((card) => {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenter = cardRect.left + cardRect.width / 2;
+        const distance = Math.abs(containerCenter - cardCenter);
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestCard = card;
+        }
+      });
+
+      cards.forEach((card) => {
+        if (card === closestCard) {
+          card.classList.add('active');
+          const originalIndex = parseInt(card.getAttribute('data-index') || '0', 10) % itemCount;
+          
+          dots.forEach((dot, dotIdx) => {
+            if (dotIdx === originalIndex) {
+              dot.classList.add('active');
+            } else {
+              dot.classList.remove('active');
+            }
+          });
+        } else {
+          card.classList.remove('active');
+        }
+      });
+    }
+
+    function checkInfiniteLoop() {
+      if (!container || singleSetWidth === 0) return;
+
+      let resetDelta = 0;
+
+      // Jika scroll melewatai pertengahan set ke-3 (scroll ke kanan jauh)
+      if (container.scrollLeft >= singleSetWidth * 2) {
+        resetDelta = -singleSetWidth;
+      }
+      // Jika scroll melewatai awal set ke-2 (scroll ke kiri jauh)
+      else if (container.scrollLeft <= singleSetWidth * 0.2) {
+        resetDelta = singleSetWidth;
+      }
+
+      if (resetDelta !== 0) {
+        cards.forEach((c) => c.classList.add('no-anim'));
+        container.scrollLeft += resetDelta;
+        updateCenterCard();
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            cards.forEach((c) => c.classList.remove('no-anim'));
+          });
+        });
+      }
+    }
+
+    // Synchronous scroll handler tanpa debounce untuk seamless loop
+    container.addEventListener('scroll', () => {
+      checkInfiniteLoop();
+      updateCenterCard();
+    }, { passive: true });
+
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const targetScrollLeft = cardCenter - container.clientWidth / 2;
+        container.scrollTo({ left: targetScrollLeft, behavior: 'smooth' });
+      });
+    });
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        const targetCard = cards[itemCount + idx];
+        if (targetCard) {
+          const cardCenter = targetCard.offsetLeft + targetCard.offsetWidth / 2;
+          const targetScrollLeft = cardCenter - container.clientWidth / 2;
+          container.scrollTo({ left: targetScrollLeft, behavior: 'smooth' });
+        }
+      });
+    });
+
+    window.addEventListener('resize', () => {
+      calculateWidths();
+      updateCenterCard();
+    }, { passive: true });
+
+    // Initial positioning
+    setTimeout(() => {
+      calculateWidths();
+      if (singleSetWidth > 0 && container.scrollLeft === 0) {
+        container.scrollLeft = singleSetWidth;
+      }
+      updateCenterCard();
+    }, 50);
+  });
+</script>

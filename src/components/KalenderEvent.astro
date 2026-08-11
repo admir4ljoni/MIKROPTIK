@@ -1,5 +1,5 @@
 ---
-import { Calendar as CalendarIcon, MapPin, Tag, ChevronLeft, ChevronRight, Info } from '@lucide/astro';
+import { ChevronLeft, ChevronRight, Info } from '@lucide/astro';
 
 // Kosongkan kegiatan di kalender untuk saat ini sesuai permintaan
 const eventsData: { [key: string]: Array<{ id: number; title: string; category: string; division: string; dateStr: string; location: string; desc: string }> } = {};
@@ -31,7 +31,7 @@ const monthNames = [
         </div>
       </div>
 
-      <!-- Days of Week Header (SUN - SAT) -->
+      <!-- Days of Week Header (MIN - SAB) -->
       <div class="calendar-weekdays-row">
         <span>MIN</span>
         <span>SEN</span>
@@ -50,16 +50,10 @@ const monthNames = [
 
     <!-- SEBELAH KANAN: Events List Panel for Selected Month -->
     <div class="calendar-detail-panel" id="calendar-detail-panel">
-      <!-- Agenda List Header -->
-      <div class="agenda-panel-header">
-        <h3 class="agenda-panel-title" id="agenda-panel-title">Kegiatan Bulan Agustus 2026</h3>
-        <span class="agenda-panel-badge" id="agenda-panel-badge">0 Kegiatan</span>
-      </div>
-
       <!-- Empty State View (Tampil Jika Tidak Ada Kegiatan di Bulan Tersebut) -->
       <div class="calendar-empty-state active" id="calendar-empty-state">
         <div class="empty-icon-box">
-          <Info size={32} style="color: var(--color-gold);" />
+          <Info size={36} style="color: var(--color-gold);" />
         </div>
         <h4 class="empty-state-title">Tidak Ada Kegiatan</h4>
         <p class="empty-state-desc">
@@ -90,9 +84,9 @@ const monthNames = [
     width: 100%;
   }
 
-  /* SEBELAH KIRI: Fixed-Height Calendar Box (Tinggi Tetap & Rapi) */
+  /* SEBELAH KIRI: Fixed-Height Calendar Box (Warna Latar var(--color-dark) #1c1614 per DESIGN.md) */
   .calendar-grid-box {
-    background: #18090f; /* Dark Crimson / Wine Background */
+    background: var(--color-dark); /* #1c1614 per DESIGN.md */
     border: 1.5px solid rgba(212, 179, 84, 0.3);
     border-radius: var(--radius-sm); /* Style tegas 4px */
     padding: 2rem;
@@ -227,42 +221,18 @@ const monthNames = [
     box-shadow: 0 0 6px var(--color-gold);
   }
 
-  /* SEBELAH KANAN: Events List Panel */
+  /* SEBELAH KANAN: Events List Panel (Warna Latar var(--color-dark) #1c1614 per DESIGN.md) */
   .calendar-detail-panel {
-    background: #18090f;
+    background: var(--color-dark); /* #1c1614 per DESIGN.md */
     border: 1.5px solid rgba(212, 179, 84, 0.3);
     border-radius: var(--radius-sm);
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    align-items: center;
+    justify-content: center;
     height: 510px; /* Fixed Height samakan dengan kiri */
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.55);
-  }
-
-  .agenda-panel-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 0.85rem;
-    border-bottom: 1.5px solid rgba(212, 179, 84, 0.3);
-  }
-
-  .agenda-panel-title {
-    font-family: var(--font-heading);
-    font-size: clamp(1.2rem, 1.6vw, 1.5rem);
-    color: var(--color-gold);
-    letter-spacing: 0.04em;
-  }
-
-  .agenda-panel-badge {
-    background: rgba(130, 9, 7, 0.75);
-    color: #ffffff;
-    font-family: var(--font-heading);
-    font-size: 0.8rem;
-    padding: 0.3rem 0.65rem;
-    border-radius: var(--radius-sm);
-    border: 1px solid rgba(212, 179, 84, 0.4);
   }
 
   /* Empty State View (Tampil Jika Tidak Ada Kegiatan) */
@@ -294,14 +264,14 @@ const monthNames = [
 
   .empty-state-title {
     font-family: var(--font-heading);
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: #ffffff;
     letter-spacing: 0.04em;
   }
 
   .empty-state-desc {
     font-family: var(--font-body);
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     color: rgba(255, 255, 255, 0.7);
     line-height: 1.6;
     max-width: 300px;
@@ -313,6 +283,7 @@ const monthNames = [
     flex-direction: column;
     gap: 1rem;
     overflow-y: auto;
+    width: 100%;
     flex-grow: 1;
     padding-right: 0.25rem;
   }
@@ -395,8 +366,6 @@ const monthNames = [
     const nextBtn = document.getElementById('next-month-btn');
     const daysGrid = document.getElementById('calendar-days-grid');
 
-    const panelTitle = document.getElementById('agenda-panel-title');
-    const panelBadge = document.getElementById('agenda-panel-badge');
     const emptyState = document.getElementById('calendar-empty-state');
     const eventsListContainer = document.getElementById('calendar-events-list');
 
@@ -471,14 +440,6 @@ const monthNames = [
     }
 
     function updateRightPanel(eventsList: Array<any>) {
-      if (panelTitle) {
-        panelTitle.textContent = `Kegiatan Bulan ${monthNames[currentMonthIdx]} ${currentYear}`;
-      }
-
-      if (panelBadge) {
-        panelBadge.textContent = `${eventsList.length} Kegiatan`;
-      }
-
       if (!emptyState || !eventsListContainer) return;
 
       if (eventsList.length === 0) {

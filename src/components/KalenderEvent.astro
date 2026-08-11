@@ -69,7 +69,7 @@ const monthNames = [
   </div>
 </div>
 
-<style>
+<style is:global>
   .custom-calendar-section-wrapper {
     position: relative;
     width: 100%;
@@ -96,6 +96,7 @@ const monthNames = [
     gap: 1.25rem;
     height: 510px; /* Fixed Height agar tidak berubah-ubah */
     justify-content: space-between;
+    box-sizing: border-box;
   }
 
   .calendar-box-header {
@@ -152,16 +153,25 @@ const monthNames = [
     color: var(--color-gold);
   }
 
-  /* Weekdays Header (MIN - SAB) */
+  /* Weekdays Header (MIN - SAB) aligned 1:1 with date cells grid */
   .calendar-weekdays-row {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 0.45rem; /* Samakan gap 0.45rem agar 1:1 Lined Up dengan grid tanggal */
+    gap: 0.45rem; /* Must match .calendar-days-grid gap */
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .calendar-weekdays-row span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     font-family: var(--font-heading);
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     color: var(--color-gold);
     letter-spacing: 0.08em;
+    padding: 0.25rem 0;
   }
 
   /* Fixed 42-Cells Days Grid (6 Rows x 7 Days) */
@@ -171,8 +181,11 @@ const monthNames = [
     grid-template-rows: repeat(6, 1fr);
     gap: 0.45rem;
     flex-grow: 1;
+    width: 100%;
+    box-sizing: border-box;
   }
 
+  /* Date Cell Base Style */
   .cal-day-cell {
     position: relative;
     background: rgba(255, 255, 255, 0.03);
@@ -180,35 +193,42 @@ const monthNames = [
     border-radius: var(--radius-sm);
     font-family: var(--font-heading);
     font-size: 0.95rem;
-    color: #ffffff;
+    color: #ffffff !important;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: default;
     transition: all 0.25s ease;
+    box-sizing: border-box;
   }
 
-  /* Tanggal Bulan Sebelum/Sesudah (Warna Abu-abu Redup Jelas) */
+  /* Tanggal Bulan Sebelum/Sesudah (Berwarna ABU-ABU REDUP) */
   .cal-day-cell.other-month {
-    color: rgba(255, 255, 255, 0.25) !important;
+    color: #555555 !important;
     background: transparent !important;
     border-color: transparent !important;
-    opacity: 0.3 !important;
+    opacity: 0.35 !important;
+  }
+
+  /* Tanggal Bulan Berjalan (Berwarna PUTIH TERANG) */
+  .cal-day-cell.current-month {
+    color: #ffffff !important;
+    font-weight: 500;
   }
 
   .cal-day-cell.has-event {
-    background: linear-gradient(135deg, rgba(130, 9, 7, 0.85) 0%, rgba(28, 22, 20, 0.95) 100%);
-    border: 1.5px solid var(--color-gold);
-    color: var(--color-gold);
+    background: linear-gradient(135deg, rgba(130, 9, 7, 0.85) 0%, rgba(28, 22, 20, 0.95) 100%) !important;
+    border: 1.5px solid var(--color-gold) !important;
+    color: var(--color-gold) !important;
     font-weight: 600;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(130, 9, 7, 0.5);
   }
 
   .cal-day-cell.has-event:hover {
-    background: #820907;
-    border-color: #ffffff;
-    color: #ffffff;
+    background: #820907 !important;
+    border-color: #ffffff !important;
+    color: #ffffff !important;
     transform: scale(1.06);
     z-index: 5;
   }
@@ -235,6 +255,7 @@ const monthNames = [
     justify-content: center;
     height: 510px; /* Fixed Height samakan dengan kiri */
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.55);
+    box-sizing: border-box;
   }
 
   /* Empty State View (Tampil Jika Tidak Ada Kegiatan) */
@@ -266,7 +287,7 @@ const monthNames = [
 
   .empty-state-title {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: #ffffff;
     letter-spacing: 0.04em;
   }
@@ -394,21 +415,27 @@ const monthNames = [
       const daysInCurrentMonth = new Date(currentYear, currentMonthIdx + 1, 0).getDate();
       const daysInPrevMonth = new Date(currentYear, currentMonthIdx, 0).getDate();
 
-      // 1. Tanggal Bulan Sebelumnya (Berwarna Abu-abu Redup)
+      // 1. Tanggal Bulan Sebelumnya (Diwarnai Abu-abu Redup Jelas via Inline Style + Class)
       for (let i = firstDayIndex - 1; i >= 0; i--) {
         const prevDate = daysInPrevMonth - i;
         const cell = document.createElement('div');
         cell.className = 'cal-day-cell other-month';
+        cell.style.color = '#555555';
+        cell.style.opacity = '0.35';
+        cell.style.background = 'transparent';
+        cell.style.borderColor = 'transparent';
         cell.textContent = prevDate.toString();
         daysGrid.appendChild(cell);
       }
 
-      // 2. Tanggal Bulan Berjalan (1..daysInCurrentMonth)
+      // 2. Tanggal Bulan Berjalan (Diwarnai Putih Terang #ffffff)
       let currentMonthEvents: Array<any> = [];
 
       for (let day = 1; day <= daysInCurrentMonth; day++) {
         const cell = document.createElement('div');
         cell.className = 'cal-day-cell current-month';
+        cell.style.color = '#ffffff';
+        cell.style.fontWeight = '500';
         cell.textContent = day.toString();
 
         const monthStr = String(currentMonthIdx + 1).padStart(2, '0');
@@ -417,6 +444,7 @@ const monthNames = [
 
         if (eventsData[dateKey] && eventsData[dateKey].length > 0) {
           cell.classList.add('has-event');
+          cell.style.color = 'var(--color-gold)';
           const dot = document.createElement('div');
           dot.className = 'event-dot-indicator';
           cell.appendChild(dot);
@@ -427,12 +455,16 @@ const monthNames = [
         daysGrid.appendChild(cell);
       }
 
-      // 3. Tanggal Bulan Berikutnya (Berwarna Abu-abu Redup untuk melengkapi 42 sel = 6 baris x 7 hari)
+      // 3. Tanggal Bulan Berikutnya (Diwarnai Abu-abu Redup Jelas untuk melengkapi 42 sel = 6 baris x 7 hari)
       const totalCellsFilled = firstDayIndex + daysInCurrentMonth;
       const remainingCells = 42 - totalCellsFilled;
       for (let day = 1; day <= remainingCells; day++) {
         const cell = document.createElement('div');
         cell.className = 'cal-day-cell other-month';
+        cell.style.color = '#555555';
+        cell.style.opacity = '0.35';
+        cell.style.background = 'transparent';
+        cell.style.borderColor = 'transparent';
         cell.textContent = day.toString();
         daysGrid.appendChild(cell);
       }

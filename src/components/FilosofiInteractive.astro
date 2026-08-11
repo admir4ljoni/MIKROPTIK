@@ -35,7 +35,7 @@ const logoParts = [
 
 <div class="filosofi-interactive-container" id="filosofi-interactive">
   <div class="filosofi-grid">
-    <!-- SEBELAH KIRI: Murni Artwork Logo Interaktif -->
+    <!-- SEBELAH KIRI: Interactive Logo Artwork with Precise SVG/CSS Hitspots -->
     <div class="filosofi-visual-left">
       <div class="logo-stack-box" id="logo-stack-box">
         <!-- Part 1: Api -->
@@ -66,20 +66,26 @@ const logoParts = [
           class="logo-layer-img"
           data-part="4"
         />
+
+        <!-- Instant Hardware-Accelerated Hitspots -->
+        <div class="logo-hotspot hotspot-api" data-hotspot="1" title="Obor Api Kepemimpinan"></div>
+        <div class="logo-hotspot hotspot-sayap1" data-hotspot="2" title="Sayap Kanan & Divisi"></div>
+        <div class="logo-hotspot hotspot-buku" data-hotspot="3" title="Buku Pengetahuan"></div>
+        <div class="logo-hotspot hotspot-sayap2" data-hotspot="4" title="Sayap Kiri & Perisai"></div>
       </div>
     </div>
 
-    <!-- SEBELAH KANAN: Single Clean Philosophy Card (Sesuai Lampiran) -->
+    <!-- SEBELAH KANAN: Dark Background Philosophy Card (Per DESIGN.md) -->
     <div class="filosofi-content-right">
       <!-- Default Philosophy Card -->
-      <div class="filosofi-clean-card active" id="card-part-0" data-card="0">
+      <div class="filosofi-dark-card active" id="card-part-0" data-card="0">
         <h3 class="filosofi-card-title">{defaultPhilosophy.title}</h3>
         <p class="filosofi-card-desc">{defaultPhilosophy.description}</p>
       </div>
 
       <!-- Individual Part Philosophy Cards -->
       {logoParts.map((part) => (
-        <div class="filosofi-clean-card" id={`card-part-${part.id}`} data-card={part.id}>
+        <div class="filosofi-dark-card" id={`card-part-${part.id}`} data-card={part.id}>
           <h3 class="filosofi-card-title">{part.title}</h3>
           <p class="filosofi-card-desc">{part.description}</p>
         </div>
@@ -118,7 +124,6 @@ const logoParts = [
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: crosshair;
   }
 
   /* Layer Images Stacked Absolutely */
@@ -130,25 +135,68 @@ const logoParts = [
     object-fit: contain;
     pointer-events: none;
     filter: grayscale(0%) opacity(1);
-    transition: filter 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 0.4s ease;
+    transition: filter 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.35s ease;
     will-change: filter, transform, opacity;
+  }
+
+  /* Hotspot Hit Areas (100% Instant & Accurate Hover Detection) */
+  .logo-hotspot {
+    position: absolute;
+    z-index: 50;
+    cursor: pointer;
+  }
+
+  /* Hotspot 1: Obor Api (Top Center) */
+  .hotspot-api {
+    top: 2%;
+    left: 30%;
+    width: 40%;
+    height: 44%;
+    clip-path: polygon(50% 0%, 85% 30%, 75% 100%, 25% 100%, 15% 30%);
+  }
+
+  /* Hotspot 2: Sayap Kanan (Right Side) */
+  .hotspot-sayap1 {
+    top: 25%;
+    left: 55%;
+    width: 45%;
+    height: 55%;
+    clip-path: polygon(0% 15%, 85% 0%, 100% 70%, 25% 100%);
+  }
+
+  /* Hotspot 3: Buku (Center Lower) */
+  .hotspot-buku {
+    top: 48%;
+    left: 30%;
+    width: 40%;
+    height: 32%;
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+  }
+
+  /* Hotspot 4: Sayap Kiri / Perisai (Left Side) */
+  .hotspot-sayap2 {
+    top: 25%;
+    left: 0%;
+    width: 45%;
+    height: 55%;
+    clip-path: polygon(15% 0%, 100% 15%, 75% 100%, 0% 70%);
   }
 
   /* State Saat Salah Satu Part Di-hover/Di-click */
   .logo-stack-box.is-hovered .logo-layer-img {
-    filter: grayscale(100%) opacity(0.22);
+    filter: grayscale(100%) opacity(0.25);
     transform: scale(0.98);
   }
 
   .logo-stack-box.is-hovered .logo-layer-img.active-part {
-    filter: grayscale(0%) opacity(1) drop-shadow(0 0 45px rgba(212, 179, 84, 0.95));
+    filter: grayscale(0%) opacity(1) drop-shadow(0 0 50px rgba(212, 179, 84, 0.95));
     transform: scale(1.05);
-    z-index: 20;
+    z-index: 30;
   }
 
-  /* SEBELAH KANAN: Single Clean Card Panel (Sesuai Lampiran) */
+  /* SEBELAH KANAN: Dark Background Card Panel (Sesuai DESIGN.md) */
   .filosofi-content-right {
     display: flex;
     flex-direction: column;
@@ -157,25 +205,25 @@ const logoParts = [
     justify-content: center;
   }
 
-  /* Card Display - White Card Style (Sesuai Referensi Gambar) */
-  .filosofi-clean-card {
+  /* Card Display - Dark Theme Style (Per DESIGN.md: var(--color-dark)) */
+  .filosofi-dark-card {
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     gap: 1.25rem;
-    padding: 3rem 2.5rem;
+    padding: 2.75rem 2.25rem;
     border-radius: var(--radius-sm); /* Style tegas 4px */
-    background: #ffffff;
-    border: 2px solid #820907;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    background: var(--color-dark); /* #1c1614 */
+    border: 1.5px solid var(--color-gold); /* #d4b354 */
+    box-shadow: 0 20px 50px rgba(130, 9, 7, 0.45);
     opacity: 0;
     transform: translateY(12px);
     transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .filosofi-clean-card.active {
+  .filosofi-dark-card.active {
     display: flex;
     opacity: 1;
     transform: translateY(0);
@@ -184,15 +232,16 @@ const logoParts = [
   .filosofi-card-title {
     font-family: var(--font-heading);
     font-size: clamp(2rem, 3.2vw, 3rem);
-    color: #820907;
+    color: var(--color-gold); /* #d4b354 */
     line-height: 1.1;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.04em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
   }
 
   .filosofi-card-desc {
     font-family: var(--font-body);
     font-size: clamp(0.95rem, 1.15vw, 1.08rem);
-    color: #2b2523;
+    color: rgba(255, 255, 255, 0.92);
     line-height: 1.7;
   }
 
@@ -202,7 +251,7 @@ const logoParts = [
       gap: 2.5rem;
     }
 
-    .filosofi-clean-card {
+    .filosofi-dark-card {
       padding: 2rem 1.5rem;
     }
   }
@@ -212,33 +261,12 @@ const logoParts = [
   document.addEventListener('DOMContentLoaded', () => {
     const stackBox = document.getElementById('logo-stack-box');
     const layerImgs = document.querySelectorAll('.logo-layer-img');
-    const cards = document.querySelectorAll('.filosofi-clean-card');
+    const hotspots = document.querySelectorAll('.logo-hotspot');
+    const cards = document.querySelectorAll('.filosofi-dark-card');
 
     if (!stackBox || layerImgs.length === 0) return;
 
     let activePartId = '0';
-    const partContexts: { [key: string]: CanvasRenderingContext2D } = {};
-    const CANVAS_SIZE = 250;
-
-    // Load each part PNG into offscreen canvas 2D contexts for 100% pixel-perfect alpha detection
-    const imgElements = Array.from(layerImgs) as HTMLImageElement[];
-    imgElements.forEach(img => {
-      const partId = img.getAttribute('data-part') || '0';
-      const c = document.createElement('canvas');
-      c.width = CANVAS_SIZE;
-      c.height = CANVAS_SIZE;
-      const ctx = c.getContext('2d', { willReadFrequently: true });
-
-      const tempImg = new Image();
-      tempImg.crossOrigin = 'anonymous';
-      tempImg.onload = () => {
-        if (ctx) {
-          ctx.drawImage(tempImg, 0, 0, CANVAS_SIZE, CANVAS_SIZE);
-          partContexts[partId] = ctx;
-        }
-      };
-      tempImg.src = img.src;
-    });
 
     function activatePart(partId: string) {
       if (activePartId === partId) return;
@@ -267,56 +295,25 @@ const logoParts = [
       });
     }
 
-    // Inspect non-transparent pixels (alpha > 35) on the exact cursor position over the logo shapes
-    function detectPartAtPosition(xRatio: number, yRatio: number): string {
-      const px = Math.floor(xRatio * CANVAS_SIZE);
-      const py = Math.floor(yRatio * CANVAS_SIZE);
+    // Direct 100% Instant Hotspot Hover & Click Listeners
+    hotspots.forEach(hotspot => {
+      const partId = hotspot.getAttribute('data-hotspot') || '0';
 
-      if (px < 0 || px >= CANVAS_SIZE || py < 0 || py >= CANVAS_SIZE) return '0';
+      hotspot.addEventListener('mouseenter', () => {
+        activatePart(partId);
+      });
 
-      // Order of inspection: Api (1), Buku (3), Sayap Kanan (2), Sayap Kiri (4)
-      const partOrder = ['1', '3', '2', '4'];
-      for (const partId of partOrder) {
-        const ctx = partContexts[partId];
-        if (ctx) {
-          try {
-            const alpha = ctx.getImageData(px, py, 1, 1).data[3];
-            if (alpha > 35) {
-              return partId;
-            }
-          } catch (e) {
-            // Ignore cross-origin canvas security errors
-          }
-        }
-      }
-      return '0';
-    }
+      hotspot.addEventListener('click', () => {
+        activatePart(partId);
+      });
 
-    // Mousemove directly over the visual logo box
-    stackBox.addEventListener('mousemove', (e) => {
-      const rect = stackBox.getBoundingClientRect();
-      const xRatio = (e.clientX - rect.left) / rect.width;
-      const yRatio = (e.clientY - rect.top) / rect.height;
-
-      const detectedPart = detectPartAtPosition(xRatio, yRatio);
-      activatePart(detectedPart);
+      hotspot.addEventListener('touchstart', (e) => {
+        activatePart(partId);
+      }, { passive: true });
     });
 
     stackBox.addEventListener('mouseleave', () => {
       activatePart('0');
     });
-
-    // Touch support for mobile devices directly on logo box
-    stackBox.addEventListener('touchstart', (e) => {
-      if (e.touches.length > 0) {
-        const touch = e.touches[0];
-        const rect = stackBox.getBoundingClientRect();
-        const xRatio = (touch.clientX - rect.left) / rect.width;
-        const yRatio = (touch.clientY - rect.top) / rect.height;
-
-        const detectedPart = detectPartAtPosition(xRatio, yRatio);
-        activatePart(detectedPart);
-      }
-    }, { passive: true });
   });
 </script>

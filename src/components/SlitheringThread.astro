@@ -1,0 +1,168 @@
+---
+// SlitheringThread.astro - Animated Deep-Red Thread flowing from #about to #cta
+---
+
+<div class="slithering-thread-wrapper" id="slithering-thread-container" aria-hidden="true">
+  <svg class="slithering-svg" id="slithering-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <defs>
+      <!-- Deep Red to Gold Glowing Gradient -->
+      <linearGradient id="threadGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="var(--color-red-deep)" stop-opacity="0.9" />
+        <stop offset="40%" stop-color="var(--color-gold)" stop-opacity="1" />
+        <stop offset="70%" stop-color="var(--color-red-deep)" stop-opacity="0.9" />
+        <stop offset="100%" stop-color="var(--color-gold)" stop-opacity="1" />
+      </linearGradient>
+
+      <!-- Glow Filter for the Slithering Thread -->
+      <filter id="threadGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+        <feMerge>
+          <feMergeNode in="coloredBlur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+
+    <!-- Wavy Organic Slithering Path -->
+    <path
+      id="slithering-path"
+      class="slithering-path"
+      d=""
+      fill="none"
+      stroke="url(#threadGradient)"
+      stroke-width="3.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      filter="url(#threadGlow)"
+    />
+
+    <!-- Glowing Lead Head Dot -->
+    <circle
+      id="slithering-head"
+      class="slithering-head"
+      r="6"
+      fill="var(--color-gold)"
+      filter="url(#threadGlow)"
+    />
+  </svg>
+</div>
+
+<style>
+  .slithering-thread-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2; /* Sits behind content but above background */
+    overflow: hidden;
+  }
+
+  .slithering-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slithering-path {
+    transition: stroke-dashoffset 0.1s ease-out;
+  }
+
+  .slithering-head {
+    box-shadow: 0 0 15px var(--color-gold);
+    transition: transform 0.1s ease-out;
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const wrapper = document.getElementById('slithering-thread-container');
+    const path = document.getElementById('slithering-path') as SVGPathElement | null;
+    const head = document.getElementById('slithering-head') as SVGCircleElement | null;
+    const svg = document.getElementById('slithering-svg') as SVGSVGElement | null;
+
+    const aboutSec = document.getElementById('about');
+    const ctaSec = document.getElementById('cta');
+
+    if (!wrapper || !path || !head || !svg || !aboutSec || !ctaSec) return;
+
+    function buildOrganicPath() {
+      if (!aboutSec || !ctaSec || !path || !svg) return;
+
+      const bodyRect = document.body.getBoundingClientRect();
+      const aboutRect = aboutSec.getBoundingClientRect();
+      const ctaRect = ctaSec.getBoundingClientRect();
+
+      // Relative Y coordinates inside document
+      const startY = aboutRect.top - bodyRect.top + 80;
+      const endY = ctaRect.bottom - bodyRect.top - 60;
+      const totalH = endY - startY;
+
+      if (totalH <= 0) return;
+
+      const docWidth = window.innerWidth;
+      
+      // Calculate responsive sine wave curves (slithering organic movement)
+      const pointsCount = 12;
+      const stepY = totalH / pointsCount;
+
+      let pathD = `M ${docWidth * 0.15},${startY}`;
+
+      for (let i = 1; i <= pointsCount; i++) {
+        const curY = startY + i * stepY;
+        // Alternate X between 12% and 88% width for organic slithering
+        let targetX = docWidth * 0.85;
+        if (i % 2 === 0) targetX = docWidth * 0.15;
+        if (i % 3 === 0) targetX = docWidth * 0.5;
+
+        const prevY = startY + (i - 1) * stepY;
+        const controlY = (prevY + curY) / 2;
+
+        pathD += ` Q ${targetX},${controlY} ${targetX},${curY}`;
+      }
+
+      path.setAttribute('d', pathD);
+
+      const pathLength = path.getTotalLength();
+      path.style.strokeDasharray = `${pathLength}`;
+      path.style.strokeDashoffset = `${pathLength}`;
+
+      // GSAP ScrollTrigger for Slithering Animation
+      gsap.to(path, {
+        strokeDashoffset: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: aboutSec,
+          endTrigger: ctaSec,
+          start: 'top 60%',
+          end: 'bottom 80%',
+          scrub: 1.2,
+          onUpdate: (self) => {
+            if (!head || !path) return;
+            const progress = self.progress;
+            const currentPoint = path.getPointAtLength(progress * pathLength);
+            head.setAttribute('cx', currentPoint.x.toString());
+            head.setAttribute('cy', currentPoint.y.toString());
+          }
+        }
+      });
+    }
+
+    // Build initial path
+    buildOrganicPath();
+
+    // Re-calculate on window resize
+    window.addEventListener('resize', () => {
+      buildOrganicPath();
+      ScrollTrigger.refresh();
+    });
+  });
+</script>

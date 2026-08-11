@@ -1,74 +1,103 @@
 ---
-const prestasiItems = [
+import { Trophy, Award, Medal, Crown, Star, Sparkles } from '@lucide/astro';
+
+const hallOfFameItems = [
   {
     id: 1,
-    title: "JUARA 1 GEMASTIK UI/UX 2025",
+    badge: "JUARA 1 NASIONAL",
+    badgeIcon: Trophy,
+    category: "UI/UX DESIGN & PRODUCT INOVATION",
+    title: "GEMASTIK XVIII KEMENRISTEKDIKTI",
     winner: "Tim PTIK UX Innovators",
-    event: "GEMASTIK XVIII Kemenristekdikti",
+    year: "2025",
     image: "https://picsum.photos/seed/prestasi1/800/1000",
     description: "Meraih Medali Emas cabang Desain Pengalaman Pengguna (UI/UX) tingkat Nasional dengan platform inklusif."
   },
   {
     id: 2,
-    title: "GOLD MEDAL HACKATHON TECHNO 2025",
+    badge: "MEDALI EMAS HACKATHON",
+    badgeIcon: Medal,
+    category: "AI & WEB DEVELOPMENT",
+    title: "NATIONAL AI & WEB HACKATHON 2025",
     winner: "Siti Rahma & Tim Web Dev",
-    event: "National AI & Web Hackathon",
+    year: "2025",
     image: "https://picsum.photos/seed/prestasi2/800/1000",
     description: "Juara Utama kategori Inovasi Aplikasi Web Berbasis AI untuk transformasi pendidikan digital."
   },
   {
     id: 3,
-    title: "BEST PAPER IT CONFERENCE 2025",
+    badge: "BEST PAPER PUBLICATION",
+    badgeIcon: Award,
+    category: "MACHINE LEARNING & DATA",
+    title: "NATIONAL CONFERENCE ON IT 2025",
     winner: "Ahmad Fauzi & Tim Riset Data",
-    event: "National Conference on Information Tech",
+    year: "2025",
     image: "https://picsum.photos/seed/prestasi3/800/1000",
     description: "Penghargaan Makalah Terbaik publikasi riset Machine Learning dan Big Data Analytics."
   },
   {
     id: 4,
-    title: "JUARA 1 COMPETITIVE PROGRAMMING",
+    badge: "JUARA 1 PROGRAMMING",
+    badgeIcon: Crown,
+    category: "COMPETITIVE PROGRAMMING",
+    title: "OLIMPIADE KOMPUTER PT 2025",
     winner: "Budi Santoso",
-    event: "Olimpiade Komputer Perguruan Tinggi",
+    year: "2025",
     image: "https://picsum.photos/seed/prestasi4/800/1000",
     description: "Meraih Juara Pertama kategori Algoritma, Efisiensi Struktur Data, dan Pemrograman Kompetitif."
   },
   {
     id: 5,
-    title: "JUARA 2 CYBER SECURITY CTF 2025",
+    badge: "TOP CYBER DEFENSE",
+    badgeIcon: Star,
+    category: "CYBER SECURITY CTF",
+    title: "NATIONAL CTF SECURITY 2025",
     winner: "Tim PTIK Cyber Defense",
-    event: "National CTF Security Challenge",
+    year: "2025",
     image: "https://picsum.photos/seed/prestasi5/800/1000",
     description: "Peringkat 2 Kejuaraan Nasional Keamanan Siber, Penetrasi Jaringan, dan Cryptography."
   },
   {
     id: 6,
-    title: "DELEGASI MAPRES UTAMA UNS",
+    badge: "DELEGASI MAPRES UTAMA",
+    badgeIcon: Sparkles,
+    category: "PILMAPRES KEMENDIKBUD",
+    title: "PEMILIHAN MAHASISWA BERPRESTASI 2025",
     winner: "Dian Permata",
-    event: "Pemilihan Mahasiswa Berprestasi 2025",
+    year: "2025",
     image: "https://picsum.photos/seed/prestasi6/800/1000",
     description: "Perwakilan Mahasiswa Berprestasi Utama FKIP UNS pada ajang Pilmapres Tingkat Nasional."
   }
 ];
 
 // Duplikasi items 3x untuk seamless infinite loop
-const displayItems = [...prestasiItems, ...prestasiItems, ...prestasiItems];
+const displayItems = [...hallOfFameItems, ...hallOfFameItems, ...hallOfFameItems];
 ---
 
-<div class="prestasi-carousel-wrapper" id="prestasi-carousel">
-  <div class="prestasi-carousel-container" id="prestasi-container">
-    <div class="prestasi-track" id="prestasi-track">
+<div class="halloffame-carousel-wrapper" id="prestasi-carousel">
+  <div class="halloffame-carousel-container" id="prestasi-container">
+    <div class="halloffame-track" id="prestasi-track">
       {displayItems.map((item, index) => (
-        <article class={`prestasi-card-full ${index === 6 ? 'active' : ''}`} data-index={index}>
+        <article class={`halloffame-card ${index === 6 ? 'active' : ''}`} data-index={index}>
           <!-- Background Image Full Card -->
-          <img src={item.image} alt={item.title} class="prestasi-card-bg-img" loading="lazy" />
-          
-          <!-- Gradient Shadow Overlay at Bottom -->
-          <div class="prestasi-card-overlay">
-            <div class="prestasi-card-content">
-              <span class="prestasi-card-event">{item.event}</span>
-              <h3 class="prestasi-card-title">{item.title}</h3>
-              <p class="prestasi-card-winner">{item.winner}</p>
-              <p class="prestasi-card-desc">{item.description}</p>
+          <img src={item.image} alt={item.title} class="halloffame-card-bg-img" loading="lazy" />
+
+          <!-- Top Honor Gold Badge -->
+          <div class="halloffame-badge-wrapper">
+            <span class="halloffame-gold-badge">
+              <item.badgeIcon size={14} style="display: inline-block; vertical-align: middle; margin-right: 4px;" />
+              {item.badge}
+            </span>
+            <span class="halloffame-year-badge">{item.year}</span>
+          </div>
+
+          <!-- Bottom Shadow Overlay Gradient -->
+          <div class="halloffame-card-overlay">
+            <div class="halloffame-card-content">
+              <span class="halloffame-card-category">{item.category}</span>
+              <h3 class="halloffame-card-title">{item.title}</h3>
+              <p class="halloffame-card-winner">{item.winner}</p>
+              <p class="halloffame-card-desc">{item.description}</p>
             </div>
           </div>
         </article>
@@ -77,13 +106,13 @@ const displayItems = [...prestasiItems, ...prestasiItems, ...prestasiItems];
   </div>
 
   <!-- Indikator Navigasi Bawah Carousel -->
-  <div class="prestasi-dots-wrapper">
-    <div class="prestasi-dots" id="prestasi-dots">
-      {prestasiItems.map((_, index) => (
+  <div class="halloffame-dots-wrapper">
+    <div class="halloffame-dots" id="prestasi-dots">
+      {hallOfFameItems.map((_, index) => (
         <button
-          class={`prestasi-dot ${index === 0 ? 'active' : ''}`}
+          class={`halloffame-dot ${index === 0 ? 'active' : ''}`}
           data-index={index}
-          aria-label={`Ke slide prestasi ${index + 1}`}
+          aria-label={`Ke slide Hall of Fame ${index + 1}`}
         ></button>
       ))}
     </div>
@@ -91,51 +120,53 @@ const displayItems = [...prestasiItems, ...prestasiItems, ...prestasiItems];
 </div>
 
 <style>
-  .prestasi-carousel-wrapper {
+  .halloffame-carousel-wrapper {
     position: relative;
     width: 100%;
     margin: 0 auto;
   }
 
-  .prestasi-carousel-container {
+  .halloffame-carousel-container {
     overflow-x: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
     padding: 3rem 0 2rem;
-    height: 590px;
+    height: 610px;
     display: flex;
     align-items: center;
   }
 
-  .prestasi-carousel-container::-webkit-scrollbar {
+  .halloffame-carousel-container::-webkit-scrollbar {
     display: none;
   }
 
-  .prestasi-track {
+  .halloffame-track {
     display: flex;
     align-items: center;
-    gap: 2rem;
-    padding-left: calc(50% - clamp(150px, 16vw, 220px));
-    padding-right: calc(50% - clamp(150px, 16vw, 220px));
+    gap: 2.25rem;
+    padding-left: calc(50% - clamp(160px, 17vw, 230px));
+    padding-right: calc(50% - clamp(160px, 17vw, 230px));
     width: max-content;
-    height: 540px;
+    height: 560px;
   }
 
-  /* Card Sisi Kiri & Kanan - Posisi Lebih Rendah Vertikal (Shift Down & Scaled Down) */
-  .prestasi-card-full {
+  /* Base Hall of Fame Card - Pedestal Elevation Style */
+  .halloffame-card {
     position: relative;
-    width: clamp(300px, 32vw, 440px);
-    height: 480px;
+    width: clamp(310px, 33vw, 450px);
+    height: 500px;
     border-radius: var(--radius-sm); /* Style tegas 4px */
     overflow: hidden;
-    border: none;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(212, 179, 84, 0.25);
+    background: var(--color-dark);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     opacity: 0.55;
-    filter: grayscale(30%);
-    transform: translateY(22px) scale(0.84); /* Kartu samping lebih rendah vertikal */
+    filter: grayscale(40%);
+    transform: translateY(22px) scale(0.85);
     transform-origin: center center;
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
                 box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.4s ease,
                 opacity 0.4s ease,
                 filter 0.4s ease;
     flex-shrink: 0;
@@ -143,24 +174,24 @@ const displayItems = [...prestasiItems, ...prestasiItems, ...prestasiItems];
     will-change: transform, opacity, box-shadow;
   }
 
-  /* Kartu Tengah Active - Podium Elevation (Naik Ke Atas, Ukuran Lebih Besar & Full Glow) */
-  .prestasi-card-full.active {
+  /* Kartu Tengah Active - Hall of Fame Podium Elevation (Gold Spotlight Glow) */
+  .halloffame-card.active {
     opacity: 1;
     filter: grayscale(0%);
-    transform: translateY(-20px) scale(1); /* Naik ke atas membentuk podium elevated center */
-    border: none;
+    transform: translateY(-24px) scale(1.02);
+    border: 1.5px solid var(--color-gold);
     box-shadow: 
-      0 0 30px rgba(212, 179, 84, 0.45),
-      0 0 60px rgba(204, 87, 14, 0.35),
-      0 0 100px rgba(130, 9, 7, 0.3);
+      0 0 35px rgba(212, 179, 84, 0.5),
+      0 0 75px rgba(130, 9, 7, 0.45),
+      0 15px 45px rgba(0, 0, 0, 0.8);
     z-index: 10;
   }
 
-  .prestasi-card-full.no-anim {
+  .halloffame-card.no-anim {
     transition: none !important;
   }
 
-  .prestasi-card-bg-img {
+  .halloffame-card-bg-img {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -170,81 +201,118 @@ const displayItems = [...prestasiItems, ...prestasiItems, ...prestasiItems];
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .prestasi-card-full.active:hover .prestasi-card-bg-img {
+  .halloffame-card.active:hover .halloffame-card-bg-img {
     transform: scale(1.05);
   }
 
+  /* Top Honor Badges */
+  .halloffame-badge-wrapper {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    right: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 5;
+  }
+
+  .halloffame-gold-badge {
+    background: linear-gradient(135deg, #d4b354 0%, #820907 100%);
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    padding: 0.4rem 0.85rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+  }
+
+  .halloffame-year-badge {
+    background: rgba(28, 22, 20, 0.85);
+    backdrop-filter: blur(8px);
+    color: var(--color-gold);
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(212, 179, 84, 0.4);
+  }
+
   /* Bottom Shadow Overlay Gradient */
-  .prestasi-card-overlay {
+  .halloffame-card-overlay {
     position: absolute;
     inset: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 2.25rem 1.75rem;
+    padding: 2.25rem 1.75rem 1.75rem;
     background: linear-gradient(
       to top,
       rgba(28, 22, 20, 0.98) 0%,
-      rgba(28, 22, 20, 0.85) 45%,
-      rgba(28, 22, 20, 0.25) 75%,
+      rgba(28, 22, 20, 0.85) 50%,
+      rgba(28, 22, 20, 0.2) 80%,
       transparent 100%
     );
     z-index: 2;
   }
 
-  .prestasi-card-content {
+  .halloffame-card-content {
     display: flex;
     flex-direction: column;
     gap: 0.45rem;
   }
 
-  .prestasi-card-event {
+  .halloffame-card-category {
     font-family: var(--font-heading);
-    font-size: clamp(0.85rem, 1.1vw, 1.05rem);
+    font-size: clamp(0.8rem, 1vw, 0.95rem);
     color: var(--color-gold);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     opacity: 0.9;
   }
 
-  .prestasi-card-title {
+  .halloffame-card-title {
     font-family: var(--font-heading);
-    font-size: clamp(1.7rem, 2.3vw, 2.3rem);
+    font-size: clamp(1.6rem, 2.2vw, 2.2rem);
     color: var(--color-white);
     line-height: 1.1;
     letter-spacing: 0.04em;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
   }
 
-  .prestasi-card-winner {
+  .halloffame-card-winner {
     font-family: var(--font-heading);
-    font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+    font-size: clamp(1.1rem, 1.35vw, 1.28rem);
     color: var(--color-gold);
     letter-spacing: 0.05em;
   }
 
-  .prestasi-card-desc {
+  .halloffame-card-desc {
     font-family: var(--font-body);
-    font-size: clamp(0.85rem, 1vw, 0.98rem);
+    font-size: clamp(0.85rem, 0.95vw, 0.96rem);
     color: rgba(255, 255, 255, 0.92);
     line-height: 1.5;
     text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
   }
 
   /* Indikator Dots Bawah */
-  .prestasi-dots-wrapper {
+  .halloffame-dots-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 1rem;
   }
 
-  .prestasi-dots {
+  .halloffame-dots {
     display: flex;
     gap: 0.6rem;
   }
 
-  .prestasi-dot {
+  .halloffame-dot {
     width: 12px;
     height: 12px;
     border-radius: var(--radius-sm);
@@ -254,15 +322,15 @@ const displayItems = [...prestasiItems, ...prestasiItems, ...prestasiItems];
     cursor: pointer;
   }
 
-  .prestasi-dot.active {
+  .halloffame-dot.active {
     background: var(--color-gold);
     width: 32px;
   }
 
   @media (max-width: 768px) {
-    .prestasi-card-full {
+    .halloffame-card {
       width: 82vw;
-      height: 440px;
+      height: 460px;
     }
   }
 </style>
@@ -270,12 +338,12 @@ const displayItems = [...prestasiItems, ...prestasiItems, ...prestasiItems];
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('prestasi-container');
-    const cards = Array.from(document.querySelectorAll('.prestasi-card-full')) as HTMLElement[];
-    const dots = document.querySelectorAll('.prestasi-dot');
+    const cards = Array.from(document.querySelectorAll('.halloffame-card')) as HTMLElement[];
+    const dots = document.querySelectorAll('.halloffame-dot');
 
     if (!container || cards.length === 0) return;
 
-    const itemCount = 6; // jumlah item original
+    const itemCount = 6;
     let singleSetWidth = 0;
 
     function calculateWidths() {
@@ -286,7 +354,6 @@ const displayItems = [...prestasiItems, ...prestasiItems, ...prestasiItems];
 
     calculateWidths();
 
-    // Inisialisasi posisi scroll di tengah set ke-2
     if (singleSetWidth > 0) {
       container.scrollLeft = singleSetWidth;
     }
@@ -333,12 +400,9 @@ const displayItems = [...prestasiItems, ...prestasiItems, ...prestasiItems];
 
       let resetDelta = 0;
 
-      // Jika scroll melewatai pertengahan set ke-3 (scroll ke kanan jauh)
       if (container.scrollLeft >= singleSetWidth * 2) {
         resetDelta = -singleSetWidth;
-      }
-      // Jika scroll melewatai awal set ke-2 (scroll ke kiri jauh)
-      else if (container.scrollLeft <= singleSetWidth * 0.2) {
+      } else if (container.scrollLeft <= singleSetWidth * 0.2) {
         resetDelta = singleSetWidth;
       }
 
@@ -355,7 +419,6 @@ const displayItems = [...prestasiItems, ...prestasiItems, ...prestasiItems];
       }
     }
 
-    // Synchronous scroll handler tanpa debounce untuk seamless loop
     container.addEventListener('scroll', () => {
       checkInfiniteLoop();
       updateCenterCard();
@@ -385,7 +448,6 @@ const displayItems = [...prestasiItems, ...prestasiItems, ...prestasiItems];
       updateCenterCard();
     }, { passive: true });
 
-    // Initial positioning
     setTimeout(() => {
       calculateWidths();
       if (singleSetWidth > 0 && container.scrollLeft === 0) {

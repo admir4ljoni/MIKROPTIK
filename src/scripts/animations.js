@@ -4,61 +4,48 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Scrubbed Zoom-On-Scroll for Cards & Main Containers (Cinematic DOP-Works Style)
-  const scrollZoomElements = document.querySelectorAll(
-    '.bento-card, .stat-card, .filosofi-dark-card, .filosofi-visual-left, .calendar-grid-box, .calendar-detail-panel, .cta-container, .about-card, .visi-misi-card, .program-card, .honor-card'
-  );
-
-  scrollZoomElements.forEach((el) => {
-    gsap.fromTo(
-      el,
-      {
-        scale: 1.18,
-        opacity: 0.65,
-      },
-      {
-        scale: 1.0,
-        opacity: 1.0,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top bottom', // Mulai saat elemen masuk dari bawah layar
-          end: 'top 30%',      // Selesai zoom saat elemen mencapai area atas viewport
-          scrub: 1,            // Animasi zoom terhubung 1:1 langsung ke pergerakan scrollbar!
-        },
-      }
-    );
-  });
-
-  // 2. Scrubbed Zoom-On-Scroll for Section Headings & Titles
-  const sectionHeadings = document.querySelectorAll(
-    '.section-heading-wrapper, .section-heading, .section-title, .cta-title'
-  );
-
+  // 1. Section Headings Reveal (Fade In + TranslateY)
+  const sectionHeadings = document.querySelectorAll('.section-heading-wrapper, .section-heading, .section-title');
   sectionHeadings.forEach((heading) => {
     gsap.fromTo(
       heading,
+      { opacity: 0, y: 40 },
       {
-        scale: 1.15,
-        opacity: 0.5,
-        y: 35,
-      },
-      {
-        scale: 1.0,
-        opacity: 1.0,
+        opacity: 1,
         y: 0,
-        ease: 'none',
+        duration: 0.8,
+        ease: 'power3.out',
         scrollTrigger: {
           trigger: heading,
-          start: 'top bottom-=40',
-          end: 'top 35%',
-          scrub: 1,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
         },
       }
     );
   });
 
-  // 3. Counter Number Animation (Hitung Naik saat Terlihat di Screen)
+  // 2. Bento & Feature Cards Stagger In
+  const bentoGrid = document.querySelector('.proker-bento-grid');
+  if (bentoGrid) {
+    const cards = bentoGrid.querySelectorAll('.bento-card');
+    gsap.fromTo(
+      cards,
+      { opacity: 0, y: 45 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        stagger: 0.12,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: bentoGrid,
+          start: 'top 80%',
+        },
+      }
+    );
+  }
+
+  // 3. Counter Number Animation (StatCounters)
   const counterElements = document.querySelectorAll('.counter-number, [data-target-count]');
   counterElements.forEach((counter) => {
     const targetVal = parseInt(counter.getAttribute('data-target-count') || counter.textContent || '0', 10);
@@ -82,24 +69,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 4. Hero Section Parallax Zoom Scrub
+  // 4. Hero Parallax Scroll Effect
   const heroSection = document.getElementById('hero');
   const heroLogo = document.querySelector('.hero-logo');
   if (heroSection && heroLogo) {
     gsap.to(heroLogo, {
-      scale: 1.15,
       y: 60,
       ease: 'none',
       scrollTrigger: {
         trigger: heroSection,
         start: 'top top',
         end: 'bottom top',
-        scrub: 1,
+        scrub: true,
       },
     });
   }
 
-  // 5. Logo Filosofi Ambient Breathing Effect
+  // 5. Logo Filosofi Floating / Breathing Effect
   const filosofiLogoBox = document.getElementById('logo-stack-box');
   if (filosofiLogoBox) {
     gsap.to(filosofiLogoBox, {
@@ -125,4 +111,27 @@ document.addEventListener('DOMContentLoaded', () => {
       },
     });
   });
+
+  // 7. Section "Tentang Kami" Waterfall Reveal from Top (Cascading Stagger Effect)
+  const aboutAccordion = document.getElementById('about-accordion');
+  if (aboutAccordion) {
+    const stripes = aboutAccordion.querySelectorAll('.sliced-stripe');
+    gsap.fromTo(
+      stripes,
+      { opacity: 0, y: -90, scaleY: 0.88 },
+      {
+        opacity: 1,
+        y: 0,
+        scaleY: 1,
+        duration: 0.85,
+        stagger: 0.15, // Efek air terjun beruntun (tidak serentak)
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: aboutAccordion,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse',
+        },
+      }
+    );
+  }
 });

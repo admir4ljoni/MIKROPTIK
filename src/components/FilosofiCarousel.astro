@@ -5,42 +5,47 @@ const slides = [
   {
     id: 1,
     icon: Flame,
-    tag: "SIMBOL UTAMA",
-    title: "1. Obor Keberanian (Naya)",
-    description: "Melambangkan semangat pantang menyerah dan petunjuk arah ilmu pengetahuan bagi seluruh mahasiswa PTIK UNS dalam menghadapi dinamika perkembangan zaman.",
-    highlightText: "Semangat Pembawa Terang & Ilmu Pengetahuan"
+    tag: "OBOR KEPEMIMPINAN",
+    title: "1. Api Menjulang Ke Atas",
+    image: "logo_kabinet_api.png",
+    highlightText: "Semangat, Keberanian & Ketegasan Memimpin",
+    description: "Api yang menjulang ke atas mencerminkan semangat, keberanian, dan ketegasan dalam memimpin. Layaknya menyala yang tidak mudah padam, unsur ini menggambarkan kepemimpinan yang menjaga arah, memberikan inspirasi, serta berani mengambil keputusan dalam menghadapi setiap tantangan."
   },
   {
     id: 2,
     icon: Zap,
-    tag: "SIMBOL GERAK",
-    title: "2. Sayap Kemajuan (Vikrama)",
-    description: "Simbol keberanian untuk membumbung tinggi meraih prestasi berlandaskan kebersamaan, integritas, dan inovasi yang tak terbatas.",
-    highlightText: "Langkah Progresif Menuju Kejayaan"
+    tag: "KOLABORASI HARMONIS",
+    title: "2. Enam Sayap Bidang & Divisi",
+    image: "logo_kabinet_sayap_1.png",
+    highlightText: "Sinergi 2 Bidang & 4 Divisi Organisasi",
+    description: "Enam sayap di kanan dan kiri melambangkan dua bidang empat divisi: Bidang Sekertaris Umum, Bidang Bendahara Umum, Divisi PSDM, Divisi Humas, Divisi Media, Divisi Mikat. Bahwa organisasi bergerak oleh kolaborasi bidang & divisi yang bekerja harmonis untuk mencapai tujuan bersama."
   },
   {
     id: 3,
     icon: Cpu,
-    tag: "IDENTITAS PRODI",
-    title: "3. Elemen Sirkuit Digital",
-    description: "Merepresentasikan fokus utama prodi Pendidikan Teknik Informatika dan Komputer yang adaptif, terampil, dan siap memimpin transformasi teknologi masa depan.",
-    highlightText: "Teknologi, Informatika & Komputer"
+    tag: "LANDASAN KNOWLEDGE",
+    title: "3. Buku & Kebebasan Berpikir",
+    image: "logo_kabinet_buku.png",
+    highlightText: "Landasan Pengetahuan & Rumah Belajar",
+    description: "Buku-buku menjadi simbol bahwa setiap langkah dan kebebasan berfikir selalu berlandaskan pengetahuan, serta menegaskan peran organisasi sebagai rumah belajar bagi setiap anggotanya."
   },
   {
     id: 4,
     icon: ShieldCheck,
-    tag: "FONDASI ORGANISASI",
-    title: "4. Perisai Integritas",
-    description: "Menggambarkan benteng pertahanan moral, keadilan, dan jaminan pengayoman aspirasi yang kokoh untuk seluruh civitas akademika.",
-    highlightText: "Pengayom & Penjaga Aspirasi Mahasiswa"
+    tag: "FONDASI KOKOH",
+    title: "4. Perisai Penopang Organisasi",
+    image: "logo_kabinet_sayap_2.png",
+    highlightText: "Nilai Dasar & Dukungan Solid",
+    description: "Perisai penopang melambangkan fondasi yang kokoh yaitu nilai-nilai dasar, dukungan antar anggota, serta semangat kebersamaan yang menjadi akar dari setiap langkah. Bahwa organisasi mampu berdiri tegak dan melangkah maju karena memiliki penopang yang solid."
   },
   {
     id: 5,
     icon: Palette,
-    tag: "WARNA BRAND",
-    title: "5. Gradasi Merah & Emas",
-    description: "Warna merah melambangkan keberanian untuk beraksi dengan karya nyata, sedangkan aksen emas memancarkan kemuliaan dan cita-cita prestasi setinggi mungkin.",
-    highlightText: "Keberanian Beraksi, Keagungan Karya"
+    tag: "KESATUAN UTUH",
+    title: "5. Logo Utuh Naya Vikrama",
+    image: "logo_kabinet_full.svg",
+    highlightText: "Semangat Baru, Ketangguhan & Keberanian",
+    description: "Logo Naya Vikrama menghadirkan makna tentang semangat baru, ketangguhan, dan keberanian dalam melangkah. Setiap elemen di dalamnya mencerminkan karakter HMP MIKROPTIK yang progresif, adaptif, dan selalu siap menghadapi tantangan."
   }
 ];
 ---
@@ -54,7 +59,7 @@ const slides = [
             <!-- Left Side: Logo Highlight Container -->
             <div class="slide-visual">
               <div class="logo-highlight-box">
-                <img src={`${import.meta.env.BASE_URL}assets/logo-kabinet.png`} alt={slide.title} class="carousel-logo-img" />
+                <img src={`${import.meta.env.BASE_URL}assets/${slide.image}`} alt={slide.title} class="carousel-logo-img" />
               </div>
             </div>
 

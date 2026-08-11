@@ -73,22 +73,22 @@
 
 ## Phase 6: Client-side JavaScript & Animations
 
-- [ ] Buat `src/scripts/smooth-scroll.js`
-  - [ ] Inisialisasi Lenis
-  - [ ] Integrasi dengan GSAP ScrollTrigger ticker
-- [ ] Buat `src/scripts/preloader.js`
-  - [ ] GSAP Timeline: logo fade > text reveal > overlay split
-- [ ] Buat `src/scripts/navbar.js`
-  - [ ] Shrink on scroll
-  - [ ] Mobile hamburger toggle
-  - [ ] Active link highlighting
-- [ ] Buat `src/scripts/animations.js`
-  - [ ] Section headings reveal (fade + translateY)
-  - [ ] Cards stagger in
-  - [ ] Counter number animation
-  - [ ] Hero parallax effect
-  - [ ] Logo filosofi interactive animation
-  - [ ] Marquee scroll speed variation
+- [x] Buat `src/scripts/smooth-scroll.js`
+  - [x] Inisialisasi Lenis
+  - [x] Integrasi dengan GSAP ScrollTrigger ticker
+- [x] Buat `src/scripts/preloader.js`
+  - [x] GSAP Timeline: logo fade > text reveal > overlay split
+- [x] Buat `src/scripts/navbar.js`
+  - [x] Shrink on scroll
+  - [x] Mobile hamburger toggle
+  - [x] Active link highlighting
+- [x] Buat `src/scripts/animations.js`
+  - [x] Section headings reveal (fade + translateY)
+  - [x] Cards stagger in
+  - [x] Counter number animation
+  - [x] Hero parallax effect
+  - [x] Logo filosofi interactive animation
+  - [x] Marquee scroll speed variation
 
 ## Phase 7: Responsive Design & Polish
 

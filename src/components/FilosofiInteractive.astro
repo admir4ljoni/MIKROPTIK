@@ -320,8 +320,6 @@ const logoParts = [
           </defs>
         </svg>
       </div>
-
-      </div>
     </div>
 
     <!-- SEBELAH KANAN: Dark Theme Philosophy Card (Per DESIGN.md) -->
@@ -330,7 +328,6 @@ const logoParts = [
       <div class="filosofi-dark-card active" id="card-part-0" data-card="0">
         <h3 class="filosofi-card-title">{defaultPhilosophy.title}</h3>
         <p class="filosofi-card-desc">{defaultPhilosophy.description}</p>
-        <p class="filosofi-mobile-hint">* Ketuk pada bagian logo di atas untuk melihat detail filosofi masing-masing elemen</p>
       </div>
 
       <!-- Individual Part Philosophy Cards -->
@@ -362,55 +359,9 @@ const logoParts = [
   /* SEBELAH KIRI: SVG Artwork Container */
   .filosofi-visual-left {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
-  }
-
-  .mobile-tap-hint {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 1.25rem;
-    padding: 0.5rem 1.15rem;
-    border-radius: var(--radius-sm);
-    background: rgba(130, 9, 7, 0.45);
-    border: 1px solid rgba(212, 179, 84, 0.5);
-    color: var(--color-gold);
-    font-family: var(--font-heading);
-    font-size: 0.84rem;
-    letter-spacing: 0.04em;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    animation: pulseHint 2s infinite ease-in-out;
-  }
-
-  @keyframes pulseHint {
-    0%, 100% {
-      transform: translateY(0);
-      opacity: 0.9;
-    }
-    50% {
-      transform: translateY(-4px);
-      opacity: 1;
-    }
-  }
-
-  @media (max-width: 900px) {
-    .filosofi-grid {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
-
-    .filosofi-dark-card {
-      padding: 2rem 1.5rem;
-    }
-
-    .mobile-tap-hint {
-      display: inline-flex;
-    }
   }
 
   .logo-stack-box {
@@ -503,16 +454,6 @@ const logoParts = [
     line-height: 1.7;
   }
 
-  .filosofi-mobile-hint {
-    display: none;
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    font-style: italic;
-    color: var(--color-gold);
-    opacity: 0.88;
-    margin-top: 0.25rem;
-  }
-
   @media (max-width: 900px) {
     .filosofi-grid {
       grid-template-columns: 1fr;
@@ -521,10 +462,6 @@ const logoParts = [
 
     .filosofi-dark-card {
       padding: 2rem 1.5rem;
-    }
-
-    .filosofi-mobile-hint {
-      display: block;
     }
   }
 </style>

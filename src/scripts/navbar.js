@@ -3,10 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const hamburgerBtn = document.getElementById('hamburger-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+  const navLinks = document.querySelectorAll('.navbar-link');
 
   let lastScrollY = window.scrollY;
 
-  // Shrink & Hide/Reveal on scroll
+  // Sections list for active link highlighting
+  const sections = document.querySelectorAll('section[id], #hero[id]');
+
+  // Shrink & Hide/Reveal & Active Link Highlighting on scroll
   const handleNavScroll = () => {
     const currentScrollY = window.scrollY;
 
@@ -25,6 +29,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     lastScrollY = currentScrollY;
+
+    // 3. Active link highlighting based on section viewport position
+    let currentSectionId = '';
+    const scrollPosition = currentScrollY + 200; // Offset for navbar header height
+
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        currentSectionId = section.getAttribute('id') || '';
+      }
+    });
+
+    if (currentSectionId) {
+      navLinks.forEach((link) => {
+        const href = link.getAttribute('href');
+        if (href === `#${currentSectionId}`) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
   };
 
   window.addEventListener('scroll', handleNavScroll, { passive: true });
@@ -37,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Close mobile menu on link click
-  mobileLinks.forEach(link => {
+  mobileLinks.forEach((link) => {
     link.addEventListener('click', () => {
       mobileMenu?.classList.remove('active');
       hamburgerBtn?.classList.remove('open');

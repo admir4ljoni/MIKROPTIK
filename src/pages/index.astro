@@ -7,6 +7,7 @@ import ScrollIndicator from "../components/ScrollIndicator.astro";
 import FilosofiInteractive from "../components/FilosofiInteractive.astro";
 import ProkerBento from "../components/ProkerBento.astro";
 import PrestasiGrid from "../components/PrestasiGrid.astro";
+import KalenderEvent from "../components/KalenderEvent.astro";
 ---
 
 <BaseLayout title="MIKROPTIK | Kabinet Naya Vikrama - HMP PTIK FKIP UNS">
@@ -305,9 +306,22 @@ import PrestasiGrid from "../components/PrestasiGrid.astro";
   </section>
 
   <!-- =========================================================================
-       SECTION 7: HALL OF FAME MAHASISWA PTIK
+       SECTION 7: KALENDER & AGENDA KEGIATAN 2026
        ========================================================================= -->
-  <section id="prestasi" class="section bg-dark">
+  <section id="kalender" class="section bg-dark">
+    <div class="container">
+      <SectionHeading
+        titleMain="KALENDER AGENDA"
+        titleAccent="Naya Vikrama"
+        subtitle="Jadwal program kerja dan event besar HMP MIKROPTIK FKIP UNS sepanjang tahun 2026"
+      />
+
+      <KalenderEvent />
+    </div>
+  </section>
+
+  <!-- SECTION HALL OF FAME (HIDDEN - ON HOLD FOR FUTURE EXPANSION) -->
+  <section id="prestasi" class="section bg-dark" style="display: none;">
     <div class="container">
       <SectionHeading
         titleMain="HALL OF FAME"

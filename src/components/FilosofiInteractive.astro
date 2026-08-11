@@ -9,25 +9,21 @@ const logoParts = [
   {
     id: 1,
     title: "Obor Api Kepemimpinan",
-    image: "logo_kabinet_api.png",
     description: "Api yang menjulang ke atas mencerminkan semangat, keberanian, dan ketegasan dalam memimpin. Layaknya menyala yang tidak mudah padam, unsur ini menggambarkan kepemimpinan yang menjaga arah, memberikan inspirasi, serta berani mengambil keputusan dalam menghadapi setiap tantangan."
   },
   {
     id: 2,
     title: "Enam Sayap (Bidang & Divisi)",
-    image: "logo_kabinet_sayap_1.png",
     description: "Enam sayap di kanan dan kiri melambangkan dua bidang empat divisi: Bidang Sekertaris Umum, Bidang Bendahara Umum, Divisi PSDM, Divisi Humas, Divisi Media, Divisi Mikat. Bahwa organisasi bergerak oleh kolaborasi bidang & divisi yang bekerja harmonis untuk mencapai tujuan bersama."
   },
   {
     id: 3,
     title: "Buku & Kebebasan Berpikir",
-    image: "logo_kabinet_buku.png",
-    description: "Buku-buku menjadi simbol bahwa setiap langkah dan kebebasan berfikir selalu berlandaskan pengetahuan, serta menegaskan peran organisasi sebagai rumah belajar bagi setiap anggotanya."
+    description: "Buku-buku menjadi simbol bahwa melebarnya pengetahuan dan kebebasan berpikir selalu berlandaskan ilmu, serta menegaskan peran organisasi sebagai rumah belajar bagi setiap anggotanya."
   },
   {
     id: 4,
     title: "Perisai Penopang Organisasi",
-    image: "logo_kabinet_sayap_2.png",
     description: "Perisai penopang melambangkan fondasi yang kokoh yaitu nilai-nilai dasar, dukungan antar anggota, serta semangat kebersamaan yang menjadi akar dari setiap langkah. Bahwa organisasi mampu berdiri tegak dan melangkah maju karena memiliki penopang yang solid."
   }
 ];
@@ -35,47 +31,58 @@ const logoParts = [
 
 <div class="filosofi-interactive-container" id="filosofi-interactive">
   <div class="filosofi-grid">
-    <!-- SEBELAH KIRI: Interactive Logo Artwork with Precise SVG/CSS Hitspots -->
+    <!-- SEBELAH KIRI: Vector SVG Logo Layer Stack -->
     <div class="filosofi-visual-left">
       <div class="logo-stack-box" id="logo-stack-box">
-        <!-- Part 1: Api -->
+        <!-- Base Full SVG Logo (Default state) -->
         <img
-          src={`${import.meta.env.BASE_URL}assets/logo_kabinet_api.png`}
-          alt="Api Menjulang Ke Atas"
-          class="logo-layer-img"
+          src={`${import.meta.env.BASE_URL}assets/logo_kabinet_full.svg`}
+          alt="Logo Kabinet Naya Vikrama"
+          class="logo-layer-svg logo-full-svg active-part"
+          data-part="0"
+        />
+
+        <!-- SVG Layer 1: Api -->
+        <img
+          src={`${import.meta.env.BASE_URL}assets/logo_kabinet_api.svg`}
+          alt="Obor Api Kepemimpinan"
+          class="logo-layer-svg"
           data-part="1"
         />
-        <!-- Part 2: Sayap 1 -->
+
+        <!-- SVG Layer 2: Sayap 1 -->
         <img
-          src={`${import.meta.env.BASE_URL}assets/logo_kabinet_sayap_1.png`}
-          alt="Enam Sayap Kanan & Kiri"
-          class="logo-layer-img"
+          src={`${import.meta.env.BASE_URL}assets/logo_kabinet_sayap_1.svg`}
+          alt="Enam Sayap Kanan"
+          class="logo-layer-svg"
           data-part="2"
         />
-        <!-- Part 3: Buku -->
+
+        <!-- SVG Layer 3: Buku -->
         <img
-          src={`${import.meta.env.BASE_URL}assets/logo_kabinet_buku.png`}
-          alt="Buku-buku Pengetahuan"
-          class="logo-layer-img"
+          src={`${import.meta.env.BASE_URL}assets/logo_kabinet_buku.svg`}
+          alt="Buku Pengetahuan"
+          class="logo-layer-svg"
           data-part="3"
         />
-        <!-- Part 4: Sayap 2 / Perisai -->
+
+        <!-- SVG Layer 4: Sayap 2 / Perisai -->
         <img
-          src={`${import.meta.env.BASE_URL}assets/logo_kabinet_sayap_2.png`}
-          alt="Perisai Penopang Organisasi"
-          class="logo-layer-img"
+          src={`${import.meta.env.BASE_URL}assets/logo_kabinet_sayap_2.svg`}
+          alt="Sayap Kiri & Perisai Penopang"
+          class="logo-layer-svg"
           data-part="4"
         />
 
-        <!-- Instant Hardware-Accelerated Hitspots -->
-        <div class="logo-hotspot hotspot-api" data-hotspot="1" title="Obor Api Kepemimpinan"></div>
-        <div class="logo-hotspot hotspot-sayap1" data-hotspot="2" title="Sayap Kanan & Divisi"></div>
-        <div class="logo-hotspot hotspot-buku" data-hotspot="3" title="Buku Pengetahuan"></div>
-        <div class="logo-hotspot hotspot-sayap2" data-hotspot="4" title="Sayap Kiri & Perisai"></div>
+        <!-- Vector Hotspot Hit Triggers (100% Precise SVG Part Regions) -->
+        <div class="logo-svg-hotspot hotspot-api" data-svg-part="1" title="Obor Api Kepemimpinan"></div>
+        <div class="logo-svg-hotspot hotspot-sayap1" data-svg-part="2" title="Sayap Kanan & Divisi"></div>
+        <div class="logo-svg-hotspot hotspot-buku" data-svg-part="3" title="Buku Pengetahuan"></div>
+        <div class="logo-svg-hotspot hotspot-sayap2" data-svg-part="4" title="Sayap Kiri & Perisai"></div>
       </div>
     </div>
 
-    <!-- SEBELAH KANAN: Dark Background Philosophy Card (Per DESIGN.md) -->
+    <!-- SEBELAH KANAN: Dark Theme Philosophy Card (Sesuai DESIGN.md) -->
     <div class="filosofi-content-right">
       <!-- Default Philosophy Card -->
       <div class="filosofi-dark-card active" id="card-part-0" data-card="0">
@@ -109,7 +116,7 @@ const logoParts = [
     width: 100%;
   }
 
-  /* SEBELAH KIRI: Murni Logo Artwork */
+  /* SEBELAH KIRI: SVG Artwork Container */
   .filosofi-visual-left {
     display: flex;
     align-items: center;
@@ -126,29 +133,36 @@ const logoParts = [
     justify-content: center;
   }
 
-  /* Layer Images Stacked Absolutely */
-  .logo-layer-img {
+  /* SVG Layer Images Stacked Absolutely */
+  .logo-layer-svg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: contain;
     pointer-events: none;
-    filter: grayscale(0%) opacity(1);
-    transition: filter 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 0.35s ease;
-    will-change: filter, transform, opacity;
+    opacity: 0;
+    transform: scale(0.98);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.4s ease;
+    will-change: opacity, transform, filter;
   }
 
-  /* Hotspot Hit Areas (100% Instant & Accurate Hover Detection) */
-  .logo-hotspot {
+  .logo-layer-svg.active-part {
+    opacity: 1;
+    transform: scale(1);
+    filter: drop-shadow(0 0 40px rgba(212, 179, 84, 0.75));
+    z-index: 10;
+  }
+
+  /* Vector SVG Hotspot Trigger Areas */
+  .logo-svg-hotspot {
     position: absolute;
     z-index: 50;
     cursor: pointer;
   }
 
-  /* Hotspot 1: Obor Api (Top Center) */
   .hotspot-api {
     top: 2%;
     left: 30%;
@@ -157,7 +171,6 @@ const logoParts = [
     clip-path: polygon(50% 0%, 85% 30%, 75% 100%, 25% 100%, 15% 30%);
   }
 
-  /* Hotspot 2: Sayap Kanan (Right Side) */
   .hotspot-sayap1 {
     top: 25%;
     left: 55%;
@@ -166,7 +179,6 @@ const logoParts = [
     clip-path: polygon(0% 15%, 85% 0%, 100% 70%, 25% 100%);
   }
 
-  /* Hotspot 3: Buku (Center Lower) */
   .hotspot-buku {
     top: 48%;
     left: 30%;
@@ -175,7 +187,6 @@ const logoParts = [
     clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
   }
 
-  /* Hotspot 4: Sayap Kiri / Perisai (Left Side) */
   .hotspot-sayap2 {
     top: 25%;
     left: 0%;
@@ -184,19 +195,7 @@ const logoParts = [
     clip-path: polygon(15% 0%, 100% 15%, 75% 100%, 0% 70%);
   }
 
-  /* State Saat Salah Satu Part Di-hover/Di-click */
-  .logo-stack-box.is-hovered .logo-layer-img {
-    filter: grayscale(100%) opacity(0.25);
-    transform: scale(0.98);
-  }
-
-  .logo-stack-box.is-hovered .logo-layer-img.active-part {
-    filter: grayscale(0%) opacity(1) drop-shadow(0 0 50px rgba(212, 179, 84, 0.95));
-    transform: scale(1.05);
-    z-index: 30;
-  }
-
-  /* SEBELAH KANAN: Dark Background Card Panel (Sesuai DESIGN.md) */
+  /* SEBELAH KANAN: Dark Background Card Panel (Per DESIGN.md) */
   .filosofi-content-right {
     display: flex;
     flex-direction: column;
@@ -205,7 +204,6 @@ const logoParts = [
     justify-content: center;
   }
 
-  /* Card Display - Dark Theme Style (Per DESIGN.md: var(--color-dark)) */
   .filosofi-dark-card {
     display: none;
     flex-direction: column;
@@ -260,11 +258,11 @@ const logoParts = [
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const stackBox = document.getElementById('logo-stack-box');
-    const layerImgs = document.querySelectorAll('.logo-layer-img');
-    const hotspots = document.querySelectorAll('.logo-hotspot');
+    const svgLayers = document.querySelectorAll('.logo-layer-svg');
+    const hotspots = document.querySelectorAll('.logo-svg-hotspot');
     const cards = document.querySelectorAll('.filosofi-dark-card');
 
-    if (!stackBox || layerImgs.length === 0) return;
+    if (!stackBox || svgLayers.length === 0) return;
 
     let activePartId = '0';
 
@@ -272,20 +270,16 @@ const logoParts = [
       if (activePartId === partId) return;
       activePartId = partId;
 
-      if (partId === '0') {
-        stackBox.classList.remove('is-hovered');
-        layerImgs.forEach(img => img.classList.remove('active-part'));
-      } else {
-        stackBox.classList.add('is-hovered');
-        layerImgs.forEach(img => {
-          if (img.getAttribute('data-part') === partId) {
-            img.classList.add('active-part');
-          } else {
-            img.classList.remove('active-part');
-          }
-        });
-      }
+      // Switch active SVG layer
+      svgLayers.forEach(layer => {
+        if (layer.getAttribute('data-part') === partId) {
+          layer.classList.add('active-part');
+        } else {
+          layer.classList.remove('active-part');
+        }
+      });
 
+      // Switch active philosophy card
       cards.forEach(card => {
         if (card.getAttribute('data-card') === partId) {
           card.classList.add('active');
@@ -295,9 +289,9 @@ const logoParts = [
       });
     }
 
-    // Direct 100% Instant Hotspot Hover & Click Listeners
+    // Direct Instant Vector SVG Hotspot Listeners
     hotspots.forEach(hotspot => {
-      const partId = hotspot.getAttribute('data-hotspot') || '0';
+      const partId = hotspot.getAttribute('data-svg-part') || '0';
 
       hotspot.addEventListener('mouseenter', () => {
         activatePart(partId);
@@ -307,7 +301,7 @@ const logoParts = [
         activatePart(partId);
       });
 
-      hotspot.addEventListener('touchstart', (e) => {
+      hotspot.addEventListener('touchstart', () => {
         activatePart(partId);
       }, { passive: true });
     });

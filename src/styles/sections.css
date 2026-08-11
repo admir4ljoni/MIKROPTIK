@@ -27,10 +27,10 @@
 }
 
 .preloader-logo {
-  width: 140px;
-  height: 140px;
+  width: clamp(220px, 28vw, 320px);
+  height: clamp(220px, 28vw, 320px);
   object-fit: contain;
-  filter: drop-shadow(0 0 25px rgba(212, 179, 84, 0.4));
+  filter: drop-shadow(0 0 45px rgba(212, 179, 84, 0.65));
 }
 
 .preloader-title {
@@ -299,11 +299,11 @@
 }
 
 .hero-bg-logo {
-  width: clamp(340px, 50vw, 580px);
+  width: clamp(480px, 68vw, 860px);
   height: auto;
   object-fit: contain;
-  opacity: 0.35;
-  filter: drop-shadow(0 0 60px rgba(212, 179, 84, 0.4));
+  opacity: 0.75;
+  filter: drop-shadow(0 0 80px rgba(212, 179, 84, 0.75)) drop-shadow(0 0 35px rgba(204, 87, 14, 0.5));
   animation: bounce 6s infinite ease-in-out;
 }
 

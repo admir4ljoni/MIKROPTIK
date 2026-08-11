@@ -7,7 +7,7 @@ const defaultPhilosophy = {
   tag: "SIMBOL UTAMA KABINET",
   title: "Logo Kabinet Naya Vikrama 2026",
   highlightText: "Semangat Baru, Ketangguhan & Keberanian Melangkah",
-  description: "Logo Naya Vikrama menghadirkan makna tentang semangat baru, ketangguhan, dan keberanian dalam melangkah. Setiap elemen di dalamnya mencerminkan karakter HMP MIKROPTIK yang progresif, adaptif, dan selalu siap menghadapi tantangan. Melalui filosofi ini, nilai-nilai organisasi menjadi pijakan dalam berkarya dan berkontribusi nyata."
+  description: "Logo Naya Vikrama menghadirkan makna tentang semangat baru, ketangguhan, dan keberanian dalam melangkah. Setiap elemen di dalamnya mencerminkan karakter HMP MIKROPTIK yang progresif, adaptif, dan selalu siap menghadapi tantangan. Arahkan kursor langsung ke bagian obor api, sayap, buku, atau perisai logo di sebelah kiri untuk melihat filosofi detailnya."
 };
 
 const logoParts = [
@@ -26,7 +26,7 @@ const logoParts = [
     partKey: "sayap1",
     icon: Zap,
     tag: "KOLABORASI HARMONIS",
-    title: "2. Enam Sayap Bidang & Divisi",
+    title: "2. Enam Sayap Kanan & Kiri",
     image: "logo_kabinet_sayap_1.png",
     highlightText: "Sinergi 2 Bidang & 4 Divisi Organisasi",
     description: "Enam sayap di kanan dan kiri melambangkan dua bidang empat divisi: Bidang Sekertaris Umum, Bidang Bendahara Umum, Divisi PSDM, Divisi Humas, Divisi Media, Divisi Mikat. Bahwa organisasi bergerak oleh kolaborasi bidang & divisi yang bekerja harmonis untuk mencapai tujuan bersama."
@@ -56,7 +56,7 @@ const logoParts = [
 
 <div class="filosofi-interactive-container" id="filosofi-interactive">
   <div class="filosofi-grid">
-    <!-- SEBELAH KIRI: Interactive Logo Layers -->
+    <!-- SEBELAH KIRI: Pixel-Perfect Interactive Logo Stack -->
     <div class="filosofi-visual-left">
       <div class="logo-stack-box" id="logo-stack-box">
         <!-- Part 1: Api -->
@@ -90,12 +90,12 @@ const logoParts = [
 
         <!-- Hint Text di bawah Logo -->
         <div class="logo-interactive-hint">
-          <span>Arahkan kursor atau sentuh bagian logo untuk melihat filosofinya</span>
+          <span>Arahkan kursor langsung ke gambar bentuk logo untuk melihat filosofinya</span>
         </div>
       </div>
     </div>
 
-    <!-- SEBELAH KANAN: Dynamic Card & Part Selectors -->
+    <!-- SEBELAH KANAN: Dynamic Philosophy Card & Part Selectors -->
     <div class="filosofi-content-right">
       <!-- Default Philosophy Card -->
       <div class="filosofi-card active" id="card-part-0" data-card="0">
@@ -125,7 +125,7 @@ const logoParts = [
         </div>
       ))}
 
-      <!-- Part Selector List -->
+      <!-- Part Selector Quick List -->
       <div class="filosofi-part-list">
         {logoParts.map((part) => (
           <button
@@ -168,26 +168,27 @@ const logoParts = [
 
   .logo-stack-box {
     position: relative;
-    width: clamp(280px, 35vw, 440px);
-    height: clamp(280px, 35vw, 440px);
+    width: clamp(300px, 36vw, 460px);
+    height: clamp(300px, 36vw, 460px);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 2rem;
     border-radius: var(--radius-sm);
-    background: radial-gradient(circle at center, rgba(130, 9, 7, 0.25) 0%, rgba(28, 22, 20, 0.8) 70%);
-    border: 1px solid rgba(212, 179, 84, 0.2);
+    background: radial-gradient(circle at center, rgba(130, 9, 7, 0.25) 0%, rgba(28, 22, 20, 0.85) 70%);
+    border: 1.5px solid rgba(212, 179, 84, 0.25);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    cursor: crosshair;
   }
 
-  /* Layer Images Stacked Absolutely */
+  /* Layer Images Stacked Absolutely (Pointer-events handled via pixel inspection) */
   .logo-layer-img {
     position: absolute;
     inset: 1.5rem;
     width: calc(100% - 3rem);
     height: calc(100% - 3rem);
     object-fit: contain;
-    cursor: pointer;
+    pointer-events: none;
     filter: grayscale(0%) opacity(1);
     transition: filter 0.4s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
@@ -197,26 +198,27 @@ const logoParts = [
 
   /* State Saat Salah Satu Part Di-hover/Di-click */
   .logo-stack-box.is-hovered .logo-layer-img {
-    filter: grayscale(100%) opacity(0.22);
+    filter: grayscale(100%) opacity(0.25);
     transform: scale(0.98);
   }
 
   .logo-stack-box.is-hovered .logo-layer-img.active-part {
-    filter: grayscale(0%) opacity(1) drop-shadow(0 0 35px rgba(212, 179, 84, 0.85));
+    filter: grayscale(0%) opacity(1) drop-shadow(0 0 40px rgba(212, 179, 84, 0.9));
     transform: scale(1.06);
     z-index: 20;
   }
 
   .logo-interactive-hint {
     position: absolute;
-    bottom: -2.2rem;
+    bottom: -2.4rem;
     left: 0;
     right: 0;
     text-align: center;
     font-family: var(--font-body);
-    font-size: 0.82rem;
-    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.84rem;
+    color: rgba(255, 255, 255, 0.65);
     letter-spacing: 0.05em;
+    pointer-events: none;
   }
 
   /* SEBELAH KANAN: Philosophy Card Panel */
@@ -352,8 +354,34 @@ const logoParts = [
 
     if (!stackBox || layerImgs.length === 0) return;
 
+    let activePartId = '0';
+    const partContexts: { [key: string]: CanvasRenderingContext2D } = {};
+    const CANVAS_SIZE = 250;
+
+    // Load each part PNG into offscreen canvas 2D contexts for 100% pixel-perfect alpha detection
+    const imgElements = Array.from(layerImgs) as HTMLImageElement[];
+    imgElements.forEach(img => {
+      const partId = img.getAttribute('data-part') || '0';
+      const c = document.createElement('canvas');
+      c.width = CANVAS_SIZE;
+      c.height = CANVAS_SIZE;
+      const ctx = c.getContext('2d', { willReadFrequently: true });
+
+      const tempImg = new Image();
+      tempImg.crossOrigin = 'anonymous';
+      tempImg.onload = () => {
+        if (ctx) {
+          ctx.drawImage(tempImg, 0, 0, CANVAS_SIZE, CANVAS_SIZE);
+          partContexts[partId] = ctx;
+        }
+      };
+      tempImg.src = img.src;
+    });
+
     function activatePart(partId: string) {
-      // Manage logo layers hover/active states
+      if (activePartId === partId) return;
+      activePartId = partId;
+
       if (partId === '0') {
         stackBox.classList.remove('is-hovered');
         layerImgs.forEach(img => img.classList.remove('active-part'));
@@ -368,7 +396,6 @@ const logoParts = [
         });
       }
 
-      // Manage right side card reveal
       cards.forEach(card => {
         if (card.getAttribute('data-card') === partId) {
           card.classList.add('active');
@@ -377,7 +404,6 @@ const logoParts = [
         }
       });
 
-      // Manage part buttons active state
       partBtns.forEach(btn => {
         if (btn.getAttribute('data-part-trigger') === partId) {
           btn.classList.add('active-btn');
@@ -387,25 +413,59 @@ const logoParts = [
       });
     }
 
-    // Hover & Click listeners on left side logo layers
-    layerImgs.forEach(img => {
-      const partId = img.getAttribute('data-part') || '0';
+    // Inspect non-transparent pixels (alpha > 35) on the exact cursor position over the logo shapes
+    function detectPartAtPosition(xRatio: number, yRatio: number): string {
+      const px = Math.floor(xRatio * CANVAS_SIZE);
+      const py = Math.floor(yRatio * CANVAS_SIZE);
 
-      img.addEventListener('mouseenter', () => {
-        activatePart(partId);
-      });
+      if (px < 0 || px >= CANVAS_SIZE || py < 0 || py >= CANVAS_SIZE) return '0';
 
-      img.addEventListener('click', () => {
-        activatePart(partId);
-      });
+      // Order of inspection: Api (1), Buku (3), Sayap Kanan (2), Sayap Kiri (4)
+      const partOrder = ['1', '3', '2', '4'];
+      for (const partId of partOrder) {
+        const ctx = partContexts[partId];
+        if (ctx) {
+          try {
+            const alpha = ctx.getImageData(px, py, 1, 1).data[3];
+            if (alpha > 35) {
+              return partId;
+            }
+          } catch (e) {
+            // Ignore cross-origin canvas security errors
+          }
+        }
+      }
+      return '0';
+    }
+
+    // Mousemove directly over the visual logo box
+    stackBox.addEventListener('mousemove', (e) => {
+      const rect = stackBox.getBoundingClientRect();
+      const xRatio = (e.clientX - rect.left) / rect.width;
+      const yRatio = (e.clientY - rect.top) / rect.height;
+
+      const detectedPart = detectPartAtPosition(xRatio, yRatio);
+      activatePart(detectedPart);
     });
 
-    // Reset to default on mouseleave from logo box
     stackBox.addEventListener('mouseleave', () => {
       activatePart('0');
     });
 
-    // Listeners on right side selector buttons
+    // Touch support for mobile devices directly on logo box
+    stackBox.addEventListener('touchstart', (e) => {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        const rect = stackBox.getBoundingClientRect();
+        const xRatio = (touch.clientX - rect.left) / rect.width;
+        const yRatio = (touch.clientY - rect.top) / rect.height;
+
+        const detectedPart = detectPartAtPosition(xRatio, yRatio);
+        activatePart(detectedPart);
+      }
+    }, { passive: true });
+
+    // Buttons fallback click/hover listeners
     partBtns.forEach(btn => {
       const partId = btn.getAttribute('data-part-trigger') || '0';
 

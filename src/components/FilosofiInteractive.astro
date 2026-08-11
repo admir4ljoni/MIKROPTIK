@@ -321,10 +321,6 @@ const logoParts = [
         </svg>
       </div>
 
-      <!-- Mobile Device Tap Hint -->
-      <div class="mobile-tap-hint">
-        <span class="tap-icon">👆</span>
-        <span>Ketuk bagian logo untuk melihat detail filosofi</span>
       </div>
     </div>
 
@@ -334,6 +330,7 @@ const logoParts = [
       <div class="filosofi-dark-card active" id="card-part-0" data-card="0">
         <h3 class="filosofi-card-title">{defaultPhilosophy.title}</h3>
         <p class="filosofi-card-desc">{defaultPhilosophy.description}</p>
+        <p class="filosofi-mobile-hint">* Ketuk pada bagian logo di atas untuk melihat detail filosofi masing-masing elemen</p>
       </div>
 
       <!-- Individual Part Philosophy Cards -->
@@ -506,6 +503,16 @@ const logoParts = [
     line-height: 1.7;
   }
 
+  .filosofi-mobile-hint {
+    display: none;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--color-gold);
+    opacity: 0.88;
+    margin-top: 0.25rem;
+  }
+
   @media (max-width: 900px) {
     .filosofi-grid {
       grid-template-columns: 1fr;
@@ -514,6 +521,10 @@ const logoParts = [
 
     .filosofi-dark-card {
       padding: 2rem 1.5rem;
+    }
+
+    .filosofi-mobile-hint {
+      display: block;
     }
   }
 </style>

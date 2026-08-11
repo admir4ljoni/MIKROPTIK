@@ -1,34 +1,23 @@
 ---
-import { Calendar as CalendarIcon, MapPin, Tag, ChevronLeft, ChevronRight, Sparkles, Info } from '@lucide/astro';
+import { Calendar as CalendarIcon, MapPin, Tag, ChevronLeft, ChevronRight, Info } from '@lucide/astro';
 
-const eventsData: { [key: string]: Array<{ id: number; title: string; category: string; division: string; dateStr: string; location: string; desc: string; dateKey: string }> } = {
-  "2026-02-10": [{ id: 1, dateKey: "2026-02-10", title: "Rapat Kerja (Raker) 2026", category: "Wajib", division: "Sekretaris & Bendahara", dateStr: "10 Februari 2026", location: "Aula FKIP UNS", desc: "Penetapan dan sosialisasi seluruh arah gerak serta program kerja HMP MIKROPTIK 2026." }],
-  "2026-02-15": [{ id: 2, dateKey: "2026-02-15", title: "Open Recruitment Pengurus", category: "Kaderisasi", division: "Divisi PSDM", dateStr: "15 Februari 2026", location: "Kampus PTIK UNS", desc: "Perekrutan pengurus muda HMP MIKROPTIK Kabinet Naya Vikrama." }],
-  "2026-03-05": [{ id: 3, dateKey: "2026-03-05", title: "Pelatihan Sekben", category: "Internal", division: "Sekretaris & Bendahara", dateStr: "5 Maret 2026", location: "Lab Komputer PTIK", desc: "Pelatihan administrasi dan tata kelola keuangan organisasi." }],
-  "2026-03-12": [{ id: 4, dateKey: "2026-03-12", title: "Upgrading Pengurus", category: "Internal", division: "Kahim & Wakahim", dateStr: "12 Maret 2026", location: "Ruang Ormawa PTIK", desc: "Peningkatan kapabilitas dan soliditas pengurus HMP MIKROPTIK 2026." }],
-  "2026-03-24": [{ id: 5, dateKey: "2026-03-24", title: "Mikroptik Social Action (MSA)", category: "Aksi Sosial", division: "Divisi Humas", dateStr: "24 Maret 2026", location: "Surakarta", desc: "Aksi berbagi takjil dan pengabdian masyarakat di bulan suci Ramadhan." }],
-  "2026-04-18": [{ id: 6, dateKey: "2026-04-18", title: "Mikroptik Store Launch", category: "Dana Usaha", division: "Bendahara Umum", dateStr: "18 April 2026", location: "Online & Sekre", desc: "Peluncuran merchandise dan produk resmi HMP MIKROPTIK." }],
-  "2026-04-20": [{ id: 7, dateKey: "2026-04-20", title: "Podcast Mikroptik Ep.1", category: "Media", division: "Divisi Medinfo", dateStr: "20 April 2026", location: "Studio Podcast & YouTube", desc: "Bincang santai seputar dunia perkuliahan IT dan pengalaman alumni." }],
-  "2026-05-16": [{ id: 8, dateKey: "2026-05-16", title: "Studi Banding Himpunan", category: "Eksternal", division: "Divisi Humas", dateStr: "16 Mei 2026", location: "Universitas Mitra", desc: "Pertukaran wawasan dan studi budaya organisasi dengan HMP kampus lain." }],
-  "2026-06-05": [{ id: 9, dateKey: "2026-06-05", title: "JPTK CUP 2026", category: "Olahraga & Seni", division: "Divisi Mikat", dateStr: "5 Juni 2026", location: "Sport Center UNS", desc: "Pekan olahraga, E-Sports, dan seni antar angkatan civitas akademika PTIK." }],
-  "2026-06-10": [{ id: 10, dateKey: "2026-06-10", title: "JPTK Berbagi & Sambung Rasa", category: "Advokasi", division: "Divisi Humas", dateStr: "10 Juni 2026", location: "Ruang Diskusi PTIK", desc: "Ruang aspirasi mahasiswa dan sarasehan bersama pengelola prodi PTIK." }],
-  "2026-08-18": [{ id: 11, dateKey: "2026-08-18", title: "SAMARU & OSMARU 2026", category: "Kaderisasi", division: "Divisi PSDM", dateStr: "18 Agustus 2026", location: "Kampus UNS", desc: "Penyambutan dan pengenalan kampus bagi mahasiswa baru prodi PTIK." }],
-  "2026-08-29": [{ id: 12, dateKey: "2026-08-29", title: "Sambut Wisuda PTIK", category: "Apresiasi", division: "Divisi Humas", dateStr: "29 Agustus 2026", location: "Gedung FKIP UNS", desc: "Apresiasi dan pelepasan wisudawan/wisudawati prodi PTIK UNS." }],
-  "2026-09-15": [{ id: 13, dateKey: "2026-09-15", title: "BYTESFEST 2026", category: "Big Event", division: "Kahim & Wakahim", dateStr: "15 September 2026", location: "Gedung UNS & Online", desc: "Festival IT dan kompetisi berskala nasional bagi pelajar & mahasiswa se-Indonesia." }],
-  "2026-10-10": [{ id: 14, dateKey: "2026-10-10", title: "LDKM Naya Vikrama", category: "Kaderisasi", division: "Divisi PSDM", dateStr: "10 Oktober 2026", location: "Outbound Camp", desc: "Latihan Dasar Kepemimpinan Mahasiswa untuk membentuk kepemimpinan progresif." }],
-  "2026-11-07": [{ id: 15, dateKey: "2026-11-07", title: "PSDM Adventure", category: "Internal", division: "Divisi PSDM", dateStr: "7 November 2026", location: "Tawangmangu", desc: "Kegiatan keakraban dan penguatan karakter antar pengurus." }],
-  "2026-11-20": [{ id: 16, dateKey: "2026-11-20", title: "Festival MIKAT & Seminar PKM", category: "Akademik & Seni", division: "Divisi Mikat", dateStr: "20 November 2026", location: "Aula UNS", desc: "Prameran bakat, seminar Program Kreativitas Mahasiswa, dan apresiasi prestasi." }]
-};
+// Kosongkan kegiatan di kalender untuk saat ini sesuai permintaan
+const eventsData: { [key: string]: Array<{ id: number; title: string; category: string; division: string; dateStr: string; location: string; desc: string }> } = {};
+
+const monthNames = [
+  "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+  "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+];
 ---
 
 <div class="custom-calendar-section-wrapper" id="custom-calendar-root">
   <div class="custom-calendar-container">
-    <!-- SEBELAH KIRI: Monthly Calendar Grid (Fixed Height 520px) -->
+    <!-- SEBELAH KIRI: Fixed-Height Monthly Calendar Grid -->
     <div class="calendar-grid-box">
       <!-- Calendar Header: Month Title & Navigation -->
       <div class="calendar-box-header">
         <div class="calendar-month-title">
-          <span class="month-name-text" id="month-name-text">August</span>
+          <span class="month-name-text" id="month-name-text">Agustus</span>
           <span class="year-gold-text" id="year-text">2026</span>
         </div>
 
@@ -42,32 +31,45 @@ const eventsData: { [key: string]: Array<{ id: number; title: string; category: 
         </div>
       </div>
 
-      <!-- Days of Week Header -->
+      <!-- Days of Week Header (SUN - SAT) -->
       <div class="calendar-weekdays-row">
-        <span>SUN</span>
-        <span>MON</span>
-        <span>TUE</span>
-        <span>WED</span>
-        <span>THU</span>
-        <span>FRI</span>
-        <span>SAT</span>
+        <span>MIN</span>
+        <span>SEN</span>
+        <span>SEL</span>
+        <span>RAB</span>
+        <span>KAM</span>
+        <span>JUM</span>
+        <span>SAB</span>
       </div>
 
-      <!-- Fixed 6-Row Grid Cells (42 Cells Total) -->
+      <!-- Dates Grid Cells (Fixed 42 Cells: 6 Rows x 7 Days) -->
       <div class="calendar-days-grid" id="calendar-days-grid">
         <!-- Injected via JavaScript -->
       </div>
     </div>
 
-    <!-- SEBELAH KANAN: Agenda Stream Panel (Dynamic Monthly Event List) -->
-    <div class="calendar-right-panel" id="calendar-right-panel">
-      <div class="agenda-stream-header">
-        <h3 class="agenda-stream-title" id="agenda-stream-title">Agenda Bulan Agustus 2026</h3>
-        <span class="agenda-count-badge" id="agenda-count-badge">2 Kegiatan Terjadwal</span>
+    <!-- SEBELAH KANAN: Events List Panel for Selected Month -->
+    <div class="calendar-detail-panel" id="calendar-detail-panel">
+      <!-- Agenda List Header -->
+      <div class="agenda-panel-header">
+        <h3 class="agenda-panel-title" id="agenda-panel-title">Kegiatan Bulan Agustus 2026</h3>
+        <span class="agenda-panel-badge" id="agenda-panel-badge">0 Kegiatan</span>
       </div>
 
-      <div class="agenda-cards-list" id="agenda-cards-list">
-        <!-- Dynamic Event Cards Injected via JS -->
+      <!-- Empty State View (Tampil Jika Tidak Ada Kegiatan di Bulan Tersebut) -->
+      <div class="calendar-empty-state active" id="calendar-empty-state">
+        <div class="empty-icon-box">
+          <Info size={32} style="color: var(--color-gold);" />
+        </div>
+        <h4 class="empty-state-title">Tidak Ada Kegiatan</h4>
+        <p class="empty-state-desc">
+          Belum ada program kerja atau agenda kegiatan yang dijadwalkan pada bulan ini.
+        </p>
+      </div>
+
+      <!-- Active Events Vertical List View (Tampil Jika Ada Kegiatan) -->
+      <div class="calendar-events-list" id="calendar-events-list">
+        <!-- Injected via JavaScript if events exist -->
       </div>
     </div>
   </div>
@@ -82,15 +84,15 @@ const eventsData: { [key: string]: Array<{ id: number; title: string; category: 
 
   .custom-calendar-container {
     display: grid;
-    grid-template-columns: 1.2fr 1.35fr;
+    grid-template-columns: 1.2fr 1fr;
     gap: 2rem;
     align-items: stretch;
     width: 100%;
   }
 
-  /* SEBELAH KIRI: Fixed Height Calendar Box (520px) */
+  /* SEBELAH KIRI: Fixed-Height Calendar Box (Tinggi Tetap & Rapi) */
   .calendar-grid-box {
-    background: #18090f;
+    background: #18090f; /* Dark Crimson / Wine Background */
     border: 1.5px solid rgba(212, 179, 84, 0.3);
     border-radius: var(--radius-sm); /* Style tegas 4px */
     padding: 2rem;
@@ -98,8 +100,8 @@ const eventsData: { [key: string]: Array<{ id: number; title: string; category: 
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
-    height: 520px; /* TINGGI FIX (TIDAK BERUBAH-UBAH) */
-    box-sizing: border-box;
+    height: 510px; /* Fixed Height agar tidak berubah-ubah */
+    justify-content: space-between;
   }
 
   .calendar-box-header {
@@ -118,16 +120,16 @@ const eventsData: { [key: string]: Array<{ id: number; title: string; category: 
 
   .month-name-text {
     font-family: var(--font-heading);
-    font-size: clamp(2rem, 3vw, 2.5rem);
+    font-size: clamp(1.8rem, 2.6vw, 2.4rem);
     color: #ffffff;
     letter-spacing: 0.04em;
   }
 
+  /* Warna Tahun Kuning Emas per DESIGN.md */
   .year-gold-text {
     font-family: var(--font-heading);
-    font-style: italic;
-    font-size: clamp(1.8rem, 2.8vw, 2.3rem);
-    color: var(--color-gold); /* WARNA KUNING EMAS SUESUAI DESIGN.md */
+    font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+    color: var(--color-gold); /* #d4b354 */
     letter-spacing: 0.04em;
   }
 
@@ -156,22 +158,22 @@ const eventsData: { [key: string]: Array<{ id: number; title: string; category: 
     color: var(--color-gold);
   }
 
-  /* Weekdays Header */
+  /* Weekdays Header (MIN - SAB) */
   .calendar-weekdays-row {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     text-align: center;
     font-family: var(--font-heading);
-    font-size: 0.78rem;
-    color: rgba(255, 255, 255, 0.6);
-    letter-spacing: 0.1em;
+    font-size: 0.82rem;
+    color: var(--color-gold);
+    letter-spacing: 0.08em;
   }
 
-  /* Fixed 6-Row Days Grid (42 Cells Total) */
+  /* Fixed 42-Cells Days Grid (6 Rows x 7 Days) */
   .calendar-days-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(6, 1fr); /* 6 FIX ROWS */
+    grid-template-rows: repeat(6, 1fr);
     gap: 0.45rem;
     flex-grow: 1;
   }
@@ -181,27 +183,25 @@ const eventsData: { [key: string]: Array<{ id: number; title: string; category: 
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: var(--radius-sm);
-    padding: 0.35rem 0.45rem;
-    font-family: var(--font-body);
-    font-size: 0.88rem;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.85);
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
     cursor: default;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
+    transition: all 0.25s ease;
   }
 
-  .cal-day-cell.empty {
+  /* Tanggal Bulan Sebelum/Sesudah (Berwarna Abu-abu Redup) */
+  .cal-day-cell.other-month {
+    color: rgba(255, 255, 255, 0.22);
     background: transparent;
-    border: none;
-    pointer-events: none;
+    border-color: rgba(255, 255, 255, 0.02);
   }
 
   .cal-day-cell.has-event {
-    background: linear-gradient(135deg, rgba(130, 9, 7, 0.75) 0%, rgba(28, 22, 20, 0.9) 100%);
+    background: linear-gradient(135deg, rgba(130, 9, 7, 0.85) 0%, rgba(28, 22, 20, 0.95) 100%);
     border: 1.5px solid var(--color-gold);
     color: var(--color-gold);
     font-weight: 600;
@@ -209,42 +209,38 @@ const eventsData: { [key: string]: Array<{ id: number; title: string; category: 
     box-shadow: 0 4px 15px rgba(130, 9, 7, 0.5);
   }
 
-  .cal-day-cell.has-event:hover,
-  .cal-day-cell.has-event.selected {
+  .cal-day-cell.has-event:hover {
     background: #820907;
     border-color: #ffffff;
     color: #ffffff;
-    box-shadow: 0 0 20px rgba(212, 179, 84, 0.8);
-    transform: scale(1.08);
-    z-index: 10;
+    transform: scale(1.06);
+    z-index: 5;
   }
 
   .event-dot-indicator {
     position: absolute;
-    bottom: 5px;
-    right: 5px;
-    width: 6px;
-    height: 6px;
+    bottom: 4px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background: var(--color-gold);
-    box-shadow: 0 0 8px var(--color-gold);
+    box-shadow: 0 0 6px var(--color-gold);
   }
 
-  /* SEBELAH KANAN: Agenda Stream Panel */
-  .calendar-right-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    height: 520px; /* MATCHES FIXED CALENDAR HEIGHT */
+  /* SEBELAH KANAN: Events List Panel */
+  .calendar-detail-panel {
     background: #18090f;
     border: 1.5px solid rgba(212, 179, 84, 0.3);
     border-radius: var(--radius-sm);
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    height: 510px; /* Fixed Height samakan dengan kiri */
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.55);
-    box-sizing: border-box;
   }
 
-  .agenda-stream-header {
+  .agenda-panel-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -252,143 +248,129 @@ const eventsData: { [key: string]: Array<{ id: number; title: string; category: 
     border-bottom: 1.5px solid rgba(212, 179, 84, 0.3);
   }
 
-  .agenda-stream-title {
+  .agenda-panel-title {
     font-family: var(--font-heading);
-    font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+    font-size: clamp(1.2rem, 1.6vw, 1.5rem);
     color: var(--color-gold);
     letter-spacing: 0.04em;
   }
 
-  .agenda-count-badge {
-    background: rgba(130, 9, 7, 0.85);
+  .agenda-panel-badge {
+    background: rgba(130, 9, 7, 0.75);
     color: #ffffff;
     font-family: var(--font-heading);
     font-size: 0.8rem;
-    padding: 0.3rem 0.7rem;
+    padding: 0.3rem 0.65rem;
     border-radius: var(--radius-sm);
     border: 1px solid rgba(212, 179, 84, 0.4);
-    white-space: nowrap;
   }
 
-  .agenda-cards-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    overflow-y: auto;
-    flex-grow: 1;
-    padding-right: 0.5rem;
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-gold) rgba(255, 255, 255, 0.05);
-  }
-
-  /* No Events Card State */
-  .no-events-card {
-    display: flex;
+  /* Empty State View (Tampil Jika Tidak Ada Kegiatan) */
+  .calendar-empty-state {
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     gap: 1rem;
-    padding: 3rem 1.5rem;
-    margin: auto 0;
+    flex-grow: 1;
   }
 
-  .no-events-icon {
-    font-size: 2.8rem;
-    opacity: 0.7;
+  .calendar-empty-state.active {
+    display: flex;
   }
 
-  .no-events-title {
+  .empty-icon-box {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(130, 9, 7, 0.35);
+    border: 1.5px solid var(--color-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 25px rgba(212, 179, 84, 0.25);
+  }
+
+  .empty-state-title {
     font-family: var(--font-heading);
     font-size: 1.4rem;
     color: #ffffff;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.04em;
   }
 
-  .no-events-desc {
+  .empty-state-desc {
     font-family: var(--font-body);
-    font-size: 0.92rem;
-    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
     line-height: 1.6;
-    max-width: 320px;
+    max-width: 300px;
   }
 
-  /* Event Agenda Card */
-  .event-agenda-card {
+  /* Active Events Vertical List View */
+  .calendar-events-list {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+    flex-grow: 1;
+    padding-right: 0.25rem;
+  }
+
+  .calendar-events-list.active {
+    display: flex;
+  }
+
+  .month-event-card {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    padding: 1.35rem;
+    gap: 0.4rem;
+    padding: 1.25rem;
     border-radius: var(--radius-sm);
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(212, 179, 84, 0.25);
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease;
   }
 
-  .event-agenda-card:hover,
-  .event-agenda-card.highlighted {
-    background: rgba(130, 9, 7, 0.65);
-    border-color: var(--color-gold);
-    box-shadow: 0 8px 25px rgba(130, 9, 7, 0.4);
+  .month-event-card:hover {
     transform: translateX(4px);
+    border-color: var(--color-gold);
+    background: rgba(130, 9, 7, 0.35);
   }
 
-  .event-card-left {
+  .month-event-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
-  .event-category-badge {
+  .month-event-category {
     background: linear-gradient(135deg, #d4b354 0%, #820907 100%);
     color: #ffffff;
     font-family: var(--font-heading);
     font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    padding: 0.25rem 0.6rem;
+    padding: 0.25rem 0.55rem;
     border-radius: var(--radius-sm);
     text-transform: uppercase;
   }
 
-  .event-date-text {
+  .month-event-date {
     font-family: var(--font-heading);
-    font-size: 0.86rem;
+    font-size: 0.82rem;
     color: var(--color-gold);
   }
 
-  .event-card-main {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-  }
-
-  .event-div-tag {
+  .month-event-title {
     font-family: var(--font-heading);
-    font-size: 0.76rem;
-    color: rgba(255, 255, 255, 0.65);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-size: 1.2rem;
+    color: #ffffff;
   }
 
-  .event-title {
-    font-family: var(--font-heading);
-    font-size: 1.3rem;
-    color: var(--color-white);
-    line-height: 1.2;
-  }
-
-  .event-desc {
+  .month-event-desc {
     font-family: var(--font-body);
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.85);
     line-height: 1.5;
-  }
-
-  .event-location-text {
-    font-family: var(--font-body);
-    font-size: 0.84rem;
-    color: rgba(255, 255, 255, 0.75);
-    margin-top: 0.2rem;
   }
 
   @media (max-width: 900px) {
@@ -398,9 +380,9 @@ const eventsData: { [key: string]: Array<{ id: number; title: string; category: 
     }
 
     .calendar-grid-box,
-    .calendar-right-panel {
+    .calendar-detail-panel {
       height: auto;
-      min-height: 500px;
+      min-height: 480px;
     }
   }
 </style>
@@ -413,42 +395,21 @@ const eventsData: { [key: string]: Array<{ id: number; title: string; category: 
     const nextBtn = document.getElementById('next-month-btn');
     const daysGrid = document.getElementById('calendar-days-grid');
 
-    const streamTitle = document.getElementById('agenda-stream-title');
-    const countBadge = document.getElementById('agenda-count-badge');
-    const agendaCardsList = document.getElementById('agenda-cards-list');
+    const panelTitle = document.getElementById('agenda-panel-title');
+    const panelBadge = document.getElementById('agenda-panel-badge');
+    const emptyState = document.getElementById('calendar-empty-state');
+    const eventsListContainer = document.getElementById('calendar-events-list');
 
     const monthNames = [
-      "January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
-    ];
-
-    const monthNamesIndo = [
       "Januari", "Februari", "Maret", "April", "Mei", "Juni",
       "Juli", "Agustus", "September", "Oktober", "November", "Desember"
     ];
 
-    // Events Lookup Dictionary
-    const eventsData: { [key: string]: Array<{ id: number; title: string; category: string; division: string; dateStr: string; location: string; desc: string; dateKey: string }> } = {
-      "2026-02-10": [{ id: 1, dateKey: "2026-02-10", title: "Rapat Kerja (Raker) 2026", category: "Wajib", division: "Sekretaris & Bendahara", dateStr: "10 Februari 2026", location: "Aula FKIP UNS", desc: "Penetapan dan sosialisasi seluruh arah gerak serta program kerja HMP MIKROPTIK 2026." }],
-      "2026-02-15": [{ id: 2, dateKey: "2026-02-15", title: "Open Recruitment Pengurus", category: "Kaderisasi", division: "Divisi PSDM", dateStr: "15 Februari 2026", location: "Kampus PTIK UNS", desc: "Perekrutan pengurus muda HMP MIKROPTIK Kabinet Naya Vikrama." }],
-      "2026-03-05": [{ id: 3, dateKey: "2026-03-05", title: "Pelatihan Sekben", category: "Internal", division: "Sekretaris & Bendahara", dateStr: "5 Maret 2026", location: "Lab Komputer PTIK", desc: "Pelatihan administrasi dan tata kelola keuangan organisasi." }],
-      "2026-03-12": [{ id: 4, dateKey: "2026-03-12", title: "Upgrading Pengurus", category: "Internal", division: "Kahim & Wakahim", dateStr: "12 Maret 2026", location: "Ruang Ormawa PTIK", desc: "Peningkatan kapabilitas dan soliditas pengurus HMP MIKROPTIK 2026." }],
-      "2026-03-24": [{ id: 5, dateKey: "2026-03-24", title: "Mikroptik Social Action (MSA)", category: "Aksi Sosial", division: "Divisi Humas", dateStr: "24 Maret 2026", location: "Surakarta", desc: "Aksi berbagi takjil dan pengabdian masyarakat di bulan suci Ramadhan." }],
-      "2026-04-18": [{ id: 6, dateKey: "2026-04-18", title: "Mikroptik Store Launch", category: "Dana Usaha", division: "Bendahara Umum", dateStr: "18 April 2026", location: "Online & Sekre", desc: "Peluncuran merchandise dan produk resmi HMP MIKROPTIK." }],
-      "2026-04-20": [{ id: 7, dateKey: "2026-04-20", title: "Podcast Mikroptik Ep.1", category: "Media", division: "Divisi Medinfo", dateStr: "20 April 2026", location: "Studio Podcast & YouTube", desc: "Bincang santai seputar dunia perkuliahan IT dan pengalaman alumni." }],
-      "2026-05-16": [{ id: 8, dateKey: "2026-05-16", title: "Studi Banding Himpunan", category: "Eksternal", division: "Divisi Humas", dateStr: "16 Mei 2026", location: "Universitas Mitra", desc: "Pertukaran wawasan dan studi budaya organisasi dengan HMP kampus lain." }],
-      "2026-06-05": [{ id: 9, dateKey: "2026-06-05", title: "JPTK CUP 2026", category: "Olahraga & Seni", division: "Divisi Mikat", dateStr: "5 Juni 2026", location: "Sport Center UNS", desc: "Pekan olahraga, E-Sports, dan seni antar angkatan civitas akademika PTIK." }],
-      "2026-06-10": [{ id: 10, dateKey: "2026-06-10", title: "JPTK Berbagi & Sambung Rasa", category: "Advokasi", division: "Divisi Humas", dateStr: "10 Juni 2026", location: "Ruang Diskusi PTIK", desc: "Ruang aspirasi mahasiswa dan sarasehan bersama pengelola prodi PTIK." }],
-      "2026-08-18": [{ id: 11, dateKey: "2026-08-18", title: "SAMARU & OSMARU 2026", category: "Kaderisasi", division: "Divisi PSDM", dateStr: "18 Agustus 2026", location: "Kampus UNS", desc: "Penyambutan dan pengenalan kampus bagi mahasiswa baru prodi PTIK." }],
-      "2026-08-29": [{ id: 12, dateKey: "2026-08-29", title: "Sambut Wisuda PTIK", category: "Apresiasi", division: "Divisi Humas", dateStr: "29 Agustus 2026", location: "Gedung FKIP UNS", desc: "Apresiasi dan pelepasan wisudawan/wisudawati prodi PTIK UNS." }],
-      "2026-09-15": [{ id: 13, dateKey: "2026-09-15", title: "BYTESFEST 2026", category: "Big Event", division: "Kahim & Wakahim", dateStr: "15 September 2026", location: "Gedung UNS & Online", desc: "Festival IT dan kompetisi berskala nasional bagi pelajar & mahasiswa se-Indonesia." }],
-      "2026-10-10": [{ id: 14, dateKey: "2026-10-10", title: "LDKM Naya Vikrama", category: "Kaderisasi", division: "Divisi PSDM", dateStr: "10 Oktober 2026", location: "Outbound Camp", desc: "Latihan Dasar Kepemimpinan Mahasiswa untuk membentuk kepemimpinan progresif." }],
-      "2026-11-07": [{ id: 15, dateKey: "2026-11-07", title: "PSDM Adventure", category: "Internal", division: "Divisi PSDM", dateStr: "7 November 2026", location: "Tawangmangu", desc: "Kegiatan keakraban dan penguatan karakter antar pengurus." }],
-      "2026-11-20": [{ id: 16, dateKey: "2026-11-20", title: "Festival MIKAT & Seminar PKM", category: "Akademik & Seni", division: "Divisi Mikat", dateStr: "20 November 2026", location: "Aula UNS", desc: "Pameran bakat, seminar Program Kreativitas Mahasiswa, dan apresiasi prestasi." }]
-    };
+    // Data kegiatan (Kosong untuk saat ini)
+    const eventsData: { [key: string]: Array<{ id: number; title: string; category: string; division: string; dateStr: string; location: string; desc: string }> } = {};
 
     let currentYear = 2026;
-    let currentMonthIdx = 7; // August (0-indexed: 7 = August)
+    let currentMonthIdx = 7; // Agustus (0-indexed: 7 = Agustus)
 
     function renderCalendar() {
       if (!daysGrid || !monthNameText || !yearText) return;
@@ -458,94 +419,89 @@ const eventsData: { [key: string]: Array<{ id: number; title: string; category: 
 
       daysGrid.innerHTML = '';
 
-      const firstDay = new Date(currentYear, currentMonthIdx, 1).getDay(); // 0 = Sunday
-      const daysInMonth = new Date(currentYear, currentMonthIdx + 1, 0).getDate();
+      const firstDayIndex = new Date(currentYear, currentMonthIdx, 1).getDay(); // 0 = Minggu
+      const daysInCurrentMonth = new Date(currentYear, currentMonthIdx + 1, 0).getDate();
+      const daysInPrevMonth = new Date(currentYear, currentMonthIdx, 0).getDate();
 
-      const monthEventsList: any[] = [];
-
-      // Always render EXACTLY 42 Cells (6 rows x 7 cols) for FIXED HEIGHT
-      const totalGridCells = 42;
-
-      for (let i = 0; i < totalGridCells; i++) {
+      // 1. Tanggal Bulan Sebelumnya (Berwarna Abu-abu Redup)
+      for (let i = firstDayIndex - 1; i >= 0; i--) {
+        const prevDate = daysInPrevMonth - i;
         const cell = document.createElement('div');
-        
-        if (i < firstDay || i >= firstDay + daysInMonth) {
-          cell.className = 'cal-day-cell empty';
-        } else {
-          const day = i - firstDay + 1;
-          cell.className = 'cal-day-cell';
-          cell.textContent = day.toString();
-
-          const monthStr = String(currentMonthIdx + 1).padStart(2, '0');
-          const dayStr = String(day).padStart(2, '0');
-          const dateKey = `${currentYear}-${monthStr}-${dayStr}`;
-
-          if (eventsData[dateKey]) {
-            cell.classList.add('has-event');
-            const dot = document.createElement('div');
-            dot.className = 'event-dot-indicator';
-            cell.appendChild(dot);
-
-            eventsData[dateKey].forEach(ev => monthEventsList.push(ev));
-
-            cell.addEventListener('click', () => {
-              document.querySelectorAll('.cal-day-cell').forEach(c => c.classList.remove('selected'));
-              cell.classList.add('selected');
-
-              const targetCard = document.getElementById(`event-card-${dateKey}`);
-              if (targetCard) {
-                document.querySelectorAll('.event-agenda-card').forEach(c => c.classList.remove('highlighted'));
-                targetCard.classList.add('highlighted');
-                targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-              }
-            });
-          }
-        }
+        cell.className = 'cal-day-cell other-month';
+        cell.textContent = prevDate.toString();
         daysGrid.appendChild(cell);
       }
 
-      renderRightPanel(monthEventsList, monthNamesIndo[currentMonthIdx]);
+      // 2. Tanggal Bulan Berjalan (1..daysInCurrentMonth)
+      let currentMonthEvents: Array<any> = [];
+
+      for (let day = 1; day <= daysInCurrentMonth; day++) {
+        const cell = document.createElement('div');
+        cell.className = 'cal-day-cell current-month';
+        cell.textContent = day.toString();
+
+        const monthStr = String(currentMonthIdx + 1).padStart(2, '0');
+        const dayStr = String(day).padStart(2, '0');
+        const dateKey = `${currentYear}-${monthStr}-${dayStr}`;
+
+        if (eventsData[dateKey] && eventsData[dateKey].length > 0) {
+          cell.classList.add('has-event');
+          const dot = document.createElement('div');
+          dot.className = 'event-dot-indicator';
+          cell.appendChild(dot);
+
+          currentMonthEvents.push(...eventsData[dateKey]);
+        }
+
+        daysGrid.appendChild(cell);
+      }
+
+      // 3. Tanggal Bulan Berikutnya (Berwarna Abu-abu Redup untuk melengkapi 42 sel = 6 baris x 7 hari)
+      const totalCellsFilled = firstDayIndex + daysInCurrentMonth;
+      const remainingCells = 42 - totalCellsFilled;
+      for (let day = 1; day <= remainingCells; day++) {
+        const cell = document.createElement('div');
+        cell.className = 'cal-day-cell other-month';
+        cell.textContent = day.toString();
+        daysGrid.appendChild(cell);
+      }
+
+      // 4. Update Panel Kegiatan Sisi Kanan untuk Bulan yang Sedang Dibuka
+      updateRightPanel(currentMonthEvents);
     }
 
-    function renderRightPanel(monthEvents: any[], monthName: string) {
-      if (!agendaCardsList) return;
+    function updateRightPanel(eventsList: Array<any>) {
+      if (panelTitle) {
+        panelTitle.textContent = `Kegiatan Bulan ${monthNames[currentMonthIdx]} ${currentYear}`;
+      }
 
-      agendaCardsList.innerHTML = '';
+      if (panelBadge) {
+        panelBadge.textContent = `${eventsList.length} Kegiatan`;
+      }
 
-      if (monthEvents.length === 0) {
-        if (streamTitle) streamTitle.textContent = `Agenda Bulan ${monthName} ${currentYear}`;
-        if (countBadge) countBadge.textContent = `0 Kegiatan`;
+      if (!emptyState || !eventsListContainer) return;
 
-        agendaCardsList.innerHTML = `
-          <div class="no-events-card">
-            <div class="no-events-icon">📅</div>
-            <h4 class="no-events-title">Tidak Ada Kegiatan Terjadwal</h4>
-            <p class="no-events-desc">Belum ada agenda program kerja HMP MIKROPTIK di bulan ${monthName} ${currentYear}.</p>
-          </div>
-        `;
+      if (eventsList.length === 0) {
+        emptyState.classList.add('active');
+        eventsListContainer.classList.remove('active');
+        eventsListContainer.innerHTML = '';
       } else {
-        if (streamTitle) streamTitle.textContent = `Agenda Bulan ${monthName} ${currentYear}`;
-        if (countBadge) countBadge.textContent = `${monthEvents.length} Kegiatan Terjadwal`;
+        emptyState.classList.remove('active');
+        eventsListContainer.classList.add('active');
+        eventsListContainer.innerHTML = '';
 
-        monthEvents.forEach(item => {
-          const card = document.createElement('article');
-          card.className = 'event-agenda-card';
-          card.id = `event-card-${item.dateKey}`;
+        eventsList.forEach(item => {
+          const card = document.createElement('div');
+          card.className = 'month-event-card';
           card.innerHTML = `
-            <div class="event-card-left">
-              <span class="event-category-badge">${item.category}</span>
-              <span class="event-date-text">${item.dateStr}</span>
+            <div class="month-event-header">
+              <span class="month-event-category">${item.category}</span>
+              <span class="month-event-date">${item.dateStr}</span>
             </div>
-
-            <div class="event-card-main">
-              <div class="event-div-tag">${item.division}</div>
-              <h4 class="event-title">${item.title}</h4>
-              <p class="event-desc">${item.desc}</p>
-              
-              <div class="event-location-text">📍 ${item.location}</div>
-            </div>
+            <h4 class="month-event-title">${item.title}</h4>
+            <p class="month-event-desc">${item.desc}</p>
           `;
-          agendaCardsList.appendChild(card);
+          eventsListContainer.appendChild(card);
         });
       }
     }

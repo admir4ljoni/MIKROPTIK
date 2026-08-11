@@ -156,6 +156,7 @@ const monthNames = [
   .calendar-weekdays-row {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+    gap: 0.45rem; /* Samakan gap 0.45rem agar 1:1 Lined Up dengan grid tanggal */
     text-align: center;
     font-family: var(--font-heading);
     font-size: 0.82rem;
@@ -178,8 +179,8 @@ const monthNames = [
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: var(--radius-sm);
     font-family: var(--font-heading);
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -187,12 +188,12 @@ const monthNames = [
     transition: all 0.25s ease;
   }
 
-  /* Tanggal Bulan Sebelum/Sesudah (Berwarna Abu-abu Jelas) */
+  /* Tanggal Bulan Sebelum/Sesudah (Warna Abu-abu Redup Jelas) */
   .cal-day-cell.other-month {
-    color: #8a8a8a;
-    background: rgba(255, 255, 255, 0.01);
-    border-color: rgba(255, 255, 255, 0.02);
-    opacity: 0.45;
+    color: rgba(255, 255, 255, 0.25) !important;
+    background: transparent !important;
+    border-color: transparent !important;
+    opacity: 0.3 !important;
   }
 
   .cal-day-cell.has-event {

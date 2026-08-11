@@ -1,0 +1,774 @@
+---
+import { Trophy, Award, Medal, Crown, Star, Sparkles, X, ChevronRight } from '@lucide/astro';
+
+const hallOfFameItems = [
+  {
+    id: 1,
+    categoryKey: "it",
+    badge: "JUARA 1 NASIONAL",
+    badgeIcon: Trophy,
+    categoryName: "Kompetisi IT & UI/UX",
+    title: "GEMASTIK XVIII KEMENRISTEKDIKTI",
+    winner: "Tim PTIK UX Innovators",
+    members: ["Ahmad Fauzi (2022)", "Siti Rahma (2022)", "Budi Santoso (2023)"],
+    year: "2025",
+    image: "https://picsum.photos/seed/prestasi1/800/1000",
+    description: "Meraih Medali Emas cabang Desain Pengalaman Pengguna (UI/UX) tingkat Nasional dengan platform inklusif.",
+    fullDetails: "Tim PTIK UX Innovators berhasil mengungguli 450+ tim dari perguruan tinggi se-Indonesia dalam ajang Pagelaran Mahasiswa Nasional Bidang Teknologi Informasi dan Komunikasi (GEMASTIK XVIII). Karya 'EduInvolve' memenangkan Juara 1 berkat pendekatan desain ramah disabilitas yang inovatif."
+  },
+  {
+    id: 2,
+    categoryKey: "it",
+    badge: "MEDALI EMAS HACKATHON",
+    badgeIcon: Medal,
+    categoryName: "AI & Web Development",
+    title: "NATIONAL AI & WEB HACKATHON 2025",
+    winner: "Siti Rahma & Tim Web Dev",
+    members: ["Siti Rahma (2022)", "Dian Permata (2023)"],
+    year: "2025",
+    image: "https://picsum.photos/seed/prestasi2/800/1000",
+    description: "Juara Utama kategori Inovasi Aplikasi Web Berbasis AI untuk transformasi pendidikan digital.",
+    fullDetails: "Mengembangkan platform AI tutor interaktif dalam waktu 24 jam non-stop pada ajang National Tech Hackathon. Solusi ini dinobatkan sebagai Gold Winner berkat efisiensi pemrosesan bahasa alami (NLP) dan integrasi antarmuka intuitif."
+  },
+  {
+    id: 3,
+    categoryKey: "riset",
+    badge: "BEST PAPER PUBLICATION",
+    badgeIcon: Award,
+    categoryName: "Riset & Karya Ilmiah",
+    title: "NATIONAL CONFERENCE ON IT 2025",
+    winner: "Ahmad Fauzi & Tim Riset Data",
+    members: ["Ahmad Fauzi (2022)", "Rizky Pratama (2022)"],
+    year: "2025",
+    image: "https://picsum.photos/seed/prestasi3/800/1000",
+    description: "Penghargaan Makalah Terbaik publikasi riset Machine Learning dan Big Data Analytics.",
+    fullDetails: "Makalah ilmiah berjudul 'Optimasi Model Deep Learning untuk Prediksi Kinerja Akademik' terpilih sebagai Best Paper dari 120 makalah yang dipresentasikan. Publikasi ini diakui secara nasional dan masuk dalam prosiding terindeks."
+  },
+  {
+    id: 4,
+    categoryKey: "it",
+    badge: "JUARA 1 PROGRAMMING",
+    badgeIcon: Crown,
+    categoryName: "Competitive Programming",
+    title: "OLIMPIADE KOMPUTER PT 2025",
+    winner: "Budi Santoso",
+    members: ["Budi Santoso (2023)"],
+    year: "2025",
+    image: "https://picsum.photos/seed/prestasi4/800/1000",
+    description: "Meraih Juara Pertama kategori Algoritma, Efisiensi Struktur Data, dan Pemrograman Kompetitif.",
+    fullDetails: "Budi Santoso menyelesaikan 8 dari 8 tantangan algoritma tingkat tinggi dengan waktu eksekusi tercepat dan kompleksitas memori paling efisien, mengalahkan peserta kontestan prodi komputer dari seluruh Indonesia."
+  },
+  {
+    id: 5,
+    categoryKey: "it",
+    badge: "TOP CYBER DEFENSE",
+    badgeIcon: ShieldCheckIcon,
+    categoryName: "Cyber Security CTF",
+    title: "NATIONAL CTF SECURITY 2025",
+    winner: "Tim PTIK Cyber Defense",
+    members: ["Muhammad Farhan (2022)", "Eko Prasetyo (2023)"],
+    year: "2025",
+    image: "https://picsum.photos/seed/prestasi5/800/1000",
+    description: "Peringkat 2 Kejuaraan Nasional Keamanan Siber, Penetrasi Jaringan, dan Cryptography.",
+    fullDetails: "Berhasil memecahkan tantangan Capture The Flag (CTF) kategori Reverse Engineering, Web Exploitation, dan Cryptography dalam kejuaraan siber nasional yang diselenggarakan oleh konsorsium keamanan informasi perguruan tinggi."
+  },
+  {
+    id: 6,
+    categoryKey: "mapres",
+    badge: "DELEGASI MAPRES UTAMA",
+    badgeIcon: Sparkles,
+    categoryName: "Mapres & Individu",
+    title: "PEMILIHAN MAHASISWA BERPRESTASI 2025",
+    winner: "Dian Permata",
+    members: ["Dian Permata (2023)"],
+    year: "2025",
+    image: "https://picsum.photos/seed/prestasi6/800/1000",
+    description: "Perwakilan Mahasiswa Berprestasi Utama FKIP UNS pada ajang Pilmapres Tingkat Nasional.",
+    fullDetails: "Terpilih sebagai Mahasiswa Berprestasi I (Juara 1 Mapres) FKIP UNS setelah melalui seleksi ketat portofolio capaian unggulan, kemampuan bahasa Inggris, karya tulis ilmiah inovatif, dan wawasan kebangsaan."
+  }
+];
+
+import { ShieldCheck as ShieldCheckIcon } from '@lucide/astro';
+---
+
+<div class="halloffame-grid-wrapper" id="halloffame-section">
+  <!-- Filter Category Tabs -->
+  <div class="halloffame-filter-tabs" id="halloffame-filters">
+    <button class="filter-tab active" data-filter="all">Semua Prestasi</button>
+    <button class="filter-tab" data-filter="it">Kompetisi IT & Software</button>
+    <button class="filter-tab" data-filter="riset">Riset & Karya Ilmiah</button>
+    <button class="filter-tab" data-filter="mapres">Mapres & Individu</button>
+  </div>
+
+  <!-- Interactive Honor Grid -->
+  <div class="halloffame-grid" id="halloffame-grid">
+    {hallOfFameItems.map((item) => (
+      <article class="honor-card" data-category={item.categoryKey} data-id={item.id}>
+        <!-- Top Badge & Year Header -->
+        <div class="honor-card-header">
+          <span class="honor-gold-badge">
+            <item.badgeIcon size={14} style="display: inline-block; vertical-align: middle; margin-right: 4px;" />
+            {item.badge}
+          </span>
+          <span class="honor-year-badge">{item.year}</span>
+        </div>
+
+        <!-- Image Media Box -->
+        <div class="honor-img-box">
+          <img src={item.image} alt={item.title} class="honor-img" loading="lazy" />
+          <div class="honor-img-overlay"></div>
+        </div>
+
+        <!-- Card Details Content -->
+        <div class="honor-card-body">
+          <span class="honor-category-tag">{item.categoryName}</span>
+          <h3 class="honor-card-title">{item.title}</h3>
+          <p class="honor-card-winner">{item.winner}</p>
+          <p class="honor-card-desc">{item.description}</p>
+        </div>
+
+        <!-- Detail Button Footer -->
+        <div class="honor-card-footer">
+          <button class="honor-detail-btn" data-spotlight={item.id}>
+            <span>Lihat Detail Penghargaan</span>
+            <ChevronRight size={16} />
+          </button>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <!-- Modal Spotlight / Lightbox Overlay -->
+  <div class="honor-modal-overlay" id="honor-modal-overlay" aria-hidden="true">
+    <div class="honor-modal-content" role="dialog" aria-labelledby="modal-title">
+      <button class="honor-modal-close" id="honor-modal-close" aria-label="Tutup Modal">
+        <X size={20} />
+      </button>
+
+      <div class="honor-modal-grid">
+        <!-- Left Side Media Showcase -->
+        <div class="honor-modal-media">
+          <img src="" id="modal-img" alt="Prestasi Detail" class="modal-showcase-img" />
+          <div class="modal-seal-badge">
+            <Trophy size={18} style="color: var(--color-gold); margin-right: 6px;" />
+            <span>VERIFIED ACHIEVEMENT HMP MIKROPTIK</span>
+          </div>
+        </div>
+
+        <!-- Right Side Comprehensive Details -->
+        <div class="honor-modal-info">
+          <div class="modal-header-badges">
+            <span class="modal-gold-badge" id="modal-badge"></span>
+            <span class="modal-year-badge" id="modal-year"></span>
+          </div>
+
+          <span class="modal-category-tag" id="modal-category"></span>
+          <h2 class="modal-title" id="modal-title"></h2>
+          <p class="modal-winner" id="modal-winner"></p>
+
+          <div class="modal-divider"></div>
+
+          <!-- Team Members List -->
+          <div class="modal-members-box">
+            <span class="modal-members-label">Anggota Tim / Contender:</span>
+            <ul class="modal-members-list" id="modal-members"></ul>
+          </div>
+
+          <!-- Full Narrative Details -->
+          <div class="modal-desc-box">
+            <span class="modal-desc-label">Rekam Jejak & Ringkasan Inovasi:</span>
+            <p class="modal-full-desc" id="modal-desc"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .halloffame-grid-wrapper {
+    position: relative;
+    width: 100%;
+    margin-top: 1.5rem;
+  }
+
+  /* Category Filter Tabs */
+  .halloffame-filter-tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .filter-tab {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(212, 179, 84, 0.3);
+    color: rgba(255, 255, 255, 0.82);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    padding: 0.6rem 1.35rem;
+    border-radius: var(--radius-sm); /* Style tegas 4px */
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .filter-tab:hover,
+  .filter-tab.active {
+    background: linear-gradient(135deg, rgba(130, 9, 7, 0.85) 0%, rgba(28, 22, 20, 0.95) 100%);
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+    box-shadow: 0 6px 20px rgba(130, 9, 7, 0.4);
+    transform: translateY(-2px);
+  }
+
+  /* 3-Column Honor Grid */
+  .halloffame-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    width: 100%;
+  }
+
+  /* Honor Card - Dark Gold Frame Style */
+  .honor-card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: var(--color-dark);
+    border: 1.5px solid rgba(212, 179, 84, 0.3);
+    border-radius: var(--radius-sm); /* Style tegas 4px */
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.4s ease,
+                box-shadow 0.4s ease;
+  }
+
+  .honor-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--color-gold);
+    box-shadow: 
+      0 0 35px rgba(212, 179, 84, 0.45),
+      0 15px 45px rgba(130, 9, 7, 0.4);
+  }
+
+  .honor-card.is-hidden {
+    display: none;
+  }
+
+  /* Card Top Header Badges */
+  .honor-card-header {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+  }
+
+  .honor-gold-badge {
+    background: linear-gradient(135deg, #d4b354 0%, #820907 100%);
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-size: 0.76rem;
+    letter-spacing: 0.08em;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    text-transform: uppercase;
+  }
+
+  .honor-year-badge {
+    background: rgba(28, 22, 20, 0.88);
+    backdrop-filter: blur(8px);
+    color: var(--color-gold);
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(212, 179, 84, 0.35);
+  }
+
+  /* Image Media Box */
+  .honor-img-box {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+  }
+
+  .honor-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .honor-card:hover .honor-img {
+    transform: scale(1.08);
+  }
+
+  .honor-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--color-dark) 0%, rgba(28, 22, 20, 0.4) 60%, transparent 100%);
+  }
+
+  /* Card Body Content */
+  .honor-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.5rem 1.5rem 1rem;
+    flex-grow: 1;
+  }
+
+  .honor-category-tag {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    color: var(--color-gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+
+  .honor-card-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.35rem, 1.8vw, 1.65rem);
+    color: var(--color-white);
+    line-height: 1.15;
+    letter-spacing: 0.03em;
+  }
+
+  .honor-card-winner {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    color: var(--color-gold);
+    margin-bottom: 0.25rem;
+  }
+
+  .honor-card-desc {
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.55;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Card Footer Detail Button */
+  .honor-card-footer {
+    padding: 0 1.5rem 1.5rem;
+  }
+
+  .honor-detail-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    background: rgba(130, 9, 7, 0.4);
+    border: 1px solid rgba(212, 179, 84, 0.3);
+    color: var(--color-gold);
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .honor-card:hover .honor-detail-btn,
+  .honor-detail-btn:hover {
+    background: rgba(130, 9, 7, 0.85);
+    border-color: var(--color-gold);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(130, 9, 7, 0.4);
+  }
+
+  /* MODAL SPOTLIGHT LIGHTBOX OVERLAY */
+  .honor-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: rgba(12, 8, 7, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+
+  .honor-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .honor-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--color-dark);
+    border: 1.5px solid var(--color-gold);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 50px rgba(212, 179, 84, 0.3);
+    padding: 2.5rem;
+    transform: scale(0.92) translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .honor-modal-overlay.active .honor-modal-content {
+    transform: scale(1) translateY(0);
+  }
+
+  .honor-modal-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(212, 179, 84, 0.4);
+    color: var(--color-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+
+  .honor-modal-close:hover {
+    background: var(--color-red-deep);
+    color: #ffffff;
+    transform: rotate(90deg);
+  }
+
+  .honor-modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .honor-modal-media {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .modal-showcase-img {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(212, 179, 84, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .modal-seal-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 1rem;
+    border-radius: var(--radius-sm);
+    background: rgba(130, 9, 7, 0.5);
+    border: 1px solid rgba(212, 179, 84, 0.4);
+    color: var(--color-gold);
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+  }
+
+  .honor-modal-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .modal-header-badges {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .modal-gold-badge {
+    background: linear-gradient(135deg, #d4b354 0%, #820907 100%);
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.08em;
+  }
+
+  .modal-year-badge {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--color-gold);
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(212, 179, 84, 0.3);
+  }
+
+  .modal-category-tag {
+    font-family: var(--font-heading);
+    font-size: 0.88rem;
+    color: var(--color-gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .modal-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 2.4vw, 2.4rem);
+    color: var(--color-white);
+    line-height: 1.1;
+  }
+
+  .modal-winner {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--color-gold);
+  }
+
+  .modal-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, rgba(212, 179, 84, 0.4), transparent);
+    margin: 0.25rem 0;
+  }
+
+  .modal-members-box, .modal-desc-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .modal-members-label, .modal-desc-label {
+    font-family: var(--font-heading);
+    font-size: 0.88rem;
+    color: var(--color-gold);
+    letter-spacing: 0.05em;
+  }
+
+  .modal-members-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .modal-members-list li {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.9);
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .modal-full-desc {
+    font-family: var(--font-body);
+    font-size: 0.96rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.65;
+  }
+
+  @media (max-width: 850px) {
+    .honor-modal-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .modal-showcase-img {
+      height: 240px;
+    }
+
+    .honor-modal-content {
+      padding: 1.75rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const cards = document.querySelectorAll('.honor-card');
+    const detailBtns = document.querySelectorAll('.honor-detail-btn');
+    const modalOverlay = document.getElementById('honor-modal-overlay');
+    const modalClose = document.getElementById('honor-modal-close');
+
+    // Items Data Lookup Map
+    const dataMap: { [key: number]: any } = {
+      1: {
+        badge: "JUARA 1 NASIONAL",
+        year: "2025",
+        category: "Kompetisi IT & UI/UX",
+        title: "GEMASTIK XVIII KEMENRISTEKDIKTI",
+        winner: "Tim PTIK UX Innovators",
+        members: ["Ahmad Fauzi (2022)", "Siti Rahma (2022)", "Budi Santoso (2023)"],
+        image: "https://picsum.photos/seed/prestasi1/800/1000",
+        description: "Tim PTIK UX Innovators berhasil mengungguli 450+ tim dari perguruan tinggi se-Indonesia dalam ajang Pagelaran Mahasiswa Nasional Bidang Teknologi Informasi dan Komunikasi (GEMASTIK XVIII). Karya 'EduInvolve' memenangkan Juara 1 berkat pendekatan desain ramah disabilitas yang inovatif."
+      },
+      2: {
+        badge: "MEDALI EMAS HACKATHON",
+        year: "2025",
+        category: "AI & Web Development",
+        title: "NATIONAL AI & WEB HACKATHON 2025",
+        winner: "Siti Rahma & Tim Web Dev",
+        members: ["Siti Rahma (2022)", "Dian Permata (2023)"],
+        image: "https://picsum.photos/seed/prestasi2/800/1000",
+        description: "Mengembangkan platform AI tutor interaktif dalam waktu 24 jam non-stop pada ajang National Tech Hackathon. Solusi ini dinobatkan sebagai Gold Winner berkat efisiensi pemrosesan bahasa alami (NLP) dan integrasi antarmuka intuitif."
+      },
+      3: {
+        badge: "BEST PAPER PUBLICATION",
+        year: "2025",
+        category: "Riset & Karya Ilmiah",
+        title: "NATIONAL CONFERENCE ON IT 2025",
+        winner: "Ahmad Fauzi & Tim Riset Data",
+        members: ["Ahmad Fauzi (2022)", "Rizky Pratama (2022)"],
+        image: "https://picsum.photos/seed/prestasi3/800/1000",
+        description: "Makalah ilmiah berjudul 'Optimasi Model Deep Learning untuk Prediksi Kinerja Akademik' terpilih sebagai Best Paper dari 120 makalah yang dipresentasikan. Publikasi ini diakui secara nasional dan masuk dalam prosiding terindeks."
+      },
+      4: {
+        badge: "JUARA 1 PROGRAMMING",
+        year: "2025",
+        category: "Competitive Programming",
+        title: "OLIMPIADE KOMPUTER PT 2025",
+        winner: "Budi Santoso",
+        members: ["Budi Santoso (2023)"],
+        image: "https://picsum.photos/seed/prestasi4/800/1000",
+        description: "Budi Santoso menyelesaikan 8 dari 8 tantangan algoritma tingkat tinggi dengan waktu eksekusi tercepat dan kompleksitas memori paling efisien, mengalahkan peserta kontestan prodi komputer dari seluruh Indonesia."
+      },
+      5: {
+        badge: "TOP CYBER DEFENSE",
+        year: "2025",
+        category: "Cyber Security CTF",
+        title: "NATIONAL CTF SECURITY 2025",
+        winner: "Tim PTIK Cyber Defense",
+        members: ["Muhammad Farhan (2022)", "Eko Prasetyo (2023)"],
+        image: "https://picsum.photos/seed/prestasi5/800/1000",
+        description: "Berhasil memecahkan tantangan Capture The Flag (CTF) kategori Reverse Engineering, Web Exploitation, dan Cryptography dalam kejuaraan siber nasional yang diselenggarakan oleh konsorsium keamanan informasi perguruan tinggi."
+      },
+      6: {
+        badge: "DELEGASI MAPRES UTAMA",
+        year: "2025",
+        category: "Mapres & Individu",
+        title: "PEMILIHAN MAHASISWA BERPRESTASI 2025",
+        winner: "Dian Permata",
+        members: ["Dian Permata (2023)"],
+        image: "https://picsum.photos/seed/prestasi6/800/1000",
+        description: "Terpilih sebagai Mahasiswa Berprestasi I (Juara 1 Mapres) FKIP UNS setelah melalui seleksi ketat portofolio capaian unggulan, kemampuan bahasa Inggris, karya tulis ilmiah inovatif, dan wawasan kebangsaan."
+      }
+    };
+
+    // Category Filter Listener
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const filter = tab.getAttribute('data-filter') || 'all';
+
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        cards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.classList.remove('is-hidden');
+          } else {
+            card.classList.add('is-hidden');
+          }
+        });
+      });
+    });
+
+    // Open Modal Spotlight
+    function openModal(id: number) {
+      const data = dataMap[id];
+      if (!data || !modalOverlay) return;
+
+      const modalImg = document.getElementById('modal-img') as HTMLImageElement;
+      const modalBadge = document.getElementById('modal-badge');
+      const modalYear = document.getElementById('modal-year');
+      const modalCategory = document.getElementById('modal-category');
+      const modalTitle = document.getElementById('modal-title');
+      const modalWinner = document.getElementById('modal-winner');
+      const modalMembers = document.getElementById('modal-members');
+      const modalDesc = document.getElementById('modal-desc');
+
+      if (modalImg) modalImg.src = data.image;
+      if (modalBadge) modalBadge.textContent = data.badge;
+      if (modalYear) modalYear.textContent = data.year;
+      if (modalCategory) modalCategory.textContent = data.category;
+      if (modalTitle) modalTitle.textContent = data.title;
+      if (modalWinner) modalWinner.textContent = data.winner;
+      if (modalDesc) modalDesc.textContent = data.description;
+
+      if (modalMembers) {
+        modalMembers.innerHTML = '';
+        data.members.forEach((m: string) => {
+          const li = document.createElement('li');
+          li.textContent = m;
+          modalMembers.appendChild(li);
+        });
+      }
+
+      modalOverlay.classList.add('active');
+      modalOverlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close Modal Spotlight
+    function closeModal() {
+      if (!modalOverlay) return;
+      modalOverlay.classList.remove('active');
+      modalOverlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    detailBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = parseInt(btn.getAttribute('data-spotlight') || '1', 10);
+        openModal(id);
+      });
+    });
+
+    if (modalClose) {
+      modalClose.addEventListener('click', closeModal);
+    }
+
+    if (modalOverlay) {
+      modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+          closeModal();
+        }
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('active')) {
+        closeModal();
+      }
+    });
+  });
+</script>

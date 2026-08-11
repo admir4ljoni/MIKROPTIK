@@ -4,19 +4,46 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Section Headings Reveal (Fade In + TranslateY)
-  const sectionHeadings = document.querySelectorAll('.section-heading-wrapper, .section-heading, .section-title');
+  // 1. Scroll-Driven Zoom Reveal for Section Headings
+  const sectionHeadings = document.querySelectorAll(
+    '.section-heading-wrapper, .section-heading, .section-title, .cta-title'
+  );
   sectionHeadings.forEach((heading) => {
     gsap.fromTo(
       heading,
-      { opacity: 0, y: 40 },
+      { opacity: 0, scale: 0.88, y: 35 },
       {
         opacity: 1,
+        scale: 1,
         y: 0,
-        duration: 0.8,
+        duration: 0.9,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: heading,
+          start: 'top 88%',
+          toggleActions: 'play none none reverse',
+        },
+      }
+    );
+  });
+
+  // 2. Scroll Zoom Reveal for Cards & Containers across all sections
+  const zoomContainers = document.querySelectorAll(
+    '.stat-card, .filosofi-dark-card, .filosofi-visual-left, .calendar-grid-box, .calendar-detail-panel, .cta-container, .about-card, .visi-misi-card, .program-card, .honor-card'
+  );
+
+  zoomContainers.forEach((el) => {
+    gsap.fromTo(
+      el,
+      { opacity: 0, scale: 0.92, y: 40 },
+      {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        duration: 0.85,
+        ease: 'back.out(1.2)',
+        scrollTrigger: {
+          trigger: el,
           start: 'top 85%',
           toggleActions: 'play none none reverse',
         },
@@ -24,28 +51,29 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   });
 
-  // 2. Bento & Feature Cards Stagger In
+  // 3. Staggered Zoom Reveal for Bento Cards in Program Kerja Section
   const bentoGrid = document.querySelector('.proker-bento-grid');
   if (bentoGrid) {
     const cards = bentoGrid.querySelectorAll('.bento-card');
     gsap.fromTo(
       cards,
-      { opacity: 0, y: 45 },
+      { opacity: 0, scale: 0.85, y: 40 },
       {
         opacity: 1,
+        scale: 1,
         y: 0,
-        duration: 0.7,
+        duration: 0.8,
         stagger: 0.12,
-        ease: 'power2.out',
+        ease: 'back.out(1.3)',
         scrollTrigger: {
           trigger: bentoGrid,
-          start: 'top 80%',
+          start: 'top 82%',
         },
       }
     );
   }
 
-  // 3. Counter Number Animation (StatCounters)
+  // 4. Counter Number Animation (StatCounters)
   const counterElements = document.querySelectorAll('.counter-number, [data-target-count]');
   counterElements.forEach((counter) => {
     const targetVal = parseInt(counter.getAttribute('data-target-count') || counter.textContent || '0', 10);
@@ -69,12 +97,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 4. Hero Parallax Scroll Effect
+  // 5. Hero Parallax & Zoom Scroll Effect
   const heroSection = document.getElementById('hero');
   const heroLogo = document.querySelector('.hero-logo');
   if (heroSection && heroLogo) {
     gsap.to(heroLogo, {
       y: 60,
+      scale: 1.08,
       ease: 'none',
       scrollTrigger: {
         trigger: heroSection,
@@ -85,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 5. Logo Filosofi Floating / Breathing Effect
+  // 6. Logo Filosofi Floating / Breathing Effect
   const filosofiLogoBox = document.getElementById('logo-stack-box');
   if (filosofiLogoBox) {
     gsap.to(filosofiLogoBox, {
@@ -97,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. Marquee Acceleration on Scroll
+  // 7. Marquee Acceleration on Scroll
   const marqueeTracks = document.querySelectorAll('.marquee-track');
   marqueeTracks.forEach((track) => {
     ScrollTrigger.create({

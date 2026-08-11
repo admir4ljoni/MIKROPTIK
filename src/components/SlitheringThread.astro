@@ -1,48 +1,121 @@
 ---
-// SlitheringThread.astro - Animated Deep-Red Thread flowing from #about to #cta
+// SlitheringThread.astro - Multi-Strand Magical Energy Flowing Stream (#about to #cta)
 ---
 
 <div class="slithering-thread-wrapper" id="slithering-thread-container" aria-hidden="true">
   <svg class="slithering-svg" id="slithering-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
     <defs>
-      <!-- Deep Red to Gold Glowing Gradient -->
-      <linearGradient id="threadGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stop-color="var(--color-red-deep)" stop-opacity="0.9" />
-        <stop offset="40%" stop-color="var(--color-gold)" stop-opacity="1" />
-        <stop offset="70%" stop-color="var(--color-red-deep)" stop-opacity="0.9" />
+      <!-- Gradient 1: Deep Red to Warm Gold -->
+      <linearGradient id="magicGradientMain" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="var(--color-red-deep)" stop-opacity="0.95" />
+        <stop offset="25%" stop-color="var(--color-gold)" stop-opacity="1" />
+        <stop offset="50%" stop-color="var(--color-red-deep)" stop-opacity="0.9" />
+        <stop offset="75%" stop-color="#e0b790" stop-opacity="1" />
         <stop offset="100%" stop-color="var(--color-gold)" stop-opacity="1" />
       </linearGradient>
 
-      <!-- Glow Filter for the Slithering Thread -->
-      <filter id="threadGlow" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+      <!-- Gradient 2: Ambient Companion Aura -->
+      <linearGradient id="magicGradientAura" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#820907" stop-opacity="0.7" />
+        <stop offset="50%" stop-color="#d4b354" stop-opacity="0.8" />
+        <stop offset="100%" stop-color="#cc570e" stop-opacity="0.7" />
+      </linearGradient>
+
+      <!-- Gaussian Blur Filter 1: Sharp Core Glow -->
+      <filter id="coreGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="3" result="blur" />
         <feMerge>
-          <feMergeNode in="coloredBlur" />
+          <feMergeNode in="blur" />
           <feMergeNode in="SourceGraphic" />
         </feMerge>
       </filter>
+
+      <!-- Gaussian Blur Filter 2: Companion Blurred Aura ("Saudara Garis Blur") -->
+      <filter id="companionBlur" x="-100%" y="-100%" width="300%" height="300%">
+        <feGaussianBlur stdDeviation="12" result="blur1" />
+        <feGaussianBlur stdDeviation="24" result="blur2" />
+        <feMerge>
+          <feMergeNode in="blur2" />
+          <feMergeNode in="blur1" />
+        </feMerge>
+      </filter>
+
+      <!-- Gaussian Blur Filter 3: Wide Ambient Energy Field -->
+      <filter id="ambientWideBlur" x="-100%" y="-100%" width="300%" height="300%">
+        <feGaussianBlur stdDeviation="32" result="wideBlur" />
+      </filter>
     </defs>
 
-    <!-- Wavy Organic Slithering Path -->
+    <!-- LAYER 1: Deepest Ambient Blurred Energy Cloud ("Saudara Ambient") -->
     <path
-      id="slithering-path"
-      class="slithering-path"
+      id="strand-ambient"
+      class="strand-path strand-ambient"
       d=""
       fill="none"
-      stroke="url(#threadGradient)"
+      stroke="url(#magicGradientAura)"
+      stroke-width="32"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      filter="url(#ambientWideBlur)"
+      opacity="0.35"
+    />
+
+    <!-- LAYER 2: Medium Blurred Companion Stream ("Saudara Medium Blur") -->
+    <path
+      id="strand-companion-b"
+      class="strand-path strand-companion"
+      d=""
+      fill="none"
+      stroke="url(#magicGradientAura)"
+      stroke-width="16"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      filter="url(#companionBlur)"
+      opacity="0.5"
+    />
+
+    <!-- LAYER 3: Soft Blurred Companion Stream ("Saudara Light Blur") -->
+    <path
+      id="strand-companion-a"
+      class="strand-path strand-companion"
+      d=""
+      fill="none"
+      stroke="url(#magicGradientMain)"
+      stroke-width="8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      filter="url(#companionBlur)"
+      opacity="0.65"
+    />
+
+    <!-- LAYER 4: Main Sharp Glowing Magical Thread ("Garis Utama") -->
+    <path
+      id="strand-main"
+      class="strand-path strand-main"
+      d=""
+      fill="none"
+      stroke="url(#magicGradientMain)"
       stroke-width="3.5"
       stroke-linecap="round"
       stroke-linejoin="round"
-      filter="url(#threadGlow)"
+      filter="url(#coreGlow)"
     />
 
-    <!-- Glowing Lead Head Dot -->
+    <!-- Glowing Magical Orb Head -->
     <circle
-      id="slithering-head"
-      class="slithering-head"
-      r="6"
+      id="magic-head-orb"
+      class="magic-head-orb"
+      r="7"
       fill="var(--color-gold)"
-      filter="url(#threadGlow)"
+      filter="url(#coreGlow)"
+    />
+    <circle
+      id="magic-head-aura"
+      class="magic-head-aura"
+      r="16"
+      fill="var(--color-red-deep)"
+      opacity="0.5"
+      filter="url(#companionBlur)"
     />
   </svg>
 </div>
@@ -55,7 +128,7 @@
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 2; /* Sits behind content but above background */
+    z-index: 1; /* Sits behind section content */
     overflow: hidden;
   }
 
@@ -67,13 +140,16 @@
     height: 100%;
   }
 
-  .slithering-path {
-    transition: stroke-dashoffset 0.1s ease-out;
+  .strand-path {
+    transition: stroke-dashoffset 0.08s ease-out;
   }
 
-  .slithering-head {
-    box-shadow: 0 0 15px var(--color-gold);
-    transition: transform 0.1s ease-out;
+  .magic-head-orb {
+    box-shadow: 0 0 20px var(--color-gold);
+  }
+
+  .magic-head-aura {
+    mix-blend-mode: screen;
   }
 </style>
 
@@ -85,23 +161,46 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     const wrapper = document.getElementById('slithering-thread-container');
-    const path = document.getElementById('slithering-path') as SVGPathElement | null;
-    const head = document.getElementById('slithering-head') as SVGCircleElement | null;
-    const svg = document.getElementById('slithering-svg') as SVGSVGElement | null;
+    const mainPath = document.getElementById('strand-main') as SVGPathElement | null;
+    const compAPath = document.getElementById('strand-companion-a') as SVGPathElement | null;
+    const compBPath = document.getElementById('strand-companion-b') as SVGPathElement | null;
+    const ambientPath = document.getElementById('strand-ambient') as SVGPathElement | null;
+
+    const headOrb = document.getElementById('magic-head-orb') as SVGCircleElement | null;
+    const headAura = document.getElementById('magic-head-aura') as SVGCircleElement | null;
 
     const aboutSec = document.getElementById('about');
     const ctaSec = document.getElementById('cta');
 
-    if (!wrapper || !path || !head || !svg || !aboutSec || !ctaSec) return;
+    if (!wrapper || !mainPath || !aboutSec || !ctaSec) return;
 
-    function buildOrganicPath() {
-      if (!aboutSec || !ctaSec || !path || !svg) return;
+    // Silky Smooth Cubic Bezier Path Generator
+    function generateSmoothCubicPath(points: Array<{ x: number; y: number }>) {
+      if (points.length < 2) return '';
+      let d = `M ${points[0].x},${points[0].y}`;
+
+      for (let i = 1; i < points.length; i++) {
+        const p0 = points[i - 1];
+        const p1 = points[i];
+
+        // Smooth cubic control points for silky organic curves
+        const cp1x = p0.x;
+        const cp1y = p0.y + (p1.y - p0.y) * 0.5;
+        const cp2x = p1.x;
+        const cp2y = p0.y + (p1.y - p0.y) * 0.5;
+
+        d += ` C ${cp1x},${cp1y} ${cp2x},${cp2y} ${p1.x},${p1.y}`;
+      }
+      return d;
+    }
+
+    function buildMagicalStreams() {
+      if (!aboutSec || !ctaSec || !mainPath) return;
 
       const bodyRect = document.body.getBoundingClientRect();
       const aboutRect = aboutSec.getBoundingClientRect();
       const ctaRect = ctaSec.getBoundingClientRect();
 
-      // Relative Y coordinates inside document
       const startY = aboutRect.top - bodyRect.top + 80;
       const endY = ctaRect.bottom - bodyRect.top - 60;
       const totalH = endY - startY;
@@ -109,34 +208,62 @@
       if (totalH <= 0) return;
 
       const docWidth = window.innerWidth;
-      
-      // Calculate responsive sine wave curves (slithering organic movement)
-      const pointsCount = 12;
-      const stepY = totalH / pointsCount;
+      const steps = 14;
+      const stepY = totalH / steps;
 
-      let pathD = `M ${docWidth * 0.15},${startY}`;
+      // Base Main Waypoints
+      const mainPoints: Array<{ x: number; y: number }> = [];
+      const compAPoints: Array<{ x: number; y: number }> = [];
+      const compBPoints: Array<{ x: number; y: number }> = [];
+      const ambientPoints: Array<{ x: number; y: number }> = [];
 
-      for (let i = 1; i <= pointsCount; i++) {
-        const curY = startY + i * stepY;
-        // Alternate X between 12% and 88% width for organic slithering
-        let targetX = docWidth * 0.85;
-        if (i % 2 === 0) targetX = docWidth * 0.15;
-        if (i % 3 === 0) targetX = docWidth * 0.5;
+      for (let i = 0; i <= steps; i++) {
+        const y = startY + i * stepY;
 
-        const prevY = startY + (i - 1) * stepY;
-        const controlY = (prevY + curY) / 2;
+        // Smooth organic S-curve oscillations across 12% to 88% screen width
+        let targetXRatio = 0.5;
+        if (i % 4 === 1) targetXRatio = 0.85;
+        else if (i % 4 === 2) targetXRatio = 0.5;
+        else if (i % 4 === 3) targetXRatio = 0.15;
+        else if (i % 4 === 0) targetXRatio = 0.5;
 
-        pathD += ` Q ${targetX},${controlY} ${targetX},${curY}`;
+        const mainX = docWidth * targetXRatio;
+
+        // Multi-strand offset variations ("Saudara Garis Magis")
+        const offsetXA = Math.sin(i * 0.8) * 35;
+        const offsetXB = Math.cos(i * 0.6) * 65;
+        const offsetAmbient = Math.sin(i * 0.4) * 90;
+
+        mainPoints.push({ x: mainX, y: y });
+        compAPoints.push({ x: mainX + offsetXA, y: y + 10 });
+        compBPoints.push({ x: mainX + offsetXB, y: y - 15 });
+        ambientPoints.push({ x: mainX + offsetAmbient, y: y });
       }
 
-      path.setAttribute('d', pathD);
+      // Generate SVG path string with silky cubic bezier curves
+      const mainD = generateSmoothCubicPath(mainPoints);
+      const compAD = generateSmoothCubicPath(compAPoints);
+      const compBD = generateSmoothCubicPath(compBPoints);
+      const ambientD = generateSmoothCubicPath(ambientPoints);
 
-      const pathLength = path.getTotalLength();
-      path.style.strokeDasharray = `${pathLength}`;
-      path.style.strokeDashoffset = `${pathLength}`;
+      // Set Path Attributes
+      mainPath.setAttribute('d', mainD);
+      if (compAPath) compAPath.setAttribute('d', compAD);
+      if (compBPath) compBPath.setAttribute('d', compBD);
+      if (ambientPath) ambientPath.setAttribute('d', ambientD);
 
-      // GSAP ScrollTrigger for Slithering Animation
-      gsap.to(path, {
+      // Prepare Scroll Trigger Animation
+      const paths = [mainPath, compAPath, compBPath, ambientPath].filter(Boolean) as SVGPathElement[];
+
+      paths.forEach(p => {
+        const len = p.getTotalLength();
+        p.style.strokeDasharray = `${len}`;
+        p.style.strokeDashoffset = `${len}`;
+      });
+
+      const mainLen = mainPath.getTotalLength();
+
+      gsap.to(paths, {
         strokeDashoffset: 0,
         ease: 'none',
         scrollTrigger: {
@@ -144,24 +271,24 @@
           endTrigger: ctaSec,
           start: 'top 60%',
           end: 'bottom 80%',
-          scrub: 1.2,
+          scrub: 1.4,
           onUpdate: (self) => {
-            if (!head || !path) return;
+            if (!headOrb || !headAura || !mainPath) return;
             const progress = self.progress;
-            const currentPoint = path.getPointAtLength(progress * pathLength);
-            head.setAttribute('cx', currentPoint.x.toString());
-            head.setAttribute('cy', currentPoint.y.toString());
+            const pt = mainPath.getPointAtLength(progress * mainLen);
+            headOrb.setAttribute('cx', pt.x.toString());
+            headOrb.setAttribute('cy', pt.y.toString());
+            headAura.setAttribute('cx', pt.x.toString());
+            headAura.setAttribute('cy', pt.y.toString());
           }
         }
       });
     }
 
-    // Build initial path
-    buildOrganicPath();
+    buildMagicalStreams();
 
-    // Re-calculate on window resize
     window.addEventListener('resize', () => {
-      buildOrganicPath();
+      buildMagicalStreams();
       ScrollTrigger.refresh();
     });
   });

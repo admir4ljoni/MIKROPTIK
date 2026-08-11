@@ -1,94 +1,40 @@
 ---
-// SlitheringThread.astro - Multi-Strand Magical Energy Flowing Stream (#about to #cta)
+// SlitheringThread.astro - High-Performance 60FPS Magical Energy Stream Behind Content
 ---
 
 <div class="slithering-thread-wrapper" id="slithering-thread-container" aria-hidden="true">
   <svg class="slithering-svg" id="slithering-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
     <defs>
-      <!-- Gradient 1: Deep Red to Warm Gold -->
+      <!-- Deep Red to Gold Glowing Gradient -->
       <linearGradient id="magicGradientMain" x1="0%" y1="0%" x2="0%" y2="100%">
         <stop offset="0%" stop-color="var(--color-red-deep)" stop-opacity="0.95" />
-        <stop offset="25%" stop-color="var(--color-gold)" stop-opacity="1" />
-        <stop offset="50%" stop-color="var(--color-red-deep)" stop-opacity="0.9" />
-        <stop offset="75%" stop-color="#e0b790" stop-opacity="1" />
+        <stop offset="30%" stop-color="var(--color-gold)" stop-opacity="1" />
+        <stop offset="60%" stop-color="var(--color-red-deep)" stop-opacity="0.9" />
         <stop offset="100%" stop-color="var(--color-gold)" stop-opacity="1" />
       </linearGradient>
 
-      <!-- Gradient 2: Ambient Companion Aura -->
-      <linearGradient id="magicGradientAura" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stop-color="#820907" stop-opacity="0.7" />
-        <stop offset="50%" stop-color="#d4b354" stop-opacity="0.8" />
-        <stop offset="100%" stop-color="#cc570e" stop-opacity="0.7" />
+      <!-- Soft Companion Gradient -->
+      <linearGradient id="magicGradientCompanion" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#820907" stop-opacity="0.6" />
+        <stop offset="50%" stop-color="#d4b354" stop-opacity="0.7" />
+        <stop offset="100%" stop-color="#cc570e" stop-opacity="0.6" />
       </linearGradient>
-
-      <!-- Gaussian Blur Filter 1: Sharp Core Glow -->
-      <filter id="coreGlow" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="3" result="blur" />
-        <feMerge>
-          <feMergeNode in="blur" />
-          <feMergeNode in="SourceGraphic" />
-        </feMerge>
-      </filter>
-
-      <!-- Gaussian Blur Filter 2: Companion Blurred Aura ("Saudara Garis Blur") -->
-      <filter id="companionBlur" x="-100%" y="-100%" width="300%" height="300%">
-        <feGaussianBlur stdDeviation="12" result="blur1" />
-        <feGaussianBlur stdDeviation="24" result="blur2" />
-        <feMerge>
-          <feMergeNode in="blur2" />
-          <feMergeNode in="blur1" />
-        </feMerge>
-      </filter>
-
-      <!-- Gaussian Blur Filter 3: Wide Ambient Energy Field -->
-      <filter id="ambientWideBlur" x="-100%" y="-100%" width="300%" height="300%">
-        <feGaussianBlur stdDeviation="32" result="wideBlur" />
-      </filter>
     </defs>
 
-    <!-- LAYER 1: Deepest Ambient Blurred Energy Cloud ("Saudara Ambient") -->
+    <!-- LAYER 1: Soft Blurred Companion Stream ("Saudara Garis Blur Magis") -->
     <path
-      id="strand-ambient"
-      class="strand-path strand-ambient"
-      d=""
-      fill="none"
-      stroke="url(#magicGradientAura)"
-      stroke-width="32"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      filter="url(#ambientWideBlur)"
-      opacity="0.35"
-    />
-
-    <!-- LAYER 2: Medium Blurred Companion Stream ("Saudara Medium Blur") -->
-    <path
-      id="strand-companion-b"
+      id="strand-companion"
       class="strand-path strand-companion"
       d=""
       fill="none"
-      stroke="url(#magicGradientAura)"
-      stroke-width="16"
+      stroke="url(#magicGradientCompanion)"
+      stroke-width="14"
       stroke-linecap="round"
       stroke-linejoin="round"
-      filter="url(#companionBlur)"
-      opacity="0.5"
+      opacity="0.4"
     />
 
-    <!-- LAYER 3: Soft Blurred Companion Stream ("Saudara Light Blur") -->
-    <path
-      id="strand-companion-a"
-      class="strand-path strand-companion"
-      d=""
-      fill="none"
-      stroke="url(#magicGradientMain)"
-      stroke-width="8"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      filter="url(#companionBlur)"
-      opacity="0.65"
-    />
-
-    <!-- LAYER 4: Main Sharp Glowing Magical Thread ("Garis Utama") -->
+    <!-- LAYER 2: Main Crisp Glowing Magical Thread ("Garis Utama") -->
     <path
       id="strand-main"
       class="strand-path strand-main"
@@ -98,29 +44,20 @@
       stroke-width="3.5"
       stroke-linecap="round"
       stroke-linejoin="round"
-      filter="url(#coreGlow)"
     />
 
     <!-- Glowing Magical Orb Head -->
     <circle
       id="magic-head-orb"
       class="magic-head-orb"
-      r="7"
+      r="6"
       fill="var(--color-gold)"
-      filter="url(#coreGlow)"
-    />
-    <circle
-      id="magic-head-aura"
-      class="magic-head-aura"
-      r="16"
-      fill="var(--color-red-deep)"
-      opacity="0.5"
-      filter="url(#companionBlur)"
     />
   </svg>
 </div>
 
 <style>
+  /* Wrapper berada di z-index 0 di belakang seluruh konten section */
   .slithering-thread-wrapper {
     position: absolute;
     top: 0;
@@ -128,8 +65,10 @@
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 1; /* Sits behind section content */
+    z-index: 0; /* Terletak mutlak di belakang elemen konten manapun */
     overflow: hidden;
+    will-change: transform;
+    transform: translateZ(0); /* Hardware GPU Acceleration */
   }
 
   .slithering-svg {
@@ -140,16 +79,19 @@
     height: 100%;
   }
 
-  .strand-path {
-    transition: stroke-dashoffset 0.08s ease-out;
+  .strand-main {
+    filter: drop-shadow(0 0 10px rgba(212, 179, 84, 0.85)) drop-shadow(0 0 18px rgba(130, 9, 7, 0.9));
+    will-change: stroke-dashoffset;
+  }
+
+  .strand-companion {
+    filter: blur(8px) drop-shadow(0 0 20px rgba(130, 9, 7, 0.7));
+    will-change: stroke-dashoffset;
   }
 
   .magic-head-orb {
-    box-shadow: 0 0 20px var(--color-gold);
-  }
-
-  .magic-head-aura {
-    mix-blend-mode: screen;
+    filter: drop-shadow(0 0 12px var(--color-gold)) drop-shadow(0 0 25px rgba(212, 179, 84, 0.9));
+    will-change: cx, cy;
   }
 </style>
 
@@ -162,19 +104,15 @@
   document.addEventListener('DOMContentLoaded', () => {
     const wrapper = document.getElementById('slithering-thread-container');
     const mainPath = document.getElementById('strand-main') as SVGPathElement | null;
-    const compAPath = document.getElementById('strand-companion-a') as SVGPathElement | null;
-    const compBPath = document.getElementById('strand-companion-b') as SVGPathElement | null;
-    const ambientPath = document.getElementById('strand-ambient') as SVGPathElement | null;
-
+    const compPath = document.getElementById('strand-companion') as SVGPathElement | null;
     const headOrb = document.getElementById('magic-head-orb') as SVGCircleElement | null;
-    const headAura = document.getElementById('magic-head-aura') as SVGCircleElement | null;
 
     const aboutSec = document.getElementById('about');
     const ctaSec = document.getElementById('cta');
 
     if (!wrapper || !mainPath || !aboutSec || !ctaSec) return;
 
-    // Silky Smooth Cubic Bezier Path Generator
+    // Smooth Cubic Bezier Interpolation
     function generateSmoothCubicPath(points: Array<{ x: number; y: number }>) {
       if (points.length < 2) return '';
       let d = `M ${points[0].x},${points[0].y}`;
@@ -183,7 +121,6 @@
         const p0 = points[i - 1];
         const p1 = points[i];
 
-        // Smooth cubic control points for silky organic curves
         const cp1x = p0.x;
         const cp1y = p0.y + (p1.y - p0.y) * 0.5;
         const cp2x = p1.x;
@@ -208,52 +145,35 @@
       if (totalH <= 0) return;
 
       const docWidth = window.innerWidth;
-      const steps = 14;
+      const steps = 12;
       const stepY = totalH / steps;
 
-      // Base Main Waypoints
       const mainPoints: Array<{ x: number; y: number }> = [];
-      const compAPoints: Array<{ x: number; y: number }> = [];
-      const compBPoints: Array<{ x: number; y: number }> = [];
-      const ambientPoints: Array<{ x: number; y: number }> = [];
+      const compPoints: Array<{ x: number; y: number }> = [];
 
       for (let i = 0; i <= steps; i++) {
         const y = startY + i * stepY;
 
-        // Smooth organic S-curve oscillations across 12% to 88% screen width
         let targetXRatio = 0.5;
-        if (i % 4 === 1) targetXRatio = 0.85;
+        if (i % 4 === 1) targetXRatio = 0.82;
         else if (i % 4 === 2) targetXRatio = 0.5;
-        else if (i % 4 === 3) targetXRatio = 0.15;
+        else if (i % 4 === 3) targetXRatio = 0.18;
         else if (i % 4 === 0) targetXRatio = 0.5;
 
         const mainX = docWidth * targetXRatio;
-
-        // Multi-strand offset variations ("Saudara Garis Magis")
-        const offsetXA = Math.sin(i * 0.8) * 35;
-        const offsetXB = Math.cos(i * 0.6) * 65;
-        const offsetAmbient = Math.sin(i * 0.4) * 90;
+        const offsetCompX = Math.sin(i * 0.7) * 45;
 
         mainPoints.push({ x: mainX, y: y });
-        compAPoints.push({ x: mainX + offsetXA, y: y + 10 });
-        compBPoints.push({ x: mainX + offsetXB, y: y - 15 });
-        ambientPoints.push({ x: mainX + offsetAmbient, y: y });
+        compPoints.push({ x: mainX + offsetCompX, y: y + 12 });
       }
 
-      // Generate SVG path string with silky cubic bezier curves
       const mainD = generateSmoothCubicPath(mainPoints);
-      const compAD = generateSmoothCubicPath(compAPoints);
-      const compBD = generateSmoothCubicPath(compBPoints);
-      const ambientD = generateSmoothCubicPath(ambientPoints);
+      const compD = generateSmoothCubicPath(compPoints);
 
-      // Set Path Attributes
       mainPath.setAttribute('d', mainD);
-      if (compAPath) compAPath.setAttribute('d', compAD);
-      if (compBPath) compBPath.setAttribute('d', compBD);
-      if (ambientPath) ambientPath.setAttribute('d', ambientD);
+      if (compPath) compPath.setAttribute('d', compD);
 
-      // Prepare Scroll Trigger Animation
-      const paths = [mainPath, compAPath, compBPath, ambientPath].filter(Boolean) as SVGPathElement[];
+      const paths = [mainPath, compPath].filter(Boolean) as SVGPathElement[];
 
       paths.forEach(p => {
         const len = p.getTotalLength();
@@ -271,15 +191,13 @@
           endTrigger: ctaSec,
           start: 'top 60%',
           end: 'bottom 80%',
-          scrub: 1.4,
+          scrub: 1.0,
           onUpdate: (self) => {
-            if (!headOrb || !headAura || !mainPath) return;
+            if (!headOrb || !mainPath) return;
             const progress = self.progress;
             const pt = mainPath.getPointAtLength(progress * mainLen);
             headOrb.setAttribute('cx', pt.x.toString());
             headOrb.setAttribute('cy', pt.y.toString());
-            headAura.setAttribute('cx', pt.x.toString());
-            headAura.setAttribute('cy', pt.y.toString());
           }
         }
       });
@@ -287,9 +205,13 @@
 
     buildMagicalStreams();
 
+    let resizeTimer: any;
     window.addEventListener('resize', () => {
-      buildMagicalStreams();
-      ScrollTrigger.refresh();
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        buildMagicalStreams();
+        ScrollTrigger.refresh();
+      }, 150);
     });
   });
 </script>

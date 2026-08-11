@@ -808,17 +808,3 @@
     display: flex;
   }
 }
-
-/* Ensure all landing page sections & content containers sit strictly ON TOP of background SlitheringThread */
-.section,
-.container,
-.about-accordion-section,
-.visi-box,
-.misi-grid,
-.proker-bento,
-.calendar-section-wrapper,
-.cta-container,
-.footer-container {
-  position: relative;
-  z-index: 2;
-}

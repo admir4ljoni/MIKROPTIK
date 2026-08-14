@@ -97,20 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. Marquee Acceleration on Scroll
-  const marqueeTracks = document.querySelectorAll('.marquee-track');
-  marqueeTracks.forEach((track) => {
-    ScrollTrigger.create({
-      trigger: track,
-      start: 'top bottom',
-      end: 'bottom top',
-      onUpdate: (self) => {
-        const velocity = Math.abs(self.getVelocity());
-        const speed = Math.min(2.5, 1 + velocity / 600);
-        gsap.to(track, { timeScale: speed, duration: 0.25 });
-      },
-    });
-  });
+
 
   // 7. Section "Tentang Kami" Waterfall Reveal from Top (Cascading Stagger Effect)
   const aboutAccordion = document.getElementById('about-accordion');

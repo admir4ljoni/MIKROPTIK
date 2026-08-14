@@ -123,9 +123,15 @@ button {
   cursor: pointer;
 }
 
-/* 4. Custom Scrollbar */
+/* 4. Custom Scrollbar (Global & Container) */
+* {
+  scrollbar-color: var(--color-red-deep) var(--color-dark);
+  scrollbar-width: thin;
+}
+
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 9px;
+  height: 9px;
 }
 
 ::-webkit-scrollbar-track {
@@ -136,9 +142,11 @@ button {
   background: var(--color-red-deep);
   border-radius: var(--radius-sm);
   border: 2px solid var(--color-dark);
+  transition: background 0.25s ease;
 }
 
-::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active {
   background: var(--color-primary);
 }
 

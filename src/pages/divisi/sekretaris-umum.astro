@@ -1,0 +1,87 @@
+---
+import DivisiLayout from '../../layouts/DivisiLayout.astro';
+import DivisiHero from '../../components/DivisiHero.astro';
+import DivisiPengurus from '../../components/DivisiPengurus.astro';
+import DivisiProker from '../../components/DivisiProker.astro';
+import DivisiFotoGaleri from '../../components/DivisiFotoGaleri.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const divisiData = {
+  name: "SEKRETARIS UMUM",
+  badge: "BIDANG SEKRETARIS UMUM",
+  tagline: "Selalu Siap, Selalu Ada",
+  slug: "sekretaris-umum",
+  bgImage: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO BERSAMA.JPG",
+  description: "Sekretaris Umum (SEKUM) HMP MIKROPTIK FKIP UNS merupakan bidang yang bertugas dalam mengelola, menyelesaikan, dan mengarsipkan seluruh sistem administrasi serta operasional organisasi. Dengan tagline \"Selalu Siap, Selalu Ada\", bidang ini berperan sebagai penopang kelancaran dan stabilitas internal HMP MIKROPTIK melalui pengelolaan kearsipan, pemeliharaan ruang sekretariat, penyusunan timeline kerja, hingga penyediaan serta penyaluran pusat informasi bagi seluruh pengurus.",
+  kepala: {
+    nama: "Yusuf Nurul Huda",
+    jabatan: "KABID SEKRETARIS UMUM"
+  },
+  staff: [
+    { nama: "Afifah Zahrah Muthmainnah", jabatan: "STAFF SEKRETARIS UMUM" },
+    { nama: "Nadhira Zulsyifa S", jabatan: "STAFF SEKRETARIS UMUM" },
+    { nama: "Fajriyah Yulia Az Zahra", jabatan: "STAFF SEKRETARIS UMUM" },
+    { nama: "Queennera Martha Kusuma Wardhani", jabatan: "STAFF SEKRETARIS UMUM" },
+    { nama: "Vanesa Berliana Putri Surbandana", jabatan: "STAFF SEKRETARIS UMUM" }
+  ],
+  proker: [
+    "Rapat Kerja",
+    "Pelatihan Sekben",
+    "Rapat Pleno",
+    "Rapat Harian Lengkap",
+    "Rapat Terbuka",
+    "Rapat Besar",
+    "Rekapitulasi Data",
+    "Tertib Administrasi",
+    "Dokumentasi",
+    "Pengelolaan Sekre",
+    "Sertifikat Pengurus"
+  ],
+  galeri: [
+    { title: "Foto Bersama Bidang SEKUM", src: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO BERSAMA.JPG", isFeatured: true },
+    { title: "Kabid Sekretaris Umum", src: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO KADIV.JPG" },
+    { title: "Staff Ahli Sekretaris Umum", src: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO STAFF AHLI.JPG" },
+    { title: "Staff Muda Sekretaris Umum", src: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO STAFF MUDA.JPG" }
+  ]
+};
+---
+
+<DivisiLayout
+  divisiName={divisiData.name}
+  divisiBadge={divisiData.badge}
+  divisiTagline={divisiData.tagline}
+  divisiSlug={divisiData.slug}
+  nextDivisi={{ name: "BENDAHARA UMUM", slug: "bendahara-umum" }}
+>
+  <!-- Hero Section -->
+  <DivisiHero
+    title={divisiData.name}
+    badge={divisiData.badge}
+    tagline={divisiData.tagline}
+    description="Penopang kelancaran dan stabilitas operasional serta administrasi organisasi HMP MIKROPTIK."
+    bgImage={divisiData.bgImage}
+  />
+
+  <!-- Deskripsi Section -->
+  <section class="divisi-desc-section">
+    <div class="container">
+      <SectionHeading
+        titleMain="PROFIL"
+        titleAccent="Bidang"
+        subtitle="Peran dan fokus utama Sekretaris Umum dalam mendukung tata kelola himpunan"
+      />
+      <div class="divisi-desc-box">
+        <p class="divisi-desc-text">{divisiData.description}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pengurus Section -->
+  <DivisiPengurus kepala={divisiData.kepala} staff={divisiData.staff} />
+
+  <!-- Proker Section -->
+  <DivisiProker prokerList={divisiData.proker} />
+
+  <!-- Foto Galeri Section -->
+  <DivisiFotoGaleri fotoList={divisiData.galeri} />
+</DivisiLayout>

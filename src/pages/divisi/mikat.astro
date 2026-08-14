@@ -1,0 +1,90 @@
+---
+import DivisiLayout from '../../layouts/DivisiLayout.astro';
+import DivisiHero from '../../components/DivisiHero.astro';
+import DivisiPengurus from '../../components/DivisiPengurus.astro';
+import DivisiProker from '../../components/DivisiProker.astro';
+import DivisiFotoGaleri from '../../components/DivisiFotoGaleri.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const divisiData = {
+  name: "MIKAT",
+  badge: "DIVISI MIKAT",
+  tagline: "Pengembangan Minat, Bakat & Prestasi Mahasiswa",
+  slug: "mikat",
+  bgImage: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO BERSAMA.JPG",
+  description: "Divisi Minat dan Bakat (MIKAT) HMP MIKROPTIK FKIP UNS merupakan divisi yang bertugas dalam pengembangan potensi, bakat, dan minat mahasiswa baik di bidang akademik maupun non-akademik. Divisi ini menjadi wadah bagi mahasiswa untuk menyalurkan minatnya dalam kegiatan olahraga, seni, keilmuan, hingga pengembangan diri, serta turut membangun lingkungan PTIK yang sehat dan produktif.",
+  kepala: {
+    nama: "Ahmad Fathoni Nur Mahmudi",
+    jabatan: "KADIV MIKAT"
+  },
+  staff: [
+    { nama: "Abiyusafa Noer Rosyadi Agam", jabatan: "STAFF MIKAT" },
+    { nama: "Ammar Rozan Annafi", jabatan: "STAFF MIKAT" },
+    { nama: "Muhammad Rafli Rafsanjani", jabatan: "STAFF MIKAT" },
+    { nama: "Nabila Shafa Salsabila Nurhardriani", jabatan: "STAFF MIKAT" },
+    { nama: "Aurrea Daffa Putri Febriana", jabatan: "STAFF MIKAT" },
+    { nama: "Farrel Muflif Muzzaki", jabatan: "STAFF MIKAT" },
+    { nama: "Galih Satya Prakosa", jabatan: "STAFF MIKAT" },
+    { nama: "Khalifah Ayu Anjani", jabatan: "STAFF MIKAT" },
+    { nama: "Nourin Akbar Pratama", jabatan: "STAFF MIKAT" },
+    { nama: "Rafi Zahid Santoso", jabatan: "STAFF MIKAT" }
+  ],
+  proker: [
+    "SEBAT (Sehat Bersama PTIK)",
+    "JPTK CUP",
+    "FESTIVAL MIKAT",
+    "SEMINAR PKM",
+    "STUDY CLUB",
+    "PENDATAAN PRESTASI MAHASISWA",
+    "PENDATAAN MIKAT MAHASISWA"
+  ],
+  galeri: [
+    { title: "Foto Bersama Divisi MIKAT", src: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO BERSAMA.JPG", isFeatured: true },
+    { title: "Kadiv MIKAT", src: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO KADIV.JPG" },
+    { title: "Staff Ahli MIKAT", src: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO STAFF AHLI.JPG" },
+    { title: "Staff Muda MIKAT 1", src: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO STAFF MUDA 1.JPG" },
+    { title: "Staff Muda MIKAT 2", src: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO STAFF MUDA 2.JPG" }
+  ]
+};
+---
+
+<DivisiLayout
+  divisiName={divisiData.name}
+  divisiBadge={divisiData.badge}
+  divisiTagline={divisiData.tagline}
+  divisiSlug={divisiData.slug}
+  prevDivisi={{ name: "PSDM", slug: "psdm" }}
+  nextDivisi={{ name: "HUMAS", slug: "humas" }}
+>
+  <!-- Hero Section -->
+  <DivisiHero
+    title={divisiData.name}
+    badge={divisiData.badge}
+    tagline={divisiData.tagline}
+    description="Wadah penyaluran bakat olahraga, seni, kompetisi akademik, PKM, dan pengembangan minat mahasiswa PTIK."
+    bgImage={divisiData.bgImage}
+  />
+
+  <!-- Deskripsi Section -->
+  <section class="divisi-desc-section">
+    <div class="container">
+      <SectionHeading
+        titleMain="PROFIL"
+        titleAccent="Divisi"
+        subtitle="Peran dan fokus utama Divisi MIKAT dalam memfasilitasi potensi & karya mahasiswa"
+      />
+      <div class="divisi-desc-box">
+        <p class="divisi-desc-text">{divisiData.description}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pengurus Section -->
+  <DivisiPengurus kepala={divisiData.kepala} staff={divisiData.staff} />
+
+  <!-- Proker Section -->
+  <DivisiProker prokerList={divisiData.proker} />
+
+  <!-- Foto Galeri Section -->
+  <DivisiFotoGaleri fotoList={divisiData.galeri} />
+</DivisiLayout>

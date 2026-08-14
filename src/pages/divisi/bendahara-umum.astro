@@ -1,0 +1,83 @@
+---
+import DivisiLayout from '../../layouts/DivisiLayout.astro';
+import DivisiHero from '../../components/DivisiHero.astro';
+import DivisiPengurus from '../../components/DivisiPengurus.astro';
+import DivisiProker from '../../components/DivisiProker.astro';
+import DivisiFotoGaleri from '../../components/DivisiFotoGaleri.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const divisiData = {
+  name: "BENDAHARA UMUM",
+  badge: "BIDANG BENDAHARA UMUM",
+  tagline: "Transparansi, Akuntabilitas & Disiplin Keuangan",
+  slug: "bendahara-umum",
+  bgImage: "/assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO BERSAMA.JPG",
+  description: "Bendahara Umum adalah bidang yang bertanggung jawab dalam mengelola seluruh keuangan organisasi, seperti pemasukan, pengeluaran, dan pencatatan dana kegiatan. Tugas utamanya meliputi menyusun laporan keuangan, membuat anggaran kegiatan, menjaga transparansi serta akuntabilitas keuangan, dan memastikan setiap penggunaan dana sesuai dengan aturan serta kebutuhan organisasi.",
+  kepala: {
+    nama: "Salsabila Fitriasani",
+    jabatan: "KABID BENDAHARA UMUM"
+  },
+  staff: [
+    { nama: "Natasya Luthfia Ramadhani", jabatan: "STAFF BENDAHARA UMUM" },
+    { nama: "Amelia Pinasti Nugraheni", jabatan: "STAFF BENDAHARA UMUM" },
+    { nama: "Firzana Bilqis Serenity", jabatan: "STAFF BENDAHARA UMUM" },
+    { nama: "Haikal Wilhan Rosyada", jabatan: "STAFF BENDAHARA UMUM" },
+    { nama: "Muhammad Ammar Fathin", jabatan: "STAFF BENDAHARA UMUM" },
+    { nama: "Riska Nur Rahmawati", jabatan: "STAFF BENDAHARA UMUM" }
+  ],
+  proker: [
+    "IWP (Iuran Wajib Pengurus)",
+    "PENGADAAN INVENTARIS SEKRE",
+    "DISIPLIN ADMINISTRASI KEUANGAN",
+    "DANA USAHA",
+    "MIKROPTIK STORE"
+  ],
+  galeri: [
+    { title: "Foto Bersama Bidang BENDUM", src: "/assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO BERSAMA.JPG", isFeatured: true },
+    { title: "Kabid Bendahara Umum", src: "/assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO KADIV.JPG" },
+    { title: "Staff Bendahara Umum", src: "/assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO STAFF 1.JPG" },
+    { title: "Staff Muda Bendahara Umum", src: "/assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO STAFF MUDA.JPG" }
+  ]
+};
+---
+
+<DivisiLayout
+  divisiName={divisiData.name}
+  divisiBadge={divisiData.badge}
+  divisiTagline={divisiData.tagline}
+  divisiSlug={divisiData.slug}
+  prevDivisi={{ name: "SEKRETARIS UMUM", slug: "sekretaris-umum" }}
+  nextDivisi={{ name: "PSDM", slug: "psdm" }}
+>
+  <!-- Hero Section -->
+  <DivisiHero
+    title={divisiData.name}
+    badge={divisiData.badge}
+    tagline={divisiData.tagline}
+    description="Penanggung jawab tata kelola, anggaran, pencatatan dana, serta akuntabilitas keuangan organisasi HMP MIKROPTIK."
+    bgImage={divisiData.bgImage}
+  />
+
+  <!-- Deskripsi Section -->
+  <section class="divisi-desc-section">
+    <div class="container">
+      <SectionHeading
+        titleMain="PROFIL"
+        titleAccent="Bidang"
+        subtitle="Peran dan fokus utama Bendahara Umum dalam pengelolaan sirkulasi keuangan"
+      />
+      <div class="divisi-desc-box">
+        <p class="divisi-desc-text">{divisiData.description}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pengurus Section -->
+  <DivisiPengurus kepala={divisiData.kepala} staff={divisiData.staff} />
+
+  <!-- Proker Section -->
+  <DivisiProker prokerList={divisiData.proker} />
+
+  <!-- Foto Galeri Section -->
+  <DivisiFotoGaleri fotoList={divisiData.galeri} />
+</DivisiLayout>

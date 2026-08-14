@@ -1,0 +1,90 @@
+---
+import DivisiLayout from '../../layouts/DivisiLayout.astro';
+import DivisiHero from '../../components/DivisiHero.astro';
+import DivisiPengurus from '../../components/DivisiPengurus.astro';
+import DivisiProker from '../../components/DivisiProker.astro';
+import DivisiFotoGaleri from '../../components/DivisiFotoGaleri.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const divisiData = {
+  name: "HUMAS",
+  badge: "DIVISI HUMAS",
+  tagline: "Jalin Koneksi, Cipta Harmoni, High Quality",
+  slug: "humas",
+  bgImage: "/assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO BERSAMA.JPG",
+  description: "Sebagai garda terdepan HMP MIKROPTIK, Divisi Humas berfokus membangun citra positif, memperkuat relasi, dan menjembatani komunikasi internal–eksternal pada Kabinet Naya Vikrama 2026. Misi branding dan diseminasi informasi ini direalisasikan secara komprehensif melalui program advokasi (Sambung Rasa, Real Action), ekspansi jaringan (Delegasi, Studi Banding), aksi kepedulian sosial (JPTK Berbagi, Mikroptik Social Action), hingga pemeliharaan ikatan alumni (Sambut Wisuda). Seluruh pergerakan ini dijiwai oleh satu semangat utama: \"Jalin Koneksi, Cipta Harmoni, High Quality\".",
+  kepala: {
+    nama: "Eka Putra Noandheli",
+    jabatan: "KADIV HUMAS"
+  },
+  staff: [
+    { nama: "Atikah Salsabila", jabatan: "STAFF HUMAS" },
+    { nama: "Galang Nur Seto", jabatan: "STAFF HUMAS" },
+    { nama: "Hafiz Irsyad Al Thof", jabatan: "STAFF HUMAS" },
+    { nama: "Abyan Farisa", jabatan: "STAFF HUMAS" },
+    { nama: "Adibah Ruhil", jabatan: "STAFF HUMAS" },
+    { nama: "Febriana Putri Qurrota'ayun", jabatan: "STAFF HUMAS" },
+    { nama: "Muhammad Yufi Anaqsana Maula", jabatan: "STAFF HUMAS" },
+    { nama: "Niceforus Helas Nuver", jabatan: "STAFF HUMAS" },
+    { nama: "Nurul Hidayati", jabatan: "STAFF HUMAS" }
+  ],
+  proker: [
+    "MIKROPTIK SOCIAL ACTION + SARASEHAN",
+    "JPTK BERBAGI",
+    "SAMBUNG RASA",
+    "STUDI BANDING",
+    "SAMBUT WISUDA",
+    "REAL ACTION",
+    "ADVOKASI MAHASISWA",
+    "DELEGASI KAMPUS",
+    "MEDIA PARTNER"
+  ],
+  galeri: [
+    { title: "Foto Bersama Divisi HUMAS", src: "/assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO BERSAMA.JPG", isFeatured: true },
+    { title: "Kadiv HUMAS", src: "/assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO KADIV.JPG" },
+    { title: "Staff Ahli HUMAS", src: "/assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO STAFF AHLI.JPG" },
+    { title: "Staff Muda HUMAS", src: "/assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO STAFF MUDA.JPG" }
+  ]
+};
+---
+
+<DivisiLayout
+  divisiName={divisiData.name}
+  divisiBadge={divisiData.badge}
+  divisiTagline={divisiData.tagline}
+  divisiSlug={divisiData.slug}
+  prevDivisi={{ name: "MIKAT", slug: "mikat" }}
+  nextDivisi={{ name: "MEDINFO", slug: "medinfo" }}
+>
+  <!-- Hero Section -->
+  <DivisiHero
+    title={divisiData.name}
+    badge={divisiData.badge}
+    tagline={divisiData.tagline}
+    description="Garda terdepan pembangun relasi publik, aksi kepedulian sosial, advokasi mahasiswa, dan jejaring kerja sama eksternal."
+    bgImage={divisiData.bgImage}
+  />
+
+  <!-- Deskripsi Section -->
+  <section class="divisi-desc-section">
+    <div class="container">
+      <SectionHeading
+        titleMain="PROFIL"
+        titleAccent="Divisi"
+        subtitle="Peran dan fokus utama Divisi Humas dalam membangun reputasi & keharmonisan komunikasi"
+      />
+      <div class="divisi-desc-box">
+        <p class="divisi-desc-text">{divisiData.description}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pengurus Section -->
+  <DivisiPengurus kepala={divisiData.kepala} staff={divisiData.staff} />
+
+  <!-- Proker Section -->
+  <DivisiProker prokerList={divisiData.proker} />
+
+  <!-- Foto Galeri Section -->
+  <DivisiFotoGaleri fotoList={divisiData.galeri} />
+</DivisiLayout>

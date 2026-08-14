@@ -1,0 +1,89 @@
+---
+import DivisiLayout from '../../layouts/DivisiLayout.astro';
+import DivisiHero from '../../components/DivisiHero.astro';
+import DivisiPengurus from '../../components/DivisiPengurus.astro';
+import DivisiProker from '../../components/DivisiProker.astro';
+import DivisiFotoGaleri from '../../components/DivisiFotoGaleri.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const divisiData = {
+  name: "PSDM",
+  badge: "DIVISI PSDM",
+  tagline: "Pengembangan Potensi, Kompetensi & Karakter",
+  slug: "psdm",
+  bgImage: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO BERSAMA 1.JPG",
+  description: "Divisi Pengembangan Sumber Daya Mahasiswa (PSDM) HMP MIKROPTIK Kabinet Naya Vikrama merupakan divisi yang berfokus pada pengembangan potensi, kompetensi, dan karakter mahasiswa PTIK. PSDM berperan sebagai wadah sekaligus fasilitator bagi mahasiswa baru dalam beradaptasi dengan lingkungan perkuliahan, mengembangkan diri, serta membangun relasi di lingkungan kampus. Melalui berbagai program kerja, seperti Open Recruitment, PSDM juga membuka kesempatan bagi mahasiswa untuk bergabung, berkontribusi, dan bertumbuh bersama dalam organisasi.",
+  kepala: {
+    nama: "Khoirul Bagus Wicaksono",
+    jabatan: "KADIV PSDM"
+  },
+  staff: [
+    { nama: "Kania Adha Gayatri", jabatan: "STAFF PSDM" },
+    { nama: "Muhammad Irfan Maulana", jabatan: "STAFF PSDM" },
+    { nama: "Yardan Raditya Laksana", jabatan: "STAFF PSDM" },
+    { nama: "Abid Satriyo Maulana", jabatan: "STAFF PSDM" },
+    { nama: "Cahaya Fitri Ramadhani", jabatan: "STAFF PSDM" },
+    { nama: "Faradilla Sari", jabatan: "STAFF PSDM" },
+    { nama: "Gisma Dian Utami", jabatan: "STAFF PSDM" },
+    { nama: "Ilham Rasya Akbar", jabatan: "STAFF PSDM" },
+    { nama: "Muh Rizky Daniswara Putra Utama", jabatan: "STAFF PSDM" },
+    { nama: "Vika Nahran Azizaha Aulia", jabatan: "STAFF PSDM" }
+  ],
+  proker: [
+    "PSDM ADVENTURE",
+    "SAMARU (Sambut Mahasiswa Baru)",
+    "OSMARU (Orientasi Mahasiswa Baru)",
+    "LDKM (Latihan Keterampilan Manajemen Mahasiswa)",
+    "OPEN RECRUITMENT PENGURUS",
+    "REORGANISASI HIMPUNAN"
+  ],
+  galeri: [
+    { title: "Foto Bersama Divisi PSDM", src: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO BERSAMA 1.JPG", isFeatured: true },
+    { title: "Kadiv PSDM", src: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO KADIV.JPG" },
+    { title: "Staff Ahli PSDM", src: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO STAFF AHLI.JPG" },
+    { title: "Staff Muda PSDM 1", src: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO STAFF MUDA 1.JPG" },
+    { title: "Staff Muda PSDM 2", src: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO STAFF MUDA 2.JPG" }
+  ]
+};
+---
+
+<DivisiLayout
+  divisiName={divisiData.name}
+  divisiBadge={divisiData.badge}
+  divisiTagline={divisiData.tagline}
+  divisiSlug={divisiData.slug}
+  prevDivisi={{ name: "BENDAHARA UMUM", slug: "bendahara-umum" }}
+  nextDivisi={{ name: "MIKAT", slug: "mikat" }}
+>
+  <!-- Hero Section -->
+  <DivisiHero
+    title={divisiData.name}
+    badge={divisiData.badge}
+    tagline={divisiData.tagline}
+    description="Fasilitator pengembangan karakter, kaderisasi, adaptasi mahasiswa baru, serta regenerasi kepengurusan himpunan."
+    bgImage={divisiData.bgImage}
+  />
+
+  <!-- Deskripsi Section -->
+  <section class="divisi-desc-section">
+    <div class="container">
+      <SectionHeading
+        titleMain="PROFIL"
+        titleAccent="Divisi"
+        subtitle="Peran dan fokus utama Divisi PSDM dalam membentuk insan akademis yang berkarakter"
+      />
+      <div class="divisi-desc-box">
+        <p class="divisi-desc-text">{divisiData.description}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pengurus Section -->
+  <DivisiPengurus kepala={divisiData.kepala} staff={divisiData.staff} />
+
+  <!-- Proker Section -->
+  <DivisiProker prokerList={divisiData.proker} />
+
+  <!-- Foto Galeri Section -->
+  <DivisiFotoGaleri fotoList={divisiData.galeri} />
+</DivisiLayout>

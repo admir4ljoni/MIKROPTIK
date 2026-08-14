@@ -61,30 +61,30 @@ File ini berisi daftar tugas yang dipecah dari rencana `.agents/plan_divisi.md` 
 
 ## Phase 4: Pembuatan Halaman Detail 6 Divisi
 
-- [ ] Buat `src/pages/divisi/sekretaris-umum.astro`
-  - [ ] Integration data pengurus: Yusuf Nurul Huda (KABID) + 5 staff
-  - [ ] Integration proker: 11 proker SEKUM (Rapat Kerja, Pelatihan Sekben, dst.)
-  - [ ] Integration foto: FOTO BERSAMA SEKRE, FOTO KADIV, FOTO STAFF AHLI, FOTO STAFF MUDA
-- [ ] Buat `src/pages/divisi/bendahara-umum.astro`
-  - [ ] Integration data pengurus: Salsabila Fitriasani (KABID) + 6 staff
-  - [ ] Integration proker: 5 proker BENDUM (IWP, Pengadaan Inventaris, dst.)
-  - [ ] Integration foto: FOTO BERSAMA BEGUM, FOTO KADIV, FOTO STAFF 1, FOTO STAFF MUDA
-- [ ] Buat `src/pages/divisi/psdm.astro`
-  - [ ] Integration data pengurus: Khoirul Bagus Wicaksono (KADIV) + 10 staff
-  - [ ] Integration proker: 6 proker PSDM (PSDM Adventure, SAMARU, OSMARU, LDKM, Oprec, Reorganisasi)
-  - [ ] Integration foto: FOTO BERSAMA 1 PSDM, FOTO KADIV, FOTO STAFF AHLI, FOTO STAFF MUDA 1 & 2
-- [ ] Buat `src/pages/divisi/mikat.astro`
-  - [ ] Integration data pengurus: Ahmad Fathoni Nur Mahmudi (KADIV) + 10 staff
-  - [ ] Integration proker: 7 proker MIKAT (Sebat, JPTK CUP, Festival MIKAT, Seminar PKM, Study Club, dst.)
-  - [ ] Integration foto: FOTO BERSAMA MIKAT, FOTO KADIV, FOTO STAFF AHLI, FOTO STAFF MUDA 1 & 2
-- [ ] Buat `src/pages/divisi/humas.astro`
-  - [ ] Integration data pengurus: Eka Putra Noandheli (KADIV) + 9 staff
-  - [ ] Integration proker: 9 proker HUMAS (Mikroptik Social Action, JPTK Berbagi, Sambung Rasa, Studi Banding, dst.)
-  - [ ] Integration foto: FOTO BERSAMA HUMAS, FOTO KADIV, FOTO STAFF AHLI, FOTO STAFF MUDA
-- [ ] Buat `src/pages/divisi/medinfo.astro`
-  - [ ] Integration data pengurus: Adinda Putri Utami (KADIV) + 10 staff
-  - [ ] Integration proker: 4 proker MEDINFO (Dokumentasi, PDD, Sosial Media, Podcast)
-  - [ ] Integration foto: FOTO BERSAMA MEDINFO, FOTO KADIV, FOTO STAFF AHLI, FOTO STAFF MUDA 1 & 2
+- [x] Buat `src/pages/divisi/sekretaris-umum.astro`
+  - [x] Integration data pengurus: Yusuf Nurul Huda (KABID) + 5 staff
+  - [x] Integration proker: 11 proker SEKUM (Rapat Kerja, Pelatihan Sekben, dst.)
+  - [x] Integration foto: FOTO BERSAMA SEKRE, FOTO KADIV, FOTO STAFF AHLI, FOTO STAFF MUDA
+- [x] Buat `src/pages/divisi/bendahara-umum.astro`
+  - [x] Integration data pengurus: Salsabila Fitriasani (KABID) + 6 staff
+  - [x] Integration proker: 5 proker BENDUM (IWP, Pengadaan Inventaris, dst.)
+  - [x] Integration foto: FOTO BERSAMA BEGUM, FOTO KADIV, FOTO STAFF 1, FOTO STAFF MUDA
+- [x] Buat `src/pages/divisi/psdm.astro`
+  - [x] Integration data pengurus: Khoirul Bagus Wicaksono (KADIV) + 10 staff
+  - [x] Integration proker: 6 proker PSDM (PSDM Adventure, SAMARU, OSMARU, LDKM, Oprec, Reorganisasi)
+  - [x] Integration foto: FOTO BERSAMA 1 PSDM, FOTO KADIV, FOTO STAFF AHLI, FOTO STAFF MUDA 1 & 2
+- [x] Buat `src/pages/divisi/mikat.astro`
+  - [x] Integration data pengurus: Ahmad Fathoni Nur Mahmudi (KADIV) + 10 staff
+  - [x] Integration proker: 7 proker MIKAT (Sebat, JPTK CUP, Festival MIKAT, Seminar PKM, Study Club, dst.)
+  - [x] Integration foto: FOTO BERSAMA MIKAT, FOTO KADIV, FOTO STAFF AHLI, FOTO STAFF MUDA 1 & 2
+- [x] Buat `src/pages/divisi/humas.astro`
+  - [x] Integration data pengurus: Eka Putra Noandheli (KADIV) + 9 staff
+  - [x] Integration proker: 9 proker HUMAS (Mikroptik Social Action, JPTK Berbagi, Sambung Rasa, Studi Banding, dst.)
+  - [x] Integration foto: FOTO BERSAMA HUMAS, FOTO KADIV, FOTO STAFF AHLI, FOTO STAFF MUDA
+- [x] Buat `src/pages/divisi/medinfo.astro`
+  - [x] Integration data pengurus: Adinda Putri Utami (KADIV) + 10 staff
+  - [x] Integration proker: 4 proker MEDINFO (Dokumentasi, PDD, Sosial Media, Podcast)
+  - [x] Integration foto: FOTO BERSAMA MEDINFO, FOTO KADIV, FOTO STAFF AHLI, FOTO STAFF MUDA 1 & 2
 
 ---
 

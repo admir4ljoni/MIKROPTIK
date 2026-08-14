@@ -17,12 +17,14 @@ const divisiData = {
     role: "Ketua Himpunan (KAHIM)",
     badge: "KETUA HIMPUNAN",
     foto: `${baseUrl}assets/Foto Kabinet/Foto Divisi/KAHIM WAKAHIM/KAHIM.webp`,
+    objectPosition: "center 0%",
   },
   wakahim: {
     name: "Ade Amanah Putri",
     role: "Wakil Ketua Himpunan (WAKAHIM)",
     badge: "WAKIL KETUA HIMPUNAN",
     foto: `${baseUrl}assets/Foto Kabinet/Foto Divisi/KAHIM WAKAHIM/WAKAHIM.webp`,
+    objectPosition: "center 25%",
   },
   proker: [
     {
@@ -67,6 +69,7 @@ const divisiData = {
           src={divisiData.kahim.foto}
           alt={`Foto ${divisiData.kahim.name}`}
           class="executive-5050-img"
+          style={`object-position: ${divisiData.kahim.objectPosition};`}
           loading="lazy"
         />
         <div class="executive-5050-overlay"></div>
@@ -78,6 +81,7 @@ const divisiData = {
           src={divisiData.wakahim.foto}
           alt={`Foto ${divisiData.wakahim.name}`}
           class="executive-5050-img"
+          style={`object-position: ${divisiData.wakahim.objectPosition};`}
           loading="lazy"
         />
         <div class="executive-5050-overlay"></div>

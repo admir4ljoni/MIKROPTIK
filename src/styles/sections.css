@@ -669,10 +669,13 @@ html.is-page-transitioning .preloader-content {
 
 .stripe-title {
   font-family: var(--font-heading);
-  font-size: 2rem;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 900;
   color: var(--color-white);
-  line-height: 1.1;
-  letter-spacing: 0.04em;
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.85);
 }
 
 .stripe-description {
@@ -1214,8 +1217,13 @@ html.is-page-transitioning .preloader-content {
   }
 
   .stripe-title {
-    font-size: 1.5rem !important;
+    font-size: clamp(1.85rem, 7.5vw, 2.6rem) !important;
+    line-height: 0.95 !important;
+    font-weight: 900 !important;
     color: var(--color-gold) !important;
+    letter-spacing: 0.02em !important;
+    text-transform: uppercase !important;
+    text-shadow: 0 4px 25px rgba(0, 0, 0, 0.9) !important;
   }
 
   .stripe-description {

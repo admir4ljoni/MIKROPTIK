@@ -85,14 +85,16 @@ const bentoItems = [
 <div id="prokerModal" class="proker-modal" aria-hidden="true" role="dialog">
   <div class="proker-modal-overlay" id="prokerModalOverlay"></div>
 
-  <div class="proker-modal-container">
+  <div class="proker-modal-container" id="prokerModalContainer">
     <button id="prokerModalClose" class="proker-modal-close" aria-label="Tutup modal foto">&times;</button>
 
     <!-- Tombol Prev (Segitiga Kiri) -->
-    <button id="prokerModalPrev" class="proker-modal-nav prev-btn" aria-label="Gambar Sebelumnya">&#9668;</button>
+    <button id="prokerModalPrev" class="proker-modal-nav prev-btn" aria-label="Gambar Sebelumnya">
+      <i class="fa-solid fa-caret-left"></i>
+    </button>
 
     <!-- Area Gambar Modal -->
-    <div class="proker-modal-media">
+    <div class="proker-modal-media" id="prokerModalMedia">
       <img id="prokerModalImg" src="" alt="" class="proker-modal-img" />
       <div class="proker-modal-info">
         <span id="prokerModalTitle" class="proker-modal-title"></span>
@@ -101,7 +103,9 @@ const bentoItems = [
     </div>
 
     <!-- Tombol Next (Segitiga Kanan) -->
-    <button id="prokerModalNext" class="proker-modal-nav next-btn" aria-label="Gambar Selanjutnya">&#9654;</button>
+    <button id="prokerModalNext" class="proker-modal-nav next-btn" aria-label="Gambar Selanjutnya">
+      <i class="fa-solid fa-caret-right"></i>
+    </button>
   </div>
 </div>
 
@@ -109,6 +113,7 @@ const bentoItems = [
   function initProkerModal() {
     const modal = document.getElementById('prokerModal');
     const modalOverlay = document.getElementById('prokerModalOverlay');
+    const modalContainer = document.getElementById('prokerModalContainer');
     const modalClose = document.getElementById('prokerModalClose');
     const modalImg = document.getElementById('prokerModalImg') as HTMLImageElement;
     const modalTitle = document.getElementById('prokerModalTitle');
@@ -187,10 +192,41 @@ const bentoItems = [
       });
     });
 
-    if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prevImage(); });
-    if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); nextImage(); });
-    if (modalClose) modalClose.addEventListener('click', closeModal);
-    if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
+    if (prevBtn) {
+      prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        prevImage();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        nextImage();
+      });
+    }
+
+    if (modalClose) {
+      modalClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeModal();
+      });
+    }
+
+    if (modalOverlay) {
+      modalOverlay.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeModal();
+      });
+    }
+
+    if (modalContainer) {
+      modalContainer.addEventListener('click', (e) => {
+        if (e.target === modalContainer) {
+          closeModal();
+        }
+      });
+    }
 
     document.addEventListener('keydown', (e) => {
       if (!modal.classList.contains('is-active')) return;
@@ -223,10 +259,10 @@ const bentoItems = [
     width: 100%;
   }
 
-  /* Base Bento Card Style - Style Tegas (Corner Radius Kecil 4px, Border-Free) */
+  /* Base Bento Card Style */
   .bento-card {
     position: relative;
-    border-radius: var(--radius-sm); /* Style tegas 4px */
+    border-radius: var(--radius-sm);
     overflow: hidden;
     border: none;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
@@ -365,7 +401,7 @@ const bentoItems = [
     position: absolute;
     top: 1.5rem;
     right: 2rem;
-    background: rgba(22, 22, 22, 0.8);
+    background: rgba(22, 22, 22, 0.85);
     border: 1px solid rgba(212, 179, 84, 0.4);
     color: var(--color-white);
     font-size: 2rem;
@@ -395,15 +431,16 @@ const bentoItems = [
     align-items: center;
     max-width: 85vw;
     max-height: 82vh;
+    z-index: 3;
   }
 
   .proker-modal-img {
     max-width: 85vw;
-    max-height: 75vh;
+    max-height: 72vh;
     object-fit: contain;
     border-radius: var(--radius-sm);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-    border: 1px solid rgba(212, 179, 84, 0.25);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(212, 179, 84, 0.3);
   }
 
   .proker-modal-info {
@@ -411,8 +448,8 @@ const bentoItems = [
     display: flex;
     align-items: center;
     gap: 1rem;
-    background: rgba(22, 22, 22, 0.85);
-    border: 1px solid rgba(212, 179, 84, 0.3);
+    background: rgba(22, 22, 22, 0.9);
+    border: 1px solid rgba(212, 179, 84, 0.35);
     padding: 0.5rem 1.25rem;
     border-radius: 50px;
     backdrop-filter: blur(8px);
@@ -428,7 +465,7 @@ const bentoItems = [
   .proker-modal-counter {
     font-family: var(--font-body);
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.75);
     border-left: 1px solid rgba(255, 255, 255, 0.2);
     padding-left: 0.75rem;
   }
@@ -440,7 +477,7 @@ const bentoItems = [
     background: rgba(22, 22, 22, 0.85);
     border: 1px solid rgba(212, 179, 84, 0.4);
     color: var(--color-gold);
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     width: 52px;
     height: 52px;
     border-radius: 50%;
@@ -448,7 +485,7 @@ const bentoItems = [
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 5;
+    z-index: 10;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
   }

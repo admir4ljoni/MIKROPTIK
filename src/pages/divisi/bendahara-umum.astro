@@ -1,7 +1,6 @@
 ---
 import DivisiLayout from '../../layouts/DivisiLayout.astro';
 import DivisiHero from '../../components/DivisiHero.astro';
-import DivisiPengurus from '../../components/DivisiPengurus.astro';
 import DivisiProker from '../../components/DivisiProker.astro';
 import DivisiFotoGaleri from '../../components/DivisiFotoGaleri.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
@@ -71,9 +70,6 @@ const divisiData = {
       </div>
     </div>
   </section>
-
-  <!-- Pengurus Section -->
-  <DivisiPengurus kepala={divisiData.kepala} staff={divisiData.staff} />
 
   <!-- Proker Section -->
   <DivisiProker prokerList={divisiData.proker} />

@@ -90,10 +90,10 @@ File ini berisi daftar tugas yang dipecah dari rencana `.agents/plan_divisi.md` 
 
 ## Phase 5: Navigasi & Interlinking
 
-- [ ] Modifikasi `src/pages/index.astro`
-  - [ ] Tambahkan link tombol "Selengkapnya" pada tiap stripe accordion di section Tentang Kami menuju `/divisi/{slug}`
-- [ ] Modifikasi `src/components/Navbar.astro`
-  - [ ] Tambahkan dropdown / submenu "Divisi" pada navbar yang mengarah ke 6 halaman divisi
+- [x] Modifikasi `src/pages/index.astro`
+  - [x] Tambahkan link tombol "Selengkapnya" pada tiap stripe accordion di section Tentang Kami menuju `/divisi/{slug}`
+- [x] Modifikasi `src/components/Navbar.astro`
+  - [x] Tambahkan dropdown / submenu "Divisi" pada navbar yang mengarah ke 6 halaman divisi
 
 ---
 

@@ -1,7 +1,8 @@
 ---
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
 <header class="navbar-fixed" id="navbar">
-  <a href="#hero" class="navbar-logo">
+  <a href={`${baseUrl}#hero`} class="navbar-logo">
     <img src={`${import.meta.env.BASE_URL}assets/logo-himpunan.png`} alt="Logo Himpunan MIKROPTIK" />
     <div class="navbar-brand-text">
       <span class="navbar-brand-name">MIKROPTIK</span>
@@ -11,13 +12,29 @@
 
   <nav>
     <ul class="navbar-links">
-      <li><a href="#hero" class="navbar-link active">Beranda</a></li>
-      <li><a href="#about" class="navbar-link">Tentang</a></li>
-      <li><a href="#filosofi" class="navbar-link">Filosofi</a></li>
-      <li><a href="#visi-misi" class="navbar-link">Visi & Misi</a></li>
-      <li><a href="#proker" class="navbar-link">Proker</a></li>
-      <li><a href="#prestasi" class="navbar-link">Prestasi</a></li>
-      <li><a href="#cta" class="navbar-link">Kontak</a></li>
+      <li><a href={`${baseUrl}#hero`} class="navbar-link active">Beranda</a></li>
+      <li><a href={`${baseUrl}#about`} class="navbar-link">Tentang</a></li>
+      
+      <!-- Dropdown Divisi -->
+      <li class="nav-dropdown">
+        <a href={`${baseUrl}#about`} class="navbar-link">
+          Divisi <span class="dropdown-arrow">▾</span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href={`${baseUrl}divisi/sekretaris-umum`}>Sekretaris Umum</a></li>
+          <li><a href={`${baseUrl}divisi/bendahara-umum`}>Bendahara Umum</a></li>
+          <li><a href={`${baseUrl}divisi/psdm`}>PSDM</a></li>
+          <li><a href={`${baseUrl}divisi/mikat`}>MIKAT</a></li>
+          <li><a href={`${baseUrl}divisi/humas`}>HUMAS</a></li>
+          <li><a href={`${baseUrl}divisi/medinfo`}>MEDINFO</a></li>
+        </ul>
+      </li>
+
+      <li><a href={`${baseUrl}#filosofi`} class="navbar-link">Filosofi</a></li>
+      <li><a href={`${baseUrl}#visi-misi`} class="navbar-link">Visi & Misi</a></li>
+      <li><a href={`${baseUrl}#proker`} class="navbar-link">Proker</a></li>
+      <li><a href={`${baseUrl}#kalender`} class="navbar-link">Agenda</a></li>
+      <li><a href={`${baseUrl}#cta`} class="navbar-link">Kontak</a></li>
     </ul>
   </nav>
 
@@ -31,12 +48,26 @@
 <!-- Mobile Menu Overlay -->
 <div class="mobile-menu-overlay" id="mobile-menu">
   <ul class="mobile-menu-links">
-    <li><a href="#hero" class="mobile-nav-link">Beranda</a></li>
-    <li><a href="#about" class="mobile-nav-link">Tentang Kami</a></li>
-    <li><a href="#filosofi" class="mobile-nav-link">Filosofi Logo</a></li>
-    <li><a href="#visi-misi" class="mobile-nav-link">Visi & Misi</a></li>
-    <li><a href="#proker" class="mobile-nav-link">Program Kerja</a></li>
-    <li><a href="#prestasi" class="mobile-nav-link">Prestasi Mahasiswa</a></li>
-    <li><a href="#cta" class="mobile-nav-link">Hubungi Kami</a></li>
+    <li><a href={`${baseUrl}#hero`} class="mobile-nav-link">Beranda</a></li>
+    <li><a href={`${baseUrl}#about`} class="mobile-nav-link">Tentang Kami</a></li>
+    
+    <!-- Submenu Mobile Divisi -->
+    <li class="mobile-divisi-submenu">
+      <span class="mobile-submenu-title">DIVISI & BIDANG</span>
+      <ul class="mobile-submenu-links">
+        <li><a href={`${baseUrl}divisi/sekretaris-umum`} class="mobile-nav-link">• Sekretaris Umum</a></li>
+        <li><a href={`${baseUrl}divisi/bendahara-umum`} class="mobile-nav-link">• Bendahara Umum</a></li>
+        <li><a href={`${baseUrl}divisi/psdm`} class="mobile-nav-link">• PSDM</a></li>
+        <li><a href={`${baseUrl}divisi/mikat`} class="mobile-nav-link">• MIKAT</a></li>
+        <li><a href={`${baseUrl}divisi/humas`} class="mobile-nav-link">• HUMAS</a></li>
+        <li><a href={`${baseUrl}divisi/medinfo`} class="mobile-nav-link">• MEDINFO</a></li>
+      </ul>
+    </li>
+
+    <li><a href={`${baseUrl}#filosofi`} class="mobile-nav-link">Filosofi Logo</a></li>
+    <li><a href={`${baseUrl}#visi-misi`} class="mobile-nav-link">Visi & Misi</a></li>
+    <li><a href={`${baseUrl}#proker`} class="mobile-nav-link">Program Kerja</a></li>
+    <li><a href={`${baseUrl}#kalender`} class="mobile-nav-link">Agenda Kegiatan</a></li>
+    <li><a href={`${baseUrl}#cta`} class="mobile-nav-link">Hubungi Kami</a></li>
   </ul>
 </div>

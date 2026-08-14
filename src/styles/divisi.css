@@ -139,14 +139,14 @@
 
 .divisi-split-grid {
   display: grid;
-  grid-template-columns: 35% 65%;
+  grid-template-columns: 40fr 60fr;
   width: 100%;
   min-height: 75vh;
   gap: 0;
 }
 
 .divisi-split-grid.reverse {
-  grid-template-columns: 65% 35%;
+  grid-template-columns: 60fr 40fr;
 }
 
 .divisi-split-grid.reverse .split-content-col {
@@ -161,13 +161,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 3.5rem 3.5%;
+  padding: 4.5rem 5.5%;
   background-color: var(--color-dark);
   z-index: 2;
 }
 
 .split-content-inner {
-  max-width: 100%;
+  max-width: 620px;
   width: 100%;
   margin: 0 auto;
 }

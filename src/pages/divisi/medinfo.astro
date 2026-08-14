@@ -1,10 +1,10 @@
 ---
-import DivisiLayout from '../../layouts/DivisiLayout.astro';
-import DivisiHero from '../../components/DivisiHero.astro';
-import DivisiProker from '../../components/DivisiProker.astro';
-import DivisiFotoGaleri from '../../components/DivisiFotoGaleri.astro';
-import DivisiSplitSection from '../../components/DivisiSplitSection.astro';
-import SectionHeading from '../../components/SectionHeading.astro';
+import DivisiLayout from "../../layouts/DivisiLayout.astro";
+import DivisiHero from "../../components/DivisiHero.astro";
+import DivisiProker from "../../components/DivisiProker.astro";
+import DivisiFotoGaleri from "../../components/DivisiFotoGaleri.astro";
+import DivisiSplitSection from "../../components/DivisiSplitSection.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
 
 const divisiData = {
   name: "MEDINFO",
@@ -14,21 +14,39 @@ const divisiData = {
   bgImage: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO BERSAMA.JPG",
   fotoKadiv: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO KADIV.JPG",
   fotoStaffAhli: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF AHLI.JPG",
-  fotoStaffMuda: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF MUDA 1.JPG",
-  description: "Divisi Medinfo HMP MIKROPTIK adalah divisi yang bertanggung jawab dalam pengelolaan media informasi dan dokumentasi HMP MIKROPTIK. Program kerjanya meliputi Pengelolaan Media Sosial, dokumentasi kegiatan, PDD (Publikasi, Dokumentasi, dan Desain), Podcast sebagai media informasi dan edukasi. Divisi ini juga menjadi wadah bagi mahasiswa untuk mengembangkan kemampuan di bidang desain grafis, fotografi, dan videografi. Bergabung di Divisi Medinfo HMP MIKROPTIK memberikan kesempatan untuk meningkatkan kreativitas, mengasah keterampilan, dan memperoleh pengalaman baru.",
+  fotoStaffMuda:
+    "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF MUDA 1.JPG",
+  description:
+    "Divisi Medinfo HMP MIKROPTIK adalah divisi yang bertanggung jawab dalam pengelolaan media informasi dan dokumentasi HMP MIKROPTIK. Program kerjanya meliputi Pengelolaan Media Sosial, dokumentasi kegiatan, PDD (Publikasi, Dokumentasi, dan Desain), Podcast sebagai media informasi dan edukasi. Divisi ini juga menjadi wadah bagi mahasiswa untuk mengembangkan kemampuan di bidang desain grafis, fotografi, dan videografi. Bergabung di Divisi Medinfo HMP MIKROPTIK memberikan kesempatan untuk meningkatkan kreativitas, mengasah keterampilan, dan memperoleh pengalaman baru.",
   proker: [
     "DOKUMENTASI KEGIATAN",
     "PDD (PUBLIKASI, DOKUMENTASI, & DESAIN)",
     "PENGELOLAAN SOSIAL MEDIA",
-    "PODCAST MIKROPTIK"
+    "PODCAST MIKROPTIK",
   ],
   galeri: [
-    { title: "Foto Bersama Divisi MEDINFO", src: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO BERSAMA.JPG", isFeatured: true },
-    { title: "Kadiv MEDINFO", src: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO KADIV.JPG" },
-    { title: "Staff Ahli MEDINFO", src: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF AHLI.JPG" },
-    { title: "Staff Muda MEDINFO 1", src: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF MUDA 1.JPG" },
-    { title: "Staff Muda MEDINFO 2", src: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF MUDA 2.JPG" }
-  ]
+    {
+      title: "Foto Bersama Divisi MEDINFO",
+      src: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO BERSAMA.JPG",
+      isFeatured: true,
+    },
+    {
+      title: "Kadiv MEDINFO",
+      src: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO KADIV.JPG",
+    },
+    {
+      title: "Staff Ahli MEDINFO",
+      src: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF AHLI.JPG",
+    },
+    {
+      title: "Staff Muda MEDINFO 1",
+      src: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF MUDA 1.JPG",
+    },
+    {
+      title: "Staff Muda MEDINFO 2",
+      src: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF MUDA 2.JPG",
+    },
+  ],
 };
 ---
 
@@ -46,7 +64,7 @@ const divisiData = {
     tagline={divisiData.tagline}
     description="Pusat media digital, publikasi visual, PDD, dokumentasi fotografi & videografi, serta podcast edukasi HMP MIKROPTIK."
     bgImage={divisiData.bgImage}
-    bgPosition="center 58%"
+    bgPosition="center 70%"
   />
 
   <!-- Section 1: Deskripsi Profil paired with Foto Kadiv (50/50 Viewport Segment) -->
@@ -67,15 +85,15 @@ const divisiData = {
   </DivisiSplitSection>
 
   <!-- Section 2: Program Kerja paired with Foto Staff Ahli (50/50 Viewport Segment) -->
-  <DivisiProker 
-    prokerList={divisiData.proker} 
+  <DivisiProker
+    prokerList={divisiData.proker}
     imageSrc={divisiData.fotoStaffAhli}
     reverse={true}
   />
 
   <!-- Section 3: Galeri Dokumentasi paired with Foto Staff Muda (50/50 Viewport Segment) -->
-  <DivisiFotoGaleri 
-    fotoList={divisiData.galeri} 
+  <DivisiFotoGaleri
+    fotoList={divisiData.galeri}
     imageSrc={divisiData.fotoStaffMuda}
     reverse={false}
   />

@@ -6,7 +6,9 @@ import DivisiFotoGaleri from "../../components/DivisiFotoGaleri.astro";
 import DivisiSplitSection from "../../components/DivisiSplitSection.astro";
 import SectionHeading from "../../components/SectionHeading.astro";
 
-const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 
 const divisiData = {
   name: "BENDAHARA UMUM",
@@ -20,11 +22,31 @@ const divisiData = {
   description:
     "Bendahara Umum adalah bidang yang bertanggung jawab dalam mengelola seluruh keuangan organisasi, seperti pemasukan, pengeluaran, dan pencatatan dana kegiatan. Tugas utamanya meliputi menyusun laporan keuangan, membuat anggaran kegiatan, menjaga transparansi serta akuntabilitas keuangan, dan memastikan setiap penggunaan dana sesuai dengan aturan serta kebutuhan organisasi.",
   proker: [
-    { title: "IWP (Iuran Wajib Pengurus)", description: "IWP adalah bentuk partisipasi nyata bagi para anggota himpunan guna mempertahankan kondisi fiskal organisasi." },
-    { title: "PENGADAAN INVENTARIS SEKRE", description: "Pengadaan Inventaris berguna untuk memberikan fasilitas optimal bagi keberlangsungan program kerja setiap divisi." },
-    { title: "DISIPLIN ADMINISTRASI KEUANGAN", description: "Disiplin Administrasi adalah bentuk upaya koordinasi divisi Bendahara Umum dalam mengorganisir administrasi, khususnya keuangan himpunan." },
-    { title: "DANA USAHA", description: "Dana Usaha berperan sebagai sumber pemasukan himpunan untuk mendukung stabilitas keuangan organisasi." },
-    { title: "MIKROPTIK STORE", description: "Mikroptik Store adalah bentuk implementasi nyata untuk mengoptimalkan sumber pemasukan himpunan dengan menyediakan produk-produk digital bagi konsumen." },
+    {
+      title: "IWP (Iuran Wajib Pengurus)",
+      description:
+        "IWP adalah bentuk partisipasi nyata bagi para anggota himpunan guna mempertahankan kondisi fiskal organisasi.",
+    },
+    {
+      title: "PENGADAAN INVENTARIS SEKRE",
+      description:
+        "Pengadaan Inventaris berguna untuk memberikan fasilitas optimal bagi keberlangsungan program kerja setiap divisi.",
+    },
+    {
+      title: "DISIPLIN ADMINISTRASI KEUANGAN",
+      description:
+        "Disiplin Administrasi adalah bentuk upaya koordinasi bidang Bendahara Umum dalam mengorganisir administrasi, khususnya keuangan himpunan.",
+    },
+    {
+      title: "DANA USAHA",
+      description:
+        "Dana Usaha berperan sebagai sumber pemasukan himpunan untuk mendukung stabilitas keuangan organisasi.",
+    },
+    {
+      title: "MIKROPTIK STORE",
+      description:
+        "MIKROPTIK Store adalah bentuk implementasi nyata untuk mengoptimalkan sumber pemasukan himpunan dengan menyediakan produk-produk digital bagi konsumen.",
+    },
   ],
   galeri: [
     {

@@ -97,21 +97,36 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
-  // 4. Program Kerja Cards Stagger Entrance
-  const prokerGrid = document.querySelector('.proker-list-grid');
-  if (prokerGrid) {
-    const prokerCards = prokerGrid.querySelectorAll('.proker-card-item');
+  // 4. Program Kerja Container Card Entrance Animation
+  const prokerCard = document.querySelector('.proker-container-card');
+  if (prokerCard) {
     gsap.fromTo(
-      prokerCards,
-      { opacity: 0, y: 40 },
+      prokerCard,
+      { opacity: 0, y: 35 },
       {
         opacity: 1,
         y: 0,
-        duration: 0.7,
-        stagger: 0.1,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: prokerCard,
+          start: 'top 85%',
+        },
+      }
+    );
+
+    const prokerItems = prokerCard.querySelectorAll('.proker-list-item');
+    gsap.fromTo(
+      prokerItems,
+      { opacity: 0, x: -20 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.5,
+        stagger: 0.08,
         ease: 'power2.out',
         scrollTrigger: {
-          trigger: prokerGrid,
+          trigger: prokerCard,
           start: 'top 85%',
         },
       }

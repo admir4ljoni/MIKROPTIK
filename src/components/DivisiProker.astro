@@ -39,18 +39,22 @@ const items = prokerList.map((item) => {
       subtitle="Inisiatif strategis dan agenda kegiatan unggulan divisi"
       align="left"
     />
-    <div class="proker-list-compact">
-      {items.map((item, index) => (
-        <article class="proker-card-item">
-          <div class="proker-num-badge">
-            {String(index + 1).padStart(2, '0')}
-          </div>
-          <div class="proker-info">
-            <h3 class="proker-item-title">{item.title}</h3>
-            <p class="proker-item-desc">{item.description}</p>
-          </div>
-        </article>
-      ))}
+    
+    <!-- Single Scrollable Containing Card for All Proker Items -->
+    <div class="proker-container-card">
+      <div class="proker-items-wrapper">
+        {items.map((item, index) => (
+          <article class="proker-list-item">
+            <div class="proker-num-italic">
+              {String(index + 1).padStart(2, '0')}
+            </div>
+            <div class="proker-info">
+              <h3 class="proker-item-title">{item.title}</h3>
+              <p class="proker-item-desc">{item.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
   </DivisiSplitSection>
 ) : (
@@ -61,18 +65,20 @@ const items = prokerList.map((item) => {
         titleAccent="Kerja" 
         subtitle="Inisiatif strategis dan agenda kegiatan unggulan yang dirancang untuk mendukung visi himpunan"
       />
-      <div class="proker-list-grid">
-        {items.map((item, index) => (
-          <article class="proker-card-item">
-            <div class="proker-num-badge">
-              {String(index + 1).padStart(2, '0')}
-            </div>
-            <div class="proker-info">
-              <h3 class="proker-item-title">{item.title}</h3>
-              <p class="proker-item-desc">{item.description}</p>
-            </div>
-          </article>
-        ))}
+      <div class="proker-container-card">
+        <div class="proker-items-wrapper">
+          {items.map((item, index) => (
+            <article class="proker-list-item">
+              <div class="proker-num-italic">
+                {String(index + 1).padStart(2, '0')}
+              </div>
+              <div class="proker-info">
+                <h3 class="proker-item-title">{item.title}</h3>
+                <p class="proker-item-desc">{item.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </div>
   </section>

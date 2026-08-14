@@ -252,27 +252,53 @@
   height: 170px;
 }
 
-/* --- Section Deskripsi Lengkap --- */
-.divisi-desc-section {
-  background-color: var(--color-dark);
-  padding: 4.5rem 0;
+/* --- Brutalist Profile Text Layout (Tanpa Left Outline Card) --- */
+.brutalist-profile-box {
   position: relative;
+  width: 100%;
+  padding: 1.5rem 0 1.25rem 0;
+  border-top: 2px solid var(--color-gold);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
 }
 
-.divisi-desc-box {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(212, 179, 84, 0.3);
-  border-left: 4px solid var(--color-gold);
-  border-radius: var(--radius-md);
-  padding: 2rem 2.25rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+.brutalist-tag {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  color: var(--color-gold);
+  text-transform: uppercase;
+  display: inline-block;
+  opacity: 0.95;
 }
 
-.divisi-desc-text {
+.brutalist-desc-text {
   font-family: var(--font-body);
-  font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.8;
+  font-size: 1.12rem;
+  color: var(--color-white);
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.brutalist-desc-text::first-letter {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  float: left;
+  line-height: 0.85;
+  padding-right: 0.65rem;
+  padding-top: 0.15rem;
+  color: var(--color-gold);
+}
+
+/* Fallback divisi-desc-box */
+.divisi-desc-box {
+  border: none;
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
 }
 
 /* --- Section Pengurus (Struktur Tree Hirarkis) --- */

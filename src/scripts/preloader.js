@@ -17,31 +17,36 @@ function initPreloaderAndTransitions() {
   function playExitAnimation() {
     lockScroll();
 
-    gsap.set(preloader, { yPercent: 0, display: 'flex' });
+    // Hapus kelas helper CSS jika ada
+    document.documentElement.classList.remove('is-page-transitioning');
+
+    // Tetapkan properti awal GSAP sebelum mengubah display untuk mencegah 1-frame snap/blink
     gsap.set(content, { yPercent: 0, opacity: 1 });
+    gsap.set(preloader, { yPercent: 0, display: 'flex' });
 
     const tlOut = gsap.timeline({
       onComplete: () => {
         preloader.style.display = 'none';
+        gsap.set([preloader, content], { clearProps: 'all' });
         unlockScroll();
         sessionStorage.removeItem('mikroptik_transitioning');
       }
     });
 
     tlOut
-      // Logo & teks terangkat ke atas untuk menghilang
+      // 1. Logo & teks terangkat ke atas untuk menghilang
       .to(content, {
-        yPercent: -120,
+        yPercent: -80,
         opacity: 0,
-        duration: 0.45,
-        ease: 'power3.in'
+        duration: 0.35,
+        ease: 'power2.in'
       })
-      // Disusul dengan background preloader
+      // 2. Disusul background preloader terangkat ke atas keluar layar
       .to(preloader, {
         yPercent: -100,
-        duration: 0.55,
+        duration: 0.45,
         ease: 'power3.inOut'
-      }, '-=0.25');
+      }, '-=0.15');
   }
 
   // Animasi Lengkap (Initial Load / Direct Access):
@@ -53,12 +58,14 @@ function initPreloaderAndTransitions() {
   function playFullSequence() {
     lockScroll();
 
-    gsap.set(preloader, { yPercent: 100, display: 'flex' });
+    // Set kondisi awal terlebih dahulu sebelum mengubah display
     gsap.set(content, { yPercent: 100, opacity: 0 });
+    gsap.set(preloader, { yPercent: 100, display: 'flex' });
 
     const tlFull = gsap.timeline({
       onComplete: () => {
         preloader.style.display = 'none';
+        gsap.set([preloader, content], { clearProps: 'all' });
         unlockScroll();
       }
     });
@@ -67,31 +74,31 @@ function initPreloaderAndTransitions() {
       // 1. Background muncul menutup layar dari bawah ke atas
       .to(preloader, {
         yPercent: 0,
-        duration: 0.45,
+        duration: 0.4,
         ease: 'power3.out'
       })
       // 2. Disusul logo & teks dari bawah ke atas
       .to(content, {
         yPercent: 0,
         opacity: 1,
-        duration: 0.4,
+        duration: 0.35,
         ease: 'power3.out'
       }, '-=0.25')
       // 3. Berhenti sepersekian detik
-      .to({}, { duration: 0.3 })
+      .to({}, { duration: 0.25 })
       // 4. Logo terangkat ke atas untuk menghilang
       .to(content, {
-        yPercent: -120,
+        yPercent: -80,
         opacity: 0,
-        duration: 0.45,
-        ease: 'power3.in'
+        duration: 0.35,
+        ease: 'power2.in'
       })
       // 5. Disusul background preloader
       .to(preloader, {
         yPercent: -100,
-        duration: 0.55,
+        duration: 0.45,
         ease: 'power3.inOut'
-      }, '-=0.25');
+      }, '-=0.15');
   }
 
   // Animasi Masuk (Phase 1 pada Link Click):
@@ -101,8 +108,8 @@ function initPreloaderAndTransitions() {
   function triggerPageExit(targetHref) {
     lockScroll();
 
-    gsap.set(preloader, { yPercent: 100, display: 'flex' });
     gsap.set(content, { yPercent: 100, opacity: 0 });
+    gsap.set(preloader, { yPercent: 100, display: 'flex' });
 
     const tlIn = gsap.timeline({
       onComplete: () => {
@@ -126,7 +133,7 @@ function initPreloaderAndTransitions() {
         ease: 'power3.out'
       }, '-=0.25')
       // 3. Berhenti sepersekian detik
-      .to({}, { duration: 0.25 });
+      .to({}, { duration: 0.2 });
   }
 
   // Eksekusi animasi yang sesuai saat DOM siap
@@ -198,6 +205,7 @@ function initPreloaderAndTransitions() {
   window.addEventListener('pageshow', (e) => {
     if (e.persisted) {
       preloader.style.display = 'none';
+      gsap.set([preloader, content], { clearProps: 'all' });
       unlockScroll();
     }
   });

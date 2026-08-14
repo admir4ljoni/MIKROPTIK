@@ -9,13 +9,24 @@
 .preloader-overlay {
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: 99999;
   background-color: var(--color-dark);
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  will-change: transform;
+}
+
+html.is-page-transitioning .preloader-overlay {
+  display: flex !important;
+  transform: translateY(0%) !important;
+}
+
+html.is-page-transitioning .preloader-content {
+  transform: translateY(0%) !important;
+  opacity: 1 !important;
 }
 
 .preloader-content {
@@ -24,6 +35,7 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-md);
+  will-change: transform, opacity;
 }
 
 .preloader-logo {

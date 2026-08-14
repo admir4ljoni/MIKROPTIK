@@ -28,6 +28,7 @@
 
 <script is:inline>
   if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('mikroptik_transitioning') === '1') {
+    document.documentElement.classList.add('is-page-transitioning');
     document.body.style.overflow = 'hidden';
   }
 </script>

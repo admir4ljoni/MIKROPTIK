@@ -235,7 +235,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-secondary);
+  background-color: var(--color-dark);
   overflow: hidden;
   padding: 6rem 1.5rem 4rem;
   text-align: center;
@@ -245,7 +245,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 90% 65% at 50% 40%, rgba(130, 9, 7, 0.2) 0%, rgba(204, 87, 14, 0.1) 50%, transparent 80%);
+  background: radial-gradient(ellipse 90% 65% at 50% 40%, rgba(130, 9, 7, 0.45) 0%, rgba(105, 20, 18, 0.2) 50%, transparent 80%);
   pointer-events: none;
   z-index: 1;
 }
@@ -257,7 +257,7 @@
   right: 0;
   bottom: 0;
   height: 45%;
-  background: linear-gradient(to bottom, transparent 0%, rgba(224, 183, 144, 0.4) 50%, var(--color-secondary) 100%);
+  background: linear-gradient(to bottom, transparent 0%, rgba(28, 22, 20, 0.4) 40%, rgba(28, 22, 20, 0.85) 75%, var(--color-dark) 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -266,8 +266,8 @@
   position: absolute;
   inset: 0;
   background-image: 
-    radial-gradient(rgba(130, 9, 7, 0.12) 1px, transparent 1px),
-    radial-gradient(rgba(204, 87, 14, 0.08) 1px, transparent 1px);
+    radial-gradient(rgba(212, 179, 84, 0.08) 1px, transparent 1px),
+    radial-gradient(rgba(204, 87, 14, 0.05) 1px, transparent 1px);
   background-size: 40px 40px;
   background-position: 0 0, 20px 20px;
   pointer-events: none;
@@ -302,8 +302,8 @@
   width: clamp(480px, 68vw, 860px);
   height: auto;
   object-fit: contain;
-  opacity: 0.85;
-  filter: drop-shadow(0 0 80px rgba(130, 9, 7, 0.4)) drop-shadow(0 0 35px rgba(204, 87, 14, 0.3));
+  opacity: 0.75;
+  filter: drop-shadow(0 0 80px rgba(212, 179, 84, 0.75)) drop-shadow(0 0 35px rgba(204, 87, 14, 0.5));
   animation: bounce 6s infinite ease-in-out;
 }
 
@@ -314,16 +314,16 @@
 
 .hero-title-main {
   font-size: clamp(3.2rem, 7.5vw, 6.8rem);
-  color: var(--color-dark);
+  color: var(--color-white);
   line-height: 0.95;
   margin-bottom: 0.5rem;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
 .hero-subtitle {
   font-family: var(--font-body);
   font-size: clamp(1.1rem, 2vw, 1.4rem);
-  color: var(--color-dark);
+  color: var(--color-secondary);
   max-width: 750px;
   margin: 0 auto;
   line-height: 1.6;
@@ -338,7 +338,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  color: var(--color-red-deep);
+  color: var(--color-gold);
   font-family: var(--font-heading);
   font-size: 0.9rem;
   letter-spacing: 0.1em;
@@ -355,7 +355,7 @@
 
 .section-heading-title {
   font-size: clamp(2.2rem, 5vw, 4rem);
-  color: var(--color-dark);
+  color: var(--color-white);
 }
 
 .section-heading-wrapper.light .section-heading-title {
@@ -365,7 +365,7 @@
 .section-heading-line {
   width: 80px;
   height: 3px;
-  background: linear-gradient(90deg, var(--color-red-deep), var(--color-primary));
+  background: linear-gradient(90deg, var(--color-primary), var(--color-gold));
   margin: var(--space-sm) auto 0;
   border-radius: var(--radius-full);
 }
@@ -376,7 +376,7 @@
 .about-accordion-section {
   position: relative;
   overflow: hidden;
-  background-color: var(--color-secondary);
+  background-color: var(--color-dark);
   padding: 5rem 0 0;
   width: 100%;
 }
@@ -671,9 +671,12 @@
    -------------------------------------------------------------------------- */
 .cta-section {
   position: relative;
-  background-color: var(--color-secondary);
+  background-color: var(--color-dark);
+  background: 
+    radial-gradient(ellipse 110% 85% at 50% 100%, rgba(130, 9, 7, 0.75) 0%, rgba(105, 20, 18, 0.35) 55%, transparent 100%),
+    linear-gradient(to top, rgba(130, 9, 7, 0.5) 0%, rgba(105, 20, 18, 0.25) 50%, var(--color-dark) 92%);
   overflow: hidden;
-  padding: 8rem 2rem 6rem;
+  padding: 12rem 2rem 10rem;
 }
 
 .cta-container {
@@ -689,15 +692,17 @@
   font-family: var(--font-heading);
   font-size: clamp(1.4rem, 2.5vw, 2rem);
   letter-spacing: 0.15em;
-  color: var(--color-red-deep);
+  color: var(--color-gold);
+  text-shadow: 0 2px 12px rgba(212, 179, 84, 0.3);
 }
 
 .cta-title {
   font-family: var(--font-heading);
   font-size: clamp(3.5rem, 7.5vw, 6.2rem);
   line-height: 1;
-  color: var(--color-dark);
+  color: var(--color-white);
   margin: 1rem 0 1.5rem;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
 }
 
 .cta-description {
@@ -705,7 +710,7 @@
   margin: 0 auto 3rem;
   font-family: var(--font-body);
   font-size: clamp(1.2rem, 2.2vw, 1.55rem);
-  color: var(--color-dark);
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.6;
 }
 
@@ -722,15 +727,15 @@
   font-size: clamp(1.1rem, 2vw, 1.3rem);
   letter-spacing: 0.08em;
   border-radius: var(--radius-md);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
 
 /* --------------------------------------------------------------------------
    9. Footer Styles & Marquee Ticker
    -------------------------------------------------------------------------- */
 .footer-container {
-  background-color: var(--color-secondary);
-  color: var(--color-dark);
+  background-color: var(--color-dark);
+  color: var(--color-white);
   padding-top: var(--space-xs);
 }
 
@@ -760,7 +765,7 @@
 .marquee-container {
   overflow: hidden;
   white-space: nowrap;
-  background-color: var(--color-dark);
+  background-color: var(--color-red-deep);
   padding: 0.75rem 0;
   border-top: 1px solid var(--color-gold);
   border-bottom: 1px solid var(--color-gold);
@@ -771,7 +776,7 @@
   animation: marquee 25s linear infinite;
   font-family: var(--font-heading);
   font-size: 1.25rem;
-  color: var(--color-gold);
+  color: var(--color-cream);
   letter-spacing: 0.1em;
 }
 
@@ -779,9 +784,9 @@
   padding: 1rem 1.5rem;
   text-align: center;
   font-size: 0.85rem;
-  color: var(--color-dark);
-  border-top: 1px solid rgba(28, 22, 20, 0.15);
-  background-color: rgba(28, 22, 20, 0.06);
+  color: rgba(255, 255, 255, 0.65);
+  border-top: 1px solid rgba(212, 179, 84, 0.15);
+  background-color: rgba(0, 0, 0, 0.35);
 }
 
 /* --------------------------------------------------------------------------

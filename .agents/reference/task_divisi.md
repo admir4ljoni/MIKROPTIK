@@ -6,21 +6,21 @@ File ini berisi daftar tugas yang dipecah dari rencana `.agents/plan_divisi.md` 
 
 ## Phase 1: Setup Layout & Styling Halaman Divisi
 
-- [ ] Buat `src/styles/divisi.css`
-  - [ ] Styling hero section divisi (60vh, parallax-ready)
-  - [ ] Styling breadcrumb navigation
-  - [ ] Styling section deskripsi & tagline
-  - [ ] Styling grid pengurus (featured card KABID/KADIV + staff grid)
-  - [ ] Styling card list program kerja
-  - [ ] Styling galeri foto (bento/masonry grid, hover full-color effect)
-  - [ ] Styling navigasi antar divisi (prev/next link cards)
-  - [ ] Breakpoints responsif (mobile < 768px, tablet 768-1024px, desktop > 1024px)
-- [ ] Buat `src/layouts/DivisiLayout.astro`
-  - [ ] Extends dari BaseLayout (reuse Navbar & Footer)
-  - [ ] Tanpa preloader (hanya landing page utama)
-  - [ ] Breadcrumb navigation (Beranda > Divisi > [Nama Divisi])
-  - [ ] Navigasi prev/next antar 6 divisi di atas footer
-  - [ ] Import `divisi.css` dan `divisi-animations.js`
+- [x] Buat `src/styles/divisi.css`
+  - [x] Styling hero section divisi (60vh, parallax-ready)
+  - [x] Styling breadcrumb navigation
+  - [x] Styling section deskripsi & tagline
+  - [x] Styling grid pengurus (featured card KABID/KADIV + staff grid)
+  - [x] Styling card list program kerja
+  - [x] Styling galeri foto (bento/masonry grid, hover full-color effect)
+  - [x] Styling navigasi antar divisi (prev/next link cards)
+  - [x] Breakpoints responsif (mobile < 768px, tablet 768-1024px, desktop > 1024px)
+- [x] Buat `src/layouts/DivisiLayout.astro`
+  - [x] Extends dari BaseLayout (reuse Navbar & Footer)
+  - [x] Tanpa preloader (hanya landing page utama)
+  - [x] Breadcrumb navigation (Beranda > Divisi > [Nama Divisi])
+  - [x] Navigasi prev/next antar 6 divisi di atas footer
+  - [x] Import `divisi.css` dan `divisi-animations.js`
 
 ---
 

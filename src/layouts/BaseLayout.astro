@@ -9,12 +9,14 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  showPreloader?: boolean;
 }
 
 const {
   title = "MIKROPTIK | Kabinet Naya Vikrama - HMP PTIK FKIP UNS",
   description = "Official Website Himpunan Mahasiswa Pendidikan Teknik Informatika dan Komputer (MIKROPTIK), Fakultas Keguruan dan Ilmu Pendidikan, Universitas Sebelas Maret.",
-  image = "/assets/logo_kabinet_full.svg"
+  image = "/assets/logo_kabinet_full.svg",
+  showPreloader = true
 } = Astro.props;
 ---
 
@@ -48,7 +50,7 @@ const {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 </head>
 <body>
-  <Preloader />
+  {showPreloader && <Preloader />}
   <Navbar />
   
   <main id="main-content">

@@ -67,8 +67,8 @@ html {
   font-family: var(--font-body);
   font-size: 16px;
   scroll-behavior: smooth;
-  background-color: var(--color-secondary);
-  color: var(--color-dark);
+  background-color: var(--color-dark);
+  color: var(--color-white);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -79,8 +79,6 @@ body {
   line-height: 1.6;
   position: relative;
   overflow-x: hidden;
-  background-color: var(--color-secondary);
-  color: var(--color-dark);
 }
 
 /* Base Typography Elements */
@@ -89,7 +87,6 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.05em;
   line-height: 1.1;
   text-transform: uppercase;
-  color: var(--color-dark);
 }
 
 h1 { font-size: clamp(2.5rem, 6vw, 5.5rem); }
@@ -99,8 +96,8 @@ h4 { font-size: clamp(1.2rem, 2vw, 1.8rem); }
 
 p {
   font-family: var(--font-body);
-  color: var(--color-dark);
-  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1rem;
 }
 
 a {
@@ -132,13 +129,13 @@ button {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-secondary);
+  background: var(--color-dark);
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--color-red-deep);
   border-radius: var(--radius-sm);
-  border: 2px solid var(--color-secondary);
+  border: 2px solid var(--color-dark);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -150,10 +147,10 @@ button {
 .font-accent { font-family: var(--font-accent); text-transform: none; }
 .font-body { font-family: var(--font-body); }
 
-/* Mixed Typography Accent Highlight (Red Deep Script Accent per DESIGN.md) */
+/* Mixed Typography Accent Highlight */
 .text-accent-highlight {
   font-family: var(--font-accent);
-  color: var(--color-red-deep);
+  color: var(--color-gold);
   text-transform: none;
   font-weight: normal;
   display: inline-block;
@@ -165,12 +162,11 @@ button {
 .text-gold { color: var(--color-gold); }
 .text-cream { color: var(--color-cream); }
 .text-dark { color: var(--color-dark); }
-.text-red-deep { color: var(--color-red-deep); }
 
-.bg-dark { background-color: var(--color-secondary); color: var(--color-dark); }
-.bg-cream { background-color: var(--color-secondary); color: var(--color-dark); }
-.bg-cream p { color: var(--color-dark); }
-.bg-red-deep { background-color: var(--color-secondary); color: var(--color-dark); }
+.bg-dark { background-color: var(--color-dark); color: var(--color-white); }
+.bg-cream { background-color: var(--color-cream); color: var(--color-dark); }
+.bg-cream p { color: rgba(28, 22, 20, 0.85); }
+.bg-red-deep { background-color: var(--color-red-deep); color: var(--color-white); }
 
 /* Button Styles */
 .btn {

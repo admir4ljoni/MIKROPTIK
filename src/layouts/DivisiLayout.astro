@@ -1,0 +1,73 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import '../styles/divisi.css';
+
+interface DivisiLink {
+  name: string;
+  slug: string;
+}
+
+interface Props {
+  divisiName: string;
+  divisiBadge?: string;
+  divisiTagline?: string;
+  divisiSlug: string;
+  description?: string;
+  prevDivisi?: DivisiLink;
+  nextDivisi?: DivisiLink;
+}
+
+const {
+  divisiName,
+  divisiBadge,
+  divisiTagline,
+  divisiSlug,
+  description = `Halaman resmi ${divisiName} HMP MIKROPTIK FKIP UNS Kabinet Naya Vikrama 2026.`,
+  prevDivisi,
+  nextDivisi
+} = Astro.props;
+
+const pageTitle = `${divisiName} | MIKROPTIK Kabinet Naya Vikrama`;
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+---
+
+<BaseLayout title={pageTitle} description={description} showPreloader={false}>
+  <!-- Breadcrumb Navigation -->
+  <div class="divisi-breadcrumb-bar">
+    <div class="container">
+      <nav class="divisi-breadcrumb" aria-label="Breadcrumb">
+        <a href={`${baseUrl}`} class="breadcrumb-link">Beranda</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href={`${baseUrl}#about`} class="breadcrumb-link">Tentang Kami</a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">{divisiName}</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Slot Content -->
+  <slot />
+
+  <!-- Inter-Divisi Navigation (Prev / Next) -->
+  {(prevDivisi || nextDivisi) && (
+    <section class="divisi-nav-section">
+      <div class="container">
+        <div class="divisi-nav-grid">
+          {prevDivisi ? (
+            <a href={`${baseUrl}divisi/${prevDivisi.slug}`} class="divisi-nav-card prev">
+              <span class="nav-card-sub">← Divisi Sebelumnya</span>
+              <span class="nav-card-title">{prevDivisi.name}</span>
+            </a>
+          ) : <div></div>}
+
+          {nextDivisi ? (
+            <a href={`${baseUrl}divisi/${nextDivisi.slug}`} class="divisi-nav-card next">
+              <span class="nav-card-sub">Divisi Selanjutnya →</span>
+              <span class="nav-card-title">{nextDivisi.name}</span>
+            </a>
+          ) : <div></div>}
+        </div>
+      </div>
+    </section>
+  )}
+</BaseLayout>

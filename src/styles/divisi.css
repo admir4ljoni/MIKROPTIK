@@ -1,0 +1,499 @@
+/* =========================================================================
+   DIVISI / BIDANG PAGE STYLES (DESIGN.md Compliant)
+   ========================================================================= */
+
+/* --- Breadcrumb Navigation --- */
+.divisi-breadcrumb-bar {
+  background-color: var(--color-dark);
+  border-bottom: 1px solid rgba(212, 179, 84, 0.15);
+  padding: 1rem 0;
+  position: relative;
+  z-index: 10;
+}
+
+.divisi-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.breadcrumb-link {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb-link:hover {
+  color: var(--color-gold);
+}
+
+.breadcrumb-separator {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.breadcrumb-current {
+  color: var(--color-gold);
+  font-weight: 500;
+}
+
+/* --- Hero Section Divisi (60vh) --- */
+.divisi-hero-section {
+  position: relative;
+  height: 60vh;
+  min-height: 480px;
+  max-height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--color-dark);
+}
+
+.divisi-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.65) contrast(1.1);
+  transform: scale(1.02);
+  transition: transform 0.5s ease;
+}
+
+.divisi-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(28, 22, 20, 0.4) 0%,
+    rgba(28, 22, 20, 0.75) 60%,
+    rgba(28, 22, 20, 0.98) 100%
+  );
+  z-index: 1;
+}
+
+.divisi-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.divisi-badge {
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  background: var(--color-gold);
+  color: var(--color-dark);
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  border-radius: var(--radius-full);
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 15px rgba(212, 179, 84, 0.3);
+}
+
+.divisi-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 6vw, 4.8rem);
+  color: var(--color-white);
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+  margin-bottom: 0.5rem;
+}
+
+.divisi-hero-tagline {
+  font-family: var(--font-accent);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  color: var(--color-gold);
+  margin-bottom: 1.25rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.divisi-hero-desc {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.65;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* --- Section Deskripsi Lengkap --- */
+.divisi-desc-section {
+  background-color: var(--color-cream);
+  padding: 4.5rem 0;
+  position: relative;
+}
+
+.divisi-desc-box {
+  background: var(--color-white);
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.divisi-desc-text {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--color-dark);
+  line-height: 1.8;
+}
+
+/* --- Section Pengurus --- */
+.divisi-pengurus-section {
+  background-color: var(--color-dark);
+  padding: 5rem 0;
+  position: relative;
+}
+
+/* Featured Kadiv Card */
+.pengurus-featured-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--color-gold);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 0 35px rgba(212, 179, 84, 0.15);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.pengurus-featured-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 45px rgba(212, 179, 84, 0.3);
+}
+
+.pengurus-featured-avatar {
+  width: 110px;
+  height: 110px;
+  min-width: 110px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--color-gold), var(--color-primary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--color-dark);
+  box-shadow: 0 0 20px rgba(212, 179, 84, 0.5);
+}
+
+.pengurus-featured-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.pengurus-featured-badge {
+  align-self: flex-start;
+  padding: 0.25rem 0.85rem;
+  background: var(--color-gold);
+  color: var(--color-dark);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.08em;
+}
+
+.pengurus-featured-name {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  color: var(--color-white);
+  line-height: 1.1;
+}
+
+.pengurus-featured-role {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-secondary);
+}
+
+/* Staff Grid */
+.pengurus-staff-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.pengurus-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(224, 183, 144, 0.2);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.85rem;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pengurus-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-gold);
+  box-shadow: 0 10px 25px rgba(212, 179, 84, 0.15);
+}
+
+.pengurus-avatar {
+  width: 75px;
+  height: 75px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, rgba(224, 183, 144, 0.3), rgba(204, 87, 14, 0.4));
+  border: 1px solid var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: var(--color-gold);
+}
+
+.pengurus-name {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-white);
+  line-height: 1.2;
+}
+
+.pengurus-role {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.05em;
+}
+
+/* --- Section Program Kerja --- */
+.divisi-proker-section {
+  background-color: var(--color-cream);
+  padding: 5rem 0;
+  position: relative;
+}
+
+.proker-list-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.proker-card-item {
+  background: var(--color-dark);
+  border: 1px solid var(--color-secondary);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.proker-card-item:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-gold);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.proker-num-badge {
+  min-width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--color-gold);
+  color: var(--color-dark);
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(212, 179, 84, 0.3);
+}
+
+.proker-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.proker-item-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-white);
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+}
+
+.proker-item-desc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.5;
+}
+
+/* --- Section Galeri Foto --- */
+.divisi-galeri-section {
+  background-color: var(--color-dark);
+  padding: 5rem 0;
+  position: relative;
+}
+
+.galeri-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.galeri-card {
+  position: relative;
+  height: 280px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.galeri-card.featured {
+  grid-column: span 2;
+}
+
+.galeri-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(75%) brightness(0.85);
+  transition: filter 0.5s ease, transform 0.6s ease;
+}
+
+.galeri-card:hover .galeri-card-img {
+  filter: grayscale(0%) brightness(1);
+  transform: scale(1.05);
+}
+
+.galeri-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(28, 22, 20, 0.9) 0%, transparent 60%);
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.galeri-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--color-white);
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* --- Navigasi Antar Divisi (Inter-Divisi Nav) --- */
+.divisi-nav-section {
+  background-color: var(--color-cream);
+  padding: 3.5rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.divisi-nav-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.divisi-nav-card {
+  flex: 1;
+  background: var(--color-dark);
+  border: 1px solid var(--color-gold);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 2rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.divisi-nav-card.next {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.divisi-nav-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.nav-card-sub {
+  font-family: var(--font-accent);
+  font-size: 1.15rem;
+  color: var(--color-secondary);
+}
+
+.nav-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: var(--color-gold);
+  letter-spacing: 0.04em;
+}
+
+/* --- Responsive Breakpoints --- */
+@media (max-width: 1024px) {
+  .pengurus-staff-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .divisi-hero-section {
+    height: auto;
+    padding: 6rem 0 3.5rem 0;
+    min-height: 380px;
+  }
+
+  .pengurus-featured-card {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.75rem;
+  }
+
+  .pengurus-featured-info {
+    align-items: center;
+  }
+
+  .pengurus-staff-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .proker-list-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .galeri-bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .galeri-card.featured {
+    grid-column: span 1;
+  }
+
+  .divisi-nav-grid {
+    flex-direction: column;
+  }
+
+  .divisi-nav-card.next {
+    text-align: left;
+    align-items: flex-start;
+  }
+}

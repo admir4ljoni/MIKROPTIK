@@ -40,12 +40,12 @@
   font-weight: 500;
 }
 
-/* --- Hero Section Divisi (72vh - Lebih Terbuka & Terang) --- */
+/* --- Hero Section Divisi (100vh Full Viewport) --- */
 .divisi-hero-section {
   position: relative;
-  height: 72vh;
-  min-height: 560px;
-  max-height: 800px;
+  height: 100vh;
+  min-height: 100vh;
+  max-height: none;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -353,7 +353,7 @@ import KalenderEvent from "../components/KalenderEvent.astro";
       const stripes = Array.from(container.querySelectorAll(".sliced-stripe"));
       const dots = Array.from(document.querySelectorAll("#about-mobile-dots .carousel-dot"));
 
-      let currentIndex = 0;
+      let activeIndex: number | null = null;
       let autoPlayTimer: any = null;
       let animFrameId: any = null;
 
@@ -400,21 +400,31 @@ import KalenderEvent from "../components/KalenderEvent.astro";
           return;
         }
 
+        const currentMobileIdx = activeIndex === null ? 0 : activeIndex;
         const parentElem = container.parentElement;
         const containerWidth = parentElem ? parentElem.clientWidth : window.innerWidth;
         const cardWidth = containerWidth * 0.85; // Card size 85% width
         const gap = 16;
         const sidePadding = (containerWidth - cardWidth) / 2;
 
-        const offset = -(currentIndex * (cardWidth + gap)) + sidePadding;
+        const offset = -(currentMobileIdx * (cardWidth + gap)) + sidePadding;
         container.style.transform = `translateX(${offset}px)`;
       }
 
-      function setActiveStripe(index: number, manualUserAction = false) {
-        currentIndex = (index + stripes.length) % stripes.length;
+      function setActiveStripe(index: number | null, manualUserAction = false) {
+        if (window.innerWidth <= 768) {
+          if (index === null) index = 0;
+          activeIndex = (index + stripes.length) % stripes.length;
+        } else {
+          if (index !== null) {
+            activeIndex = (index + stripes.length) % stripes.length;
+          } else {
+            activeIndex = null;
+          }
+        }
 
         stripes.forEach((stripe, i) => {
-          if (i === currentIndex) {
+          if (activeIndex !== null && i === activeIndex) {
             stripe.classList.add("active");
           } else {
             stripe.classList.remove("active");
@@ -422,7 +432,7 @@ import KalenderEvent from "../components/KalenderEvent.astro";
         });
 
         dots.forEach((dot, i) => {
-          if (i === currentIndex) {
+          if (activeIndex !== null && i === activeIndex) {
             dot.classList.add("active");
           } else {
             dot.classList.remove("active");
@@ -435,20 +445,36 @@ import KalenderEvent from "../components/KalenderEvent.astro";
           startSyncLoop(750);
         }
 
-        if (manualUserAction) {
+        if (manualUserAction && window.innerWidth <= 768) {
           resetAutoPlay();
         }
       }
 
+      function toggleStripe(index: number) {
+        if (window.innerWidth > 768) {
+          // Desktop: Jika mengklik kartu yang sudah aktif, tutup kartu tersebut (set to null)
+          if (activeIndex === index) {
+            setActiveStripe(null, true);
+          } else {
+            setActiveStripe(index, true);
+          }
+        } else {
+          setActiveStripe(index, true);
+        }
+      }
+
       function nextStripe(manual = false) {
-        setActiveStripe(currentIndex + 1, manual);
+        const currentIdx = activeIndex === null ? 0 : activeIndex;
+        setActiveStripe(currentIdx + 1, manual);
       }
 
       function prevStripe(manual = false) {
-        setActiveStripe(currentIndex - 1, manual);
+        const currentIdx = activeIndex === null ? 0 : activeIndex;
+        setActiveStripe(currentIdx - 1, manual);
       }
 
       function startAutoPlay() {
+        if (window.innerWidth > 768) return; // Tidak ada autoplay di desktop
         stopAutoPlay();
         autoPlayTimer = setInterval(() => {
           nextStripe(false);
@@ -467,16 +493,10 @@ import KalenderEvent from "../components/KalenderEvent.astro";
         startAutoPlay();
       }
 
-      // Attach click and mouseenter event listeners
+      // Klik kartu toggle pada desktop / select pada mobile
       stripes.forEach((stripe, i) => {
         stripe.addEventListener("click", () => {
-          setActiveStripe(i, true);
-        });
-
-        stripe.addEventListener("mouseenter", () => {
-          if (window.innerWidth > 768) {
-            setActiveStripe(i, true);
-          }
+          toggleStripe(i);
         });
       });
 
@@ -484,14 +504,6 @@ import KalenderEvent from "../components/KalenderEvent.astro";
         dot.addEventListener("click", () => {
           setActiveStripe(i, true);
         });
-      });
-
-      container.addEventListener("mouseenter", () => {
-        if (window.innerWidth > 768) stopAutoPlay();
-      });
-
-      container.addEventListener("mouseleave", () => {
-        if (window.innerWidth > 768) startAutoPlay();
       });
 
       // Touch swipe detection untuk mobile
@@ -515,8 +527,11 @@ import KalenderEvent from "../components/KalenderEvent.astro";
 
       function checkViewMode() {
         if (window.innerWidth <= 768) {
+          if (activeIndex === null) activeIndex = 0;
           updateMobileCarouselPosition();
+          startAutoPlay();
         } else {
+          stopAutoPlay();
           container.style.transform = '';
           stripes.forEach((stripe) => {
             const img = stripe.querySelector(".stripe-shared-img") as HTMLElement;
@@ -533,8 +548,11 @@ import KalenderEvent from "../components/KalenderEvent.astro";
 
       // Initial setup
       checkViewMode();
-      setActiveStripe(0);
-      startAutoPlay();
+      if (window.innerWidth <= 768) {
+        setActiveStripe(0);
+      } else {
+        setActiveStripe(null); // Desktop: Tidak ada kartu terbuka secara default!
+      }
     });
   </script>
 

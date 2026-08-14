@@ -661,7 +661,8 @@ html.is-page-transitioning .preloader-content {
   background-color: var(--color-dark);
 }
 
-/* Expanded state on active click */
+/* Expanded state on hover or active click */
+.sliced-stripe:hover,
 .sliced-stripe.active {
   flex: 4.5;
 }
@@ -692,12 +693,8 @@ html.is-page-transitioning .preloader-content {
   will-change: left;
 }
 
-/* Subtle hover hint for inactive cards */
-.sliced-stripe:not(.active):hover .stripe-shared-img {
-  filter: grayscale(60%) brightness(0.95) contrast(1.05);
-}
-
-/* Full Color / Berwarna di mode active */
+/* Full Color / Berwarna di mode hover / active */
+.sliced-stripe:hover .stripe-shared-img,
 .sliced-stripe.active .stripe-shared-img {
   filter: grayscale(0%) brightness(1) contrast(1);
 }
@@ -734,6 +731,7 @@ html.is-page-transitioning .preloader-content {
   z-index: 3;
 }
 
+.sliced-stripe:hover .stripe-collapsed-label,
 .sliced-stripe.active .stripe-collapsed-label {
   opacity: 0;
 }
@@ -748,6 +746,7 @@ html.is-page-transitioning .preloader-content {
   gap: 0.6rem;
 }
 
+.sliced-stripe:hover .stripe-expanded-content,
 .sliced-stripe.active .stripe-expanded-content {
   opacity: 1;
   transform: translateY(0);

@@ -450,19 +450,6 @@ import KalenderEvent from "../components/KalenderEvent.astro";
         }
       }
 
-      function toggleStripe(index: number) {
-        if (window.innerWidth > 768) {
-          // Desktop: Jika mengklik kartu yang sudah aktif, tutup kartu tersebut (set to null)
-          if (activeIndex === index) {
-            setActiveStripe(null, true);
-          } else {
-            setActiveStripe(index, true);
-          }
-        } else {
-          setActiveStripe(index, true);
-        }
-      }
-
       function nextStripe(manual = false) {
         const currentIdx = activeIndex === null ? 0 : activeIndex;
         setActiveStripe(currentIdx + 1, manual);
@@ -474,7 +461,7 @@ import KalenderEvent from "../components/KalenderEvent.astro";
       }
 
       function startAutoPlay() {
-        if (window.innerWidth > 768) return; // Tidak ada autoplay di desktop
+        if (window.innerWidth > 768) return;
         stopAutoPlay();
         autoPlayTimer = setInterval(() => {
           nextStripe(false);
@@ -493,11 +480,32 @@ import KalenderEvent from "../components/KalenderEvent.astro";
         startAutoPlay();
       }
 
-      // Klik kartu toggle pada desktop / select pada mobile
+      // Attach hover & click event listeners for desktop and mobile
       stripes.forEach((stripe, i) => {
-        stripe.addEventListener("click", () => {
-          toggleStripe(i);
+        // Desktop hover: buka saat kursor masuk (mouseenter), tutup saat kursor keluar (mouseleave)
+        stripe.addEventListener("mouseenter", () => {
+          if (window.innerWidth > 768) {
+            setActiveStripe(i);
+          }
         });
+
+        stripe.addEventListener("mouseleave", () => {
+          if (window.innerWidth > 768) {
+            setActiveStripe(null);
+          }
+        });
+
+        stripe.addEventListener("click", () => {
+          if (window.innerWidth <= 768) {
+            setActiveStripe(i, true);
+          }
+        });
+      });
+
+      container.addEventListener("mouseleave", () => {
+        if (window.innerWidth > 768) {
+          setActiveStripe(null);
+        }
       });
 
       dots.forEach((dot, i) => {

@@ -11,20 +11,18 @@ interface FotoItem {
 interface Props {
   fotoList: FotoItem[];
   imageSrc?: string;
-  imageCaption?: string;
   reverse?: boolean;
 }
 
 const { 
   fotoList, 
   imageSrc, 
-  imageCaption = "Staff Muda Divisi", 
   reverse = false 
 } = Astro.props;
 ---
 
 {imageSrc ? (
-  <DivisiSplitSection imageSrc={imageSrc} imageCaption={imageCaption} reverse={reverse}>
+  <DivisiSplitSection imageSrc={imageSrc} reverse={reverse}>
     <SectionHeading 
       titleMain="GALERI" 
       titleAccent="Dokumentasi" 

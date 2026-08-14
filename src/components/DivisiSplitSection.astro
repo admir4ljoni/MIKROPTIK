@@ -2,33 +2,25 @@
 interface Props {
   imageSrc: string;
   imageAlt?: string;
-  imageCaption?: string;
   reverse?: boolean;
 }
 
-const { imageSrc, imageAlt = "Foto Divisi", imageCaption, reverse = false } = Astro.props;
+const { imageSrc, imageAlt = "Foto Divisi", reverse = false } = Astro.props;
 ---
 
 <section class="divisi-split-section">
-  <div class="container">
-    <div class={`divisi-split-grid ${reverse ? 'reverse' : ''}`}>
-      <!-- Content Column -->
-      <div class="split-content-col">
+  <div class={`divisi-split-grid ${reverse ? 'reverse' : ''}`}>
+    <!-- Content Column (50% Viewport Width) -->
+    <div class="split-content-col">
+      <div class="split-content-inner">
         <slot />
       </div>
+    </div>
 
-      <!-- Image Column -->
-      <div class="split-image-col">
-        <div class="split-image-card">
-          <img src={imageSrc} alt={imageAlt} class="split-img" loading="lazy" />
-          <div class="split-img-overlay"></div>
-          {imageCaption && (
-            <div class="split-img-caption">
-              <span>{imageCaption}</span>
-            </div>
-          )}
-        </div>
-      </div>
+    <!-- Full Viewport Segment Image Column (No Card, No Outline, No Caption) -->
+    <div class="split-image-col">
+      <img src={imageSrc} alt={imageAlt} class="split-img-full" loading="lazy" />
+      <div class="split-img-gradient"></div>
     </div>
   </div>
 </section>

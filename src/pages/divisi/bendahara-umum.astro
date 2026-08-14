@@ -49,11 +49,10 @@ const divisiData = {
     bgImage={divisiData.bgImage}
   />
 
-  <!-- Section 1: Deskripsi Profil paired with Foto Kadiv (Right) -->
+  <!-- Section 1: Deskripsi Profil paired with Foto Kadiv (50/50 Viewport Segment) -->
   <DivisiSplitSection
     imageSrc={divisiData.fotoKadiv}
     imageAlt="Kabid Bendahara Umum"
-    imageCaption="Kabid Bendahara Umum"
     reverse={false}
   >
     <SectionHeading
@@ -67,19 +66,17 @@ const divisiData = {
     </div>
   </DivisiSplitSection>
 
-  <!-- Section 2: Program Kerja paired with Foto Staff 1 (Left) -->
+  <!-- Section 2: Program Kerja paired with Foto Staff 1 (50/50 Viewport Segment) -->
   <DivisiProker 
     prokerList={divisiData.proker} 
     imageSrc={divisiData.fotoStaff1}
-    imageCaption="Staff Bendahara Umum"
     reverse={true}
   />
 
-  <!-- Section 3: Galeri Dokumentasi paired with Foto Staff Muda (Right) -->
+  <!-- Section 3: Galeri Dokumentasi paired with Foto Staff Muda (50/50 Viewport Segment) -->
   <DivisiFotoGaleri 
     fotoList={divisiData.galeri} 
     imageSrc={divisiData.fotoStaffMuda}
-    imageCaption="Staff Muda Bendahara Umum"
     reverse={false}
   />
 </DivisiLayout>

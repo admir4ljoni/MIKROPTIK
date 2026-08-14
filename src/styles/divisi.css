@@ -128,19 +128,21 @@
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
 }
 
-/* --- Section Split Side-by-Side (Zig-Zag Layout dengan Foto Divisi) --- */
+/* --- Full Viewport Segment 50/50 Split (Tanpa Outer Space, Tanpa Card/Outline) --- */
 .divisi-split-section {
-  background-color: var(--color-dark);
-  padding: 5rem 0;
+  width: 100%;
   position: relative;
+  background-color: var(--color-dark);
   border-bottom: 1px solid rgba(212, 179, 84, 0.12);
+  overflow: hidden;
 }
 
 .divisi-split-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3.5rem;
-  align-items: center;
+  width: 100%;
+  min-height: 75vh;
+  gap: 0;
 }
 
 .divisi-split-grid.reverse .split-content-col {
@@ -154,63 +156,51 @@
 .split-content-col {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  justify-content: center;
+  padding: 4.5rem 5.5%;
+  background-color: var(--color-dark);
+  z-index: 2;
+}
+
+.split-content-inner {
+  max-width: 620px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .split-image-col {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.split-image-card {
   position: relative;
   width: 100%;
-  max-width: 520px;
-  height: 390px;
-  border-radius: var(--radius-lg);
+  height: 100%;
+  min-height: 100%;
   overflow: hidden;
-  border: 1px solid var(--color-gold);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(212, 179, 84, 0.18);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.split-image-card:hover {
-  transform: translateY(-5px) scale(1.01);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(212, 179, 84, 0.35);
-}
-
-.split-img {
+.split-img-full {
   width: 100%;
   height: 100%;
+  min-height: 100%;
   object-fit: cover;
-  filter: brightness(0.95) contrast(1.05);
-  transition: transform 0.6s ease;
+  object-position: center 30%;
+  filter: brightness(0.92) contrast(1.05);
+  display: block;
+  transition: transform 0.6s ease, filter 0.6s ease;
 }
 
-.split-image-card:hover .split-img {
-  transform: scale(1.05);
+.split-image-col:hover .split-img-full {
+  transform: scale(1.03);
+  filter: brightness(1) contrast(1.08);
 }
 
-.split-img-overlay {
+.split-img-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(28, 22, 20, 0.85) 0%, transparent 60%);
+  background: linear-gradient(to right, rgba(28, 22, 20, 0.5) 0%, transparent 40%);
   pointer-events: none;
 }
 
-.split-img-caption {
-  position: absolute;
-  bottom: 1.25rem;
-  left: 1.25rem;
-  padding: 0.4rem 1.1rem;
-  background: var(--color-gold);
-  color: var(--color-dark);
-  font-family: var(--font-heading);
-  font-size: 0.95rem;
-  letter-spacing: 0.08em;
-  border-radius: var(--radius-full);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+.divisi-split-grid.reverse .split-img-gradient {
+  background: linear-gradient(to left, rgba(28, 22, 20, 0.5) 0%, transparent 40%);
 }
 
 /* Compact proker list & galeri bento inside split sections */
@@ -612,6 +602,31 @@
 }
 
 /* --- Responsive Breakpoints --- */
+@media (max-width: 992px) {
+  .divisi-split-grid,
+  .divisi-split-grid.reverse {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .divisi-split-grid.reverse .split-content-col {
+    order: 1;
+  }
+
+  .divisi-split-grid.reverse .split-image-col {
+    order: 2;
+  }
+
+  .split-content-col {
+    padding: 3.5rem 1.5rem;
+  }
+
+  .split-image-col {
+    height: 420px;
+    min-height: 420px;
+  }
+}
+
 @media (max-width: 1024px) {
   .pengurus-staff-grid {
     grid-template-columns: repeat(3, 1fr);

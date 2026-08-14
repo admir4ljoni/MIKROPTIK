@@ -48,11 +48,10 @@ const divisiData = {
     bgImage={divisiData.bgImage}
   />
 
-  <!-- Section 1: Deskripsi Profil paired with Foto Kadiv (Right) -->
+  <!-- Section 1: Deskripsi Profil paired with Foto Kadiv (50/50 Viewport Segment) -->
   <DivisiSplitSection
     imageSrc={divisiData.fotoKadiv}
     imageAlt="Kadiv MEDINFO"
-    imageCaption="Kadiv MEDINFO"
     reverse={false}
   >
     <SectionHeading
@@ -66,19 +65,17 @@ const divisiData = {
     </div>
   </DivisiSplitSection>
 
-  <!-- Section 2: Program Kerja paired with Foto Staff Ahli (Left) -->
+  <!-- Section 2: Program Kerja paired with Foto Staff Ahli (50/50 Viewport Segment) -->
   <DivisiProker 
     prokerList={divisiData.proker} 
     imageSrc={divisiData.fotoStaffAhli}
-    imageCaption="Staff Ahli MEDINFO"
     reverse={true}
   />
 
-  <!-- Section 3: Galeri Dokumentasi paired with Foto Staff Muda (Right) -->
+  <!-- Section 3: Galeri Dokumentasi paired with Foto Staff Muda (50/50 Viewport Segment) -->
   <DivisiFotoGaleri 
     fotoList={divisiData.galeri} 
     imageSrc={divisiData.fotoStaffMuda}
-    imageCaption="Staff Muda MEDINFO"
     reverse={false}
   />
 </DivisiLayout>

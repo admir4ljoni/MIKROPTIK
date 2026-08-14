@@ -10,14 +10,12 @@ interface ProkerItem {
 interface Props {
   prokerList: (string | ProkerItem)[];
   imageSrc?: string;
-  imageCaption?: string;
   reverse?: boolean;
 }
 
 const { 
   prokerList, 
   imageSrc, 
-  imageCaption = "Staff Ahli Divisi", 
   reverse = true 
 } = Astro.props;
 
@@ -34,7 +32,7 @@ const items = prokerList.map((item) => {
 ---
 
 {imageSrc ? (
-  <DivisiSplitSection imageSrc={imageSrc} imageCaption={imageCaption} reverse={reverse}>
+  <DivisiSplitSection imageSrc={imageSrc} reverse={reverse}>
     <SectionHeading 
       titleMain="PROGRAM" 
       titleAccent="Kerja" 

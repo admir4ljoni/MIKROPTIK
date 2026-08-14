@@ -11,12 +11,14 @@ const divisiData = {
   badge: "DIVISI MEDINFO",
   tagline: "Media Informasi, Publikasi & Dokumentasi Digital",
   slug: "medinfo",
-  bgImage: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO BERSAMA.JPG",
+  bgImage: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO BERSAMA.webp",
   fotoKadiv: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO KABID.webp",
   fotoStaffAhli:
     "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF AHLI.webp",
-  fotoStaffMuda:
+  fotoStaffMuda1:
     "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF MUDA 1.webp",
+  fotoStaffMuda2:
+    "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF MUDA 2.webp",
   description:
     "Divisi Medinfo HMP MIKROPTIK adalah divisi yang bertanggung jawab dalam pengelolaan media informasi dan dokumentasi HMP MIKROPTIK. Program kerjanya meliputi Pengelolaan Media Sosial, dokumentasi kegiatan, PDD (Publikasi, Dokumentasi, dan Desain), Podcast sebagai media informasi dan edukasi. Divisi ini juga menjadi wadah bagi mahasiswa untuk mengembangkan kemampuan di bidang desain grafis, fotografi, dan videografi. Bergabung di Divisi Medinfo HMP MIKROPTIK memberikan kesempatan untuk meningkatkan kreativitas, mengasah keterampilan, dan memperoleh pengalaman baru.",
   proker: [
@@ -28,7 +30,7 @@ const divisiData = {
   galeri: [
     {
       title: "Foto Bersama Divisi MEDINFO",
-      src: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO BERSAMA.JPG",
+      src: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO BERSAMA.webp",
       isFeatured: true,
     },
     {
@@ -69,7 +71,7 @@ const divisiData = {
     brightness={0.72}
   />
 
-  <!-- Section 1: Deskripsi Profil paired with Foto Kadiv (50/50 Viewport Segment) -->
+  <!-- Section 1: Deskripsi Profil paired with Foto Kadiv (60/40 Viewport Segment) -->
   <DivisiSplitSection
     imageSrc={divisiData.fotoKadiv}
     imageAlt="Kadiv MEDINFO"
@@ -86,17 +88,24 @@ const divisiData = {
     </div>
   </DivisiSplitSection>
 
-  <!-- Section 2: Program Kerja paired with Foto Staff Ahli (50/50 Viewport Segment) -->
+  <!-- Section 2: Program Kerja paired with Foto Staff Ahli (60/40 Viewport Segment) -->
   <DivisiProker
     prokerList={divisiData.proker}
     imageSrc={divisiData.fotoStaffAhli}
     reverse={true}
   />
 
-  <!-- Section 3: Galeri Dokumentasi paired with Foto Staff Muda (50/50 Viewport Segment) -->
+  <!-- Section 3: Galeri Dokumentasi 1 paired with Foto Staff Muda 1 (60/40 Viewport Segment) -->
   <DivisiFotoGaleri
-    fotoList={divisiData.galeri}
-    imageSrc={divisiData.fotoStaffMuda}
+    fotoList={divisiData.galeri.slice(0, 3)}
+    imageSrc={divisiData.fotoStaffMuda1}
     reverse={false}
+  />
+
+  <!-- Section 4: Galeri Dokumentasi 2 paired with Foto Staff Muda 2 (60/40 Viewport Segment) -->
+  <DivisiFotoGaleri
+    fotoList={divisiData.galeri.slice(2)}
+    imageSrc={divisiData.fotoStaffMuda2}
+    reverse={true}
   />
 </DivisiLayout>

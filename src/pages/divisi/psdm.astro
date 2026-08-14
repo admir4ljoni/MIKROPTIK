@@ -11,10 +11,11 @@ const divisiData = {
   badge: "DIVISI PSDM",
   tagline: "Pengembangan Potensi, Kompetensi & Karakter",
   slug: "psdm",
-  bgImage: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO BERSAMA.JPG",
+  bgImage: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO BERSAMA.webp",
   fotoKadiv: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO KADIV.webp",
   fotoStaffAhli: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO STAFF AHLI.webp",
-  fotoStaffMuda: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO STAFF MUDA 1.webp",
+  fotoStaffMuda1: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO STAFF MUDA 1.webp",
+  fotoStaffMuda2: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO STAFF MUDA 2.webp",
   description:
     "Divisi Pengembangan Sumber Daya Mahasiswa (PSDM) HMP MIKROPTIK Kabinet Naya Vikrama merupakan divisi yang berfokus pada pengembangan potensi, kompetensi, dan karakter mahasiswa PTIK. PSDM berperan sebagai wadah sekaligus fasilitator bagi mahasiswa baru dalam beradaptasi dengan lingkungan perkuliahan, mengembangkan diri, serta membangun relasi di lingkungan kampus. Melalui berbagai program kerja, seperti Open Recruitment, PSDM juga membuka kesempatan bagi mahasiswa untuk bergabung, berkontribusi, dan bertumbuh bersama dalam organisasi.",
   proker: [
@@ -28,7 +29,7 @@ const divisiData = {
   galeri: [
     {
       title: "Foto Bersama Divisi PSDM",
-      src: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO BERSAMA.JPG",
+      src: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO BERSAMA.webp",
       isFeatured: true,
     },
     {
@@ -70,7 +71,7 @@ const divisiData = {
     brightness={0.72}
   />
 
-  <!-- Section 1: Deskripsi Profil paired with Foto Kadiv (50/50 Viewport Segment) -->
+  <!-- Section 1: Deskripsi Profil paired with Foto Kadiv (60/40 Viewport Segment) -->
   <DivisiSplitSection
     imageSrc={divisiData.fotoKadiv}
     imageAlt="Kadiv PSDM"
@@ -87,17 +88,24 @@ const divisiData = {
     </div>
   </DivisiSplitSection>
 
-  <!-- Section 2: Program Kerja paired with Foto Staff Ahli (50/50 Viewport Segment) -->
+  <!-- Section 2: Program Kerja paired with Foto Staff Ahli (60/40 Viewport Segment) -->
   <DivisiProker
     prokerList={divisiData.proker}
     imageSrc={divisiData.fotoStaffAhli}
     reverse={true}
   />
 
-  <!-- Section 3: Galeri Dokumentasi paired with Foto Staff Muda (50/50 Viewport Segment) -->
+  <!-- Section 3: Galeri Dokumentasi 1 paired with Foto Staff Muda 1 (60/40 Viewport Segment) -->
   <DivisiFotoGaleri
-    fotoList={divisiData.galeri}
-    imageSrc={divisiData.fotoStaffMuda}
+    fotoList={divisiData.galeri.slice(0, 3)}
+    imageSrc={divisiData.fotoStaffMuda1}
     reverse={false}
+  />
+
+  <!-- Section 4: Galeri Dokumentasi 2 paired with Foto Staff Muda 2 (60/40 Viewport Segment) -->
+  <DivisiFotoGaleri
+    fotoList={divisiData.galeri.slice(2)}
+    imageSrc={divisiData.fotoStaffMuda2}
+    reverse={true}
   />
 </DivisiLayout>

@@ -11,11 +11,11 @@ const divisiData = {
   badge: "DIVISI MIKAT",
   tagline: "Pengembangan Minat, Bakat & Prestasi Mahasiswa",
   slug: "mikat",
-  bgImage: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO BERSAMA.JPG",
+  bgImage: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO BERSAMA.webp",
   fotoKadiv: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO KADIV.webp",
   fotoStaffAhli: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO STAFF AHLI.webp",
-  fotoStaffMuda:
-    "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO STAFF MUDA 1.webp",
+  fotoStaffMuda1: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO STAFF MUDA 1.webp",
+  fotoStaffMuda2: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO STAFF MUDA 2.webp",
   description:
     "Divisi Minat dan Bakat (MIKAT) HMP MIKROPTIK FKIP UNS merupakan divisi yang bertugas dalam pengembangan potensi, bakat, dan minat mahasiswa baik di bidang akademik maupun non-akademik. Divisi ini menjadi wadah bagi mahasiswa untuk menyalurkan minatnya dalam kegiatan olahraga, seni, keilmuan, hingga pengembangan diri, serta turut membangun lingkungan PTIK yang sehat dan produktif.",
   proker: [
@@ -30,7 +30,7 @@ const divisiData = {
   galeri: [
     {
       title: "Foto Bersama Divisi MIKAT",
-      src: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO BERSAMA.JPG",
+      src: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO BERSAMA.webp",
       isFeatured: true,
     },
     {
@@ -72,7 +72,7 @@ const divisiData = {
     brightness={0.72}
   />
 
-  <!-- Section 1: Deskripsi Profil paired with Foto Kadiv (50/50 Viewport Segment) -->
+  <!-- Section 1: Deskripsi Profil paired with Foto Kadiv (60/40 Viewport Segment) -->
   <DivisiSplitSection
     imageSrc={divisiData.fotoKadiv}
     imageAlt="Kadiv MIKAT"
@@ -89,17 +89,24 @@ const divisiData = {
     </div>
   </DivisiSplitSection>
 
-  <!-- Section 2: Program Kerja paired with Foto Staff Ahli (50/50 Viewport Segment) -->
+  <!-- Section 2: Program Kerja paired with Foto Staff Ahli (60/40 Viewport Segment) -->
   <DivisiProker
     prokerList={divisiData.proker}
     imageSrc={divisiData.fotoStaffAhli}
     reverse={true}
   />
 
-  <!-- Section 3: Galeri Dokumentasi paired with Foto Staff Muda (50/50 Viewport Segment) -->
+  <!-- Section 3: Galeri Dokumentasi 1 paired with Foto Staff Muda 1 (60/40 Viewport Segment) -->
   <DivisiFotoGaleri
-    fotoList={divisiData.galeri}
-    imageSrc={divisiData.fotoStaffMuda}
+    fotoList={divisiData.galeri.slice(0, 3)}
+    imageSrc={divisiData.fotoStaffMuda1}
     reverse={false}
+  />
+
+  <!-- Section 4: Galeri Dokumentasi 2 paired with Foto Staff Muda 2 (60/40 Viewport Segment) -->
+  <DivisiFotoGaleri
+    fotoList={divisiData.galeri.slice(2)}
+    imageSrc={divisiData.fotoStaffMuda2}
+    reverse={true}
   />
 </DivisiLayout>

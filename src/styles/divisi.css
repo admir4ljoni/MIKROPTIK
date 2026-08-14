@@ -128,23 +128,24 @@
 
 /* --- Section Deskripsi Lengkap --- */
 .divisi-desc-section {
-  background-color: var(--color-cream);
+  background-color: var(--color-dark);
   padding: 4.5rem 0;
   position: relative;
 }
 
 .divisi-desc-box {
-  background: var(--color-white);
-  border-left: 4px solid var(--color-primary);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(212, 179, 84, 0.3);
+  border-left: 4px solid var(--color-gold);
   border-radius: var(--radius-md);
   padding: 2.5rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 .divisi-desc-text {
   font-family: var(--font-body);
   font-size: 1.05rem;
-  color: var(--color-dark);
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.8;
 }
 
@@ -275,7 +276,7 @@
 
 /* --- Section Program Kerja --- */
 .divisi-proker-section {
-  background-color: var(--color-cream);
+  background-color: var(--color-dark);
   padding: 5rem 0;
   position: relative;
 }
@@ -287,7 +288,7 @@
 }
 
 .proker-card-item {
-  background: var(--color-dark);
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--color-secondary);
   border-radius: var(--radius-md);
   padding: 1.75rem;
@@ -398,9 +399,9 @@
 
 /* --- Navigasi Antar Divisi (Inter-Divisi Nav) --- */
 .divisi-nav-section {
-  background-color: var(--color-cream);
+  background-color: var(--color-dark);
   padding: 3.5rem 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-top: 1px solid rgba(212, 179, 84, 0.15);
 }
 
 .divisi-nav-grid {

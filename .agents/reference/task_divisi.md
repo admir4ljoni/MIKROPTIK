@@ -50,12 +50,12 @@ File ini berisi daftar tugas yang dipecah dari rencana `.agents/plan_divisi.md` 
 
 ## Phase 3: Client-side JavaScript & Animations
 
-- [ ] Buat `src/scripts/divisi-animations.js`
-  - [ ] Parallax effect pada hero background divisi (scrub ScrollTrigger)
-  - [ ] Deskripsi section reveal (fade-in + translateY)
-  - [ ] Pengurus cards stagger entrance animation
-  - [ ] Program kerja cards stagger entrance animation
-  - [ ] Galeri foto reveal on scroll animation
+- [x] Buat `src/scripts/divisi-animations.js`
+  - [x] Parallax effect pada hero background divisi (scrub ScrollTrigger)
+  - [x] Deskripsi section reveal (fade-in + translateY)
+  - [x] Pengurus cards stagger entrance animation
+  - [x] Program kerja cards stagger entrance animation
+  - [x] Galeri foto reveal on scroll animation
 
 ---
 

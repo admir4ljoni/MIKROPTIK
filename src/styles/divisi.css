@@ -195,12 +195,32 @@
 .split-img-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(28, 22, 20, 0.5) 0%, transparent 40%);
   pointer-events: none;
+  z-index: 2;
 }
 
+/* Gambar di sisi kanan: Sisi KIRI gambar melebur menggelap ke arah konten di kiri */
+.divisi-split-grid:not(.reverse) .split-img-gradient {
+  background: linear-gradient(
+    to right,
+    var(--color-dark) 0%,
+    rgba(28, 22, 20, 0.88) 16%,
+    rgba(28, 22, 20, 0.45) 42%,
+    rgba(28, 22, 20, 0.1) 75%,
+    transparent 100%
+  );
+}
+
+/* Gambar di sisi kiri: Sisi KANAN gambar melebur menggelap ke arah konten di kanan */
 .divisi-split-grid.reverse .split-img-gradient {
-  background: linear-gradient(to left, rgba(28, 22, 20, 0.5) 0%, transparent 40%);
+  background: linear-gradient(
+    to left,
+    var(--color-dark) 0%,
+    rgba(28, 22, 20, 0.88) 16%,
+    rgba(28, 22, 20, 0.45) 42%,
+    rgba(28, 22, 20, 0.1) 75%,
+    transparent 100%
+  );
 }
 
 /* Compact proker list & galeri bento inside split sections */

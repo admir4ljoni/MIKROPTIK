@@ -1,5 +1,6 @@
 ---
 import SectionHeading from './SectionHeading.astro';
+import DivisiSplitSection from './DivisiSplitSection.astro';
 
 interface ProkerItem {
   title: string;
@@ -8,9 +9,17 @@ interface ProkerItem {
 
 interface Props {
   prokerList: (string | ProkerItem)[];
+  imageSrc?: string;
+  imageCaption?: string;
+  reverse?: boolean;
 }
 
-const { prokerList } = Astro.props;
+const { 
+  prokerList, 
+  imageSrc, 
+  imageCaption = "Staff Ahli Divisi", 
+  reverse = true 
+} = Astro.props;
 
 // Normalize items to { title, description } format
 const items = prokerList.map((item) => {
@@ -24,15 +33,15 @@ const items = prokerList.map((item) => {
 });
 ---
 
-<section class="divisi-proker-section">
-  <div class="container">
+{imageSrc ? (
+  <DivisiSplitSection imageSrc={imageSrc} imageCaption={imageCaption} reverse={reverse}>
     <SectionHeading 
       titleMain="PROGRAM" 
       titleAccent="Kerja" 
-      subtitle="Inisiatif strategis dan agenda kegiatan unggulan yang dirancang untuk mendukung visi himpunan"
+      subtitle="Inisiatif strategis dan agenda kegiatan unggulan divisi"
+      align="left"
     />
-
-    <div class="proker-list-grid">
+    <div class="proker-list-compact">
       {items.map((item, index) => (
         <article class="proker-card-item">
           <div class="proker-num-badge">
@@ -45,5 +54,28 @@ const items = prokerList.map((item) => {
         </article>
       ))}
     </div>
-  </div>
-</section>
+  </DivisiSplitSection>
+) : (
+  <section class="divisi-proker-section">
+    <div class="container">
+      <SectionHeading 
+        titleMain="PROGRAM" 
+        titleAccent="Kerja" 
+        subtitle="Inisiatif strategis dan agenda kegiatan unggulan yang dirancang untuk mendukung visi himpunan"
+      />
+      <div class="proker-list-grid">
+        {items.map((item, index) => (
+          <article class="proker-card-item">
+            <div class="proker-num-badge">
+              {String(index + 1).padStart(2, '0')}
+            </div>
+            <div class="proker-info">
+              <h3 class="proker-item-title">{item.title}</h3>
+              <p class="proker-item-desc">{item.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

@@ -3,6 +3,7 @@ import DivisiLayout from '../../layouts/DivisiLayout.astro';
 import DivisiHero from '../../components/DivisiHero.astro';
 import DivisiProker from '../../components/DivisiProker.astro';
 import DivisiFotoGaleri from '../../components/DivisiFotoGaleri.astro';
+import DivisiSplitSection from '../../components/DivisiSplitSection.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
 
 const divisiData = {
@@ -11,18 +12,10 @@ const divisiData = {
   tagline: "Selalu Siap, Selalu Ada",
   slug: "sekretaris-umum",
   bgImage: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO BERSAMA.JPG",
+  fotoKadiv: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO KADIV.JPG",
+  fotoStaffAhli: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO STAFF AHLI.JPG",
+  fotoStaffMuda: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO STAFF MUDA.JPG",
   description: "Sekretaris Umum (SEKUM) HMP MIKROPTIK FKIP UNS merupakan bidang yang bertugas dalam mengelola, menyelesaikan, dan mengarsipkan seluruh sistem administrasi serta operasional organisasi. Dengan tagline \"Selalu Siap, Selalu Ada\", bidang ini berperan sebagai penopang kelancaran dan stabilitas internal HMP MIKROPTIK melalui pengelolaan kearsipan, pemeliharaan ruang sekretariat, penyusunan timeline kerja, hingga penyediaan serta penyaluran pusat informasi bagi seluruh pengurus.",
-  kepala: {
-    nama: "Yusuf Nurul Huda",
-    jabatan: "KABID SEKRETARIS UMUM"
-  },
-  staff: [
-    { nama: "Afifah Zahrah Muthmainnah", jabatan: "STAFF SEKRETARIS UMUM" },
-    { nama: "Nadhira Zulsyifa S", jabatan: "STAFF SEKRETARIS UMUM" },
-    { nama: "Fajriyah Yulia Az Zahra", jabatan: "STAFF SEKRETARIS UMUM" },
-    { nama: "Queennera Martha Kusuma Wardhani", jabatan: "STAFF SEKRETARIS UMUM" },
-    { nama: "Vanesa Berliana Putri Surbandana", jabatan: "STAFF SEKRETARIS UMUM" }
-  ],
   proker: [
     "Rapat Kerja",
     "Pelatihan Sekben",
@@ -52,7 +45,7 @@ const divisiData = {
   divisiSlug={divisiData.slug}
   nextDivisi={{ name: "BENDAHARA UMUM", slug: "bendahara-umum" }}
 >
-  <!-- Hero Section -->
+  <!-- Hero Section (100vh) -->
   <DivisiHero
     title={divisiData.name}
     badge={divisiData.badge}
@@ -61,23 +54,37 @@ const divisiData = {
     bgImage={divisiData.bgImage}
   />
 
-  <!-- Deskripsi Section -->
-  <section class="divisi-desc-section">
-    <div class="container">
-      <SectionHeading
-        titleMain="PROFIL"
-        titleAccent="Bidang"
-        subtitle="Peran dan fokus utama Sekretaris Umum dalam mendukung tata kelola himpunan"
-      />
-      <div class="divisi-desc-box">
-        <p class="divisi-desc-text">{divisiData.description}</p>
-      </div>
+  <!-- Section 1: Deskripsi Profil paired with Foto Kadiv (Right) -->
+  <DivisiSplitSection
+    imageSrc={divisiData.fotoKadiv}
+    imageAlt="Kabid Sekretaris Umum"
+    imageCaption="Kabid Sekretaris Umum"
+    reverse={false}
+  >
+    <SectionHeading
+      titleMain="PROFIL"
+      titleAccent="Bidang"
+      subtitle="Peran dan fokus utama Sekretaris Umum dalam mendukung tata kelola himpunan"
+      align="left"
+    />
+    <div class="divisi-desc-box">
+      <p class="divisi-desc-text">{divisiData.description}</p>
     </div>
-  </section>
+  </DivisiSplitSection>
 
-  <!-- Proker Section -->
-  <DivisiProker prokerList={divisiData.proker} />
+  <!-- Section 2: Program Kerja paired with Foto Staff Ahli (Left) -->
+  <DivisiProker 
+    prokerList={divisiData.proker} 
+    imageSrc={divisiData.fotoStaffAhli}
+    imageCaption="Staff Ahli Sekretaris Umum"
+    reverse={true}
+  />
 
-  <!-- Foto Galeri Section -->
-  <DivisiFotoGaleri fotoList={divisiData.galeri} />
+  <!-- Section 3: Galeri Dokumentasi paired with Foto Staff Muda (Right) -->
+  <DivisiFotoGaleri 
+    fotoList={divisiData.galeri} 
+    imageSrc={divisiData.fotoStaffMuda}
+    imageCaption="Staff Muda Sekretaris Umum"
+    reverse={false}
+  />
 </DivisiLayout>

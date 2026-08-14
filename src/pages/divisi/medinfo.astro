@@ -3,6 +3,7 @@ import DivisiLayout from '../../layouts/DivisiLayout.astro';
 import DivisiHero from '../../components/DivisiHero.astro';
 import DivisiProker from '../../components/DivisiProker.astro';
 import DivisiFotoGaleri from '../../components/DivisiFotoGaleri.astro';
+import DivisiSplitSection from '../../components/DivisiSplitSection.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
 
 const divisiData = {
@@ -11,23 +12,10 @@ const divisiData = {
   tagline: "Media Informasi, Publikasi & Dokumentasi Digital",
   slug: "medinfo",
   bgImage: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO BERSAMA.JPG",
+  fotoKadiv: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO KADIV.JPG",
+  fotoStaffAhli: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF AHLI.JPG",
+  fotoStaffMuda: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF MUDA 1.JPG",
   description: "Divisi Medinfo HMP MIKROPTIK adalah divisi yang bertanggung jawab dalam pengelolaan media informasi dan dokumentasi HMP MIKROPTIK. Program kerjanya meliputi Pengelolaan Media Sosial, dokumentasi kegiatan, PDD (Publikasi, Dokumentasi, dan Desain), Podcast sebagai media informasi dan edukasi. Divisi ini juga menjadi wadah bagi mahasiswa untuk mengembangkan kemampuan di bidang desain grafis, fotografi, dan videografi. Bergabung di Divisi Medinfo HMP MIKROPTIK memberikan kesempatan untuk meningkatkan kreativitas, mengasah keterampilan, dan memperoleh pengalaman baru.",
-  kepala: {
-    nama: "Adinda Putri Utami",
-    jabatan: "KADIV MEDINFO"
-  },
-  staff: [
-    { nama: "Aghniya Adz-Dzikri", jabatan: "STAFF MEDINFO" },
-    { nama: "Anisa Ramadhani", jabatan: "STAFF MEDINFO" },
-    { nama: "Dhafin Rifki Bayu Santoso", jabatan: "STAFF MEDINFO" },
-    { nama: "Muhammad Ramdhani", jabatan: "STAFF MEDINFO" },
-    { nama: "Aksya Nayla Fitriana", jabatan: "STAFF MEDINFO" },
-    { nama: "Awang Bintang Muhammad Lazuardi", jabatan: "STAFF MEDINFO" },
-    { nama: "Dafa Syahrul Syah Baharudin", jabatan: "STAFF MEDINFO" },
-    { nama: "Fathma Daniswara Tyaswa Putri", jabatan: "STAFF MEDINFO" },
-    { nama: "Sabrosa Noval Rachmadhani", jabatan: "STAFF MEDINFO" },
-    { nama: "Sheva Jalu Atmaja", jabatan: "STAFF MEDINFO" }
-  ],
   proker: [
     "DOKUMENTASI KEGIATAN",
     "PDD (PUBLIKASI, DOKUMENTASI, & DESAIN)",
@@ -51,7 +39,7 @@ const divisiData = {
   divisiSlug={divisiData.slug}
   prevDivisi={{ name: "HUMAS", slug: "humas" }}
 >
-  <!-- Hero Section -->
+  <!-- Hero Section (100vh) -->
   <DivisiHero
     title={divisiData.name}
     badge={divisiData.badge}
@@ -60,23 +48,37 @@ const divisiData = {
     bgImage={divisiData.bgImage}
   />
 
-  <!-- Deskripsi Section -->
-  <section class="divisi-desc-section">
-    <div class="container">
-      <SectionHeading
-        titleMain="PROFIL"
-        titleAccent="Divisi"
-        subtitle="Peran dan fokus utama Divisi Medinfo dalam menghadirkan konten kreatif & branding visual"
-      />
-      <div class="divisi-desc-box">
-        <p class="divisi-desc-text">{divisiData.description}</p>
-      </div>
+  <!-- Section 1: Deskripsi Profil paired with Foto Kadiv (Right) -->
+  <DivisiSplitSection
+    imageSrc={divisiData.fotoKadiv}
+    imageAlt="Kadiv MEDINFO"
+    imageCaption="Kadiv MEDINFO"
+    reverse={false}
+  >
+    <SectionHeading
+      titleMain="PROFIL"
+      titleAccent="Divisi"
+      subtitle="Peran dan fokus utama Divisi Medinfo dalam menghadirkan konten kreatif & branding visual"
+      align="left"
+    />
+    <div class="divisi-desc-box">
+      <p class="divisi-desc-text">{divisiData.description}</p>
     </div>
-  </section>
+  </DivisiSplitSection>
 
-  <!-- Proker Section -->
-  <DivisiProker prokerList={divisiData.proker} />
+  <!-- Section 2: Program Kerja paired with Foto Staff Ahli (Left) -->
+  <DivisiProker 
+    prokerList={divisiData.proker} 
+    imageSrc={divisiData.fotoStaffAhli}
+    imageCaption="Staff Ahli MEDINFO"
+    reverse={true}
+  />
 
-  <!-- Foto Galeri Section -->
-  <DivisiFotoGaleri fotoList={divisiData.galeri} />
+  <!-- Section 3: Galeri Dokumentasi paired with Foto Staff Muda (Right) -->
+  <DivisiFotoGaleri 
+    fotoList={divisiData.galeri} 
+    imageSrc={divisiData.fotoStaffMuda}
+    imageCaption="Staff Muda MEDINFO"
+    reverse={false}
+  />
 </DivisiLayout>

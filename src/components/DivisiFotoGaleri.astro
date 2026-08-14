@@ -1,5 +1,6 @@
 ---
 import SectionHeading from './SectionHeading.astro';
+import DivisiSplitSection from './DivisiSplitSection.astro';
 
 interface FotoItem {
   title: string;
@@ -9,22 +10,30 @@ interface FotoItem {
 
 interface Props {
   fotoList: FotoItem[];
+  imageSrc?: string;
+  imageCaption?: string;
+  reverse?: boolean;
 }
 
-const { fotoList } = Astro.props;
+const { 
+  fotoList, 
+  imageSrc, 
+  imageCaption = "Staff Muda Divisi", 
+  reverse = false 
+} = Astro.props;
 ---
 
-<section class="divisi-galeri-section">
-  <div class="container">
+{imageSrc ? (
+  <DivisiSplitSection imageSrc={imageSrc} imageCaption={imageCaption} reverse={reverse}>
     <SectionHeading 
       titleMain="GALERI" 
       titleAccent="Dokumentasi" 
-      subtitle="Dokumentasi momen kebersamaan dan keakraban seluruh jajaran pengurus divisi"
+      subtitle="Dokumentasi kebersamaan dan keakraban seluruh jajaran pengurus divisi"
+      align="left"
     />
-
-    <div class="galeri-bento-grid">
-      {fotoList.map((foto, index) => (
-        <figure class={`galeri-card ${foto.isFeatured || index === 0 ? 'featured' : ''}`}>
+    <div class="galeri-bento-compact">
+      {fotoList.map((foto) => (
+        <figure class="galeri-card compact">
           <img 
             src={foto.src} 
             alt={foto.title} 
@@ -37,5 +46,31 @@ const { fotoList } = Astro.props;
         </figure>
       ))}
     </div>
-  </div>
-</section>
+  </DivisiSplitSection>
+) : (
+  <section class="divisi-galeri-section">
+    <div class="container">
+      <SectionHeading 
+        titleMain="GALERI" 
+        titleAccent="Dokumentasi" 
+        subtitle="Dokumentasi momen kebersamaan dan keakraban seluruh jajaran pengurus divisi"
+      />
+
+      <div class="galeri-bento-grid">
+        {fotoList.map((foto, index) => (
+          <figure class={`galeri-card ${foto.isFeatured || index === 0 ? 'featured' : ''}`}>
+            <img 
+              src={foto.src} 
+              alt={foto.title} 
+              class="galeri-card-img" 
+              loading="lazy" 
+            />
+            <figcaption class="galeri-card-overlay">
+              <span class="galeri-card-title">{foto.title}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

@@ -3,6 +3,7 @@ import DivisiLayout from '../../layouts/DivisiLayout.astro';
 import DivisiHero from '../../components/DivisiHero.astro';
 import DivisiProker from '../../components/DivisiProker.astro';
 import DivisiFotoGaleri from '../../components/DivisiFotoGaleri.astro';
+import DivisiSplitSection from '../../components/DivisiSplitSection.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
 
 const divisiData = {
@@ -11,19 +12,10 @@ const divisiData = {
   tagline: "Transparansi, Akuntabilitas & Disiplin Keuangan",
   slug: "bendahara-umum",
   bgImage: "/assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO BERSAMA.JPG",
+  fotoKadiv: "/assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO KADIV.JPG",
+  fotoStaff1: "/assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO STAFF 1.JPG",
+  fotoStaffMuda: "/assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO STAFF MUDA.JPG",
   description: "Bendahara Umum adalah bidang yang bertanggung jawab dalam mengelola seluruh keuangan organisasi, seperti pemasukan, pengeluaran, dan pencatatan dana kegiatan. Tugas utamanya meliputi menyusun laporan keuangan, membuat anggaran kegiatan, menjaga transparansi serta akuntabilitas keuangan, dan memastikan setiap penggunaan dana sesuai dengan aturan serta kebutuhan organisasi.",
-  kepala: {
-    nama: "Salsabila Fitriasani",
-    jabatan: "KABID BENDAHARA UMUM"
-  },
-  staff: [
-    { nama: "Natasya Luthfia Ramadhani", jabatan: "STAFF BENDAHARA UMUM" },
-    { nama: "Amelia Pinasti Nugraheni", jabatan: "STAFF BENDAHARA UMUM" },
-    { nama: "Firzana Bilqis Serenity", jabatan: "STAFF BENDAHARA UMUM" },
-    { nama: "Haikal Wilhan Rosyada", jabatan: "STAFF BENDAHARA UMUM" },
-    { nama: "Muhammad Ammar Fathin", jabatan: "STAFF BENDAHARA UMUM" },
-    { nama: "Riska Nur Rahmawati", jabatan: "STAFF BENDAHARA UMUM" }
-  ],
   proker: [
     "IWP (Iuran Wajib Pengurus)",
     "PENGADAAN INVENTARIS SEKRE",
@@ -48,7 +40,7 @@ const divisiData = {
   prevDivisi={{ name: "SEKRETARIS UMUM", slug: "sekretaris-umum" }}
   nextDivisi={{ name: "PSDM", slug: "psdm" }}
 >
-  <!-- Hero Section -->
+  <!-- Hero Section (100vh) -->
   <DivisiHero
     title={divisiData.name}
     badge={divisiData.badge}
@@ -57,23 +49,37 @@ const divisiData = {
     bgImage={divisiData.bgImage}
   />
 
-  <!-- Deskripsi Section -->
-  <section class="divisi-desc-section">
-    <div class="container">
-      <SectionHeading
-        titleMain="PROFIL"
-        titleAccent="Bidang"
-        subtitle="Peran dan fokus utama Bendahara Umum dalam pengelolaan sirkulasi keuangan"
-      />
-      <div class="divisi-desc-box">
-        <p class="divisi-desc-text">{divisiData.description}</p>
-      </div>
+  <!-- Section 1: Deskripsi Profil paired with Foto Kadiv (Right) -->
+  <DivisiSplitSection
+    imageSrc={divisiData.fotoKadiv}
+    imageAlt="Kabid Bendahara Umum"
+    imageCaption="Kabid Bendahara Umum"
+    reverse={false}
+  >
+    <SectionHeading
+      titleMain="PROFIL"
+      titleAccent="Bidang"
+      subtitle="Peran dan fokus utama Bendahara Umum dalam pengelolaan sirkulasi keuangan"
+      align="left"
+    />
+    <div class="divisi-desc-box">
+      <p class="divisi-desc-text">{divisiData.description}</p>
     </div>
-  </section>
+  </DivisiSplitSection>
 
-  <!-- Proker Section -->
-  <DivisiProker prokerList={divisiData.proker} />
+  <!-- Section 2: Program Kerja paired with Foto Staff 1 (Left) -->
+  <DivisiProker 
+    prokerList={divisiData.proker} 
+    imageSrc={divisiData.fotoStaff1}
+    imageCaption="Staff Bendahara Umum"
+    reverse={true}
+  />
 
-  <!-- Foto Galeri Section -->
-  <DivisiFotoGaleri fotoList={divisiData.galeri} />
+  <!-- Section 3: Galeri Dokumentasi paired with Foto Staff Muda (Right) -->
+  <DivisiFotoGaleri 
+    fotoList={divisiData.galeri} 
+    imageSrc={divisiData.fotoStaffMuda}
+    imageCaption="Staff Muda Bendahara Umum"
+    reverse={false}
+  />
 </DivisiLayout>

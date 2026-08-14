@@ -3,6 +3,7 @@ import DivisiLayout from '../../layouts/DivisiLayout.astro';
 import DivisiHero from '../../components/DivisiHero.astro';
 import DivisiProker from '../../components/DivisiProker.astro';
 import DivisiFotoGaleri from '../../components/DivisiFotoGaleri.astro';
+import DivisiSplitSection from '../../components/DivisiSplitSection.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
 
 const divisiData = {
@@ -11,23 +12,10 @@ const divisiData = {
   tagline: "Pengembangan Potensi, Kompetensi & Karakter",
   slug: "psdm",
   bgImage: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO BERSAMA 1.JPG",
+  fotoKadiv: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO KADIV.JPG",
+  fotoStaffAhli: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO STAFF AHLI.JPG",
+  fotoStaffMuda: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO STAFF MUDA 1.JPG",
   description: "Divisi Pengembangan Sumber Daya Mahasiswa (PSDM) HMP MIKROPTIK Kabinet Naya Vikrama merupakan divisi yang berfokus pada pengembangan potensi, kompetensi, dan karakter mahasiswa PTIK. PSDM berperan sebagai wadah sekaligus fasilitator bagi mahasiswa baru dalam beradaptasi dengan lingkungan perkuliahan, mengembangkan diri, serta membangun relasi di lingkungan kampus. Melalui berbagai program kerja, seperti Open Recruitment, PSDM juga membuka kesempatan bagi mahasiswa untuk bergabung, berkontribusi, dan bertumbuh bersama dalam organisasi.",
-  kepala: {
-    nama: "Khoirul Bagus Wicaksono",
-    jabatan: "KADIV PSDM"
-  },
-  staff: [
-    { nama: "Kania Adha Gayatri", jabatan: "STAFF PSDM" },
-    { nama: "Muhammad Irfan Maulana", jabatan: "STAFF PSDM" },
-    { nama: "Yardan Raditya Laksana", jabatan: "STAFF PSDM" },
-    { nama: "Abid Satriyo Maulana", jabatan: "STAFF PSDM" },
-    { nama: "Cahaya Fitri Ramadhani", jabatan: "STAFF PSDM" },
-    { nama: "Faradilla Sari", jabatan: "STAFF PSDM" },
-    { nama: "Gisma Dian Utami", jabatan: "STAFF PSDM" },
-    { nama: "Ilham Rasya Akbar", jabatan: "STAFF PSDM" },
-    { nama: "Muh Rizky Daniswara Putra Utama", jabatan: "STAFF PSDM" },
-    { nama: "Vika Nahran Azizaha Aulia", jabatan: "STAFF PSDM" }
-  ],
   proker: [
     "PSDM ADVENTURE",
     "SAMARU (Sambut Mahasiswa Baru)",
@@ -54,7 +42,7 @@ const divisiData = {
   prevDivisi={{ name: "BENDAHARA UMUM", slug: "bendahara-umum" }}
   nextDivisi={{ name: "MIKAT", slug: "mikat" }}
 >
-  <!-- Hero Section -->
+  <!-- Hero Section (100vh) -->
   <DivisiHero
     title={divisiData.name}
     badge={divisiData.badge}
@@ -63,23 +51,37 @@ const divisiData = {
     bgImage={divisiData.bgImage}
   />
 
-  <!-- Deskripsi Section -->
-  <section class="divisi-desc-section">
-    <div class="container">
-      <SectionHeading
-        titleMain="PROFIL"
-        titleAccent="Divisi"
-        subtitle="Peran dan fokus utama Divisi PSDM dalam membentuk insan akademis yang berkarakter"
-      />
-      <div class="divisi-desc-box">
-        <p class="divisi-desc-text">{divisiData.description}</p>
-      </div>
+  <!-- Section 1: Deskripsi Profil paired with Foto Kadiv (Right) -->
+  <DivisiSplitSection
+    imageSrc={divisiData.fotoKadiv}
+    imageAlt="Kadiv PSDM"
+    imageCaption="Kadiv PSDM"
+    reverse={false}
+  >
+    <SectionHeading
+      titleMain="PROFIL"
+      titleAccent="Divisi"
+      subtitle="Peran dan fokus utama Divisi PSDM dalam membentuk insan akademis yang berkarakter"
+      align="left"
+    />
+    <div class="divisi-desc-box">
+      <p class="divisi-desc-text">{divisiData.description}</p>
     </div>
-  </section>
+  </DivisiSplitSection>
 
-  <!-- Proker Section -->
-  <DivisiProker prokerList={divisiData.proker} />
+  <!-- Section 2: Program Kerja paired with Foto Staff Ahli (Left) -->
+  <DivisiProker 
+    prokerList={divisiData.proker} 
+    imageSrc={divisiData.fotoStaffAhli}
+    imageCaption="Staff Ahli PSDM"
+    reverse={true}
+  />
 
-  <!-- Foto Galeri Section -->
-  <DivisiFotoGaleri fotoList={divisiData.galeri} />
+  <!-- Section 3: Galeri Dokumentasi paired with Foto Staff Muda (Right) -->
+  <DivisiFotoGaleri 
+    fotoList={divisiData.galeri} 
+    imageSrc={divisiData.fotoStaffMuda}
+    imageCaption="Staff Muda PSDM"
+    reverse={false}
+  />
 </DivisiLayout>

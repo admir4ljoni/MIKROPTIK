@@ -140,18 +140,16 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
-  // 6. Interactive Lightbox Modal Controller (Tanpa Warna Outline)
+  // 6. Interactive Lightbox Modal Controller (Pure Image Only)
   const modal = document.getElementById('galeriModal');
   const modalImg = document.getElementById('galeriModalImg');
-  const modalTitle = document.getElementById('galeriModalTitle');
   const modalClose = document.getElementById('galeriModalClose');
   const modalOverlay = document.getElementById('galeriModalOverlay');
 
-  function openModal(imgSrc, titleText) {
-    if (!modal || !modalImg || !modalTitle) return;
+  function openModal(imgSrc, altText) {
+    if (!modal || !modalImg) return;
     modalImg.src = imgSrc;
-    modalImg.alt = titleText || 'Foto Divisi';
-    modalTitle.textContent = titleText || 'Dokumentasi Divisi';
+    modalImg.alt = altText || 'Foto Divisi';
     modal.classList.add('is-active');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -169,9 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
   allGaleriCards.forEach((card) => {
     card.addEventListener('click', () => {
       const img = card.querySelector('img');
-      const title = card.querySelector('.galeri-card-title');
       if (img) {
-        openModal(img.src, title ? title.textContent : img.alt);
+        openModal(img.src, img.alt);
       }
     });
   });

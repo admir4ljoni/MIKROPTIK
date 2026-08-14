@@ -684,14 +684,14 @@
 .galeri-modal-content {
   position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
   border: none !important;
   outline: none !important;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
-  border-radius: var(--radius-lg);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  background: var(--color-dark);
+  background: transparent;
   transform: scale(0.92);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -701,31 +701,13 @@
 }
 
 .galeri-modal-img {
-  max-width: 85vw;
-  max-height: 75vh;
+  max-width: 88vw;
+  max-height: 88vh;
   object-fit: contain;
   display: block;
   border: none !important;
   outline: none !important;
-}
-
-.galeri-modal-caption {
-  width: 100%;
-  padding: 1.25rem 1.75rem;
-  background: rgba(28, 22, 20, 0.95);
-  text-align: center;
-  border: none !important;
-  outline: none !important;
-}
-
-.galeri-modal-title {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  color: var(--color-gold);
-  letter-spacing: 0.05em;
-  margin: 0;
-  border: none !important;
-  outline: none !important;
+  border-radius: var(--radius-md);
 }
 
 /* --- Responsive Breakpoints --- */

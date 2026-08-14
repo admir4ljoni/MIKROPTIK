@@ -1,20 +1,27 @@
 ---
 interface Props {
   title: string;
-  badge: string;
+  badge?: string;
   tagline?: string;
   description: string;
   bgImage: string;
+  bgPosition?: string;
 }
 
-const { title, badge, tagline, description, bgImage } = Astro.props;
+const { 
+  title, 
+  tagline, 
+  description, 
+  bgImage, 
+  bgPosition = "center 75%" 
+} = Astro.props;
 ---
 
 <section class="divisi-hero-section">
   <!-- Background Image with Parallax readiness -->
   <div 
     class="divisi-hero-bg" 
-    style={`background-image: url('${bgImage}');`}
+    style={`background-image: url('${bgImage}'); background-position: ${bgPosition};`}
   ></div>
 
   <!-- Dark Gradient Overlay -->

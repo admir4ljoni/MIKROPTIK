@@ -58,51 +58,29 @@ const divisiData = {
     bgImage={divisiData.bgImage}
   />
 
-  <!-- Special Executive Leadership Showcase Grid (2 Slot Foto Kahim & Wakahim) -->
-  <section class="executive-leadership-section">
-    <div class="container">
-      <SectionHeading
-        titleMain="PIMPINAN"
-        titleAccent="Himpunan"
-        subtitle="Dua pilar kepemimpinan utama HMP MIKROPTIK Kabinet Naya Vikrama 2026"
-      />
+  <!-- Special Executive Leadership 50:50 Viewport Split Showcase (Tanpa Teks) -->
+  <section class="executive-5050-section">
+    <div class="executive-5050-grid">
+      <!-- Card KAHIM (50vw Width, Murni Foto Tanpa Teks) -->
+      <div class="executive-5050-col">
+        <img
+          src={divisiData.kahim.foto}
+          alt={`Foto ${divisiData.kahim.name}`}
+          class="executive-5050-img"
+          loading="lazy"
+        />
+        <div class="executive-5050-overlay"></div>
+      </div>
 
-      <div class="executive-dual-grid">
-        <!-- Card KAHIM -->
-        <article class="executive-card">
-          <div class="executive-img-wrapper">
-            <img
-              src={divisiData.kahim.foto}
-              alt={`Foto ${divisiData.kahim.name}`}
-              class="executive-img"
-              loading="lazy"
-            />
-            <div class="executive-img-overlay"></div>
-          </div>
-          <div class="executive-info">
-            <span class="executive-badge">{divisiData.kahim.badge}</span>
-            <h3 class="executive-name">{divisiData.kahim.name}</h3>
-            <p class="executive-role">{divisiData.kahim.role}</p>
-          </div>
-        </article>
-
-        <!-- Card WAKAHIM -->
-        <article class="executive-card">
-          <div class="executive-img-wrapper">
-            <img
-              src={divisiData.wakahim.foto}
-              alt={`Foto ${divisiData.wakahim.name}`}
-              class="executive-img"
-              loading="lazy"
-            />
-            <div class="executive-img-overlay"></div>
-          </div>
-          <div class="executive-info">
-            <span class="executive-badge">{divisiData.wakahim.badge}</span>
-            <h3 class="executive-name">{divisiData.wakahim.name}</h3>
-            <p class="executive-role">{divisiData.wakahim.role}</p>
-          </div>
-        </article>
+      <!-- Card WAKAHIM (50vw Width, Murni Foto Tanpa Teks) -->
+      <div class="executive-5050-col">
+        <img
+          src={divisiData.wakahim.foto}
+          alt={`Foto ${divisiData.wakahim.name}`}
+          class="executive-5050-img"
+          loading="lazy"
+        />
+        <div class="executive-5050-overlay"></div>
       </div>
     </div>
   </section>

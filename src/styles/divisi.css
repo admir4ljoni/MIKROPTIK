@@ -634,30 +634,40 @@
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 }
 
-/* --- Navigasi Antar Divisi (Inter-Divisi Nav) --- */
+/* --- Navigasi Antar Divisi (Seamless Integrated Space Layout) --- */
 .divisi-nav-section {
   background-color: var(--color-dark);
-  padding: 3.5rem 0;
-  border-top: 1px solid rgba(212, 179, 84, 0.15);
+  padding: 3rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
 }
 
 .divisi-nav-grid {
   display: flex;
   justify-content: space-between;
-  gap: 1.5rem;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
 }
 
 .divisi-nav-card {
   flex: 1;
-  background: var(--color-dark);
-  border: 1px solid var(--color-gold);
+  background: transparent;
+  border: none;
   border-radius: var(--radius-md);
-  padding: 1.5rem 2rem;
+  padding: 1.25rem 1.5rem;
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  gap: 0.35rem;
+  transition: background 0.35s ease, transform 0.35s ease;
+  position: relative;
+}
+
+.divisi-nav-card.prev {
+  text-align: left;
+  align-items: flex-start;
 }
 
 .divisi-nav-card.next {
@@ -666,21 +676,41 @@
 }
 
 .divisi-nav-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.025);
+  box-shadow: none;
+}
+
+.divisi-nav-card.prev:hover {
+  transform: translateX(-6px);
+}
+
+.divisi-nav-card.next:hover {
+  transform: translateX(6px);
 }
 
 .nav-card-sub {
-  font-family: var(--font-accent);
-  font-size: 1.15rem;
-  color: var(--color-secondary);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: var(--color-gold);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
 }
 
 .nav-card-title {
   font-family: var(--font-heading);
-  font-size: 1.6rem;
-  color: var(--color-gold);
+  font-size: 1.9rem;
+  color: var(--color-white);
   letter-spacing: 0.04em;
+  line-height: 1.1;
+  transition: color 0.3s ease;
+}
+
+.divisi-nav-card:hover .nav-card-title {
+  color: var(--color-gold);
 }
 
 /* --- Lightbox Image Modal (Tanpa Warna Outline) --- */

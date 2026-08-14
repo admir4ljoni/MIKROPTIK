@@ -24,34 +24,47 @@ function getInitials(name: string): string {
 <section class="divisi-pengurus-section">
   <div class="container">
     <SectionHeading 
-      titleMain="SUSUNAN" 
+      titleMain="STRUKTUR" 
       titleAccent="Pengurus" 
-      subtitle="Jajaran kepemimpinan dan anggota pengurus aktif Kabinet Naya Vikrama 2026"
+      subtitle="Bagan hirarki struktur organisasi dan jajaran kepengurusan aktif Kabinet Naya Vikrama 2026"
     />
 
-    <!-- Featured Card: Kepala Bidang / Kepala Divisi -->
-    <div class="pengurus-featured-card">
-      <div class="pengurus-featured-avatar">
-        {getInitials(kepala.nama)}
-      </div>
-      <div class="pengurus-featured-info">
-        <span class="pengurus-featured-badge">{kepala.jabatan}</span>
-        <h3 class="pengurus-featured-name">{kepala.nama}</h3>
-        <span class="pengurus-featured-role">Pimpinan Bidang / Divisi</span>
-      </div>
-    </div>
-
-    <!-- Staff Members Grid -->
-    <div class="pengurus-staff-grid">
-      {staff.map((member) => (
-        <article class="pengurus-card">
-          <div class="pengurus-avatar">
-            {getInitials(member.nama)}
+    <!-- Visual Organizational Tree Structure -->
+    <div class="tree-container">
+      <!-- Root Level: Kepala Bidang / Kepala Divisi -->
+      <div class="tree-root-node">
+        <div class="tree-card-root">
+          <div class="pengurus-featured-avatar">
+            {getInitials(kepala.nama)}
           </div>
-          <h4 class="pengurus-name">{member.nama}</h4>
-          <span class="pengurus-role">{member.jabatan}</span>
-        </article>
-      ))}
+          <div class="pengurus-featured-info">
+            <span class="pengurus-featured-badge">{kepala.jabatan}</span>
+            <h3 class="pengurus-featured-name">{kepala.nama}</h3>
+            <span class="pengurus-featured-role">Pimpinan Bidang / Divisi</span>
+          </div>
+        </div>
+        <!-- Vertical Connector Line from Root -->
+        <div class="tree-stem-vertical"></div>
+      </div>
+
+      <!-- Horizontal Connector Branch Line -->
+      <div class="tree-branch-horizontal"></div>
+
+      <!-- Leaf Level: Staff Grid Nodes -->
+      <div class="tree-children-grid">
+        {staff.map((member) => (
+          <div class="tree-child-node">
+            <div class="tree-child-stem"></div>
+            <article class="tree-card-child">
+              <div class="pengurus-avatar">
+                {getInitials(member.nama)}
+              </div>
+              <h4 class="pengurus-name">{member.nama}</h4>
+              <span class="pengurus-role">{member.jabatan}</span>
+            </article>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </section>

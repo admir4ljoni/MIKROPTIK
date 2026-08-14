@@ -39,31 +39,49 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
-  // 3. Featured Kadiv Card & Pengurus Cards Stagger Entrance
-  const featuredKadiv = document.querySelector('.pengurus-featured-card');
-  if (featuredKadiv) {
+  // 3. Tree Structure Entrance Animation (Root -> Branch Line -> Children Stagger)
+  const treeRoot = document.querySelector('.tree-card-root');
+  if (treeRoot) {
     gsap.fromTo(
-      featuredKadiv,
-      { opacity: 0, y: 40, scale: 0.96 },
+      treeRoot,
+      { opacity: 0, y: 40, scale: 0.94 },
       {
         opacity: 1,
         y: 0,
         scale: 1,
-        duration: 0.8,
+        duration: 0.85,
         ease: 'power3.out',
         scrollTrigger: {
-          trigger: featuredKadiv,
+          trigger: treeRoot,
           start: 'top 85%',
         },
       }
     );
   }
 
-  const staffGrid = document.querySelector('.pengurus-staff-grid');
-  if (staffGrid) {
-    const staffCards = staffGrid.querySelectorAll('.pengurus-card');
+  const treeBranch = document.querySelector('.tree-branch-horizontal');
+  if (treeBranch) {
     gsap.fromTo(
-      staffCards,
+      treeBranch,
+      { scaleX: 0, opacity: 0 },
+      {
+        scaleX: 1,
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: treeBranch,
+          start: 'top 85%',
+        },
+      }
+    );
+  }
+
+  const treeGrid = document.querySelector('.tree-children-grid');
+  if (treeGrid) {
+    const childNodes = treeGrid.querySelectorAll('.tree-child-node');
+    gsap.fromTo(
+      childNodes,
       { opacity: 0, y: 35 },
       {
         opacity: 1,
@@ -72,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stagger: 0.08,
         ease: 'power2.out',
         scrollTrigger: {
-          trigger: staffGrid,
+          trigger: treeGrid,
           start: 'top 85%',
         },
       }

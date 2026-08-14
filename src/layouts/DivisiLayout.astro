@@ -73,7 +73,9 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_UR
   <div id="galeriModal" class="galeri-modal" aria-hidden="true" role="dialog">
     <div class="galeri-modal-overlay" id="galeriModalOverlay"></div>
     <div class="galeri-modal-wrapper">
-      <button id="galeriModalClose" class="galeri-modal-close" aria-label="Tutup modal foto">&times;</button>
+      <button id="galeriModalClose" class="galeri-modal-close" aria-label="Tutup modal foto">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
       <div class="galeri-modal-content">
         <img id="galeriModalImg" src="" alt="" class="galeri-modal-img" />
       </div>

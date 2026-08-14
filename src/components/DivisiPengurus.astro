@@ -1,0 +1,57 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+interface PengurusItem {
+  nama: string;
+  jabatan: string;
+}
+
+interface Props {
+  kepala: PengurusItem;
+  staff: PengurusItem[];
+}
+
+const { kepala, staff } = Astro.props;
+
+// Function to generate initials from full name
+function getInitials(name: string): string {
+  const parts = name.trim().split(/\s+/);
+  if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase();
+  return (parts[0][0] + parts[1][0]).toUpperCase();
+}
+---
+
+<section class="divisi-pengurus-section">
+  <div class="container">
+    <SectionHeading 
+      titleMain="SUSUNAN" 
+      titleAccent="Pengurus" 
+      subtitle="Jajaran kepemimpinan dan anggota pengurus aktif Kabinet Naya Vikrama 2026"
+    />
+
+    <!-- Featured Card: Kepala Bidang / Kepala Divisi -->
+    <div class="pengurus-featured-card">
+      <div class="pengurus-featured-avatar">
+        {getInitials(kepala.nama)}
+      </div>
+      <div class="pengurus-featured-info">
+        <span class="pengurus-featured-badge">{kepala.jabatan}</span>
+        <h3 class="pengurus-featured-name">{kepala.nama}</h3>
+        <span class="pengurus-featured-role">Pimpinan Bidang / Divisi</span>
+      </div>
+    </div>
+
+    <!-- Staff Members Grid -->
+    <div class="pengurus-staff-grid">
+      {staff.map((member) => (
+        <article class="pengurus-card">
+          <div class="pengurus-avatar">
+            {getInitials(member.nama)}
+          </div>
+          <h4 class="pengurus-name">{member.nama}</h4>
+          <span class="pengurus-role">{member.jabatan}</span>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

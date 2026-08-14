@@ -1,0 +1,41 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+interface FotoItem {
+  title: string;
+  src: string;
+  isFeatured?: boolean;
+}
+
+interface Props {
+  fotoList: FotoItem[];
+}
+
+const { fotoList } = Astro.props;
+---
+
+<section class="divisi-galeri-section">
+  <div class="container">
+    <SectionHeading 
+      titleMain="GALERI" 
+      titleAccent="Dokumentasi" 
+      subtitle="Dokumentasi momen kebersamaan dan keakraban seluruh jajaran pengurus divisi"
+    />
+
+    <div class="galeri-bento-grid">
+      {fotoList.map((foto, index) => (
+        <figure class={`galeri-card ${foto.isFeatured || index === 0 ? 'featured' : ''}`}>
+          <img 
+            src={foto.src} 
+            alt={foto.title} 
+            class="galeri-card-img" 
+            loading="lazy" 
+          />
+          <figcaption class="galeri-card-overlay">
+            <span class="galeri-card-title">{foto.title}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

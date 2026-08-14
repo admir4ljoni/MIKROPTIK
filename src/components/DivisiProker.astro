@@ -1,0 +1,49 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+interface ProkerItem {
+  title: string;
+  description?: string;
+}
+
+interface Props {
+  prokerList: (string | ProkerItem)[];
+}
+
+const { prokerList } = Astro.props;
+
+// Normalize items to { title, description } format
+const items = prokerList.map((item) => {
+  if (typeof item === 'string') {
+    return { title: item, description: 'Program kerja prioritas yang dilaksanakan secara terencana demi kelancaran agenda himpunan.' };
+  }
+  return {
+    title: item.title,
+    description: item.description || 'Program kerja prioritas yang dilaksanakan secara terencana demi kelancaran agenda himpunan.'
+  };
+});
+---
+
+<section class="divisi-proker-section">
+  <div class="container">
+    <SectionHeading 
+      titleMain="PROGRAM" 
+      titleAccent="Kerja" 
+      subtitle="Inisiatif strategis dan agenda kegiatan unggulan yang dirancang untuk mendukung visi himpunan"
+    />
+
+    <div class="proker-list-grid">
+      {items.map((item, index) => (
+        <article class="proker-card-item">
+          <div class="proker-num-badge">
+            {String(index + 1).padStart(2, '0')}
+          </div>
+          <div class="proker-info">
+            <h3 class="proker-item-title">{item.title}</h3>
+            <p class="proker-item-desc">{item.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

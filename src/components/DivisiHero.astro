@@ -1,0 +1,30 @@
+---
+interface Props {
+  title: string;
+  badge: string;
+  tagline?: string;
+  description: string;
+  bgImage: string;
+}
+
+const { title, badge, tagline, description, bgImage } = Astro.props;
+---
+
+<section class="divisi-hero-section">
+  <!-- Background Image with Parallax readiness -->
+  <div 
+    class="divisi-hero-bg" 
+    style={`background-image: url('${bgImage}');`}
+  ></div>
+
+  <!-- Dark Gradient Overlay -->
+  <div class="divisi-hero-overlay"></div>
+
+  <!-- Hero Content Box -->
+  <div class="divisi-hero-content">
+    <span class="divisi-badge">{badge}</span>
+    <h1 class="divisi-hero-title">{title}</h1>
+    {tagline && <p class="divisi-hero-tagline">{tagline}</p>}
+    <p class="divisi-hero-desc">{description}</p>
+  </div>
+</section>

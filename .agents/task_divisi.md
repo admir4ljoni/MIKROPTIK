@@ -26,25 +26,25 @@ File ini berisi daftar tugas yang dipecah dari rencana `.agents/plan_divisi.md` 
 
 ## Phase 2: Komponen Reusable Divisi
 
-- [ ] Buat `src/components/DivisiHero.astro`
-  - [ ] Full-width background foto bersama divisi terkait + dark overlay gradient
-  - [ ] Badge jenis ("BIDANG SEKRETARIS UMUM", "DIVISI PSDM", dll.)
-  - [ ] Nama divisi besar (Bebas Neue)
-  - [ ] Tagline divisi (Beau Rivage, cursive/italic)
-  - [ ] Deskripsi singkat ringkasan
-- [ ] Buat `src/components/DivisiPengurus.astro`
-  - [ ] Featured card di atas untuk Kepala Bidang / Kepala Divisi (border gold, badge KABID/KADIV)
-  - [ ] Responsive grid 3-4 kolom di bawah untuk para staff
-  - [ ] Placeholder avatar inisial nama dengan gradien emas-ke-tembaga
-  - [ ] Card hover animation (scale up 1.03 + glow border)
-- [ ] Buat `src/components/DivisiProker.astro`
-  - [ ] List/grid card program kerja divisi
-  - [ ] Badge nomor urut berdesain khas (`--color-gold`)
-  - [ ] Card background `--color-dark` dengan border `--color-secondary`
-  - [ ] Hover effect border glow & color shift ke gold
-- [ ] Buat `src/components/DivisiFotoGaleri.astro`
-  - [ ] Grid foto divisi (FOTO KADIV, FOTO STAFF AHLI, FOTO STAFF MUDA)
-  - [ ] Filter grayscale redup di mode default, full color + zoom saat di-hover
+- [x] Buat `src/components/DivisiHero.astro`
+  - [x] Full-width background foto bersama divisi terkait + dark overlay gradient
+  - [x] Badge jenis ("BIDANG SEKRETARIS UMUM", "DIVISI PSDM", dll.)
+  - [x] Nama divisi besar (Bebas Neue)
+  - [x] Tagline divisi (Beau Rivage, cursive/italic)
+  - [x] Deskripsi singkat ringkasan
+- [x] Buat `src/components/DivisiPengurus.astro`
+  - [x] Featured card di atas untuk Kepala Bidang / Kepala Divisi (border gold, badge KABID/KADIV)
+  - [x] Responsive grid 3-4 kolom di bawah untuk para staff
+  - [x] Placeholder avatar inisial nama dengan gradien emas-ke-tembaga
+  - [x] Card hover animation (scale up 1.03 + glow border)
+- [x] Buat `src/components/DivisiProker.astro`
+  - [x] List/grid card program kerja divisi
+  - [x] Badge nomor urut berdesain khas (`--color-gold`)
+  - [x] Card background `--color-dark` dengan border `--color-secondary`
+  - [x] Hover effect border glow & color shift ke gold
+- [x] Buat `src/components/DivisiFotoGaleri.astro`
+  - [x] Grid foto divisi (FOTO KADIV, FOTO STAFF AHLI, FOTO STAFF MUDA)
+  - [x] Filter grayscale redup di mode default, full color + zoom saat di-hover
 
 ---
 

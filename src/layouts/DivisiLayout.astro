@@ -71,6 +71,20 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_UR
     </section>
   )}
 
+  <!-- Fullscreen Interactive Lightbox Image Modal (Tanpa Warna Outline) -->
+  <div id="galeriModal" class="galeri-modal" aria-hidden="true" role="dialog">
+    <div class="galeri-modal-overlay" id="galeriModalOverlay"></div>
+    <div class="galeri-modal-wrapper">
+      <button id="galeriModalClose" class="galeri-modal-close" aria-label="Tutup modal foto">&times;</button>
+      <div class="galeri-modal-content">
+        <img id="galeriModalImg" src="" alt="" class="galeri-modal-img" />
+        <div class="galeri-modal-caption">
+          <h3 id="galeriModalTitle" class="galeri-modal-title"></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     import '../scripts/divisi-animations.js';
   </script>

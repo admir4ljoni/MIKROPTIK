@@ -139,4 +139,58 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     );
   }
+
+  // 6. Interactive Lightbox Modal Controller (Tanpa Warna Outline)
+  const modal = document.getElementById('galeriModal');
+  const modalImg = document.getElementById('galeriModalImg');
+  const modalTitle = document.getElementById('galeriModalTitle');
+  const modalClose = document.getElementById('galeriModalClose');
+  const modalOverlay = document.getElementById('galeriModalOverlay');
+
+  function openModal(imgSrc, titleText) {
+    if (!modal || !modalImg || !modalTitle) return;
+    modalImg.src = imgSrc;
+    modalImg.alt = titleText || 'Foto Divisi';
+    modalTitle.textContent = titleText || 'Dokumentasi Divisi';
+    modal.classList.add('is-active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove('is-active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // Attach click listener ke seluruh card galeri foto
+  const allGaleriCards = document.querySelectorAll('.galeri-card');
+  allGaleriCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const img = card.querySelector('img');
+      const title = card.querySelector('.galeri-card-title');
+      if (img) {
+        openModal(img.src, title ? title.textContent : img.alt);
+      }
+    });
+  });
+
+  // Attach click listener ke seluruh foto split section 50/50
+  const splitImages = document.querySelectorAll('.split-image-col img');
+  splitImages.forEach((img) => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', () => {
+      openModal(img.src, img.alt || 'Dokumentasi Divisi');
+    });
+  });
+
+  if (modalClose) modalClose.addEventListener('click', closeModal);
+  if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && modal.classList.contains('is-active')) {
+      closeModal();
+    }
+  });
 });

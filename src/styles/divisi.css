@@ -621,6 +621,113 @@
   letter-spacing: 0.04em;
 }
 
+/* --- Lightbox Image Modal (Tanpa Warna Outline) --- */
+.galeri-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.galeri-modal.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.galeri-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 10, 9, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.galeri-modal-wrapper {
+  position: relative;
+  z-index: 10000;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.galeri-modal-close {
+  position: absolute;
+  top: -3.5rem;
+  right: 0;
+  background: transparent;
+  border: none !important;
+  outline: none !important;
+  color: var(--color-white);
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: transform 0.25s ease, color 0.25s ease;
+  padding: 0.5rem;
+  line-height: 1;
+}
+
+.galeri-modal-close:hover {
+  color: var(--color-gold);
+  transform: scale(1.15) rotate(90deg);
+}
+
+.galeri-modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none !important;
+  outline: none !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-dark);
+  transform: scale(0.92);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.galeri-modal.is-active .galeri-modal-content {
+  transform: scale(1);
+}
+
+.galeri-modal-img {
+  max-width: 85vw;
+  max-height: 75vh;
+  object-fit: contain;
+  display: block;
+  border: none !important;
+  outline: none !important;
+}
+
+.galeri-modal-caption {
+  width: 100%;
+  padding: 1.25rem 1.75rem;
+  background: rgba(28, 22, 20, 0.95);
+  text-align: center;
+  border: none !important;
+  outline: none !important;
+}
+
+.galeri-modal-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-gold);
+  letter-spacing: 0.05em;
+  margin: 0;
+  border: none !important;
+  outline: none !important;
+}
+
 /* --- Responsive Breakpoints --- */
 @media (max-width: 992px) {
   .divisi-split-grid,

@@ -230,6 +230,11 @@
   gap: 1rem;
   max-height: 460px;
   overflow-y: auto;
+  overflow-x: hidden;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  scroll-behavior: smooth;
   padding-right: 0.5rem;
 }
 
@@ -463,16 +468,16 @@
   padding: 1rem 1.5rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   max-height: 440px;
-  overflow-y: auto !important;
+  overflow-y: auto;
   overflow-x: hidden;
   touch-action: pan-y;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: contain;
   scroll-behavior: smooth;
   width: 100%;
+  pointer-events: auto;
   position: relative;
   z-index: 5;
-  pointer-events: auto;
 }
 
 .proker-container-card::-webkit-scrollbar {

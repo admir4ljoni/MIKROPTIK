@@ -408,10 +408,16 @@
   background-color: var(--color-dark);
 }
 
-/* Expanded state on hover or active click */
+/* Expanded state on hover or active click with Red Glow per DESIGN.md */
 .sliced-stripe:hover,
 .sliced-stripe.active {
   flex: 4.5;
+  z-index: 5;
+  border: 1.5px solid var(--color-red-deep) !important;
+  box-shadow: 
+    0 0 35px rgba(130, 9, 7, 0.85),
+    0 0 70px rgba(130, 9, 7, 0.45),
+    inset 0 0 25px rgba(130, 9, 7, 0.5) !important;
 }
 
 .stripe-img {

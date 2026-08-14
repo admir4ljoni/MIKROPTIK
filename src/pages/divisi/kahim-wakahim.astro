@@ -4,7 +4,9 @@ import DivisiHero from "../../components/DivisiHero.astro";
 import DivisiProker from "../../components/DivisiProker.astro";
 import SectionHeading from "../../components/SectionHeading.astro";
 
-const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 
 const divisiData = {
   name: "KAHIM & WAKAHIM",
@@ -17,29 +19,32 @@ const divisiData = {
     role: "Ketua Himpunan (KAHIM)",
     badge: "KETUA HIMPUNAN",
     foto: `${baseUrl}assets/Foto Kabinet/Foto Divisi/KAHIM WAKAHIM/KAHIM.webp`,
-    objectPosition: "center 0%",
+    objectPosition: "center 60%",
   },
   wakahim: {
     name: "Ade Amanah Putri",
     role: "Wakil Ketua Himpunan (WAKAHIM)",
     badge: "WAKIL KETUA HIMPUNAN",
     foto: `${baseUrl}assets/Foto Kabinet/Foto Divisi/KAHIM WAKAHIM/WAKAHIM.webp`,
-    objectPosition: "center 25%",
+    objectPosition: "center 38%",
   },
   proker: [
     {
       title: "Monitoring Bulanan",
-      description: "Monitoring Bulanan adalah upaya pimpinan himpunan untuk mengevaluasi dan mengoptimasi kinerja para staff."
+      description:
+        "Monitoring Bulanan adalah upaya pimpinan himpunan untuk mengevaluasi dan mengoptimasi kinerja para staff.",
     },
     {
       title: "Upgrading",
-      description: "Upgrading adalah serangkaian program pelatihan kemampuan berorganisasi guna meningkatkan kinerja seluruh anggota himpunan."
+      description:
+        "Upgrading adalah serangkaian program pelatihan kemampuan berorganisasi guna meningkatkan kinerja seluruh anggota himpunan.",
     },
     {
-      title: "Bytesfest",
-      description: "Bytesfest adalah program kerja berskala nasional untuk mewadahi talenta-talenta muda dalam bidang kreasi teknologi dan seni digital."
-    }
-  ]
+      title: "BYTESFEST",
+      description:
+        "BYTESFEST adalah program kerja berskala nasional untuk mewadahi talenta-talenta muda dalam bidang kreasi teknologi dan seni digital.",
+    },
+  ],
 };
 ---
 
@@ -90,7 +95,5 @@ const divisiData = {
   </section>
 
   <!-- Program Kerja Section -->
-  <DivisiProker
-    prokerList={divisiData.proker}
-  />
+  <DivisiProker prokerList={divisiData.proker} />
 </DivisiLayout>

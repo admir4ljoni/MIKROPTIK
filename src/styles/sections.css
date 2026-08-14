@@ -237,9 +237,15 @@ html.is-page-transitioning .preloader-content {
   white-space: nowrap;
 }
 
-.dropdown-menu li a:hover {
+.dropdown-menu li a:hover,
+.dropdown-menu li a.active {
   background-color: rgba(212, 179, 84, 0.15);
   color: var(--color-gold);
+}
+
+.mobile-submenu-links a.active {
+  color: var(--color-gold) !important;
+  font-weight: 600;
 }
 
 /* Mobile Submenu Styling */

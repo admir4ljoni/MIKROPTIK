@@ -74,8 +74,13 @@ import KalenderEvent from "../components/KalenderEvent.astro";
         subtitle="Geser kursor atau sentuh bilah di bawah untuk mengeksplorasi profil, pengurus, proker, dan prestasi MIKROPTIK"
       />
 
-      <div class="sliced-accordion-container" id="about-accordion">
-        <!-- Stripe 1: SEKUM (Sekretaris Umum) -->
+      <div class="about-mobile-arrow-wrapper">
+        <button class="mobile-nav-side-btn prev" id="about-mobile-prev" aria-label="Divisi Sebelumnya">
+          <i class="fa-solid fa-caret-left"></i>
+        </button>
+
+        <div class="sliced-accordion-container" id="about-accordion">
+          <!-- Stripe 1: SEKUM (Sekretaris Umum) -->
         <div class="sliced-stripe stripe-1">
           <div class="stripe-img-wrapper">
             <img
@@ -279,27 +284,12 @@ import KalenderEvent from "../components/KalenderEvent.astro";
         </div>
       </div>
 
-      <!-- Control Navigasi Mobile Carousel untuk Section 3 -->
-      <div class="about-mobile-nav" id="about-mobile-nav">
-        <button class="mobile-nav-arrow prev" id="about-mobile-prev" aria-label="Divisi Sebelumnya">
-          <i class="fa-solid fa-caret-left"></i>
-        </button>
-
-        <div class="mobile-nav-dots" id="about-mobile-dots">
-          <button class="mobile-dot active" data-index="0">SEKUM</button>
-          <button class="mobile-dot" data-index="1">BENUM</button>
-          <button class="mobile-dot" data-index="2">PSDM</button>
-          <button class="mobile-dot" data-index="3">MIKAT</button>
-          <button class="mobile-dot" data-index="4">HUMAS</button>
-          <button class="mobile-dot" data-index="5">MEDINFO</button>
-        </div>
-
-        <button class="mobile-nav-arrow next" id="about-mobile-next" aria-label="Divisi Selanjutnya">
-          <i class="fa-solid fa-caret-right"></i>
-        </button>
-      </div>
+      <button class="mobile-nav-side-btn next" id="about-mobile-next" aria-label="Divisi Selanjutnya">
+        <i class="fa-solid fa-caret-right"></i>
+      </button>
     </div>
-  </section>
+  </div>
+</section>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -307,7 +297,6 @@ import KalenderEvent from "../components/KalenderEvent.astro";
       if (!container) return;
 
       const stripes = Array.from(container.querySelectorAll(".sliced-stripe"));
-      const dots = Array.from(document.querySelectorAll("#about-mobile-dots .mobile-dot"));
       const prevBtn = document.getElementById("about-mobile-prev");
       const nextBtn = document.getElementById("about-mobile-next");
 
@@ -379,14 +368,6 @@ import KalenderEvent from "../components/KalenderEvent.astro";
           }
         });
 
-        dots.forEach((dot, i) => {
-          if (i === currentIndex) {
-            dot.classList.add("active");
-          } else {
-            dot.classList.remove("active");
-          }
-        });
-
         if (window.innerWidth <= 768) {
           updateMobileCarouselPosition();
         } else {
@@ -438,14 +419,8 @@ import KalenderEvent from "../components/KalenderEvent.astro";
         });
       });
 
-      dots.forEach((dot, i) => {
-        dot.addEventListener("click", () => {
-          setActiveStripe(i, true);
-        });
-      });
-
-      if (prevBtn) prevBtn.addEventListener("click", () => prevStripe(true));
-      if (nextBtn) nextBtn.addEventListener("click", () => nextStripe(true));
+      if (prevBtn) prevBtn.addEventListener("click", (e) => { e.stopPropagation(); prevStripe(true); });
+      if (nextBtn) nextBtn.addEventListener("click", (e) => { e.stopPropagation(); nextStripe(true); });
 
       container.addEventListener("mouseenter", () => {
         if (window.innerWidth > 768) stopAutoPlay();

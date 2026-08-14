@@ -701,71 +701,14 @@ html.is-page-transitioning .preloader-content {
   box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
 }
 
-/* Mobile Navigation Controller for Section 3 (About Accordion) */
-.about-mobile-nav {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  margin-top: 1.25rem;
+/* Mobile Side Navigation Wrapper for Section 3 (About Carousel) */
+.about-mobile-arrow-wrapper {
+  position: relative;
   width: 100%;
 }
 
-.mobile-nav-arrow {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: rgba(22, 22, 22, 0.85);
-  border: 1px solid rgba(212, 179, 84, 0.4);
-  color: var(--color-gold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  flex-shrink: 0;
-}
-
-.mobile-nav-arrow:hover {
-  background: var(--color-gold);
-  color: var(--color-dark);
-  border-color: var(--color-gold);
-}
-
-.mobile-nav-dots {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  overflow-x: auto;
-  padding: 0.25rem;
-  scrollbar-width: none;
-}
-
-.mobile-nav-dots::-webkit-scrollbar {
+.mobile-nav-side-btn {
   display: none;
-}
-
-.mobile-dot {
-  font-family: var(--font-heading);
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
-  padding: 0.3rem 0.75rem;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: rgba(255, 255, 255, 0.75);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.mobile-dot.active {
-  background: var(--color-gold);
-  color: var(--color-dark);
-  border-color: var(--color-gold);
-  font-weight: bold;
-  box-shadow: 0 0 12px rgba(212, 179, 84, 0.4);
 }
 
 /* --------------------------------------------------------------------------
@@ -1135,9 +1078,40 @@ html.is-page-transitioning .preloader-content {
     display: none !important;
   }
 
-  /* 2. Tampilkan control navigasi mobile untuk Section 3 */
-  .about-mobile-nav {
-    display: flex;
+  /* 2. Tombol Navigasi Samping Carousel Mobile */
+  .mobile-nav-side-btn {
+    display: flex !important;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50% !important;
+    background: rgba(22, 22, 22, 0.85) !important;
+    border: 1px solid rgba(212, 179, 84, 0.5) !important;
+    color: var(--color-gold) !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    font-size: 1.2rem !important;
+    z-index: 20 !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  .mobile-nav-side-btn.prev {
+    left: 0.25rem !important;
+  }
+
+  .mobile-nav-side-btn.next {
+    right: 0.25rem !important;
+  }
+
+  .mobile-nav-side-btn:hover,
+  .mobile-nav-side-btn:active {
+    background: var(--color-gold) !important;
+    color: var(--color-dark) !important;
+    border-color: var(--color-gold) !important;
   }
 
   /* 3. Section 3 Sliced Accordion Carousel Track di Mobile */

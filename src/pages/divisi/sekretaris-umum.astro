@@ -6,15 +6,17 @@ import DivisiFotoGaleri from "../../components/DivisiFotoGaleri.astro";
 import DivisiSplitSection from "../../components/DivisiSplitSection.astro";
 import SectionHeading from "../../components/SectionHeading.astro";
 
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
 const divisiData = {
   name: "SEKRETARIS UMUM",
   badge: "BIDANG SEKRETARIS UMUM",
   tagline: "Selalu Siap, Selalu Ada",
   slug: "sekretaris-umum",
-  bgImage: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO BERSAMA.webp",
-  fotoKadiv: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO KABID.webp",
-  fotoStaffAhli: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO STAFF AHLI.webp",
-  fotoStaffMuda: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO STAFF MUDA.webp",
+  bgImage: `${baseUrl}assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO BERSAMA.webp`,
+  fotoKadiv: `${baseUrl}assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO KABID.webp`,
+  fotoStaffAhli: `${baseUrl}assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO STAFF AHLI.webp`,
+  fotoStaffMuda: `${baseUrl}assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO STAFF MUDA.webp`,
   description:
     'Sekretaris Umum (SEKUM) HMP MIKROPTIK FKIP UNS merupakan bidang yang bertugas dalam mengelola, menyelesaikan, dan mengarsipkan seluruh sistem administrasi serta operasional organisasi. Dengan tagline "Selalu Siap, Selalu Ada", bidang ini berperan sebagai penopang kelancaran dan stabilitas internal HMP MIKROPTIK melalui pengelolaan kearsipan, pemeliharaan ruang sekretariat, penyusunan timeline kerja, hingga penyediaan serta penyaluran pusat informasi bagi seluruh pengurus.',
   proker: [
@@ -33,20 +35,20 @@ const divisiData = {
   galeri: [
     {
       title: "Foto Bersama Bidang SEKUM",
-      src: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO BERSAMA.webp",
+      src: `${baseUrl}assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO BERSAMA.webp`,
       isFeatured: true,
     },
     {
       title: "Kabid Sekretaris Umum",
-      src: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO KABID.webp",
+      src: `${baseUrl}assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO KABID.webp`,
     },
     {
       title: "Staff Ahli Sekretaris Umum",
-      src: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO STAFF AHLI.webp",
+      src: `${baseUrl}assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO STAFF AHLI.webp`,
     },
     {
       title: "Staff Muda Sekretaris Umum",
-      src: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO STAFF MUDA.webp",
+      src: `${baseUrl}assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO STAFF MUDA.webp`,
     },
   ],
 };

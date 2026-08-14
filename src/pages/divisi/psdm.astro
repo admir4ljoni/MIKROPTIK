@@ -6,16 +6,18 @@ import DivisiFotoGaleri from "../../components/DivisiFotoGaleri.astro";
 import DivisiSplitSection from "../../components/DivisiSplitSection.astro";
 import SectionHeading from "../../components/SectionHeading.astro";
 
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
 const divisiData = {
   name: "PSDM",
   badge: "DIVISI PSDM",
   tagline: "Pengembangan Potensi, Kompetensi & Karakter",
   slug: "psdm",
-  bgImage: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO BERSAMA.webp",
-  fotoKadiv: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO KADIV.webp",
-  fotoStaffAhli: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO STAFF AHLI.webp",
-  fotoStaffMuda1: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO STAFF MUDA 1.webp",
-  fotoStaffMuda2: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO STAFF MUDA 2.webp",
+  bgImage: `${baseUrl}assets/Foto Kabinet/Foto Divisi/PSDM/FOTO BERSAMA.webp`,
+  fotoKadiv: `${baseUrl}assets/Foto Kabinet/Foto Divisi/PSDM/FOTO KADIV.webp`,
+  fotoStaffAhli: `${baseUrl}assets/Foto Kabinet/Foto Divisi/PSDM/FOTO STAFF AHLI.webp`,
+  fotoStaffMuda1: `${baseUrl}assets/Foto Kabinet/Foto Divisi/PSDM/FOTO STAFF MUDA 1.webp`,
+  fotoStaffMuda2: `${baseUrl}assets/Foto Kabinet/Foto Divisi/PSDM/FOTO STAFF MUDA 2.webp`,
   description:
     "Divisi Pengembangan Sumber Daya Mahasiswa (PSDM) HMP MIKROPTIK Kabinet Naya Vikrama merupakan divisi yang berfokus pada pengembangan potensi, kompetensi, dan karakter mahasiswa PTIK. PSDM berperan sebagai wadah sekaligus fasilitator bagi mahasiswa baru dalam beradaptasi dengan lingkungan perkuliahan, mengembangkan diri, serta membangun relasi di lingkungan kampus. Melalui berbagai program kerja, seperti Open Recruitment, PSDM juga membuka kesempatan bagi mahasiswa untuk bergabung, berkontribusi, dan bertumbuh bersama dalam organisasi.",
   proker: [
@@ -29,24 +31,24 @@ const divisiData = {
   galeri: [
     {
       title: "Foto Bersama Divisi PSDM",
-      src: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO BERSAMA.webp",
+      src: `${baseUrl}assets/Foto Kabinet/Foto Divisi/PSDM/FOTO BERSAMA.webp`,
       isFeatured: true,
     },
     {
       title: "Kadiv PSDM",
-      src: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO KADIV.webp",
+      src: `${baseUrl}assets/Foto Kabinet/Foto Divisi/PSDM/FOTO KADIV.webp`,
     },
     {
       title: "Staff Ahli PSDM",
-      src: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO STAFF AHLI.webp",
+      src: `${baseUrl}assets/Foto Kabinet/Foto Divisi/PSDM/FOTO STAFF AHLI.webp`,
     },
     {
       title: "Staff Muda PSDM 1",
-      src: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO STAFF MUDA 1.webp",
+      src: `${baseUrl}assets/Foto Kabinet/Foto Divisi/PSDM/FOTO STAFF MUDA 1.webp`,
     },
     {
       title: "Staff Muda PSDM 2",
-      src: "/assets/Foto Kabinet/Foto Divisi/PSDM/FOTO STAFF MUDA 2.webp",
+      src: `${baseUrl}assets/Foto Kabinet/Foto Divisi/PSDM/FOTO STAFF MUDA 2.webp`,
     },
   ],
 };

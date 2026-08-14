@@ -6,16 +6,17 @@ import DivisiFotoGaleri from "../../components/DivisiFotoGaleri.astro";
 import DivisiSplitSection from "../../components/DivisiSplitSection.astro";
 import SectionHeading from "../../components/SectionHeading.astro";
 
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
 const divisiData = {
   name: "BENDAHARA UMUM",
   badge: "BIDANG BENDAHARA UMUM",
   tagline: "Transparansi, Akuntabilitas & Disiplin Keuangan",
   slug: "bendahara-umum",
-  bgImage: "/assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO BERSAMA.webp",
-  fotoKadiv: "/assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO KABID.webp",
-  fotoStaff1: "/assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO STAFF MUDA 1.webp",
-  fotoStaffMuda:
-    "/assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO STAFF MUDA 2.webp",
+  bgImage: `${baseUrl}assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO BERSAMA.webp`,
+  fotoKadiv: `${baseUrl}assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO KABID.webp`,
+  fotoStaff1: `${baseUrl}assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO STAFF MUDA 1.webp`,
+  fotoStaffMuda: `${baseUrl}assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO STAFF MUDA 2.webp`,
   description:
     "Bendahara Umum adalah bidang yang bertanggung jawab dalam mengelola seluruh keuangan organisasi, seperti pemasukan, pengeluaran, dan pencatatan dana kegiatan. Tugas utamanya meliputi menyusun laporan keuangan, membuat anggaran kegiatan, menjaga transparansi serta akuntabilitas keuangan, dan memastikan setiap penggunaan dana sesuai dengan aturan serta kebutuhan organisasi.",
   proker: [
@@ -28,20 +29,20 @@ const divisiData = {
   galeri: [
     {
       title: "Foto Bersama Bidang BENDUM",
-      src: "/assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO BERSAMA.webp",
+      src: `${baseUrl}assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO BERSAMA.webp`,
       isFeatured: true,
     },
     {
       title: "Kabid Bendahara Umum",
-      src: "/assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO KABID.webp",
+      src: `${baseUrl}assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO KABID.webp`,
     },
     {
       title: "Staff Muda Bendahara Umum 1",
-      src: "/assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO STAFF MUDA 1.webp",
+      src: `${baseUrl}assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO STAFF MUDA 1.webp`,
     },
     {
       title: "Staff Muda Bendahara Umum 2",
-      src: "/assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO STAFF MUDA 2.webp",
+      src: `${baseUrl}assets/Foto Kabinet/Foto Divisi/BEGUM/FOTO STAFF MUDA 2.webp`,
     },
   ],
 };

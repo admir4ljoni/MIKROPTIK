@@ -6,19 +6,21 @@ import DivisiFotoGaleri from "../../components/DivisiFotoGaleri.astro";
 import DivisiSplitSection from "../../components/DivisiSplitSection.astro";
 import SectionHeading from "../../components/SectionHeading.astro";
 
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
 const divisiData = {
   name: "MEDINFO",
   badge: "DIVISI MEDINFO",
   tagline: "Media Informasi, Publikasi & Dokumentasi Digital",
   slug: "medinfo",
-  bgImage: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO BERSAMA.webp",
-  fotoKadiv: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO KABID.webp",
+  bgImage: `${baseUrl}assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO BERSAMA.webp`,
+  fotoKadiv: `${baseUrl}assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO KABID.webp`,
   fotoStaffAhli:
-    "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF AHLI.webp",
+    `${baseUrl}assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF AHLI.webp`,
   fotoStaffMuda1:
-    "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF MUDA 1.webp",
+    `${baseUrl}assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF MUDA 1.webp`,
   fotoStaffMuda2:
-    "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF MUDA 2.webp",
+    `${baseUrl}assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF MUDA 2.webp`,
   description:
     "Divisi Medinfo HMP MIKROPTIK adalah divisi yang bertanggung jawab dalam pengelolaan media informasi dan dokumentasi HMP MIKROPTIK. Program kerjanya meliputi Pengelolaan Media Sosial, dokumentasi kegiatan, PDD (Publikasi, Dokumentasi, dan Desain), Podcast sebagai media informasi dan edukasi. Divisi ini juga menjadi wadah bagi mahasiswa untuk mengembangkan kemampuan di bidang desain grafis, fotografi, dan videografi. Bergabung di Divisi Medinfo HMP MIKROPTIK memberikan kesempatan untuk meningkatkan kreativitas, mengasah keterampilan, dan memperoleh pengalaman baru.",
   proker: [
@@ -30,24 +32,24 @@ const divisiData = {
   galeri: [
     {
       title: "Foto Bersama Divisi MEDINFO",
-      src: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO BERSAMA.webp",
+      src: `${baseUrl}assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO BERSAMA.webp`,
       isFeatured: true,
     },
     {
       title: "Kadiv MEDINFO",
-      src: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO KABID.webp",
+      src: `${baseUrl}assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO KABID.webp`,
     },
     {
       title: "Staff Ahli MEDINFO",
-      src: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF AHLI.webp",
+      src: `${baseUrl}assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF AHLI.webp`,
     },
     {
       title: "Staff Muda MEDINFO 1",
-      src: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF MUDA 1.webp",
+      src: `${baseUrl}assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF MUDA 1.webp`,
     },
     {
       title: "Staff Muda MEDINFO 2",
-      src: "/assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF MUDA 2.webp",
+      src: `${baseUrl}assets/Foto Kabinet/Foto Divisi/MEDINFO/FOTO STAFF MUDA 2.webp`,
     },
   ],
 };

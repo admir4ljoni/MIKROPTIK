@@ -6,45 +6,43 @@ import DivisiFotoGaleri from "../../components/DivisiFotoGaleri.astro";
 import DivisiSplitSection from "../../components/DivisiSplitSection.astro";
 import SectionHeading from "../../components/SectionHeading.astro";
 
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
 const divisiData = {
   name: "HUMAS",
   badge: "DIVISI HUMAS",
   tagline: "Jalin Koneksi, Cipta Harmoni, High Quality",
   slug: "humas",
-  bgImage: "/assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO BERSAMA.webp",
-  fotoKadiv: "/assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO KADIV.webp",
-  fotoStaffAhli: "/assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO STAFF AHLI.webp",
-  fotoStaffMuda: "/assets/Foto Kabinet/Foto Divisi/HUMAS/HUMAS STAFF MUDA.webp",
+  bgImage: `${baseUrl}assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO BERSAMA.webp`,
+  fotoKadiv: `${baseUrl}assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO KADIV.webp`,
+  fotoStaffAhli: `${baseUrl}assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO STAFF AHLI.webp`,
+  fotoStaffMuda: `${baseUrl}assets/Foto Kabinet/Foto Divisi/HUMAS/HUMAS STAFF MUDA.webp`,
   description:
     'Sebagai garda terdepan HMP MIKROPTIK, Divisi Humas berfokus membangun citra positif, memperkuat relasi, dan menjembatani komunikasi internal–eksternal pada Kabinet Naya Vikrama 2026. Misi branding dan diseminasi informasi ini direalisasikan secara komprehensif melalui program advokasi (Sambung Rasa, Real Action), ekspansi jaringan (Delegasi, Studi Banding), aksi kepedulian sosial (JPTK Berbagi, Mikroptik Social Action), hingga pemeliharaan ikatan alumni (Sambut Wisuda). Seluruh pergerakan ini dijiwai oleh satu semangat utama: "Jalin Koneksi, Cipta Harmoni, High Quality".',
   proker: [
-    "MIKROPTIK SOCIAL ACTION + SARASEHAN",
-    "JPTK BERBAGI",
-    "SAMBUNG RASA",
-    "STUDI BANDING",
-    "SAMBUT WISUDA",
-    "REAL ACTION",
-    "ADVOKASI MAHASISWA",
-    "DELEGASI KAMPUS",
-    "MEDIA PARTNER",
+    "ADVOKASI (SAMBUNG RASA, REAL ACTION)",
+    "DELEGASI & STUDI BANDING",
+    "JPTK BERBAGI & SOCIAL ACTION",
+    "SAMBUT WISUDA & ALUMNI CONNECT",
+    "PUBLIC RELATIONS & NETWORKING",
   ],
   galeri: [
     {
       title: "Foto Bersama Divisi HUMAS",
-      src: "/assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO BERSAMA.webp",
+      src: `${baseUrl}assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO BERSAMA.webp`,
       isFeatured: true,
     },
     {
       title: "Kadiv HUMAS",
-      src: "/assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO KADIV.webp",
+      src: `${baseUrl}assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO KADIV.webp`,
     },
     {
       title: "Staff Ahli HUMAS",
-      src: "/assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO STAFF AHLI.webp",
+      src: `${baseUrl}assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO STAFF AHLI.webp`,
     },
     {
       title: "Staff Muda HUMAS",
-      src: "/assets/Foto Kabinet/Foto Divisi/HUMAS/HUMAS STAFF MUDA.webp",
+      src: `${baseUrl}assets/Foto Kabinet/Foto Divisi/HUMAS/HUMAS STAFF MUDA.webp`,
     },
   ],
 };

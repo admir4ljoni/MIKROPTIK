@@ -197,6 +197,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Attach click listener ke card pimpinan (Kahim & Wakahim 50/50 split)
+  const executiveCols = document.querySelectorAll('.executive-5050-col');
+  executiveCols.forEach((col) => {
+    col.style.cursor = 'pointer';
+    col.addEventListener('click', () => {
+      const img = col.querySelector('img');
+      if (img) {
+        openModal(img.src, img.alt || 'Foto Pimpinan Himpunan');
+      }
+    });
+  });
+
   if (modalClose) modalClose.addEventListener('click', closeModal);
   if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
 

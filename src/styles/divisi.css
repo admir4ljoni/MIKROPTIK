@@ -919,6 +919,7 @@
   height: 100%;
   overflow: hidden;
   background-color: #0d0d0d;
+  cursor: pointer;
 }
 
 .executive-5050-col:first-child {

@@ -131,6 +131,26 @@ document.addEventListener('DOMContentLoaded', () => {
         },
       }
     );
+
+    // Touchpad two-finger scroll & mouse wheel event handler
+    prokerCard.addEventListener(
+      'wheel',
+      (e) => {
+        const scrollTop = prokerCard.scrollTop;
+        const scrollHeight = prokerCard.scrollHeight;
+        const clientHeight = prokerCard.clientHeight;
+        const delta = e.deltaY;
+
+        const canScrollDown = delta > 0 && scrollTop < scrollHeight - clientHeight - 1;
+        const canScrollUp = delta < 0 && scrollTop > 0;
+
+        if (canScrollDown || canScrollUp) {
+          e.stopPropagation();
+          prokerCard.scrollTop += delta;
+        }
+      },
+      { passive: false }
+    );
   }
 
   // 5. Galeri Foto Bento Cards Stagger Reveal

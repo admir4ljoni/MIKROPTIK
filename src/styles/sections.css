@@ -1175,6 +1175,15 @@ html.is-page-transitioning .preloader-content {
     filter: grayscale(0%) brightness(0.9) contrast(1.05) !important;
   }
 
+  /* Penyesuaian Posisi Foto Divisi Sekretaris (geser ke kiri) dan Medinfo (geser ke bawah) pada Mobile */
+  .stripe-1 .mobile-only-img {
+    object-position: 15% center !important;
+  }
+
+  .stripe-6 .mobile-only-img {
+    object-position: center 80% !important;
+  }
+
   /* Label Teks Berdiri Emas pada Kartu Samping / Tidak Aktif */
   .stripe-collapsed-label {
     display: block !important;

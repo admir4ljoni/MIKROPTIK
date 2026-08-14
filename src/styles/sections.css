@@ -1219,12 +1219,6 @@ html.is-page-transitioning .preloader-content {
   }
 
   .stripe-description {
-    font-size: 0.88rem !important;
-    line-height: 1.55 !important;
-    color: rgba(255, 255, 255, 0.95) !important;
-    display: -webkit-box !important;
-    -webkit-line-clamp: 5 !important;
-    -webkit-box-orient: vertical !important;
-    overflow: hidden !important;
+    display: none !important;
   }
 }

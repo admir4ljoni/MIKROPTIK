@@ -1,0 +1,7 @@
+# Robots.txt for HMP MIKROPTIK FKIP UNS (Kabinet Naya Vikrama 2026)
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://mikroptik.ptik.uns.ac.id/sitemap-index.xml
+Sitemap: https://mikroptik.ptik.uns.ac.id/sitemap-0.xml

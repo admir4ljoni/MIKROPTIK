@@ -15,11 +15,58 @@ interface Props {
 const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 
 const {
-  title = "MIKROPTIK | Kabinet Naya Vikrama - HMP PTIK FKIP UNS",
-  description = "Official Website Himpunan Mahasiswa Pendidikan Teknik Informatika dan Komputer (MIKROPTIK), Fakultas Keguruan dan Ilmu Pendidikan, Universitas Sebelas Maret.",
-  image = "/assets/logo_kabinet_full.svg",
+  title = "MIKROPTIK | Kabinet Naya Vikrama - HMP PTIK FKIP UNS 2026",
+  description = "Official Website Himpunan Mahasiswa Pendidikan Teknik Informatika dan Komputer (HMP MIKROPTIK), Fakultas Keguruan dan Ilmu Pendidikan, Universitas Sebelas Maret (UNS). Kabinet Naya Vikrama 2026.",
+  image = `${baseUrl}assets/logo-himpunan.png`,
   showPreloader = true
 } = Astro.props;
+
+const siteOrigin = Astro.site ? Astro.site.origin : "https://mikroptik.ptik.uns.ac.id";
+const canonicalURL = new URL(Astro.url.pathname, siteOrigin).href;
+const socialImageURL = new URL(image, siteOrigin).href;
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "EducationalOrganization",
+      "@id": `${siteOrigin}/#organization`,
+      "name": "HMP MIKROPTIK FKIP UNS",
+      "alternateName": ["MIKROPTIK", "HMP PTIK UNS", "Kabinet Naya Vikrama 2026"],
+      "url": siteOrigin,
+      "logo": `${siteOrigin}/assets/logo-himpunan.png`,
+      "sameAs": [
+        "https://www.instagram.com/mikroptik_uns",
+        "https://www.youtube.com/@hmpmikroptikfkipuns",
+        "https://tiktok.com/@mikroptik_uns"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Jl. Ahmad Yani No. 200, Pabelan, Kartasura",
+        "addressLocality": "Surakarta",
+        "addressRegion": "Jawa Tengah",
+        "postalCode": "57161",
+        "addressCountry": "ID"
+      },
+      "parentOrganization": {
+        "@type": "CollegeOrUniversity",
+        "name": "Universitas Sebelas Maret",
+        "url": "https://uns.ac.id"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteOrigin}/#website`,
+      "url": siteOrigin,
+      "name": "MIKROPTIK FKIP UNS",
+      "description": description,
+      "publisher": {
+        "@id": `${siteOrigin}/#organization`
+      },
+      "inLanguage": "id-ID"
+    }
+  ]
+};
 ---
 
 <!DOCTYPE html>
@@ -27,6 +74,8 @@ const {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href={canonicalURL} />
+
   <!-- Website Favicon Icon (Logo HMP MIKROPTIK) -->
   <link rel="icon" type="image/png" href={`${baseUrl}assets/logo-himpunan.png`} />
   <link rel="shortcut icon" type="image/png" href={`${baseUrl}assets/logo-himpunan.png`} />
@@ -39,23 +88,33 @@ const {
   <title>{title}</title>
   <meta name="title" content={title} />
   <meta name="description" content={description} />
+  <meta name="keywords" content="HMP MIKROPTIK, MIKROPTIK, PTIK UNS, Pendidikan Teknik Informatika dan Komputer, Kabinet Naya Vikrama 2026, FKIP UNS, Universitas Sebelas Maret, Himpunan Mahasiswa PTIK" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="author" content="HMP MIKROPTIK FKIP UNS" />
   <meta name="generator" content={Astro.generator} />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content={image} />
+  <meta property="og:image" content={socialImageURL} />
+  <meta property="og:site_name" content="HMP MIKROPTIK FKIP UNS" />
+  <meta property="og:locale" content="id_ID" />
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={canonicalURL} />
   <meta property="twitter:title" content={title} />
   <meta property="twitter:description" content={description} />
-  <meta property="twitter:image" content={image} />
+  <meta property="twitter:image" content={socialImageURL} />
 
   <!-- Preconnect Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Structured Data / JSON-LD for Google Rich Snippets -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
 </head>
 <body>
   {showPreloader && <Preloader />}

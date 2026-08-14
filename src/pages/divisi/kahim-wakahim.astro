@@ -1,0 +1,114 @@
+---
+import DivisiLayout from "../../layouts/DivisiLayout.astro";
+import DivisiHero from "../../components/DivisiHero.astro";
+import DivisiProker from "../../components/DivisiProker.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
+const divisiData = {
+  name: "KAHIM & WAKAHIM",
+  badge: "PIMPINAN HIMPUNAN",
+  tagline: "Kepemimpinan & Integrasi Ekosistem Kabinet Naya Vikrama",
+  slug: "kahim-wakahim",
+  bgImage: `${baseUrl}assets/Foto Kabinet/Foto Divisi/Foto Kabinet Naya Vikrama.JPG`,
+  kahim: {
+    name: "Muhammad Ridwan Auliansyach",
+    role: "Ketua Himpunan (KAHIM)",
+    badge: "KETUA HIMPUNAN",
+    foto: `${baseUrl}assets/Foto Kabinet/Foto Divisi/KAHIM WAKAHIM/KAHIM.webp`,
+  },
+  wakahim: {
+    name: "Ade Amanah Putri",
+    role: "Wakil Ketua Himpunan (WAKAHIM)",
+    badge: "WAKIL KETUA HIMPUNAN",
+    foto: `${baseUrl}assets/Foto Kabinet/Foto Divisi/KAHIM WAKAHIM/WAKAHIM.webp`,
+  },
+  proker: [
+    {
+      title: "Monitoring Bulanan",
+      description: "Monitoring Bulanan adalah upaya pimpinan himpunan untuk mengevaluasi dan mengoptimasi kinerja para staff."
+    },
+    {
+      title: "Upgrading",
+      description: "Upgrading adalah serangkaian program pelatihan kemampuan berorganisasi guna meningkatkan kinerja seluruh anggota himpunan."
+    },
+    {
+      title: "Bytesfest",
+      description: "Bytesfest adalah program kerja berskala nasional untuk mewadahi talenta-talenta muda dalam bidang kreasi teknologi dan seni digital."
+    }
+  ]
+};
+---
+
+<DivisiLayout
+  divisiName={divisiData.name}
+  divisiBadge={divisiData.badge}
+  divisiTagline={divisiData.tagline}
+  divisiSlug={divisiData.slug}
+  prevDivisi={{ name: "MEDINFO", slug: "medinfo" }}
+  nextDivisi={{ name: "SEKRETARIS UMUM", slug: "sekretaris-umum" }}
+>
+  <!-- Hero Section (100vh) -->
+  <DivisiHero
+    title={divisiData.name}
+    badge={divisiData.badge}
+    tagline={divisiData.tagline}
+    description="Pimpinan Tertinggi Himpunan Mahasiswa Pendidikan Teknik Informatika dan Komputer (HMP MIKROPTIK) Periode 2026."
+    bgImage={divisiData.bgImage}
+  />
+
+  <!-- Special Executive Leadership Showcase Grid (2 Slot Foto Kahim & Wakahim) -->
+  <section class="executive-leadership-section">
+    <div class="container">
+      <SectionHeading
+        titleMain="PIMPINAN"
+        titleAccent="Himpunan"
+        subtitle="Dua pilar kepemimpinan utama HMP MIKROPTIK Kabinet Naya Vikrama 2026"
+      />
+
+      <div class="executive-dual-grid">
+        <!-- Card KAHIM -->
+        <article class="executive-card">
+          <div class="executive-img-wrapper">
+            <img
+              src={divisiData.kahim.foto}
+              alt={`Foto ${divisiData.kahim.name}`}
+              class="executive-img"
+              loading="lazy"
+            />
+            <div class="executive-img-overlay"></div>
+          </div>
+          <div class="executive-info">
+            <span class="executive-badge">{divisiData.kahim.badge}</span>
+            <h3 class="executive-name">{divisiData.kahim.name}</h3>
+            <p class="executive-role">{divisiData.kahim.role}</p>
+          </div>
+        </article>
+
+        <!-- Card WAKAHIM -->
+        <article class="executive-card">
+          <div class="executive-img-wrapper">
+            <img
+              src={divisiData.wakahim.foto}
+              alt={`Foto ${divisiData.wakahim.name}`}
+              class="executive-img"
+              loading="lazy"
+            />
+            <div class="executive-img-overlay"></div>
+          </div>
+          <div class="executive-info">
+            <span class="executive-badge">{divisiData.wakahim.badge}</span>
+            <h3 class="executive-name">{divisiData.wakahim.name}</h3>
+            <p class="executive-role">{divisiData.wakahim.role}</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Program Kerja Section -->
+  <DivisiProker
+    prokerList={divisiData.proker}
+  />
+</DivisiLayout>

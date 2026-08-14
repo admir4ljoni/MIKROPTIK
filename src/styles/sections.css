@@ -416,9 +416,9 @@
 
 .stripe-img {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100vw;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   background-image: url('/assets/Foto Kabinet/Foto Divisi/Foto Kabinet Naya Vikrama.JPG');
   background-size: cover;
   background-position: center;
@@ -434,13 +434,13 @@
   transform: scale(1.03);
 }
 
-/* Sliced background image position offsets matching full viewport width */
-.stripe-1 .stripe-img { left: 0vw; }
-.stripe-2 .stripe-img { left: -16vw; }
-.stripe-3 .stripe-img { left: -32vw; }
-.stripe-4 .stripe-img { left: -48vw; }
-.stripe-5 .stripe-img { left: -64vw; }
-.stripe-6 .stripe-img { left: -80vw; }
+/* Sliced background image position focal points for each stripe */
+.stripe-1 .stripe-img { background-position: 5% center; }
+.stripe-2 .stripe-img { background-position: 22% center; }
+.stripe-3 .stripe-img { background-position: 40% center; }
+.stripe-4 .stripe-img { background-position: 58% center; }
+.stripe-5 .stripe-img { background-position: 75% center; }
+.stripe-6 .stripe-img { background-position: 95% center; }
 
 /* Overlay inside each stripe */
 .stripe-overlay {

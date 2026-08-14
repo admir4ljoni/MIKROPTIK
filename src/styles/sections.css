@@ -580,6 +580,10 @@ html.is-page-transitioning .preloader-content {
   pointer-events: none;
 }
 
+.mobile-only-img {
+  display: none;
+}
+
 .stripe-shared-img {
   position: absolute;
   top: 0;
@@ -1146,8 +1150,13 @@ html.is-page-transitioning .preloader-content {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6) !important;
   }
 
-  /* Gambar Kartu Tidak Aktif: Hitam-Putih / Grayscale */
-  .stripe-shared-img {
+  .desktop-only-img {
+    display: none !important;
+  }
+
+  /* Gambar Kartu Divisi Masing-Masing di Mobile (Tidak Aktif: Hitam-Putih / Grayscale) */
+  .mobile-only-img {
+    display: block !important;
     width: 100% !important;
     height: 100% !important;
     left: 0 !important;
@@ -1158,8 +1167,8 @@ html.is-page-transitioning .preloader-content {
     transition: filter 0.4s ease !important;
   }
 
-  /* Gambar Kartu Aktif: Berwarna Penuh */
-  .sliced-stripe.active .stripe-shared-img {
+  /* Gambar Kartu Divisi Aktif di Mobile: Berwarna Penuh */
+  .sliced-stripe.active .mobile-only-img {
     filter: grayscale(0%) brightness(0.9) contrast(1.05) !important;
   }
 

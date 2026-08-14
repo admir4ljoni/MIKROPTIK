@@ -1,11 +1,20 @@
 ---
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
 const bentoItems = [
   {
     id: 1,
     title: "BYTESFEST 2026",
     subtitle: "Festival IT & Kompetisi Nasional",
     description: "Festival IT berskala nasional yang menghadirkan kompetisi, seminar, dan ajang inovasi teknologi bagi pelajar dan mahasiswa se-Indonesia.",
-    image: "https://picsum.photos/seed/proker1/1000/700",
+    image: `${baseUrl}assets/Foto Proker/BYTESFEST_2026/COVER.webp`,
+    gallery: [
+      `${baseUrl}assets/Foto Proker/BYTESFEST_2026/COVER.webp`,
+      `${baseUrl}assets/Foto Proker/BYTESFEST_2026/1.webp`,
+      `${baseUrl}assets/Foto Proker/BYTESFEST_2026/2.webp`
+    ],
     gridClass: "bento-col-2 bento-row-2"
   },
   {
@@ -13,7 +22,12 @@ const bentoItems = [
     title: "KULIAH TAMU & WORKSHOP",
     subtitle: "Wawasan Global & Industri",
     description: "Forum akademik internasional bersama profesor dan praktisi industri global untuk memperluas wawasan riset, IT, dan STEM.",
-    image: "https://picsum.photos/seed/proker2/700/1000",
+    image: `${baseUrl}assets/Foto Proker/KULIAH TAMU_2026/COVER.webp`,
+    gallery: [
+      `${baseUrl}assets/Foto Proker/KULIAH TAMU_2026/COVER.webp`,
+      `${baseUrl}assets/Foto Proker/KULIAH TAMU_2026/1.webp`,
+      `${baseUrl}assets/Foto Proker/KULIAH TAMU_2026/2.webp`
+    ],
     gridClass: "bento-col-2 bento-row-2"
   },
   {
@@ -21,23 +35,23 @@ const bentoItems = [
     title: "MIKROPTIK SOCIAL ACTION",
     subtitle: "Aksi Sosial & Pengabdian",
     description: "Program pengabdian dan aksi sosial kepedulian masyarakat di bulan Ramadhan untuk berbagi kebaikan dan mempererat silaturahmi.",
-    image: "https://picsum.photos/seed/proker3/800/600",
+    image: `${baseUrl}assets/Foto Proker/MSA_2026/COVER.webp`,
+    gallery: [
+      `${baseUrl}assets/Foto Proker/MSA_2026/COVER.webp`
+    ],
     gridClass: "bento-col-1 bento-row-1"
   },
   {
     id: 4,
-    title: "STUDI BANDING",
-    subtitle: "Jejaring Budaya Organisasi",
-    description: "Ruang diskusi dan studi antar-himpunan informatika untuk bertukar wawasan tata kelola, inovasi proker, dan kolaborasi.",
-    image: "https://picsum.photos/seed/proker4/800/600",
-    gridClass: "bento-col-1 bento-row-1"
-  },
-  {
-    id: 5,
     title: "STUDY CLUB",
     subtitle: "Skill Coding & Riset Digital",
     description: "Wadah intensif pengasahan skill teknologi, penulisan karya ilmiah, dan inovasi riset digital bagi mahasiswa.",
-    image: "https://picsum.photos/seed/proker5/800/600",
+    image: `${baseUrl}assets/Foto Proker/STUDY CLUB_2026/COVER.webp`,
+    gallery: [
+      `${baseUrl}assets/Foto Proker/STUDY CLUB_2026/COVER.webp`,
+      `${baseUrl}assets/Foto Proker/STUDY CLUB_2026/1.webp`,
+      `${baseUrl}assets/Foto Proker/STUDY CLUB_2026/2.webp`
+    ],
     gridClass: "bento-col-2 bento-row-1"
   }
 ];
@@ -46,8 +60,12 @@ const bentoItems = [
 <div class="proker-bento-fullwidth-wrapper">
   <div class="proker-bento-grid">
     {bentoItems.map((item) => (
-      <article class={`bento-card ${item.gridClass}`}>
-        <!-- Background Full Image Placeholder -->
+      <article
+        class={`bento-card ${item.gridClass}`}
+        data-title={item.title}
+        data-gallery={JSON.stringify(item.gallery)}
+      >
+        <!-- Background Full Image Cover -->
         <img src={item.image} alt={item.title} class="bento-bg-img" loading="lazy" />
 
         <!-- Bottom Shadow Overlay Gradient -->
@@ -62,6 +80,132 @@ const bentoItems = [
     ))}
   </div>
 </div>
+
+<!-- Modal Lightbox Gallery untuk Proker Unggulan -->
+<div id="prokerModal" class="proker-modal" aria-hidden="true" role="dialog">
+  <div class="proker-modal-overlay" id="prokerModalOverlay"></div>
+
+  <div class="proker-modal-container">
+    <button id="prokerModalClose" class="proker-modal-close" aria-label="Tutup modal foto">&times;</button>
+
+    <!-- Tombol Prev (Segitiga Kiri) -->
+    <button id="prokerModalPrev" class="proker-modal-nav prev-btn" aria-label="Gambar Sebelumnya">&#9668;</button>
+
+    <!-- Area Gambar Modal -->
+    <div class="proker-modal-media">
+      <img id="prokerModalImg" src="" alt="" class="proker-modal-img" />
+      <div class="proker-modal-info">
+        <span id="prokerModalTitle" class="proker-modal-title"></span>
+        <span id="prokerModalCounter" class="proker-modal-counter"></span>
+      </div>
+    </div>
+
+    <!-- Tombol Next (Segitiga Kanan) -->
+    <button id="prokerModalNext" class="proker-modal-nav next-btn" aria-label="Gambar Selanjutnya">&#9654;</button>
+  </div>
+</div>
+
+<script>
+  function initProkerModal() {
+    const modal = document.getElementById('prokerModal');
+    const modalOverlay = document.getElementById('prokerModalOverlay');
+    const modalClose = document.getElementById('prokerModalClose');
+    const modalImg = document.getElementById('prokerModalImg') as HTMLImageElement;
+    const modalTitle = document.getElementById('prokerModalTitle');
+    const modalCounter = document.getElementById('prokerModalCounter');
+    const prevBtn = document.getElementById('prokerModalPrev');
+    const nextBtn = document.getElementById('prokerModalNext');
+
+    if (!modal || !modalImg) return;
+
+    let currentGallery: string[] = [];
+    let currentIndex = 0;
+    let currentTitle = '';
+
+    function updateModalContent() {
+      if (currentGallery.length === 0) return;
+      modalImg.src = currentGallery[currentIndex];
+      modalImg.alt = `${currentTitle} - Foto ${currentIndex + 1}`;
+
+      if (modalTitle) modalTitle.textContent = currentTitle;
+
+      if (currentGallery.length > 1) {
+        if (modalCounter) {
+          modalCounter.style.display = 'inline-block';
+          modalCounter.textContent = `${currentIndex + 1} / ${currentGallery.length}`;
+        }
+        if (prevBtn) prevBtn.style.display = 'flex';
+        if (nextBtn) nextBtn.style.display = 'flex';
+      } else {
+        if (modalCounter) modalCounter.style.display = 'none';
+        if (prevBtn) prevBtn.style.display = 'none';
+        if (nextBtn) nextBtn.style.display = 'none';
+      }
+    }
+
+    function openModal(title: string, gallery: string[]) {
+      currentTitle = title;
+      currentGallery = gallery;
+      currentIndex = 0;
+      updateModalContent();
+
+      modal.classList.add('is-active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('is-active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function prevImage() {
+      if (currentGallery.length <= 1) return;
+      currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+      updateModalContent();
+    }
+
+    function nextImage() {
+      if (currentGallery.length <= 1) return;
+      currentIndex = (currentIndex + 1) % currentGallery.length;
+      updateModalContent();
+    }
+
+    // Attach listeners to Bento Cards
+    const bentoCards = document.querySelectorAll('.bento-card');
+    bentoCards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const title = card.getAttribute('data-title') || '';
+        const galleryRaw = card.getAttribute('data-gallery') || '[]';
+        try {
+          const gallery = JSON.parse(galleryRaw);
+          if (gallery.length > 0) {
+            openModal(title, gallery);
+          }
+        } catch (e) {}
+      });
+    });
+
+    if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prevImage(); });
+    if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); nextImage(); });
+    if (modalClose) modalClose.addEventListener('click', closeModal);
+    if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (!modal.classList.contains('is-active')) return;
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowLeft') prevImage();
+      if (e.key === 'ArrowRight') nextImage();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initProkerModal);
+  } else {
+    initProkerModal();
+  }
+</script>
 
 <style>
   .proker-bento-fullwidth-wrapper {
@@ -181,6 +325,149 @@ const bentoItems = [
     overflow: hidden;
   }
 
+  /* --- Proker Gallery Modal Styling --- */
+  .proker-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+  }
+
+  .proker-modal.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .proker-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.92);
+    backdrop-filter: blur(10px);
+  }
+
+  .proker-modal-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+  }
+
+  .proker-modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    background: rgba(22, 22, 22, 0.8);
+    border: 1px solid rgba(212, 179, 84, 0.4);
+    color: var(--color-white);
+    font-size: 2rem;
+    line-height: 1;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .proker-modal-close:hover {
+    background: var(--color-gold);
+    color: #121212;
+    border-color: var(--color-gold);
+    transform: scale(1.1);
+  }
+
+  .proker-modal-media {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 85vw;
+    max-height: 82vh;
+  }
+
+  .proker-modal-img {
+    max-width: 85vw;
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(212, 179, 84, 0.25);
+  }
+
+  .proker-modal-info {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(22, 22, 22, 0.85);
+    border: 1px solid rgba(212, 179, 84, 0.3);
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    backdrop-filter: blur(8px);
+  }
+
+  .proker-modal-title {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    color: var(--color-gold);
+    letter-spacing: 0.08em;
+  }
+
+  .proker-modal-counter {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    padding-left: 0.75rem;
+  }
+
+  .proker-modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(22, 22, 22, 0.85);
+    border: 1px solid rgba(212, 179, 84, 0.4);
+    color: var(--color-gold);
+    font-size: 1.3rem;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  }
+
+  .proker-modal-nav.prev-btn {
+    left: 2.5rem;
+  }
+
+  .proker-modal-nav.next-btn {
+    right: 2.5rem;
+  }
+
+  .proker-modal-nav:hover {
+    background: var(--color-gold);
+    color: #121212;
+    border-color: var(--color-gold);
+    transform: translateY(-50%) scale(1.12);
+  }
+
   /* Responsive Mobile Adjustments */
   @media (max-width: 1100px) {
     .proker-bento-grid {
@@ -210,6 +497,20 @@ const bentoItems = [
     .bento-row-2 {
       grid-column: span 1;
       grid-row: span 1;
+    }
+
+    .proker-modal-nav.prev-btn {
+      left: 0.75rem;
+      width: 42px;
+      height: 42px;
+      font-size: 1rem;
+    }
+
+    .proker-modal-nav.next-btn {
+      right: 0.75rem;
+      width: 42px;
+      height: 42px;
+      font-size: 1rem;
     }
   }
 </style>

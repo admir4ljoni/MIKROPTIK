@@ -1,10 +1,10 @@
 ---
-import DivisiLayout from '../../layouts/DivisiLayout.astro';
-import DivisiHero from '../../components/DivisiHero.astro';
-import DivisiProker from '../../components/DivisiProker.astro';
-import DivisiFotoGaleri from '../../components/DivisiFotoGaleri.astro';
-import DivisiSplitSection from '../../components/DivisiSplitSection.astro';
-import SectionHeading from '../../components/SectionHeading.astro';
+import DivisiLayout from "../../layouts/DivisiLayout.astro";
+import DivisiHero from "../../components/DivisiHero.astro";
+import DivisiProker from "../../components/DivisiProker.astro";
+import DivisiFotoGaleri from "../../components/DivisiFotoGaleri.astro";
+import DivisiSplitSection from "../../components/DivisiSplitSection.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
 
 const divisiData = {
   name: "SEKRETARIS UMUM",
@@ -15,7 +15,8 @@ const divisiData = {
   fotoKadiv: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO KABID.webp",
   fotoStaffAhli: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO STAFF AHLI.webp",
   fotoStaffMuda: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO STAFF MUDA.webp",
-  description: "Sekretaris Umum (SEKUM) HMP MIKROPTIK FKIP UNS merupakan bidang yang bertugas dalam mengelola, menyelesaikan, dan mengarsipkan seluruh sistem administrasi serta operasional organisasi. Dengan tagline \"Selalu Siap, Selalu Ada\", bidang ini berperan sebagai penopang kelancaran dan stabilitas internal HMP MIKROPTIK melalui pengelolaan kearsipan, pemeliharaan ruang sekretariat, penyusunan timeline kerja, hingga penyediaan serta penyaluran pusat informasi bagi seluruh pengurus.",
+  description:
+    'Sekretaris Umum (SEKUM) HMP MIKROPTIK FKIP UNS merupakan bidang yang bertugas dalam mengelola, menyelesaikan, dan mengarsipkan seluruh sistem administrasi serta operasional organisasi. Dengan tagline "Selalu Siap, Selalu Ada", bidang ini berperan sebagai penopang kelancaran dan stabilitas internal HMP MIKROPTIK melalui pengelolaan kearsipan, pemeliharaan ruang sekretariat, penyusunan timeline kerja, hingga penyediaan serta penyaluran pusat informasi bagi seluruh pengurus.',
   proker: [
     "Rapat Kerja",
     "Pelatihan Sekben",
@@ -27,14 +28,27 @@ const divisiData = {
     "Tertib Administrasi",
     "Dokumentasi",
     "Pengelolaan Sekre",
-    "Sertifikat Pengurus"
+    "Sertifikat Pengurus",
   ],
   galeri: [
-    { title: "Foto Bersama Bidang SEKUM", src: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO BERSAMA.JPG", isFeatured: true },
-    { title: "Kabid Sekretaris Umum", src: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO KABID.webp" },
-    { title: "Staff Ahli Sekretaris Umum", src: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO STAFF AHLI.webp" },
-    { title: "Staff Muda Sekretaris Umum", src: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO STAFF MUDA.webp" }
-  ]
+    {
+      title: "Foto Bersama Bidang SEKUM",
+      src: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO BERSAMA.JPG",
+      isFeatured: true,
+    },
+    {
+      title: "Kabid Sekretaris Umum",
+      src: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO KABID.webp",
+    },
+    {
+      title: "Staff Ahli Sekretaris Umum",
+      src: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO STAFF AHLI.webp",
+    },
+    {
+      title: "Staff Muda Sekretaris Umum",
+      src: "/assets/Foto Kabinet/Foto Divisi/SEKRE/FOTO STAFF MUDA.webp",
+    },
+  ],
 };
 ---
 
@@ -67,21 +81,21 @@ const divisiData = {
       align="left"
     />
     <div class="brutalist-profile-box">
-      <span class="brutalist-tag">[ 01 // VOKASI & OPERASIONAL ]</span>
+      <span class="brutalist-tag">[ ADMINISTRASI ]</span>
       <p class="brutalist-desc-text">{divisiData.description}</p>
     </div>
   </DivisiSplitSection>
 
   <!-- Section 2: Program Kerja paired with Foto Staff Ahli (50/50 Viewport Segment) -->
-  <DivisiProker 
-    prokerList={divisiData.proker} 
+  <DivisiProker
+    prokerList={divisiData.proker}
     imageSrc={divisiData.fotoStaffAhli}
     reverse={true}
   />
 
   <!-- Section 3: Galeri Dokumentasi paired with Foto Staff Muda (50/50 Viewport Segment) -->
-  <DivisiFotoGaleri 
-    fotoList={divisiData.galeri} 
+  <DivisiFotoGaleri
+    fotoList={divisiData.galeri}
     imageSrc={divisiData.fotoStaffMuda}
     reverse={false}
   />

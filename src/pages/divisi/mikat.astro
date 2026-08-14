@@ -1,10 +1,10 @@
 ---
-import DivisiLayout from '../../layouts/DivisiLayout.astro';
-import DivisiHero from '../../components/DivisiHero.astro';
-import DivisiProker from '../../components/DivisiProker.astro';
-import DivisiFotoGaleri from '../../components/DivisiFotoGaleri.astro';
-import DivisiSplitSection from '../../components/DivisiSplitSection.astro';
-import SectionHeading from '../../components/SectionHeading.astro';
+import DivisiLayout from "../../layouts/DivisiLayout.astro";
+import DivisiHero from "../../components/DivisiHero.astro";
+import DivisiProker from "../../components/DivisiProker.astro";
+import DivisiFotoGaleri from "../../components/DivisiFotoGaleri.astro";
+import DivisiSplitSection from "../../components/DivisiSplitSection.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
 
 const divisiData = {
   name: "MIKAT",
@@ -14,8 +14,10 @@ const divisiData = {
   bgImage: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO BERSAMA.JPG",
   fotoKadiv: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO KADIV.webp",
   fotoStaffAhli: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO STAFF AHLI.webp",
-  fotoStaffMuda: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO STAFF MUDA 1.webp",
-  description: "Divisi Minat dan Bakat (MIKAT) HMP MIKROPTIK FKIP UNS merupakan divisi yang bertugas dalam pengembangan potensi, bakat, dan minat mahasiswa baik di bidang akademik maupun non-akademik. Divisi ini menjadi wadah bagi mahasiswa untuk menyalurkan minatnya dalam kegiatan olahraga, seni, keilmuan, hingga pengembangan diri, serta turut membangun lingkungan PTIK yang sehat dan produktif.",
+  fotoStaffMuda:
+    "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO STAFF MUDA 1.webp",
+  description:
+    "Divisi Minat dan Bakat (MIKAT) HMP MIKROPTIK FKIP UNS merupakan divisi yang bertugas dalam pengembangan potensi, bakat, dan minat mahasiswa baik di bidang akademik maupun non-akademik. Divisi ini menjadi wadah bagi mahasiswa untuk menyalurkan minatnya dalam kegiatan olahraga, seni, keilmuan, hingga pengembangan diri, serta turut membangun lingkungan PTIK yang sehat dan produktif.",
   proker: [
     "SEBAT (Sehat Bersama PTIK)",
     "JPTK CUP",
@@ -23,15 +25,31 @@ const divisiData = {
     "SEMINAR PKM",
     "STUDY CLUB",
     "PENDATAAN PRESTASI MAHASISWA",
-    "PENDATAAN MIKAT MAHASISWA"
+    "PENDATAAN MIKAT MAHASISWA",
   ],
   galeri: [
-    { title: "Foto Bersama Divisi MIKAT", src: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO BERSAMA.JPG", isFeatured: true },
-    { title: "Kadiv MIKAT", src: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO KADIV.webp" },
-    { title: "Staff Ahli MIKAT", src: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO STAFF AHLI.webp" },
-    { title: "Staff Muda MIKAT 1", src: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO STAFF MUDA 1.webp" },
-    { title: "Staff Muda MIKAT 2", src: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO STAFF MUDA 2.webp" }
-  ]
+    {
+      title: "Foto Bersama Divisi MIKAT",
+      src: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO BERSAMA.JPG",
+      isFeatured: true,
+    },
+    {
+      title: "Kadiv MIKAT",
+      src: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO KADIV.webp",
+    },
+    {
+      title: "Staff Ahli MIKAT",
+      src: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO STAFF AHLI.webp",
+    },
+    {
+      title: "Staff Muda MIKAT 1",
+      src: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO STAFF MUDA 1.webp",
+    },
+    {
+      title: "Staff Muda MIKAT 2",
+      src: "/assets/Foto Kabinet/Foto Divisi/MIKAT/FOTO STAFF MUDA 2.webp",
+    },
+  ],
 };
 ---
 
@@ -67,21 +85,21 @@ const divisiData = {
       align="left"
     />
     <div class="brutalist-profile-box">
-      <span class="brutalist-tag">[ 01 // POTENSI & APRESIASI KARYA ]</span>
+      <span class="brutalist-tag">[ POTENSI & APRESIASI MINAT ]</span>
       <p class="brutalist-desc-text">{divisiData.description}</p>
     </div>
   </DivisiSplitSection>
 
   <!-- Section 2: Program Kerja paired with Foto Staff Ahli (50/50 Viewport Segment) -->
-  <DivisiProker 
-    prokerList={divisiData.proker} 
+  <DivisiProker
+    prokerList={divisiData.proker}
     imageSrc={divisiData.fotoStaffAhli}
     reverse={true}
   />
 
   <!-- Section 3: Galeri Dokumentasi paired with Foto Staff Muda (50/50 Viewport Segment) -->
-  <DivisiFotoGaleri 
-    fotoList={divisiData.galeri} 
+  <DivisiFotoGaleri
+    fotoList={divisiData.galeri}
     imageSrc={divisiData.fotoStaffMuda}
     reverse={false}
   />

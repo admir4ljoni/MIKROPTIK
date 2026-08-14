@@ -1,10 +1,10 @@
 ---
-import DivisiLayout from '../../layouts/DivisiLayout.astro';
-import DivisiHero from '../../components/DivisiHero.astro';
-import DivisiProker from '../../components/DivisiProker.astro';
-import DivisiFotoGaleri from '../../components/DivisiFotoGaleri.astro';
-import DivisiSplitSection from '../../components/DivisiSplitSection.astro';
-import SectionHeading from '../../components/SectionHeading.astro';
+import DivisiLayout from "../../layouts/DivisiLayout.astro";
+import DivisiHero from "../../components/DivisiHero.astro";
+import DivisiProker from "../../components/DivisiProker.astro";
+import DivisiFotoGaleri from "../../components/DivisiFotoGaleri.astro";
+import DivisiSplitSection from "../../components/DivisiSplitSection.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
 
 const divisiData = {
   name: "HUMAS",
@@ -15,7 +15,8 @@ const divisiData = {
   fotoKadiv: "/assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO KADIV.webp",
   fotoStaffAhli: "/assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO STAFF AHLI.webp",
   fotoStaffMuda: "/assets/Foto Kabinet/Foto Divisi/HUMAS/HUMAS STAFF MUDA.webp",
-  description: "Sebagai garda terdepan HMP MIKROPTIK, Divisi Humas berfokus membangun citra positif, memperkuat relasi, dan menjembatani komunikasi internal–eksternal pada Kabinet Naya Vikrama 2026. Misi branding dan diseminasi informasi ini direalisasikan secara komprehensif melalui program advokasi (Sambung Rasa, Real Action), ekspansi jaringan (Delegasi, Studi Banding), aksi kepedulian sosial (JPTK Berbagi, Mikroptik Social Action), hingga pemeliharaan ikatan alumni (Sambut Wisuda). Seluruh pergerakan ini dijiwai oleh satu semangat utama: \"Jalin Koneksi, Cipta Harmoni, High Quality\".",
+  description:
+    'Sebagai garda terdepan HMP MIKROPTIK, Divisi Humas berfokus membangun citra positif, memperkuat relasi, dan menjembatani komunikasi internal–eksternal pada Kabinet Naya Vikrama 2026. Misi branding dan diseminasi informasi ini direalisasikan secara komprehensif melalui program advokasi (Sambung Rasa, Real Action), ekspansi jaringan (Delegasi, Studi Banding), aksi kepedulian sosial (JPTK Berbagi, Mikroptik Social Action), hingga pemeliharaan ikatan alumni (Sambut Wisuda). Seluruh pergerakan ini dijiwai oleh satu semangat utama: "Jalin Koneksi, Cipta Harmoni, High Quality".',
   proker: [
     "MIKROPTIK SOCIAL ACTION + SARASEHAN",
     "JPTK BERBAGI",
@@ -25,14 +26,27 @@ const divisiData = {
     "REAL ACTION",
     "ADVOKASI MAHASISWA",
     "DELEGASI KAMPUS",
-    "MEDIA PARTNER"
+    "MEDIA PARTNER",
   ],
   galeri: [
-    { title: "Foto Bersama Divisi HUMAS", src: "/assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO BERSAMA.JPG", isFeatured: true },
-    { title: "Kadiv HUMAS", src: "/assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO KADIV.webp" },
-    { title: "Staff Ahli HUMAS", src: "/assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO STAFF AHLI.webp" },
-    { title: "Staff Muda HUMAS", src: "/assets/Foto Kabinet/Foto Divisi/HUMAS/HUMAS STAFF MUDA.webp" }
-  ]
+    {
+      title: "Foto Bersama Divisi HUMAS",
+      src: "/assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO BERSAMA.JPG",
+      isFeatured: true,
+    },
+    {
+      title: "Kadiv HUMAS",
+      src: "/assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO KADIV.webp",
+    },
+    {
+      title: "Staff Ahli HUMAS",
+      src: "/assets/Foto Kabinet/Foto Divisi/HUMAS/FOTO STAFF AHLI.webp",
+    },
+    {
+      title: "Staff Muda HUMAS",
+      src: "/assets/Foto Kabinet/Foto Divisi/HUMAS/HUMAS STAFF MUDA.webp",
+    },
+  ],
 };
 ---
 
@@ -67,21 +81,21 @@ const divisiData = {
       align="left"
     />
     <div class="brutalist-profile-box">
-      <span class="brutalist-tag">[ 01 // CITRA & JEJARING STRATEGIS ]</span>
+      <span class="brutalist-tag">[ CITRA & JEJARING STRATEGIS ]</span>
       <p class="brutalist-desc-text">{divisiData.description}</p>
     </div>
   </DivisiSplitSection>
 
   <!-- Section 2: Program Kerja paired with Foto Staff Ahli (50/50 Viewport Segment) -->
-  <DivisiProker 
-    prokerList={divisiData.proker} 
+  <DivisiProker
+    prokerList={divisiData.proker}
     imageSrc={divisiData.fotoStaffAhli}
     reverse={true}
   />
 
   <!-- Section 3: Galeri Dokumentasi paired with Foto Staff Muda (50/50 Viewport Segment) -->
-  <DivisiFotoGaleri 
-    fotoList={divisiData.galeri} 
+  <DivisiFotoGaleri
+    fotoList={divisiData.galeri}
     imageSrc={divisiData.fotoStaffMuda}
     reverse={false}
   />

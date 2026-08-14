@@ -139,14 +139,14 @@
 
 .divisi-split-grid {
   display: grid;
-  grid-template-columns: 40fr 60fr;
+  grid-template-columns: 40% 60%;
   width: 100%;
   min-height: 75vh;
   gap: 0;
 }
 
 .divisi-split-grid.reverse {
-  grid-template-columns: 60fr 40fr;
+  grid-template-columns: 60% 40%;
 }
 
 .divisi-split-grid.reverse .split-content-col {

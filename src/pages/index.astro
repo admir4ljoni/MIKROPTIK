@@ -278,6 +278,26 @@ import KalenderEvent from "../components/KalenderEvent.astro";
           </div>
         </div>
       </div>
+
+      <!-- Control Navigasi Mobile Carousel untuk Section 3 -->
+      <div class="about-mobile-nav" id="about-mobile-nav">
+        <button class="mobile-nav-arrow prev" id="about-mobile-prev" aria-label="Divisi Sebelumnya">
+          <i class="fa-solid fa-caret-left"></i>
+        </button>
+
+        <div class="mobile-nav-dots" id="about-mobile-dots">
+          <button class="mobile-dot active" data-index="0">SEKUM</button>
+          <button class="mobile-dot" data-index="1">BENUM</button>
+          <button class="mobile-dot" data-index="2">PSDM</button>
+          <button class="mobile-dot" data-index="3">MIKAT</button>
+          <button class="mobile-dot" data-index="4">HUMAS</button>
+          <button class="mobile-dot" data-index="5">MEDINFO</button>
+        </div>
+
+        <button class="mobile-nav-arrow next" id="about-mobile-next" aria-label="Divisi Selanjutnya">
+          <i class="fa-solid fa-caret-right"></i>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -287,11 +307,19 @@ import KalenderEvent from "../components/KalenderEvent.astro";
       if (!container) return;
 
       const stripes = Array.from(container.querySelectorAll(".sliced-stripe"));
+      const dots = Array.from(document.querySelectorAll("#about-mobile-dots .mobile-dot"));
+      const prevBtn = document.getElementById("about-mobile-prev");
+      const nextBtn = document.getElementById("about-mobile-next");
+
       let currentIndex = 0;
       let autoPlayTimer: any = null;
       let animFrameId: any = null;
 
+      // -------------------------------------------------------------
+      // DESKTOP SLICED ACCORDION SYNC (> 768px)
+      // -------------------------------------------------------------
       function updateImgOffsets() {
+        if (window.innerWidth <= 768) return;
         const containerRect = container.getBoundingClientRect();
         const containerWidth = containerRect.width;
 
@@ -306,6 +334,7 @@ import KalenderEvent from "../components/KalenderEvent.astro";
       }
 
       function startSyncLoop(durationMs = 750) {
+        if (window.innerWidth <= 768) return;
         const startTime = performance.now();
         if (animFrameId) cancelAnimationFrame(animFrameId);
 
@@ -320,6 +349,25 @@ import KalenderEvent from "../components/KalenderEvent.astro";
         animFrameId = requestAnimationFrame(loop);
       }
 
+      // -------------------------------------------------------------
+      // MOBILE CAROUSEL TRACK POSITION CALCULATOR (<= 768px)
+      // -------------------------------------------------------------
+      function updateMobileCarouselPosition() {
+        if (window.innerWidth > 768) {
+          container.style.transform = '';
+          return;
+        }
+
+        const parentElem = container.parentElement;
+        const containerWidth = parentElem ? parentElem.clientWidth : window.innerWidth;
+        const cardWidth = containerWidth * 0.85; // Card size 85% width
+        const gap = 16;
+        const sidePadding = (containerWidth - cardWidth) / 2;
+
+        const offset = -(currentIndex * (cardWidth + gap)) + sidePadding;
+        container.style.transform = `translateX(${offset}px)`;
+      }
+
       function setActiveStripe(index: number, manualUserAction = false) {
         currentIndex = (index + stripes.length) % stripes.length;
 
@@ -331,22 +379,38 @@ import KalenderEvent from "../components/KalenderEvent.astro";
           }
         });
 
-        startSyncLoop(750);
+        dots.forEach((dot, i) => {
+          if (i === currentIndex) {
+            dot.classList.add("active");
+          } else {
+            dot.classList.remove("active");
+          }
+        });
+
+        if (window.innerWidth <= 768) {
+          updateMobileCarouselPosition();
+        } else {
+          startSyncLoop(750);
+        }
 
         if (manualUserAction) {
           resetAutoPlay();
         }
       }
 
-      function nextStripe() {
-        setActiveStripe(currentIndex + 1, false);
+      function nextStripe(manual = false) {
+        setActiveStripe(currentIndex + 1, manual);
+      }
+
+      function prevStripe(manual = false) {
+        setActiveStripe(currentIndex - 1, manual);
       }
 
       function startAutoPlay() {
         stopAutoPlay();
         autoPlayTimer = setInterval(() => {
-          nextStripe();
-        }, 4000); // Otomatis berpindah setiap 4 detik
+          nextStripe(false);
+        }, 4000);
       }
 
       function stopAutoPlay() {
@@ -361,24 +425,34 @@ import KalenderEvent from "../components/KalenderEvent.astro";
         startAutoPlay();
       }
 
-      // Attach click and mouseenter event listeners to stripes
+      // Attach click and mouseenter event listeners
       stripes.forEach((stripe, i) => {
-        stripe.addEventListener("mouseenter", () => {
-          setActiveStripe(i, true);
-        });
-
         stripe.addEventListener("click", () => {
           setActiveStripe(i, true);
         });
+
+        stripe.addEventListener("mouseenter", () => {
+          if (window.innerWidth > 768) {
+            setActiveStripe(i, true);
+          }
+        });
       });
 
-      // Pause auto-play saat kursor pengguna berada di dalam container (desktop)
+      dots.forEach((dot, i) => {
+        dot.addEventListener("click", () => {
+          setActiveStripe(i, true);
+        });
+      });
+
+      if (prevBtn) prevBtn.addEventListener("click", () => prevStripe(true));
+      if (nextBtn) nextBtn.addEventListener("click", () => nextStripe(true));
+
       container.addEventListener("mouseenter", () => {
-        stopAutoPlay();
+        if (window.innerWidth > 768) stopAutoPlay();
       });
 
       container.addEventListener("mouseleave", () => {
-        startAutoPlay();
+        if (window.innerWidth > 768) startAutoPlay();
       });
 
       // Touch swipe detection untuk mobile
@@ -391,16 +465,35 @@ import KalenderEvent from "../components/KalenderEvent.astro";
 
       container.addEventListener("touchend", (e: TouchEvent) => {
         touchEndX = e.changedTouches[0].screenX;
-        if (touchStartX - touchEndX > 40) {
-          setActiveStripe(currentIndex + 1, true); // Swipe Kiri -> Stripe Berikutnya
-        } else if (touchEndX - touchStartX > 40) {
-          setActiveStripe(currentIndex - 1, true); // Swipe Kanan -> Stripe Sebelumnya
+        if (window.innerWidth <= 768) {
+          if (touchStartX - touchEndX > 40) {
+            nextStripe(true);
+          } else if (touchEndX - touchStartX > 40) {
+            prevStripe(true);
+          }
         }
       }, { passive: true });
 
+      function checkViewMode() {
+        if (window.innerWidth <= 768) {
+          updateMobileCarouselPosition();
+        } else {
+          container.style.transform = '';
+          stripes.forEach((stripe) => {
+            const img = stripe.querySelector(".stripe-shared-img") as HTMLElement;
+            if (img) {
+              img.style.width = "";
+              img.style.left = "";
+            }
+          });
+          updateImgOffsets();
+        }
+      }
+
+      window.addEventListener("resize", checkViewMode);
+
       // Initial setup
-      updateImgOffsets();
-      window.addEventListener("resize", updateImgOffsets);
+      checkViewMode();
       setActiveStripe(0);
       startAutoPlay();
     });

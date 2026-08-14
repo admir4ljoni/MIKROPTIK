@@ -412,27 +412,6 @@
 .sliced-stripe:hover,
 .sliced-stripe.active {
   flex: 4.5;
-  border: none !important;
-  outline: none !important;
-}
-
-/* 4-Side Red Illumination Overlay using official DESIGN.md red colors (red-deep: #820907 & red-dark: #691412) */
-.sliced-stripe::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 2;
-  opacity: 0;
-  box-shadow: 
-    inset 0 0 65px 20px rgba(130, 9, 7, 0.85),
-    inset 0 0 140px 45px rgba(105, 20, 18, 0.95) !important;
-  transition: opacity 0.5s ease;
-}
-
-.sliced-stripe:hover::after,
-.sliced-stripe.active::after {
-  opacity: 1;
 }
 
 .stripe-img {
@@ -448,10 +427,10 @@
   transition: filter 0.5s ease, transform 0.6s ease;
 }
 
-/* Full Color & Illuminated Foto di mode hover / active */
+/* Full Color / Berwarna di mode hover / active */
 .sliced-stripe:hover .stripe-img,
 .sliced-stripe.active .stripe-img {
-  filter: grayscale(0%) brightness(1.18) contrast(1.1);
+  filter: grayscale(0%) brightness(1) contrast(1);
   transform: scale(1.03);
 }
 

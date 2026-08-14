@@ -77,7 +77,13 @@ import KalenderEvent from "../components/KalenderEvent.astro";
       <div class="sliced-accordion-container" id="about-accordion">
         <!-- Stripe 1: SEKUM (Sekretaris Umum) -->
         <div class="sliced-stripe stripe-1">
-          <div class="stripe-img"></div>
+          <div class="stripe-img-wrapper">
+            <img
+              src={`${import.meta.env.BASE_URL}assets/Foto Kabinet/Foto Divisi/Foto Kabinet Naya Vikrama.JPG`}
+              alt="Foto Kabinet Naya Vikrama"
+              class="stripe-shared-img"
+            />
+          </div>
           <div class="stripe-collapsed-label">SEKUM</div>
           <div class="stripe-overlay">
             <div class="stripe-expanded-content">
@@ -95,7 +101,13 @@ import KalenderEvent from "../components/KalenderEvent.astro";
 
         <!-- Stripe 2: BENDUM (Bendahara Umum) -->
         <div class="sliced-stripe stripe-2">
-          <div class="stripe-img"></div>
+          <div class="stripe-img-wrapper">
+            <img
+              src={`${import.meta.env.BASE_URL}assets/Foto Kabinet/Foto Divisi/Foto Kabinet Naya Vikrama.JPG`}
+              alt="Foto Kabinet Naya Vikrama"
+              class="stripe-shared-img"
+            />
+          </div>
           <div class="stripe-collapsed-label">BENDUM</div>
           <div class="stripe-overlay">
             <div class="stripe-expanded-content">
@@ -113,7 +125,13 @@ import KalenderEvent from "../components/KalenderEvent.astro";
 
         <!-- Stripe 3: PSDM -->
         <div class="sliced-stripe stripe-3">
-          <div class="stripe-img"></div>
+          <div class="stripe-img-wrapper">
+            <img
+              src={`${import.meta.env.BASE_URL}assets/Foto Kabinet/Foto Divisi/Foto Kabinet Naya Vikrama.JPG`}
+              alt="Foto Kabinet Naya Vikrama"
+              class="stripe-shared-img"
+            />
+          </div>
           <div class="stripe-collapsed-label">PSDM</div>
           <div class="stripe-overlay">
             <div class="stripe-expanded-content">
@@ -131,7 +149,13 @@ import KalenderEvent from "../components/KalenderEvent.astro";
 
         <!-- Stripe 4: MIKAT -->
         <div class="sliced-stripe stripe-4">
-          <div class="stripe-img"></div>
+          <div class="stripe-img-wrapper">
+            <img
+              src={`${import.meta.env.BASE_URL}assets/Foto Kabinet/Foto Divisi/Foto Kabinet Naya Vikrama.JPG`}
+              alt="Foto Kabinet Naya Vikrama"
+              class="stripe-shared-img"
+            />
+          </div>
           <div class="stripe-collapsed-label">MIKAT</div>
           <div class="stripe-overlay">
             <div class="stripe-expanded-content">
@@ -149,7 +173,13 @@ import KalenderEvent from "../components/KalenderEvent.astro";
 
         <!-- Stripe 5: HUMAS -->
         <div class="sliced-stripe stripe-5">
-          <div class="stripe-img"></div>
+          <div class="stripe-img-wrapper">
+            <img
+              src={`${import.meta.env.BASE_URL}assets/Foto Kabinet/Foto Divisi/Foto Kabinet Naya Vikrama.JPG`}
+              alt="Foto Kabinet Naya Vikrama"
+              class="stripe-shared-img"
+            />
+          </div>
           <div class="stripe-collapsed-label">HUMAS</div>
           <div class="stripe-overlay">
             <div class="stripe-expanded-content">
@@ -167,7 +197,13 @@ import KalenderEvent from "../components/KalenderEvent.astro";
 
         <!-- Stripe 6: MEDINFO -->
         <div class="sliced-stripe stripe-6">
-          <div class="stripe-img"></div>
+          <div class="stripe-img-wrapper">
+            <img
+              src={`${import.meta.env.BASE_URL}assets/Foto Kabinet/Foto Divisi/Foto Kabinet Naya Vikrama.JPG`}
+              alt="Foto Kabinet Naya Vikrama"
+              class="stripe-shared-img"
+            />
+          </div>
           <div class="stripe-collapsed-label">MEDINFO</div>
           <div class="stripe-overlay">
             <div class="stripe-expanded-content">
@@ -188,13 +224,53 @@ import KalenderEvent from "../components/KalenderEvent.astro";
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const stripes = document.querySelectorAll(
-        "#about-accordion .sliced-stripe",
-      );
+      const container = document.getElementById("about-accordion");
+      if (!container) return;
+
+      const stripes = container.querySelectorAll(".sliced-stripe");
+      let animFrameId = null;
+
+      function updateImgOffsets() {
+        const containerRect = container.getBoundingClientRect();
+        const containerWidth = containerRect.width;
+
+        stripes.forEach((stripe) => {
+          const img = stripe.querySelector(".stripe-shared-img");
+          if (img) {
+            const stripeLeft = stripe.getBoundingClientRect().left - containerRect.left;
+            img.style.width = `${containerWidth}px`;
+            img.style.left = `${-stripeLeft}px`;
+          }
+        });
+      }
+
+      function startSyncLoop(durationMs = 750) {
+        const startTime = performance.now();
+        if (animFrameId) cancelAnimationFrame(animFrameId);
+
+        function loop(now) {
+          updateImgOffsets();
+          if (now - startTime < durationMs) {
+            animFrameId = requestAnimationFrame(loop);
+          } else {
+            updateImgOffsets();
+          }
+        }
+        animFrameId = requestAnimationFrame(loop);
+      }
+
+      // Inisialisasi awal & listener window resize
+      updateImgOffsets();
+      window.addEventListener("resize", updateImgOffsets);
+
+      // Sinkronisasi 60fps saat terjadi ekspansi hover / active click
       stripes.forEach((stripe) => {
+        stripe.addEventListener("mouseenter", () => startSyncLoop(750));
+        stripe.addEventListener("mouseleave", () => startSyncLoop(750));
         stripe.addEventListener("click", () => {
           stripes.forEach((s) => s.classList.remove("active"));
           stripe.classList.add("active");
+          startSyncLoop(750);
         });
       });
     });

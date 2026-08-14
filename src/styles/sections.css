@@ -701,14 +701,33 @@ html.is-page-transitioning .preloader-content {
   box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
 }
 
-/* Mobile Side Navigation Wrapper for Section 3 (About Carousel) */
-.about-mobile-arrow-wrapper {
-  position: relative;
+/* Dot Indicators below Mobile Carousel for Section 3 */
+.about-mobile-dots-wrapper {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
   width: 100%;
 }
 
-.mobile-nav-side-btn {
-  display: none;
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.carousel-dot.active {
+  width: 26px;
+  height: 8px;
+  border-radius: 10px;
+  background: var(--color-gold);
+  box-shadow: 0 0 10px rgba(212, 179, 84, 0.6);
 }
 
 /* --------------------------------------------------------------------------
@@ -1078,40 +1097,9 @@ html.is-page-transitioning .preloader-content {
     display: none !important;
   }
 
-  /* 2. Tombol Navigasi Samping Carousel Mobile */
-  .mobile-nav-side-btn {
+  /* 2. Tampilkan Dot Indikator Carousel di Mobile */
+  .about-mobile-dots-wrapper {
     display: flex !important;
-    position: absolute !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    width: 44px !important;
-    height: 44px !important;
-    border-radius: 50% !important;
-    background: rgba(22, 22, 22, 0.85) !important;
-    border: 1px solid rgba(212, 179, 84, 0.5) !important;
-    color: var(--color-gold) !important;
-    align-items: center !important;
-    justify-content: center !important;
-    cursor: pointer !important;
-    font-size: 1.2rem !important;
-    z-index: 20 !important;
-    transition: all 0.3s ease !important;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6) !important;
-  }
-
-  .mobile-nav-side-btn.prev {
-    left: 0.25rem !important;
-  }
-
-  .mobile-nav-side-btn.next {
-    right: 0.25rem !important;
-  }
-
-  .mobile-nav-side-btn:hover,
-  .mobile-nav-side-btn:active {
-    background: var(--color-gold) !important;
-    color: var(--color-dark) !important;
-    border-color: var(--color-gold) !important;
   }
 
   /* 3. Section 3 Sliced Accordion Carousel Track di Mobile */

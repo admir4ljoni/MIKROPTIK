@@ -808,6 +808,60 @@
   border-radius: var(--radius-md);
 }
 
+/* --- Executive 50:50 Viewport Split Showcase (Kahim & Wakahim Murni Foto 50:50 Viewport) --- */
+.executive-5050-section {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-dark);
+  border-top: 1px solid rgba(212, 179, 84, 0.25);
+  border-bottom: 1px solid rgba(212, 179, 84, 0.25);
+}
+
+.executive-5050-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  height: 90vh;
+  min-height: 600px;
+  max-height: 1000px;
+  margin: 0;
+  padding: 0;
+}
+
+.executive-5050-col {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #0d0d0d;
+  cursor: pointer;
+}
+
+.executive-5050-col:first-child {
+  border-right: 1px solid rgba(212, 179, 84, 0.25);
+}
+
+.executive-5050-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.7s ease;
+}
+
+.executive-5050-col:hover .executive-5050-img {
+  transform: scale(1.04);
+}
+
+.executive-5050-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 10, 10, 0.4) 0%, transparent 60%);
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
 /* --- Responsive Breakpoints for Division Profile Pages --- */
 @media (max-width: 992px) {
   .divisi-split-grid,
